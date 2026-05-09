@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: "Masque";
+  src: url("../src/assets//fonts//MASQUE__.ttf");
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 1600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+* {
+  font-family: "Inter", "Century gothic", sans-serif;
+}
+
+.principal {
+  font-family: Masque, "sans-serif";
+}
+
+/* Ajoute ce CSS pour simuler la couleur primaire sur les SVG images */
+.filter-primary {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(89%) saturate(1203%) hue-rotate(243deg) brightness(93%) contrast(90%);
+}
+
+.active {
+  color: #342563;
+}
+
+.bg_ccm {
+  background-image: url("./assets/images/home/ccm.png");
+  background-size: cover;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #6C61F6 #E0E0E0;
+}
+
+/* styles.css or within a <style> tag */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Or desired width */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-200; /* Tailwind color for track */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-blue-300 rounded-full; /* Tailwind color and style for thumb */
+  }
+
+.pentagone {
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+.home_star_bg {
+  position: relative;
+  background-image: url("./assets/images/home/ai_car.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home_star_bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.697);
+}
+
+/* Embla */
+
+.embla {
+  max-width: 100%;
+  margin: auto;
+  --slide-height: 19rem;
+  --slide-spacing: 1rem;
+  --slide-size: 20%;
+}
+.embla__viewport {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+}
+.embla__slide__number {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  border-radius: 1.8rem;
+  font-size: 4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--slide-height);
+  user-select: none;
+}
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+}
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.embla__button {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 3.6rem;
+  height: 3.6rem;
+  z-index: 1;
+  border-radius: 50%;
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.embla__button:disabled {
+  color: var(--detail-high-contrast);
+}
+.embla__button__svg {
+  width: 35%;
+  height: 35%;
+}
+.embla__play {
+  -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  touch-action: manipulation;
+  display: inline-flex;
+  text-decoration: none;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  border-radius: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: flex-end;
+  color: var(--text-body);
+  font-weight: 700;
+  font-size: 1.4rem;
+  padding: 0 2.4rem;
+  min-width: 8.4rem;
+}
+.embla__progress {
+  border-radius: 1.8rem;
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  background-color: var(--background-site);
+  position: relative;
+  height: 0.6rem;
+  justify-self: flex-end;
+  align-self: center;
+  width: 13rem;
+  max-width: 90%;
+  overflow: hidden;
+}
+.embla__progress__bar {
+  background-color: var(--text-body);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+}
+.embla__controls {
+  grid-template-columns: auto 1fr auto;
+}
+.embla__progress {
+  justify-self: center;
+  transition: opacity 0.3s ease-in-out;
+  width: 8rem;
+}
+.embla__progress--hidden {
+  opacity: 0;
+}
+.embla__progress__bar {
+  animation-name: autoplay-progress;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+}
+.embla__progress--hidden .embla__progress__bar {
+  animation-play-state: paused;
+}
+@keyframes autoplay-progress {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Scrollbar */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 252 43% 16%;
+    --card: 0 0% 100%;
+    --card-foreground: 252 43% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 252 43% 16%;
+    --primary: 252 43% 27%;
+    --primary-foreground: 47 89% 78%;
+    --secondary: 47 89% 78%;
+    --secondary-foreground: 252 43% 27%;
+    --muted: 250 20% 96%;
+    --muted-foreground: 250 10% 45%;
+    --accent: 250 30% 95%;
+    --accent-foreground: 252 43% 20%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 250 15% 90%;
+    --input: 250 15% 90%;
+    --ring: 252 43% 27%;
+    --chart-1: 252 60% 55%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 47 89% 68%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
+.animate-slide-out-right {
+  animation: slideOutRight 0.3s ease-out forwards;
+}
