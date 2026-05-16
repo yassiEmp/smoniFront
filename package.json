@@ -79,6 +79,7 @@
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.183.2",
+    "tippy.js": "^6.3.7",
     "unicornstudio-react": "^2.1.1",
     "vaul": "^1.1.2",
     "yup": "^1.6.1"
@@ -106,5 +107,10 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vitest": "^4.1.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
