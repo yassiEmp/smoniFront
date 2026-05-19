@@ -22,10 +22,10 @@ export const addNewVehicle = async (values: FormikValues, token: string, dispatc
 
   try {
     const response = await fetch(`${apiUrl}vehicles`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: formData,
     });
@@ -69,10 +69,10 @@ export const editVehicle = async (
 
   try {
     const response = await fetch(`${apiUrl}vehicles/${id}`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: formData,
     });
@@ -95,10 +95,10 @@ export const editVehicle = async (
 export const deleteVehicle = async (id: number, token: string, dispatch: AppDispatch) => {
   try {
     const response = await fetch(`${apiUrl}vehicles/${id}`, {
+      credentials: "include",
       method: "DELETE",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -123,10 +123,10 @@ export const updateMonitor = async (
   token: string,
 ) => {
   const response = await fetch(`${apiUrl}profile/update/instructor`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       firstname: data.firstname,
@@ -151,10 +151,10 @@ export const updateMonitor = async (
 export const updatePassword = async (data: { oldPassword: string; newPassword: string; confirmPassword: string },dispatch: AppDispatch,token: string) => {
   try {
     const response = await fetch(`${apiUrl}profile/update/password`, {
+      credentials: "include",
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         older: data.oldPassword,
@@ -179,9 +179,9 @@ export const updatePassword = async (data: { oldPassword: string; newPassword: s
 
 export const getVehicles = async (token: string, dispatch: AppDispatch) => {
   const response = await fetch(`${apiUrl}vehicles`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -195,10 +195,10 @@ export const updatePhoto = async (token: string, photo: File, dispatch: AppDispa
 
     try {
         const response = await fetch(`${apiUrl}profile/update/photo`, {
+      credentials: "include",
             method: "POST",
             headers: {
                 Accept: "application/json",
-                Authorization: `Bearer ${token}`,
             },
             body: formData,
         });
@@ -221,10 +221,10 @@ export const updatePhoto = async (token: string, photo: File, dispatch: AppDispa
 
 export const deletePhoto = async (token: string, dispatch: AppDispatch) => {
   const response = await fetch(`${apiUrl}profile/update/dropPhoto `, {
+      credentials: "include",
     method: "PUT",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -248,10 +248,10 @@ export const addMeetingPoint = async (values: MeetingPointType , token: string) 
 
   try {
     const response = await fetch(`${apiUrl}meeting-points`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: formData
     });
@@ -268,10 +268,10 @@ export const addMeetingPoint = async (values: MeetingPointType , token: string) 
 export const getMeetingPoints = async (token: string, dispatch: AppDispatch) => {
   try {
     const response = await fetch(`${apiUrl}meeting-points`, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -288,11 +288,11 @@ export const getMeetingPoints = async (token: string, dispatch: AppDispatch) => 
 export const editMeetingPoint = async (values: MeetingPointType, meetingPoint: number, token: string) => {
   try {
     const response = await fetch(`${apiUrl}meeting-points/${meetingPoint}`, {
+      credentials: "include",
       method: "PUT",
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
         label: values.label,
@@ -317,10 +317,10 @@ export const editMeetingPoint = async (values: MeetingPointType, meetingPoint: n
 export const deleteMeetingPoint = async (meetingPoint: number, token: string) => {
   try {
     const response = await fetch(`${apiUrl}meeting-points/${meetingPoint}`, {
+      credentials: "include",
       method: "DELETE",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       }
     })
 

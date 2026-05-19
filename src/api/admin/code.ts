@@ -1,4 +1,5 @@
 import { apiUrl } from "@/api";
+import axios from "axios";
 
 export interface Link {
   id: number;
@@ -88,28 +89,14 @@ export interface SubscriptionsPagination {
 
 
 export async function fetchSubscriptions(token: string, page = 1): Promise<SubscriptionsPagination> {
-  const res = await fetch(`${apiUrl}admin/learner/codeacess/list?page=${page}`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`, 
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des abonnements");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/learner/codeacess/list?page=${page}`);
   if (!json.success) throw new Error(json.message);
   return json.data;
 } 
 
 // Liste des liens code
 export async function fetchLinks(token: string): Promise<Link[]> {
-  const res = await fetch(`${apiUrl}admin/codeacess/list`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des liens");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/codeacess/list`);
   if (!json.success) throw new Error(json.message);
   return json.data;
 }
@@ -117,11 +104,11 @@ export async function fetchLinks(token: string): Promise<Link[]> {
 // Ajouter un lien code
 export async function addLink(token: string, liens: string): Promise<void> {
   const res = await fetch(`${apiUrl}admin/codeaccess/add`, {
+      credentials: "include",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ liens }),
   });
@@ -133,10 +120,10 @@ export async function addLink(token: string, liens: string): Promise<void> {
 // Supprimer un lien code
 export async function deleteLink(token: string, id: number): Promise<void> {
   const res = await fetch(`${apiUrl}admin/codeaccess/delete/${id}`, {
+      credentials: "include",
     method: "DELETE",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!res.ok) throw new Error("Erreur lors de la suppression du lien");

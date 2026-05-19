@@ -8,10 +8,10 @@ export const submitTest = createAsyncThunk(
   async ({ totalScore, token }: { totalScore: number; token: string }, { rejectWithValue }) => {
     try {
       const response = await fetch(`${apiUrl}passTest`, {
+      credentials: "include",
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({

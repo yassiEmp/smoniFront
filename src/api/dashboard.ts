@@ -1,4 +1,5 @@
 import { apiUrl } from "./index";
+import axios from "axios";
 
 export interface DashboardStats {
   rdv_pending: number;
@@ -8,14 +9,7 @@ export interface DashboardStats {
 }
 
 export async function fetchDashboardStats(token: string): Promise<DashboardStats> {
-  const res = await fetch(`${apiUrl}dashboard/stat`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des stats dashboard");
-  const data = await res.json();
+  const { data } = await axios.get(`${apiUrl}dashboard/stat`);
   return {
     rdv_pending: data.rdv_pending ?? 0,
     cash: data.cash ?? 0,

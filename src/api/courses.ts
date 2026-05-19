@@ -1,4 +1,5 @@
 import { apiUrl } from "./index";
+import axios from "axios";
 import { Course } from "@/types/course";
 
 export interface Learner {
@@ -17,14 +18,7 @@ export interface CoursesApiResponse {
 }
 
 export async function fetchCourses(token: string, page = 1): Promise<CoursesApiResponse> {
-  const res = await fetch(`${apiUrl}dashboard/lists?page=${page}`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des cours");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}dashboard/lists?page=${page}`);
   return {
     current_page: json.data.current_page,
     data: json.data.data,

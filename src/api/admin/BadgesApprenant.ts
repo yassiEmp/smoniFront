@@ -32,9 +32,9 @@ export interface BadgesResponse {
 
 export const fetchBadges = async (token: string, userId: string | undefined): Promise<BadgesResponse> => {
   const response = await fetch(`${apiUrl}admin/learners/${userId}/userBadges`, {
+      credentials: "include",
     headers: {
       Accept: "application/json", 
-      Authorization: `Bearer ${token}`,
     },
   });
 

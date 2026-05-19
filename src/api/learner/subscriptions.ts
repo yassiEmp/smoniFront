@@ -52,9 +52,9 @@ export const fetchLearnerSubscriptions = async (
   dispatch?: AppDispatch
 ): Promise<LearnerSubscriptionsResponse> => {
   const response = await fetch(`${apiUrl}services/mySubscrube/${learnerId}`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!response.ok) throw new Error("Erreur lors du chargement des abonnements");

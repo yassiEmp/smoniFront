@@ -32,14 +32,12 @@ export const initialUser: User = {
   instructor_profile: undefined,
   is_active: false,
 };
-  
+
+// Token + tokenCreationTime removed: auth now uses Sanctum's HttpOnly
+// session cookie (set by GET /sanctum/csrf-cookie + POST /login). The
+// frontend never sees or stores the credential.
 export const initialAuthState = {
   user: initialUser,
   test_passed: false,
-  token: '',
-  tokenCreationTime: null as number | null,
-  isAuthenticated: false
+  isAuthenticated: false,
 };
-
-
-

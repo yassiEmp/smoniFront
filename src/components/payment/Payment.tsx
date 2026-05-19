@@ -28,11 +28,11 @@ const Payment = ({amount=500, serviceId, onClose}: PaymentProps) => {
     const cents = Math.round(amount * 100);
     useEffect(() => {
         fetch(`${apiUrl}create-payment-intent`, {
+      credentials: "include",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             'Accept': 'application/json',
-            'Authorization': `Bearer ${token}`,
           },
           body: JSON.stringify({ amount: cents, currency: 'eur' }), 
         })

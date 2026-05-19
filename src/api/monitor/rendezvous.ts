@@ -11,10 +11,10 @@ export const getApointments = async (token: string, dispatch: AppDispatch, page:
     : `${apiUrl}appointments/lists?page=${page}&per_page=${perPage}&status=${status}`;
     
     const response = await fetch(url, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -32,10 +32,10 @@ export const getApointments = async (token: string, dispatch: AppDispatch, page:
 export const postConfirmApointment = async (token: string, appointment: string, dispatch: AppDispatch, page: number = 1, perPage: number = 10) => {
   try {
     const response = await fetch(`${apiUrl}appointments/${appointment}/confirme`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ appointment })
     })
@@ -62,10 +62,10 @@ export const postCancelApointment = async (token: string, cancellation_reason: s
     formData.append("cancellation_reason", cancellation_reason);
 
     const response = await fetch(`${apiUrl}appointments/${appointment}/cancel`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: formData
     })
@@ -90,10 +90,10 @@ export const postCancelApointment = async (token: string, cancellation_reason: s
 export const postPresenceApointment = async (token: string, appointment: string, dispatch: AppDispatch, page: number = 1, perPage: number = 10) => {
   try {
     const response = await fetch(`${apiUrl}appointments/${appointment}/presence`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -118,10 +118,10 @@ export const postAbsenceApointment = async (token: string, reason: string, appoi
   try {
     console.log(reason, appointment)
     const response = await fetch(`${apiUrl}appointments/${appointment}/absence`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         reason
@@ -148,10 +148,10 @@ export const postFinishApointment = async (token: string, appointment: string, d
   try {
     console.log(appointment)
     const response = await fetch(`${apiUrl}appointments/${appointment}/finished`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -179,11 +179,11 @@ export const proposeCourse = async (
 ) => {
   try {
     const response = await fetch(`${apiUrl}appointments/propose`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         availability_id: availabilityId,

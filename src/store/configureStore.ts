@@ -2,7 +2,6 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import authMiddleware from './middleware/authmiddleware';
 import authReducer from './slices/authSlice';
 import monitorReducer from './slices/monitorSlice';
 import subscriptionReducer from './slices/subscriptionSlice';
@@ -13,7 +12,10 @@ import testReducer from './slices/testSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['authReducer', 'monitorReducer', 'subscriptionReducer', 'adminReducer'], 
+  // authReducer is intentionally NOT persisted: the session lives in the
+  // Sanctum HttpOnly cookie, so on reload we re-hydrate user state by
+  // calling GET /api/user, not by reading localStorage.
+  whitelist: ['monitorReducer', 'subscriptionReducer', 'adminReducer'],
   // blacklist: [''],
 };
 
@@ -37,7 +39,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(authMiddleware),
+    }),
 });
 
 export const persistor = persistStore(store);

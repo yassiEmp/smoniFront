@@ -13,10 +13,10 @@ export interface CheckFirstAppointmentResponse {
 
 export const checkFirstAppointment = async (token: string, learnerId: number): Promise<CheckFirstAppointmentResponse> => {
   const response = await fetch(`${apiUrl}monitor/check-first-appointment/${learnerId}`, {
+      credentials: "include",
     method: "GET",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
 

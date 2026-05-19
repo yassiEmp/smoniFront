@@ -1,11 +1,20 @@
+import axios from "axios";
 import { FormikValues } from "formik";
-import { apiUrl } from ".";
 import toast from "react-hot-toast";
-import { RegisterFormData } from "@utils/validations/registerShema";
+import { NavigateFunction } from "react-router-dom";
+
+import { apiUrl } from ".";
+import { ensureCsrfCookie } from "./axiosClient";
 import { AppDispatch } from "@store/configureStore";
 import { login, updateUser } from "@store/slices/authSlice";
-import { NavigateFunction } from "react-router-dom";
-// Type pour les zones de travail
+import { RegisterFormData } from "@utils/validations/registerShema";
+
+// All auth endpoints are owned by Laravel Fortify on the backend.
+// Auth uses Sanctum's stateful cookie: axios has withCredentials +
+// withXSRFToken set globally, so no Authorization header is needed.
+// Before any state-changing call we hit /sanctum/csrf-cookie once to
+// seed the XSRF-TOKEN cookie.
+
 interface WorkZone {
   label: string;
   address: string | null;
@@ -15,6 +24,14 @@ interface WorkZone {
   longitude: number | null;
 }
 
+const SANCTUM_BASE = apiUrl.replace(/\/api\/?$/, "");
+
+async function fetchAuthenticatedUser(dispatch: AppDispatch, test_passed?: boolean) {
+  const { data } = await axios.get(`${apiUrl}user`);
+  dispatch(login({ user: data, test_passed: test_passed ?? false }));
+  return data;
+}
+
 export const registerInstructor = async (
   values: FormikValues,
   type: string,
@@ -22,44 +39,41 @@ export const registerInstructor = async (
   setEmail: (email: string) => void,
 ) => {
   try {
+    await ensureCsrfCookie();
+
     const formData = new FormData();
     formData.append("lastname", values.lastName);
     formData.append("firstname", values.firstName);
     formData.append("email", values.email);
     formData.append("phone", values.phone);
     formData.append("role", type === "monitor" ? "instructor" : "learner");
-    formData.append(
-      "birthdate",
-      `${values.year}-${values.month}-${values.day}`,
-    );
+    formData.append("birthdate", `${values.year}-${values.month}-${values.day}`);
     formData.append("address", values.address);
     formData.append("genre", values.gender);
     formData.append("city", values.city);
     formData.append("password", values.password);
+    formData.append("password_confirmation", values.password);
     formData.append("tva", values.autoEntrepreneur === "oui" ? "1" : "0");
-    
+
     if (values.vehicles && Array.isArray(values.vehicles)) {
       values.vehicles.forEach((vehicle, index) => {
         formData.append(`vehicles[${index}][brand]`, vehicle.brand || "");
         formData.append(`vehicles[${index}][model]`, vehicle.model || "");
-        formData.append(`vehicles[${index}][year]`, vehicle.year.toString() || "");
+        formData.append(`vehicles[${index}][year]`, vehicle.year?.toString() || "");
         formData.append(`vehicles[${index}][fuel_type]`, vehicle.fuel_type || "");
         formData.append(`vehicles[${index}][color]`, vehicle.color || "");
         formData.append(`vehicles[${index}][plate_number]`, vehicle.registrationNumber || "");
-        formData.append(`vehicles[${index}][gearbox_type]`, 
-          vehicle.transmissionType === "manual" ? "manual" : "automatic");
-        
+        formData.append(
+          `vehicles[${index}][gearbox_type]`,
+          vehicle.transmissionType === "manual" ? "manual" : "automatic",
+        );
         if (vehicle.registrationDocument instanceof File) {
           formData.append(`vehicles[${index}][photo_url]`, vehicle.registrationDocument);
-        } else {
-          formData.append(`vehicles[${index}][photo_url]`, "");
         }
       });
-      
-    } 
-      let workZonesArray: WorkZone[] = [];
-    
-    // Utiliser selectedWorkZones si disponible (données complètes)
+    }
+
+    let workZonesArray: WorkZone[] = [];
     if (values.selectedWorkZones && Array.isArray(values.selectedWorkZones) && values.selectedWorkZones.length > 0) {
       workZonesArray = values.selectedWorkZones.map((zone) => ({
         label: zone.label,
@@ -69,15 +83,6 @@ export const registerInstructor = async (
         latitude: zone.latitude,
         longitude: zone.longitude,
       }));
-      
-      workZonesArray.forEach((zone, index) => {
-        formData.append(`workZones[${index}][label]`, zone.label);
-        formData.append(`workZones[${index}][address]`, zone.address || "");
-        formData.append(`workZones[${index}][city]`, zone.city || "");
-        formData.append(`workZones[${index}][postal_code]`, zone.postal_code || "");
-        formData.append(`workZones[${index}][latitude]`, zone.latitude?.toString() || "");
-        formData.append(`workZones[${index}][longitude]`, zone.longitude?.toString() || "");
-      });
     } else if (Array.isArray(values.workZone) && values.workZone.length > 0) {
       workZonesArray = values.workZone.map((zone) => ({
         label: String(zone).substring(0, 255),
@@ -87,18 +92,8 @@ export const registerInstructor = async (
         latitude: null,
         longitude: null,
       }));
-      
-      workZonesArray.forEach((zone, index) => {
-        formData.append(`workZones[${index}][label]`, zone.label);
-        formData.append(`workZones[${index}][address]`, zone.address || "");
-        formData.append(`workZones[${index}][city]`, zone.city || "");
-        formData.append(`workZones[${index}][postal_code]`, "");
-        formData.append(`workZones[${index}][latitude]`, "");
-        formData.append(`workZones[${index}][longitude]`, "");
-      });
     } else if (typeof values.workZone === "string" && values.workZone.trim() !== "") {
-      const zones = values.workZone.split(", ");
-      workZonesArray = zones.map((zone) => ({
+      workZonesArray = values.workZone.split(", ").map((zone) => ({
         label: String(zone).substring(0, 255),
         address: String(zone).substring(0, 255),
         city: String(zone).substring(0, 255),
@@ -106,50 +101,41 @@ export const registerInstructor = async (
         latitude: null,
         longitude: null,
       }));
-      
-      workZonesArray.forEach((zone, index) => {
-        formData.append(`workZones[${index}][label]`, zone.label);
-        formData.append(`workZones[${index}][address]`, zone.address || "");
-        formData.append(`workZones[${index}][city]`, zone.city || "");
-        formData.append(`workZones[${index}][postal_code]`, "");
-        formData.append(`workZones[${index}][latitude]`, "");
-        formData.append(`workZones[${index}][longitude]`, "");
-      });
     }
-    
-    
-    if (values.profilePhoto instanceof File) {
-    formData.append("photo", values.profilePhoto);
-    }
-    const response = await fetch(`${apiUrl}register`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
+
+    workZonesArray.forEach((zone, index) => {
+      formData.append(`workZones[${index}][label]`, zone.label);
+      formData.append(`workZones[${index}][address]`, zone.address || "");
+      formData.append(`workZones[${index}][city]`, zone.city || "");
+      formData.append(`workZones[${index}][postal_code]`, zone.postal_code || "");
+      formData.append(`workZones[${index}][latitude]`, zone.latitude?.toString() || "");
+      formData.append(`workZones[${index}][longitude]`, zone.longitude?.toString() || "");
     });
-    // console.log(response);
-    try {
-      const data = await response.json();
-      if (data.success === true) {
-        toast.success(data.message);
-        setShowPopup(true);
-        setEmail(values.email);
-      } else {
-        toast.error(data.message || "Échec de l'inscription");
-      }
-    } catch (jsonError) {
-      console.error("Erreur de parsing JSON:", jsonError);
-      toast.error("Erreur lors du traitement de la réponse");
+
+    if (values.profilePhoto instanceof File) {
+      formData.append("photo", values.profilePhoto);
     }
+
+    await axios.post(`${SANCTUM_BASE}/register`, formData, {
+      headers: { Accept: "application/json" },
+    });
+
+    toast.success("Inscription réussie, procédez à la vérification de votre email");
+    setShowPopup(true);
+    setEmail(values.email);
   } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ?? "Échec de l'inscription"
+      : "Erreur de connexion au serveur";
     console.error("Registration error:", error);
-    toast.error("Erreur de connexion au serveur");
+    toast.error(message);
   }
 };
 
 export const registerLearner = async (values: RegisterFormData) => {
   try {
+    await ensureCsrfCookie();
+
     const formData = new FormData();
     formData.append("firstname", values.firstName);
     formData.append("lastname", values.lastName);
@@ -160,173 +146,163 @@ export const registerLearner = async (values: RegisterFormData) => {
     formData.append("address", values.address);
     formData.append("email", values.email);
     formData.append("password", values.password);
+    formData.append("password_confirmation", values.password);
 
-    const response = await fetch(`${apiUrl}register`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-      },
-      body: formData,
+    await axios.post(`${SANCTUM_BASE}/register`, formData, {
+      headers: { Accept: "application/json" },
     });
-    
-    const data = await response.json();
-    if (data.success) {
-      toast.success("Inscription réussie, procédez à la vérification de votre email");
-      return true;
-    } else {
-      toast.error(data.message || "Échec de l'inscription");
-      return false;
-    }
+
+    toast.success("Inscription réussie, procédez à la vérification de votre email");
+    return true;
   } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ?? "Échec de l'inscription"
+      : "Erreur réseau";
     console.error("Erreur lors de la soumission:", error);
+    toast.error(message);
     return false;
   }
 };
 
-export const loginRequest = async (values: FormikValues, dispatch:AppDispatch, navigate:NavigateFunction) => {
-  
+export const loginRequest = async (
+  values: FormikValues,
+  dispatch: AppDispatch,
+  navigate: NavigateFunction,
+) => {
   try {
-    const response = await fetch(`${apiUrl}login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
+    await ensureCsrfCookie();
+
+    await axios.post(`${SANCTUM_BASE}/login`, values, {
+      headers: { Accept: "application/json" },
     });
-    const data = await response.json(); 
-    
-    if (data.success) {
-      toast.success(data.message); 
-      dispatch(login({
-        token: data.token,
-        test_passed: data.test_passed,
-        user: data.data,
-      }));
-      if (data.data.role === "learner") {
-        //setTimeout
-        setTimeout(() => {
-          navigate("/learners");
-        }, 500);
-      } else {
-        //setTimeout
-        setTimeout(() => {
-          navigate("/monitor");
-        }, 500);
-      }
-    } else {
-      toast.error(data.message);
-    }
+
+    const user = await fetchAuthenticatedUser(dispatch);
+
+    toast.success("Connexion réussie");
+
+    setTimeout(() => {
+      navigate(user.role === "learner" ? "/learners" : "/monitor");
+    }, 500);
   } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ?? "Identifiants incorrects"
+      : "Erreur réseau";
     console.error("Erreur lors de la connexion:", error);
+    toast.error(message);
     return false;
   }
 };
 
 export const verifyEmail = async (email: string) => {
   try {
-    const response = await fetch(`${apiUrl}email/verification-notification`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json();
-    if (data.success) {
-      toast.success(data.message);
-      return true;
-    } else {
-      toast.error(data.message);
-      return false;
-    }
-  } catch (error) { 
-    console.error("Erreur lors de l'envoi de la demande de vérification de l'email:", error);
+    await ensureCsrfCookie();
+    await axios.post(
+      `${SANCTUM_BASE}/email/verification-notification`,
+      { email },
+      { headers: { Accept: "application/json" } },
+    );
+    toast.success("Lien de vérification renvoyé");
+    return true;
+  } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ?? "Échec de l'envoi"
+      : "Erreur réseau";
+    console.error("Erreur lors de l'envoi de la demande de vérification:", error);
+    toast.error(message);
     return false;
   }
 };
 
-export const resetPassword = async (email: string, setStep: (step: number) => void, setEmail: (email: string) => void) => {
+// Password reset is now a link-based flow (Fortify), not 3-step OTP.
+// Step 1: user submits email, gets a reset link by email.
+// Step 2: user clicks the link, which routes to a frontend page that
+//         POSTs token + email + new password to /reset-password.
+//
+// TODO(PR2 follow-up): the existing 3-step UI in pages/auth/* needs to be
+// replaced with a /reset-password/[token] route. Until that lands,
+// `verifyOtp` is a no-op stub so the current UI flow doesn't crash, but
+// the OTP step does nothing — users have to click the email link.
+export const resetPassword = async (
+  email: string,
+  setStep: (step: number) => void,
+  setEmail: (email: string) => void,
+) => {
   try {
-    const response = await fetch(`${apiUrl}password/send-otp`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
-    const data = await response.json(); 
-    if (data.success) {
-      toast.success("Si cette adresse électronique a été utilisée pour créer un compte, des instructions pour réinitialiser votre mot de passe vous seront envoyées. Veuillez vérifier votre courrier électronique.");
-      setStep(2);
-      setEmail(email);
-    } else {
-      toast.error(data.message);
-    }
+    await ensureCsrfCookie();
+    await axios.post(
+      `${SANCTUM_BASE}/forgot-password`,
+      { email },
+      { headers: { Accept: "application/json" } },
+    );
+    toast.success(
+      "Si cette adresse a été utilisée, un lien de réinitialisation vous a été envoyé. Vérifiez votre courrier.",
+    );
+    setEmail(email);
+    setStep(2);
   } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ?? "Échec de la réinitialisation"
+      : "Erreur réseau";
     console.error("Erreur lors de la réinitialisation du mot de passe:", error);
+    toast.error(message);
   }
 };
 
-export const verifyOtp = async (email: string, otp: string, setStep: (step: number) => void) => {
-  try {
-    const response = await fetch(`${apiUrl}password/verify-otp`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, code:otp }),
-    });
-    const data = await response.json();
-    if (data.success) {
-      toast.success(data.message);
-      setStep(3);
-      return true;
-    } else {
-      toast.error(data.message);
-      return false;
-    }
-  } catch (error) {
-    console.error("Erreur lors de la vérification du OTP:", error);
+export const verifyOtp = async (
+  _email: string,
+  _otp: string,
+  setStep: (step: number) => void,
+) => {
+  setStep(3);
+  return true;
+};
+
+export const updatePassword = async (
+  email: string,
+  password: string,
+  setStep: (step: number) => void,
+  setEmail: (email: string) => void,
+  navigate: NavigateFunction,
+  token?: string,
+) => {
+  if (!token) {
+    toast.error(
+      "Le lien de réinitialisation est requis. Veuillez cliquer sur le lien envoyé par email.",
+    );
     return false;
   }
-};
-
-export const updatePassword = async (email: string, password: string, setStep: (step: number) => void, setEmail: (email: string) => void, navigate: NavigateFunction) => {
   try {
-    const response = await fetch(`${apiUrl}password/reset`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+    await ensureCsrfCookie();
+    await axios.post(
+      `${SANCTUM_BASE}/reset-password`,
+      {
+        email,
+        password,
+        password_confirmation: password,
+        token,
       },
-      body: JSON.stringify({ email, password, password_confirmation: password }),
-    });
-    const data = await response.json();
-    if (data.success) {
-      toast.success(data.message);
-      setStep(1);
-      setEmail("");
-      navigate("/connexion");
-      return true;
-  
-    } else {
-      toast.error(data.message);
-      return false;
-    }
+      { headers: { Accept: "application/json" } },
+    );
+    toast.success("Mot de passe mis à jour");
+    setStep(1);
+    setEmail("");
+    navigate("/connexion");
+    return true;
   } catch (error) {
+    const message = axios.isAxiosError(error)
+      ? error.response?.data?.message ?? "Échec de la mise à jour"
+      : "Erreur réseau";
     console.error("Erreur lors de la mise à jour du mot de passe:", error);
+    toast.error(message);
     return false;
   }
 };
 
 export const checkZoneInstructor = async (search: string) => {
   try {
-    const response = await fetch(`${apiUrl}meeting-points/search?search=${search}`);
-    const data = await response.json();
+    const { data } = await axios.get(`${apiUrl}meeting-points/search`, {
+      params: { search },
+    });
     return data;
   } catch (error) {
     console.error("Erreur lors de la vérification des zones:", error);
@@ -334,39 +310,42 @@ export const checkZoneInstructor = async (search: string) => {
   }
 };
 
-export const getUserInformation = async (token: string, dispatch: AppDispatch) => {
+export const getUserInformation = async (_token: string, dispatch: AppDispatch) => {
   try {
-    const response = await fetch(`${apiUrl}profile/instructor`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
+    const { data } = await axios.get(`${apiUrl}profile/instructor`);
     dispatch(updateUser(data.data));
     return data;
   } catch (error) {
-    console.error("Erreur lors de la récupération des informations de l'utilisateur:", error);
+    console.error(
+      "Erreur lors de la récupération des informations de l'utilisateur:",
+      error,
+    );
     return null;
   }
 };
 
 export const mailContact = async (values: FormikValues) => {
   try {
-    const response = await fetch(`${apiUrl}mail-contact`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
+    const { data } = await axios.post(`${apiUrl}mail-contact`, values, {
+      headers: { Accept: "application/json" },
     });
-    const data = await response.json();
     return data;
   } catch (error) {
     console.error("Erreur lors de l'envoi du formulaire de contact:", error);
     return null;
+  }
+};
+
+export const logoutRequest = async (dispatch: AppDispatch, navigate: NavigateFunction) => {
+  try {
+    await axios.post(`${SANCTUM_BASE}/logout`, {}, {
+      headers: { Accept: "application/json" },
+    });
+  } catch (error) {
+    console.error("Erreur lors de la déconnexion:", error);
+  } finally {
+    const { logout } = await import("@store/slices/authSlice");
+    dispatch(logout());
+    navigate("/connexion");
   }
 };

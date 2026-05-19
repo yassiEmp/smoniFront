@@ -10,10 +10,10 @@ export const getExamens = async (token: string, dispatch: AppDispatch, monitor_i
     : `${apiUrl}list/examen/monitor/${monitor_id}?page=${page}&per_page=${perPage}&status=${status}`;
 
     const response = await fetch(url, {
+      credentials: "include",
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
       },
     });
 
@@ -41,10 +41,10 @@ export const updateExamenStatus = async (token: string, examen_id: number, statu
 ) => {
   try {
     const response = await fetch(`${apiUrl}mark/examen/monitor`, {
+      credentials: "include",
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify({ examen_id, status }),
     });

@@ -8,10 +8,10 @@ export const getMonitors = async (token: string, dispatch: any, page: number = 1
   : `${apiUrl}admin/monitors?page=${page}&per_page=${perPage}&status=${status}`;
   
   const response = await fetch(url, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -21,10 +21,10 @@ export const getMonitors = async (token: string, dispatch: any, page: number = 1
 
 export const toggleMonitorStatus = async (token: string, monitorId: string, dispatch: any) => {
   const response = await fetch(`${apiUrl}admin/monitors/${monitorId}/action`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -39,10 +39,10 @@ export const toggleMonitorStatus = async (token: string, monitorId: string, disp
 
 export const getMonitorDetails = async (token: string, monitorId: string) => {
   const response = await fetch(`${apiUrl}admin/monitors/${monitorId}/show`, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -51,10 +51,10 @@ export const getMonitorDetails = async (token: string, monitorId: string) => {
 
 export const getMonitorsLeaners = async (token: string,monitorId: number, page = 1, perPage = 10) => {
   const response = await fetch(`${apiUrl}admin/monitors/${monitorId}/listLearner?page=${page}&per_page=${perPage}`, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -63,10 +63,10 @@ export const getMonitorsLeaners = async (token: string,monitorId: number, page =
 
 export const getMonitorsApointements = async (token: string, monitorId: number, page = 1, perPage = 10) => {
   const response = await fetch(`${apiUrl}admin/monitors/${monitorId}/listAppointment?page=${page}&per_page=${perPage}`, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -76,10 +76,10 @@ export const getMonitorsApointements = async (token: string, monitorId: number, 
 
 export const getMonitorsAvailibilities = async (token: string, monitorId: number, date: string) => {
   const response = await fetch(`${apiUrl}admin/monitors/${monitorId}/listAvailabilities?date=${date}`, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -93,10 +93,10 @@ export const allgetMonitorsWithdraws = async (token: string, page = 1, perPage =
   : `${apiUrl}admin/withdraws?page=${page}&per_page=${perPage}&status=${status}`;
   
   const response = await fetch(url, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -105,10 +105,10 @@ export const allgetMonitorsWithdraws = async (token: string, page = 1, perPage =
 
 export const getWithdrawDetails = async (token: string, withdrawId: number) => {
   const response = await fetch(`${apiUrl}admin/withdraws/${withdrawId}/show`, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -117,11 +117,11 @@ export const getWithdrawDetails = async (token: string, withdrawId: number) => {
 
 export const approveWithdraw = async (token: string, withdrawId: number) => {
   const response = await fetch(`${apiUrl}admin/withdraws/${withdrawId}/approve`, {
+      credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   return response.json();
@@ -129,11 +129,11 @@ export const approveWithdraw = async (token: string, withdrawId: number) => {
 
 export const declineWithdraw = async (token: string, withdrawId: number) => {
   const response = await fetch(`${apiUrl}admin/withdraws/${withdrawId}/decline`, {
+      credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": `Bearer ${token}`,
     },  });
 
   return response.json();
@@ -143,11 +143,11 @@ export const updateMonitorHourPrice = async (token: string, instructor_id: numbe
   console.log(instructor_id);
   
   const response = await fetch(`${apiUrl}admin/monitors/hourPrice`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
     body: JSON.stringify({ hour_ammount, instructor_id }),
   });
@@ -156,11 +156,11 @@ export const updateMonitorHourPrice = async (token: string, instructor_id: numbe
 
 export const updateMonitorHourDiscount = async (token: string, instructor_id: number, hour_discount: number) => {
   const response = await fetch(`${apiUrl}admin/monitors/hourDiscount`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
     body: JSON.stringify({ hour_discount, instructor_id }),
   });

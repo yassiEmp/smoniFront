@@ -8,10 +8,10 @@ import { updateUser } from "@/store/slices/authSlice";
 export const updateAdmin = async (data: FormikValues,dispatch: AppDispatch,token: string,) => {
   console.log(data)
   const response = await fetch(`${apiUrl}profile/update/admin`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       firstname: data.firstname,

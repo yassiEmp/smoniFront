@@ -1,4 +1,5 @@
 import { apiUrl } from "./index";
+import axios from "axios";
 
 export interface WithdrawsStatResponse {
   billable: { hour: number; cash: number };
@@ -11,14 +12,7 @@ export interface WithdrawsStatResponse {
 
 
 export async function fetchWithdrawsStat(token: string): Promise<WithdrawsStatResponse> {
-  const res = await fetch(`${apiUrl}withdraws/stat`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des stats de paiement");
-  const data = await res.json();
+  const { data } = await axios.get(`${apiUrl}withdraws/stat`);
   return {
     billable: data.billable,
     no_billable: data.no_billable,

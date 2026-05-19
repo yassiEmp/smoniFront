@@ -18,11 +18,11 @@ export const updatePassword = async (
   data: UpdatePasswordPayload
 ): Promise<UpdatePasswordResponse> => {
   const response = await fetch(`${apiUrl}profile/update/password`, {
+      credentials: "include",
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });

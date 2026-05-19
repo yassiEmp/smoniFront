@@ -17,9 +17,9 @@ export interface CodePackResponse {
 
 export const fetchCodePackStatus = async (token: string): Promise<CodePackResponse> => {
   const response = await fetch(`${apiUrl}services/packCode`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!response.ok) throw new Error("Erreur lors de la vérification de l'abonnement code");

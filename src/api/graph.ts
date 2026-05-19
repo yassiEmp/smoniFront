@@ -3,9 +3,9 @@ import { GraphApiResponse } from "@/types/graph";
 
 export const fetchGraphData = async (token: string): Promise<GraphApiResponse> => {
   const response = await fetch(`${apiUrl}dashboard/graph`, {
+      credentials: "include",
     headers: {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`
     }
   });
 

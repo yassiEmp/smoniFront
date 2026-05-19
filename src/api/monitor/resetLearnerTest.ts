@@ -7,11 +7,11 @@ export interface ResetLearnerTestResponse {
 
 export const resetLearnerTest = async (token: string, learnerId: number): Promise<ResetLearnerTestResponse> => {
   const response = await fetch(`${apiUrl}monitor/reset-learner-test`, {
+      credentials: "include",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ learner_id: learnerId }),
   });

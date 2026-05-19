@@ -1,4 +1,5 @@
 import { apiUrl } from "../index";
+import axios from "axios";
 
 export interface Instructor {
   id: number;
@@ -72,16 +73,7 @@ export interface LessonsResponse {
 
 
 export const fetchLearnerLessons = async (token: string, status: string = "all", per_page?: number, page?:number): Promise<LessonsResponse> => {
-  const res = await fetch(`${apiUrl}lessonLearner?status=${status}&per_page=${per_page}&page=${page}`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  if (!res.ok) throw new Error("Erreur lors du chargement des retraits");
-  
-  const response = await res.json();
+  const { data: response } = await axios.get(`${apiUrl}lessonLearner?status=${status}&per_page=${per_page}&page=${page}`);
   
   // Vérifier la structure de la réponse et retourner les bonnes données
   if (response.success && response.data) {
@@ -110,11 +102,11 @@ export const cancelLearnerAppointment = async (
   data: CancelAppointmentPayload
 ): Promise<CancelAppointmentResponse> => {
   const response = await fetch(`${apiUrl}learner/cancel/rdv`, {
+      credentials: "include",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });

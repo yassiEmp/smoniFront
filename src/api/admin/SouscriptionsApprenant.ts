@@ -1,4 +1,5 @@
 import { apiUrl } from "@/api";
+import axios from "axios";
 
 export interface Souscription {
   id: number;
@@ -38,16 +39,6 @@ export async function fetchSouscriptionsApprenant(
   page: number = 1,
   perPage: number = 5
 ): Promise<SouscriptionsResponse> {
-  const res = await fetch(
-    `${apiUrl}admin/learners/${userId}/mySubscribe?page=${page}&per_page=${perPage}`,
-    {
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  if (!res.ok) throw new Error("Erreur lors du chargement des souscriptions");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/learners/${userId}/mySubscribe?page=${page}&per_page=${perPage}`);
   return json.data;
 }

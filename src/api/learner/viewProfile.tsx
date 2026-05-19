@@ -49,9 +49,9 @@ export const fetchLearnerProfile = async (
   token: string
 ): Promise<LearnerProfileResponse> => {
   const response = await fetch(`${apiUrl}profile/learner`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   

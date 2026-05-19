@@ -1,4 +1,5 @@
 import { apiUrl } from "./index";
+import axios from "axios";
 import { WithdrawalApiResponse } from "@/types/withdrawals";
 
 export async function fetchWithdrawals(
@@ -12,16 +13,7 @@ export async function fetchWithdrawals(
   url.searchParams.append("per_page", per_page.toString());
   url.searchParams.append("page", page.toString());
 
-  const res = await fetch(url.toString(), {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  
-  if (!res.ok) throw new Error("Erreur lors du chargement des retraits");
-  
-  const response = await res.json();
+  const { data: response } = await axios.get(url.toString());
   
   // Vérifier la structure de la réponse et retourner les bonnes données
   if (response.success && response.data) {

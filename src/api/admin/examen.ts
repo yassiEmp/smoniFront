@@ -13,10 +13,10 @@ export const getExamens = async (token: string, dispatch: AppDispatch, page: num
     
     const response = await fetch(url,
       {
+      credentials: "include",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
         },
       }
     );
@@ -45,10 +45,10 @@ export const getMonitors = async (token: string,page: number = 1,perPage: number
     const response = await fetch(
       `${apiUrl}admin/monitors?page=${page}&per_page=${perPage}${searchParam}&status=all`,
       {
+      credentials: "include",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
         },
       }
     );
@@ -73,10 +73,10 @@ export const fetchLearners = async (token: string,page: number = 1,perPage: numb
     const searchParam = search ? `&q=${encodeURIComponent(search)}` : '';
     const response = await fetch(`${apiUrl}admin/learners?page=${page}&per_page=${perPage}${searchParam}&status=all`,
       {
+      credentials: "include",
         method: "GET",
         headers: {
           Accept: "application/json",
-          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -101,10 +101,10 @@ export const addExamen = async (token: string, dispatch: AppDispatch, instructor
 
   try {
     const response = await fetch(`${apiUrl}admin/learners/add/examen`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
       },
       body: formData,
     });
@@ -137,10 +137,10 @@ export const addExamen = async (token: string, dispatch: AppDispatch, instructor
 export const updateExamen = async (token: string, dispatch: AppDispatch, examen: number, instructor_id: number, learner_id: number, date: string) => {
   try {
     const response = await fetch(`${apiUrl}admin/learners/update/examen/${examen}`, {
+      credentials: "include",
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({ instructor_id, learner_id, date, }),
     });
@@ -168,10 +168,10 @@ export const updateExamen = async (token: string, dispatch: AppDispatch, examen:
 export const deleteExamen = async (token: string, dispatch: AppDispatch, examen: number) => {
   try {
     const response = await fetch(`${apiUrl}admin/learners/delete/examen/${examen}`, {
+      credentials: "include",
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
       },
     });
 

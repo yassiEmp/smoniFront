@@ -32,9 +32,9 @@ export interface ProgressResponse {
 export const fetchProgress = async (token: string, userId: string | undefined): Promise<ProgressResponse> => {
  
     const response = await fetch(`${apiUrl}admin/learners/${userId}/userProgress`, {
+      credentials: "include",
     headers: {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`,
     },
   });
 

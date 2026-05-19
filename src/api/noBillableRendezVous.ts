@@ -1,4 +1,5 @@
 import { apiUrl } from "./index";
+import axios from "axios";
 
 export interface Learner {
   id: number;
@@ -27,14 +28,6 @@ export interface NoBillableResponse {
 }
 
 export const fetchNoBillableRendezVous = async (token: string, page = 1): Promise<NoBillableResponse> => {
-  const res = await fetch(`${apiUrl}withdraws/no_billable?page=${page}`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-
-  if (!res.ok) throw new Error("Erreur lors du chargement des rendez-vous");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}withdraws/no_billable?page=${page}`);
   return json.data;
 };

@@ -50,9 +50,9 @@ export const fetchLearnerContracts = async (
   token: string
 ): Promise<ContractsResponse> => {
   const response = await fetch(`${apiUrl}services/contrat`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!response.ok) throw new Error("Erreur lors du chargement des contrats");

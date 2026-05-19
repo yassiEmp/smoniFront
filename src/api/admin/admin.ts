@@ -11,10 +11,10 @@ export const getAdmins = async (token: string, dispatch: AppDispatch, page: numb
   : `${apiUrl}admin?page=${page}&per_page=${perPage}&status=${status}`;
   
   const response = await fetch(url, {
+      credentials: "include",
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
 
@@ -33,9 +33,9 @@ export const addAdmins = async (token: string, dispatch: AppDispatch, values: { 
 
   try {
     const response = await fetch(`${apiUrl}admin/addAdmin`, {
+      credentials: "include",
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${token}`
       },
       body: formData,
     });
@@ -56,10 +56,10 @@ export const addAdmins = async (token: string, dispatch: AppDispatch, values: { 
 
 export const toggleAdminStatus = async (token: string, user: number, dispatch: AppDispatch) => {
   const response = await fetch(`${apiUrl}admin/${user}/action`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -76,10 +76,10 @@ export const toggleAdminStatus = async (token: string, user: number, dispatch: A
 export const deleteAdmin = async (user: number, token: string, dispatch: AppDispatch) => {
   try {
     const response = await fetch(`${apiUrl}admin/${user}/deleteAdmin`, {
+      credentials: "include",
       method: "DELETE",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       }
     })
 

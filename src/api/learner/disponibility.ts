@@ -5,11 +5,11 @@ export const addDisponibility = async (datesearch: string, gearbox: string, meet
   console.log(datesearch, gearbox, meeting_point)
   try {
     const response = await fetch(`${apiUrl}learner/display/availabilities`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ datesearch, gearbox, meeting_point })
     })
@@ -28,11 +28,11 @@ export const addDisponibility = async (datesearch: string, gearbox: string, meet
 export const addAppointments = async (availability_id: number,token: string) => {
   try {
     const response = await fetch(`${apiUrl}appointments`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ availability_id, price:0, tag:'string' })
     });

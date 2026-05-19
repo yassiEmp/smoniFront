@@ -49,9 +49,9 @@ export async function fetchAppointmentsApprenant(
   const response = await fetch(
     `${apiUrl}admin/learners/${userId}/lessonLearner?page=${page}&per_page=${perPage}`,
     {
+      credentials: "include",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
     }
   );

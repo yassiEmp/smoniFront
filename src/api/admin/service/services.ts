@@ -1,27 +1,21 @@
 import { CategoryService, Service, CreateServicePayload, ServiceItem, PaginationResponse } from '@/types/admin/services';
+import axios from "axios";
 import { apiUrl } from "@/api";
 
 // --- Catégorie Service API (vraies API) ---
 
 export const listCategoryService = async (token: string): Promise<CategoryService[]> => {
-  const res = await fetch(`${apiUrl}admin/listCategoryService`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des catégories");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/listCategoryService`);
   return json.data;
 };
 
 export const addCategoryService = async (data: { label: string }, token: string): Promise<CategoryService> => {
   const res = await fetch(`${apiUrl}admin/addCategoryService`, {
+      credentials: "include",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -32,11 +26,11 @@ export const addCategoryService = async (data: { label: string }, token: string)
 
 export const updateCategoryService = async (id: number, data: { label: string }, token: string): Promise<CategoryService> => {
   const res = await fetch(`${apiUrl}admin/updateCategoryService/${id}`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -47,10 +41,10 @@ export const updateCategoryService = async (id: number, data: { label: string },
 
 export const deleteCategoryService = async (id: number, token: string): Promise<void> => {
   const res = await fetch(`${apiUrl}admin/deleteCategoryService/${id}`, {
+      credentials: "include",
     method: "DELETE",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!res.ok) {
@@ -71,15 +65,7 @@ export const listService = async (
   page: number = 1,
   perPage: number = 10
 ): Promise<PaginationResponse<Service>> => {
-  const res = await fetch(`${apiUrl}admin/listService?page=${page}&per_page=${perPage}`, {
-    headers: {
-      method:"GET",
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des services");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/listService?page=${page}&per_page=${perPage}`);
   return json.data;
 };
 
@@ -87,15 +73,7 @@ export const listServiceByCategory = async (
   categoryId: number,
   token: string
 ): Promise<Service[]> => {
-  const res = await fetch(`${apiUrl}admin/listServiceByCategory/${categoryId}`, {
-    headers: {
-      method:"GET",
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des services par catégorie");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/listServiceByCategory/${categoryId}`);
   return json.data;
 };
 
@@ -104,11 +82,11 @@ export const addService = async (
   token: string
 ): Promise<Service> => {
   const res = await fetch(`${apiUrl}admin/addService`, {
+      credentials: "include",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -123,11 +101,11 @@ export const updateService = async (
   token: string
 ): Promise<Service> => {
   const res = await fetch(`${apiUrl}admin/updateService/${id}`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -142,14 +120,7 @@ export const listServiceItem = async (
   serviceId: number,
   token: string
 ): Promise<ServiceItem[]> => {
-  const res = await fetch(`${apiUrl}admin/listserviceItem/${serviceId}`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des items du service");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/listserviceItem/${serviceId}`);
   return json.data;
 };
 
@@ -159,11 +130,11 @@ export const addServiceItem = async (
   token: string
 ): Promise<ServiceItem[]> => {
   const res = await fetch(`${apiUrl}admin/addServiceItem/${serviceId}`, {
+      credentials: "include",
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ items }),
   });
@@ -178,11 +149,11 @@ export const updateServiceItem = async (
   token: string
 ): Promise<ServiceItem> => {
   const res = await fetch(`${apiUrl}admin/updateServiceItem/${itemId}`, {
+      credentials: "include",
     method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -196,10 +167,10 @@ export const deleteServiceItem = async (
   token: string
 ): Promise<void> => {
   const res = await fetch(`${apiUrl}admin/deleteServiceItem/${itemId}`, {
+      credentials: "include",
     method: "DELETE",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!res.ok) throw new Error("Erreur lors de la suppression de l'item");
@@ -212,15 +183,7 @@ export const updateServiceStatus = async (
 ): Promise<void> => {
   try {
     
-    const res = await fetch(`${apiUrl}admin/actionService/${serviceId}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    if (!res.ok) throw new Error("Erreur lors de la modification du statut du service");
-    const json = await res.json();
+    const { data: json } = await axios.get(`${apiUrl}admin/actionService/${serviceId}`);
     console.log(json);
   } catch (error) {
     console.error('Error updating service status:', error);

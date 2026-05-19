@@ -20,11 +20,11 @@ export const createSpecialSlot = async (
   const end_time_formatted = formatHoursToSend(end_time);
   try {
     const response = await fetch(`${apiUrl}availabilities `, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         meeting_point_id,
@@ -68,11 +68,11 @@ export const createPlanningSpecial = async (
       date,
     });
     const response = await fetch(`${apiUrl}availabilities `, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         meeting_point_id,
@@ -104,10 +104,10 @@ export const getAvailabilities = async (
   dispatch: AppDispatch,
 ) => {
   const response = await fetch(`${apiUrl}availabilities?date=${date}`, {
+      credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -122,10 +122,10 @@ export const getAvailabilities = async (
 
 export const getAvailabilitieByDate = async(token:string,date:string) => {
   const response = await fetch(`${apiUrl}listByDate?date=${date}`, {
+      credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -140,11 +140,11 @@ export const deleteAvailability = async (
   date: string,
 ) => {
   const response = await fetch(`${apiUrl}availabilities/${id}`, {
+      credentials: "include",
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -168,11 +168,11 @@ export const acceptAppointment = async (
   setIsConfirm?: (isConfirm: boolean) => void,
 )  => {
   const response = await fetch(`${apiUrl}appointments/${id}/confirme`, {
+      credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -201,11 +201,11 @@ export const cancelAppointment = async (
   reason: string,
 ) => {
   const response = await fetch(`${apiUrl}appointments/${id}/cancel`, {
+      credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       cancellation_reason: reason,
@@ -226,10 +226,10 @@ export const cancelAppointment = async (
 
 export const getAvailabilityRepeateds = async (token: string) => {
   const response = await fetch(`${apiUrl}availability-repeateds`, {
+      credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const data = await response.json();
@@ -246,11 +246,11 @@ export const createAvailabilityRepeateds = async (token: string, data: {
   }[]
 }) => {
   const response = await fetch(`${apiUrl}availability-repeateds`, {
+      credentials: "include",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       meeting_point_id: data.meeting_point_id,
@@ -270,11 +270,11 @@ export const createAvailabilityRepeateds = async (token: string, data: {
 
 export const deleteAvailabilityRepeateds = async (token: string, day:string) => {
   const response = await fetch(`${apiUrl}availability-repeateds/${day}`, {
+      credentials: "include",
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   const dataResponse = await response.json();
@@ -301,10 +301,10 @@ export const getUnbookedAvailabilities = async (
   const url = `${apiUrl}availabilities/unbooked${queryString ? `?${queryString}` : ''}`;
 
   const response = await fetch(url, {
+      credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   

@@ -7,10 +7,10 @@ import { LearnerProfileComplete } from "@/types/learner";
 
 export const getLearnerProfile = async (token: string): Promise<LearnerProfileComplete> => {
   const response = await fetch(`${apiUrl}profile/learner`, {
+      credentials: "include",
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`,
     },
   });
 
@@ -29,10 +29,10 @@ export const updateLearnerProfile = async (
   dispatch: Dispatch
 ): Promise<LearnerProfileResponse> => {
   const response = await fetch(`${apiUrl}profile/update/learner`, {
+      credentials: "include",
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
-      'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
@@ -85,10 +85,10 @@ export const updateDocLearner = async (
     if (data.neph) formData.append("neph", data.neph);
 
     const response = await fetch(`${apiUrl}profile/update/doclearner`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Accept": "application/json",
-        "Authorization": `Bearer ${token}`,
       },
       body: formData,
     });
@@ -98,10 +98,10 @@ export const updateDocLearner = async (
     if (response.ok) {
       // après upload, on recharge le profil complet
       const profileResponse = await fetch(`${apiUrl}profile/learner`, {
+      credentials: "include",
         method: "GET",
         headers: {
           "Accept": "application/json",
-          "Authorization": `Bearer ${token}`,
         },
       });
 

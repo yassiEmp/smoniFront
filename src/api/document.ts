@@ -5,10 +5,10 @@ import { apiUrl } from ".";
 export const getDocuments = async (token: string) => {
   try {
     const response = await fetch(`${apiUrl}user-docs`, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -28,10 +28,10 @@ export const createDocument = async (token: string, name: string, file: File,) =
 
   try {
     const response = await fetch(`${apiUrl}user-docs`, {
+      credentials: "include",
       method: "POST",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: formData,
     });
@@ -55,9 +55,9 @@ export const createDocument = async (token: string, name: string, file: File,) =
 export const deleteDocument = async (userDoc: number, token: string) => {
   try {
     const response = await fetch(`${apiUrl}user-docs/${userDoc}`, {
+      credentials: "include",
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -81,11 +81,11 @@ export const createInfosDocs = async(values: any, token: string) => {
   console.log(values)
   try {
     const response = await fetch(`${apiUrl}info-docs`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         juridic_form: values.juridic_form,

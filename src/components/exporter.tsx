@@ -10,10 +10,10 @@ const ExportButton = () => {
   const handleExport = async () => {
     try {
       const response = await fetch(`${apiUrl}export`, {
+      credentials: "include",
         method: "GET",
         headers: {
           Accept: "application/json",
-          Authorization: `Bearer ${token}`,
         },
       });
 

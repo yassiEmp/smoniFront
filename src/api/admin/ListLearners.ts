@@ -62,9 +62,9 @@ export interface LearnerListResponse {
 
 export const fetchLearners = async (token: string, page = 1, perPage = 10, search = ""): Promise<LearnerListResponse> => {
   const response = await fetch(`${apiUrl}admin/learners?page=${page}&per_page=${perPage}&q=${search}&status=all`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
   if (!response.ok) throw new Error("Erreur lors du chargement des apprenants");
@@ -78,7 +78,6 @@ export async function toggleLearnerStatus(id: number, token: string) {
     {
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     }

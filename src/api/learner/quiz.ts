@@ -5,7 +5,6 @@ const getAuthHeaders = (token?: string | null) => {
   if (token && token !== "null" && token !== "undefined") {
     return {
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
     };

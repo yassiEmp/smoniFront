@@ -40,9 +40,9 @@ export const fetchNotifications = async (
   const response = await fetch(
     `${apiUrl}userNotification?reserv=${type}&page=${page}`,
     {
+      credentials: "include",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`,
       },
     }
   );
@@ -55,9 +55,9 @@ export const fetchNotifications = async (
 // Marquer toutes les notifications comme lues
 export const markAllAsRead = async (token: string) => {
   const response = await fetch(`${apiUrl}notif/allAsRead`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -69,9 +69,9 @@ export const markAllAsRead = async (token: string) => {
 // Marquer une notification comme lue
 export const markOneAsRead = async (token: string, notification: number) => {
   const response = await fetch(`${apiUrl}notif/${notification}/oneAsRead`, {
+      credentials: "include",
     headers: {
       Accept: "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
 

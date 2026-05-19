@@ -7,10 +7,10 @@ import { getApointments } from "./rendezvous";
 export const getApprenants = async (user: number, token: string, dispatch: AppDispatch, page: number = 1, perPage: number = 10): Promise<PaginationResponse1> => {
   try {
     const response = await fetch(`${apiUrl}appointments/${user}/instructor?page=${page}&per_page=${perPage}`, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -28,10 +28,10 @@ export const getApprenants = async (user: number, token: string, dispatch: AppDi
 export const getLeconApprenants = async (user: number, token: string) => {
   try {
     const response = await fetch(`${apiUrl}appointments/${user}/lessons`, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -47,10 +47,10 @@ export const getLeconApprenants = async (user: number, token: string) => {
 export const getCommentApprenants = async (user: number, token: string, page: number = 1, perPage: number = 10) => {
   try {
     const response = await fetch(`${apiUrl}appointments/${user}/comments?page=${page}&per_page=${perPage}`, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -66,11 +66,11 @@ export const getCommentApprenants = async (user: number, token: string, page: nu
 export const addCommentApprenant = async (student_id: number, token: string, comment: string) => {
   try {
     const response = await fetch(`${apiUrl}appointments/addComment`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ student_id, comment })
     })
@@ -89,11 +89,11 @@ export const updateCommentApprenants = async (note: number, comment: string, tok
   
   try {
     const response = await fetch(`${apiUrl}appointments/${note}/updateComment`, {
+      credentials: "include",
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`  
       },
       body: JSON.stringify({ comment })
     })
@@ -111,10 +111,10 @@ export const updateCommentApprenants = async (note: number, comment: string, tok
 export const getLearnerProgress = async (user: number, token: string, dispatch: AppDispatch): Promise<ModuleResponse> => {
   try {
     const response = await fetch(`${apiUrl}modules/${user}/module`, {
+      credentials: "include",
       method: "GET",
       headers: {
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
     })
 
@@ -134,11 +134,11 @@ export const getLearnerProgress = async (user: number, token: string, dispatch: 
 export const postLearnerCompetences = async (appointment: number, competences: number[], token: string, dispatch: AppDispatch) => {
   try {
     const response = await fetch(`${apiUrl}modules/${appointment}/store`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ competences })
     })

@@ -7,10 +7,10 @@ export const getExamens = async (token: string, dispatch: AppDispatch, learner_i
   try {
     const response = await fetch(`${apiUrl}list/examen/learner/${learner_id}?page=${page}&per_page=${perPage}`,
       {
+      credentials: "include",
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
         },
       }
     );

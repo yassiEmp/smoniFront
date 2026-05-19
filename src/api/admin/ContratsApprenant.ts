@@ -1,4 +1,5 @@
 import { apiUrl } from "@/api";
+import axios from "axios";
 
 export interface Contrat {
   id: number;
@@ -45,17 +46,7 @@ export async function listContratsApprenant(
   page: number = 1,
   perPage: number = 10
 ): Promise<ContratsResponse> {
-  const res = await fetch(
-    `${apiUrl}admin/learners/${userId}/listContrat?page=${page}&per_page=${perPage}`,
-    {
-      headers: {
-        Accept: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  if (!res.ok) throw new Error("Erreur lors du chargement des contrats");
-  const json = await res.json();
+  const { data: json } = await axios.get(`${apiUrl}admin/learners/${userId}/listContrat?page=${page}&per_page=${perPage}`);
   return json.data;
 }
 
@@ -72,10 +63,9 @@ export async function addContratApprenant(
   const res = await fetch(
     `${apiUrl}admin/learners/${userId}/addContrat`,
     {
+      credentials: "include",
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
-        
       },
       body: formData,
     }
@@ -104,10 +94,9 @@ export async function updateContratApprenant(
   const res = await fetch(
     `${apiUrl}admin/learners/${contratId}/updateContact`,
     {
+      credentials: "include",
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
-       
       },
       body: formData,
     }

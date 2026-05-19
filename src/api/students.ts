@@ -1,13 +1,7 @@
 import { apiUrl } from "./index";
+import axios from "axios";
 
 export async function getStudents(token: string) {
-  const res = await fetch(`${apiUrl}dashboard/listLearner`, {
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  if (!res.ok) throw new Error("Erreur lors du chargement des apprenants");
-  const data = await res.json();
+  const { data } = await axios.get(`${apiUrl}dashboard/listLearner`);
   return Array.isArray(data.data) ? data.data : [];
 }
