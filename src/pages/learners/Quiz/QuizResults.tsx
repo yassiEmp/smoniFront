@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router';
 import { CheckCircle, XCircle, RotateCcw, Trophy, TrendingUp } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Header from '@components/generales/Header';

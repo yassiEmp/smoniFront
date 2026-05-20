@@ -1,5 +1,5 @@
 import Ilustration from '@assets/dashboard-moniteur/Creation-Planing.png'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 const VueNouvelUtilisateur = ({ contenue }: { contenue: string }) => {
   return (

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Car, Shield, BookOpen, Heart, ArrowRight, Zap, Trophy } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import Header from '@components/generales/Header';
 import Footer from '@components/generales/Footer';
 import HomeNewStudentSection from '@components/generales/HomeNewStudentSection';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import PageHead from '@components/SEO/PageHead';
 
 const quizCategories = [
   {
@@ -45,6 +46,11 @@ const Quiz = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden flex flex-col">
+      <PageHead
+        title="Quiz permis - Verifications & securite routiere | Smoni"
+        description="Testez gratuitement vos connaissances : verifications interieures, exterieures et questions de securite routiere pour reussir l'examen du permis B."
+        canonicalPath="/quiz"
+      />
       <Header />
 
       <main className="flex-grow">

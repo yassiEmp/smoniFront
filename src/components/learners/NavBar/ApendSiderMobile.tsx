@@ -35,13 +35,13 @@ const ApendSiderMobile = ({
   const startHeight = useRef<number | null>(null);
   const sheetRef = useRef<HTMLDivElement | null>(null);
 
-  // ✅ Touch start
+  // ? Touch start
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startY.current = e.touches[0].clientY;
     startHeight.current = height;
   };
 
-  // ✅ Touch move
+  // ? Touch move
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (startY.current !== null && startHeight.current !== null) {
       const delta = startY.current - e.touches[0].clientY;
@@ -52,7 +52,7 @@ const ApendSiderMobile = ({
     }
   };
 
-  // ✅ Mouse down (desktop testing)
+  // ? Mouse down (desktop testing)
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     startY.current = e.clientY;
     startHeight.current = height;

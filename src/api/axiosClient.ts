@@ -1,4 +1,4 @@
-﻿import axios from 'axios';
+import axios from 'axios';
 import { apiUrl } from '.';
 import store from '@store/configureStore';
 import { logout } from '@store/slices/authSlice';
@@ -22,7 +22,7 @@ export async function ensureCsrfCookie(): Promise<void> {
 }
 
 // Single response interceptor for session expiry. When the server says
-// 401, the cookie session is gone â€” clear local user state and kick the
+// 401, the cookie session is gone — clear local user state and kick the
 // user back to the login page. Mirrors the old authMiddleware's 24h
 // auto-logout, but driven by the server instead of a client-side timer.
 let installed = false;

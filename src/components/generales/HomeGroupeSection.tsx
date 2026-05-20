@@ -12,89 +12,89 @@ import {
 } from "@/components/ui/card";
 import { BookOpen, Monitor, LifeBuoy, Car, ArrowRight, ArrowRightLeft, GraduationCap } from "lucide-react";
 import { useNavigate } from "react-router";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
 
-// Import real images from the assets
-import imgLocation from "@assets/images/home/img_hero1.jpg";
-import imgConduite from "@assets/images/home/img_hero2.jpg";
-import imgCode from "@assets/images/home/img_hero3.jpg";
-import imgAccompagnement from "@assets/images/home/img_hero4.jpg";
+import imgLocation from "@assets/images/home/img_hero1.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
+import imgConduite from "@assets/images/home/img_hero2.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
+import imgCode from "@assets/images/home/img_hero3.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
+import imgAccompagnement from "@assets/images/home/img_hero4.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
 
 const services = [
   {
     icon: Car,
-    title: "Location",
+    title: "Permis B (boîte manuelle)",
     description:
-      "Des véhicules mis à disposition par SMONI pour permettre aux apprenants de s'exercer en toute sérénité.",
-    uri: "/location",
-    image: imgLocation,
-    badge: "Populaire"
-  },
-  {
-    icon: BookOpen,
-    title: "Conduite",
-    description:
-      "Réserver une leçon de conduite complète pour de meilleur résultat.",
+      "20 à 30h de conduite réelle, code de la route inclus avec Pass Rousseau 24/7. Pas en option payante.",
     uri: "/conduite",
     image: imgConduite,
-    badge: "Essentiel"
-  },
-  {
-    icon: Monitor,
-    title: "Code en ligne",
-    description:
-      "SMONI vous met à disposition une plateforme en ligne accessible 24h/24 pour vous exercer au code de la route.",
-    uri: "/code-en-ligne",
-    image: imgCode,
-    badge: "Nouveau"
-  },
-  {
-    icon: LifeBuoy,
-    title: "Accompagnement",
-    description:
-      "Vous cherchez un accompagnateur à l'épreuve du permis de conduire ? Un moniteur SMONI peut être votre accompagnateur.",
-    uri: "/accompagnement",
-    image: imgAccompagnement,
-    badge: "Premium"
+    badge: "Le plus demandé"
   },
   {
     icon: ArrowRightLeft,
-    title: "Passerelle",
+    title: "Permis Boîte Automatique (B78)",
     description:
-      "Passez de la boîte automatique à la boîte manuelle avec une formation rapide chez SMONI.",
+      "13 à 20h suffisent. 75% de réussite nationale vs 57% en manuelle. Passerelle 7h possible après.",
     uri: "/passerelle",
     image: "/service_passerelle_image_1774287785105.png",
-    badge: "Rapide"
+    badge: "Le plus efficace"
+  },
+  {
+    icon: BookOpen,
+    title: "Permis Moto (A1 / A2 / 125)",
+    description:
+      "Plateau, circulation, code moto. Le plateau lent appris par étapes, sans panique. Selon dispo moniteur.",
+    uri: "/conduite",
+    image: imgLocation,
+    badge: "Sur demande"
+  },
+  {
+    icon: Monitor,
+    title: "Code de la route — En ligne 24/7",
+    description:
+      "Pass Rousseau inclus dans tous nos forfaits. Tests illimités. Session présentielle hebdo à l'agence si vous préférez.",
+    uri: "/code-en-ligne",
+    image: imgCode,
+    badge: "Inclus"
   },
   {
     icon: GraduationCap,
-    title: "Post-Permis",
+    title: "Stage accéléré 1 semaine",
     description:
-      "Réduisez votre période probatoire et gagnez vos 12 points plus rapidement après l'obtention de votre permis.",
-    uri: "/post-permis",
+      "20h de conduite sur 5-7 jours. Prix verrouillé, 0 supplément. Pour qui veut le permis vite, sans surprise.",
+    uri: "/conduite",
+    image: imgAccompagnement,
+    badge: "Express"
+  },
+  {
+    icon: LifeBuoy,
+    title: "Reprise pour recalés",
+    description:
+      "Vous avez raté ? Évaluation gratuite (1h), plan personnalisé, pas de pack 13h imposé. Sans frais de transfert.",
+    uri: "/contact",
     image: "/service_post_permis_image_1774287808051.png",
-    badge: "Avantage"
+    badge: "Sans pénalité"
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 },
+  },
+};
+
 const HomeGroupeSection = () => {
   const navigate = useNavigate();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -113,10 +113,10 @@ const HomeGroupeSection = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-16 space-y-4" variants={itemVariants}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#1e1b4b]">
-            Nos services
+            Nos formations
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto font-medium">
-            Une approche moderne pour réussir votre permis de conduire avec assurance et sérénité.
+          <p className="text-slate-700 text-base md:text-lg max-w-2xl mx-auto font-medium">
+            On enseigne ce qu'on sait enseigner — bien. Prix affichés, aucune surprise.
           </p>
         </motion.div>
 
@@ -133,11 +133,24 @@ const HomeGroupeSection = () => {
                   {/* Image Container with Overlay */}
                   <div className="relative aspect-video w-full overflow-hidden">
                     <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
+                    {typeof service.image === "string" ? (
+                      <img
+                        src={service.image}
+                        alt={`${service.title} — Auto-école Smoni à Vincennes (94300)`}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    ) : (
+                      <ResponsivePicture
+                        picture={service.image}
+                        alt={`${service.title} — Auto-école Smoni à Vincennes (94300)`}
+                        sizes="(min-width: 1280px) 410px, (min-width: 1024px) 280px, (min-width: 640px) 45vw, 92vw"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    )}
                     
                     {/* Floating Icon/Badge Action Area */}
                     <CardAction className="absolute right-3 top-3 z-20">

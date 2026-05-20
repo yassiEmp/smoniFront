@@ -14,7 +14,7 @@ import man_icon from "@assets/authentification/register/man-icon.svg";
 import woman_icon from "@assets/authentification/register/wooman-icon.svg";
 import other_icon from "@assets/authentification/register/other-icon.svg";
 import { imageUrl } from "@/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import DeleteConfirmationModal from "@/components/common/DeleteConfirmationModal";
 
 const genderOptions = [

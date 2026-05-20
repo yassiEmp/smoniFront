@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/configureStore";
+import PageHead from "@components/SEO/PageHead";
 
 const Details2 = () => {
     const navigate = useNavigate();
@@ -48,8 +49,13 @@ const Details2 = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Actualisation des connaissances - Smoni Auto-Ecole"
+                description="Reactualisez vos connaissances du code de la route et de la conduite avec Smoni Auto-Ecole Vincennes : stages courts et personnalises."
+                canonicalPath="/actualisation"
+            />
             <Header />
-            
+
             {/* Hero Section */}
             <main className="relative pt-[120px] sm:pt-[140px] pb-16 md:pb-24 overflow-hidden border-b border-slate-200">
                 <div className="absolute inset-0 pointer-events-none -z-10">

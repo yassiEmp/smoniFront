@@ -8,10 +8,16 @@ import { DiDatabase } from "react-icons/di";
 import { BsEyeFill } from "react-icons/bs";
 import { GiGlobe } from "react-icons/gi";
 import { BiBell, BiLock, BiUserCheck } from "react-icons/bi";
+import PageHead from "@components/SEO/PageHead";
 
 const Politique = () => {
     return (
         <>
+            <PageHead
+                title="Politique de confidentialite - Smoni Auto-Ecole"
+                description="Politique de confidentialite de Smoni Auto-Ecole Vincennes : traitement des donnees personnelles, cookies et droits des utilisateurs."
+                canonicalPath="/privacypolicy"
+            />
             <Header />
             <div className="pt-[120px] relative overflow-hidden">
                 <div className=" min-h-screen">

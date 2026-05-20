@@ -4,12 +4,12 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 import useRecaptcha from "@components/generales/useRecaptcha";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import VectorRed from "@assets/authentification/reset/Vector-red.png";
 import { toast } from "react-hot-toast";
 import { loginRequest } from "../../api/auth";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router"; 
 const LoginForm = () => {
   const { capchaToken, recaptchaRef, handleRecaptcha } = useRecaptcha();
   const [showPassword, setShowPassword] = useState(false);

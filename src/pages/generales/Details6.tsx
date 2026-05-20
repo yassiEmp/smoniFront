@@ -6,6 +6,7 @@ import { Shield, FileText, MousePointerClick, Check, ArrowLeft, MapPin, Clock, C
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details6 = () => {
     const navigate = useNavigate();
@@ -45,6 +46,11 @@ const Details6 = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Accompagnement a l'examen du permis - Smoni Vincennes"
+                description="Accompagnement personnalise jusqu'a l'examen du permis B : preparation mentale, conseils et passage en confiance avec Smoni Auto-Ecole."
+                canonicalPath="/accompagnement"
+            />
             <Header />
 
             <main className="relative pt-[120px] sm:pt-[140px] pb-16 md:pb-24 overflow-hidden border-b border-slate-200">

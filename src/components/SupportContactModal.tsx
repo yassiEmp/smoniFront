@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { X, Mail, Phone, ExternalLink, HelpCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const SupportContactModal = ({ isOpen, onClose }) => {
   const modalRef = useRef(null);

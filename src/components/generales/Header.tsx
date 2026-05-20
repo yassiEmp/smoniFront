@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router";
-import Logo1 from "@assets/images/home/logo/1.png";
+import Logo1 from "@assets/images/home/logo/1.png?w=240&format=webp";
 import { motion } from "framer-motion";
 import { Menu, Car, BookOpen, Monitor, Shield, ArrowRightLeft, GraduationCap, RefreshCw, ClipboardCheck, ChevronDown, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -84,7 +84,7 @@ const Header = () => {
             <h3 className="text-2xl font-black mb-4 leading-tight" style={{ fontFamily: "'Outfit', sans-serif" }}>
               {sideTitle.split(' ').map((w, i) => <span key={i}>{w} {i === 0 && <br />}</span>)}
             </h3>
-            <p className="text-blue-100/80 text-sm leading-relaxed font-medium">
+            <p className="text-blue-200 text-sm leading-relaxed font-medium">
               {sideDesc}
             </p>
           </div>
@@ -100,7 +100,7 @@ const Header = () => {
         </div>
 
         <div className="w-2/3 p-8">
-          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2c2876]/40 mb-6">{gridTitle}</div>
+          <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2c2876]/80 mb-6">{gridTitle}</div>
           <ul className="grid grid-cols-2 gap-4">
             {items.map((item, idx) => (
               <motion.li
@@ -120,7 +120,7 @@ const Header = () => {
                     </div>
                     <div className="flex flex-col gap-1.5 pt-1">
                       <div className="text-sm font-black text-[#2c2876] leading-none group-hover:text-primary transition-colors">{item.title}</div>
-                      <p className="text-[11px] leading-snug text-slate-400 group-hover:text-slate-500 line-clamp-1">
+                      <p className="text-[11px] leading-snug text-slate-600 group-hover:text-slate-500 line-clamp-1">
                         {item.description}
                       </p>
                     </div>
@@ -155,7 +155,7 @@ const Header = () => {
                 >
                   {link.hasDropdown ? (
                     <>
-                      <NavigationMenuTrigger className="relative z-10 px-3 py-1.5 2xl:px-4 2xl:py-2 text-[13px] 2xl:text-sm font-semibold rounded-lg text-[#64748b] hover:text-primary bg-transparent transition-all outline-none">
+                      <NavigationMenuTrigger className="relative z-10 px-3 py-1.5 2xl:px-4 2xl:py-2 text-[13px] 2xl:text-sm font-semibold rounded-lg text-slate-700 hover:text-primary bg-transparent transition-all outline-none">
                         {link.label}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>

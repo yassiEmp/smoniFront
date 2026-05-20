@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import PageHead from "@components/SEO/PageHead"
 
 const Contact = () => {
     const navigate = useNavigate()
@@ -94,8 +95,13 @@ const Contact = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Contact - Smoni Auto-Ecole Vincennes (94300)"
+                description="Contactez Smoni Auto-Ecole a Vincennes : adresse, telephone, formulaire en ligne pour vos demandes d'information et inscriptions."
+                canonicalPath="/contact"
+            />
             <Header />
-            
+
             {/* Hero Section of Contact */}
             <main className="relative pt-[120px] sm:pt-[140px] pb-16 md:pb-24 overflow-hidden">
                 {/* Dynamic Background */}

@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @font-face {
   font-family: "Masque";
-  src: url("../src/assets//fonts//MASQUE__.ttf");
+  src: url("../src/assets/fonts/MASQUE__.woff2") format("woff2");
+  font-display: swap;
 }
 
 html {
@@ -36,7 +35,7 @@ html {
 }
 
 .bg_ccm {
-  background-image: url("./assets/images/home/ccm.png");
+  background-image: url("./assets/images/home/ccm.webp");
   background-size: cover;
 }
 

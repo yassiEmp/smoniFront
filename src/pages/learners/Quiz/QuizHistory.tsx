@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { ArrowLeft, Calendar, Trophy, TrendingUp, Eye } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';

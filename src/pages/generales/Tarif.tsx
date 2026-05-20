@@ -3,10 +3,16 @@ import Header from "@components/generales/Header";
 import HomeFaqSection from "@components/generales/HomeFaqSection";
 import Testimonials from "@components/generales/Testimonials";
 import HomeTarifSection from "@components/generales/HomeTarifSection";
+import PageHead from "@components/SEO/PageHead";
 
 const Tarif = () => {
-  return ( 
+  return (
     <>
+      <PageHead
+        title="Tarifs permis B - Smoni Auto-Ecole Vincennes 94300"
+        description="Decouvrez nos tarifs transparents pour le permis B a Vincennes (94300) : forfaits code, conduite, accompagnement et financement."
+        canonicalPath="/tarifs"
+      />
       <Header />
       <div className="relative overflow-hidden pt-[120px]">
         {/* Decoration */}

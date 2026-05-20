@@ -4,36 +4,36 @@ import Lottie from "lottie-react";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2 } from "lucide-react";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.06,
+      delayChildren: 0,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 const HomeNewStudentSection = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
-
   const steps = [
-    "Choisir son abonnement",
-    "Transmettre les pièces justificatives",
-    "Réaliser un test d'auto-évaluation",
-    "Réserver des séances de conduite avec des moniteurs",
-    "Se présenter à l'examen du permis",
+    "Pièce d'identité",
+    "Justificatif de domicile (< 6 mois)",
+    "Photo d'identité (papier ou numérique)",
+    "Pour les 17-25 ans : attestation JDC",
+    "Pour les mineurs : pièce d'identité du représentant légal",
   ];
 
   return (
@@ -47,17 +47,17 @@ const HomeNewStudentSection = () => {
       >
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <motion.h2 
+          <motion.h2
             className="text-4xl md:text-6xl font-black text-white tracking-tighter"
             variants={itemVariants}
           >
-            Nouveau apprenant ?
+            Avant de venir, préparez ça.
           </motion.h2>
-          <motion.p 
-            className="text-slate-300 text-lg md:text-xl font-medium max-w-2xl mx-auto"
+          <motion.p
+            className="text-slate-100 text-lg md:text-xl font-medium max-w-2xl mx-auto"
             variants={itemVariants}
           >
-             Saisissez votre avenir avec le permis de conduire chez SMONI !
+            Cinq documents — rien de plus. Pas votre numéro NEPH ? On vous accompagne pour le créer sur le site de l'ANTS.
           </motion.p>
         </div>
 
@@ -79,24 +79,21 @@ const HomeNewStudentSection = () => {
           <motion.div className="w-full lg:w-1/2 space-y-8" variants={itemVariants}>
             <div className="space-y-4">
               <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
-                Comment passer ton permis avec SMONI
+                Votre dossier d'inscription, simplement.
               </h3>
-              <p className="text-slate-300 text-base md:text-lg leading-relaxed font-medium">
-                Vous rêvez de liberté et d'indépendance ? Ne laissez pas passer
-                l'opportunité de passer votre permis de conduire ! En souscrivant à
-                l’une de nos offres, vous bénéficierez de cours adaptés à votre
-                rythme et à vos besoins, de moniteurs expérimentés et à l’écoute.
+              <p className="text-slate-100 text-base md:text-lg leading-relaxed font-medium">
+                Le permis démarre quand votre dossier est complet — pas avant. On vous donne la liste exacte
+                pour ne rien oublier, et on vous aide à monter chaque pièce manquante. Pas de va-et-vient inutile.
               </p>
-              <p className="text-slate-400 text-sm italic">
-                N'attendez plus pour saisir cette opportunité. Rejoignez SMONI dès
-                aujourd'hui et ouvrez la voie vers un avenir plein de
-                possibilités.
+              <p className="text-slate-200 text-sm italic">
+                Vous n'avez pas tous les documents ? Appelez-nous au 07 71 26 51 19 — on vous dit comment les obtenir,
+                gratuitement, sans rendez-vous obligatoire.
               </p>
             </div>
 
             <div className="space-y-6">
               <Badge variant="secondary" className="bg-white/10 text-white hover:bg-white/20 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest border-white/10">
-                Étapes à suivre
+                Pièces à apporter
               </Badge>
 
               <div className="grid gap-3">

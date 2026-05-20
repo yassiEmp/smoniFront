@@ -15,29 +15,30 @@ const HomeUnicornSection = () => {
           >
             <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/20 px-4 py-1 rounded-full uppercase tracking-widest text-xs font-black">
               <Sparkles className="w-3 h-3 mr-2" />
-              Innovation & Design
+              Adultes 25-45+
             </Badge>
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             className="text-3xl md:text-5xl font-black text-white max-w-3xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            Une expérience immersive <br /> 
-            <span className="text-primary italic">haute performance</span>
+            30, 35, 45 ans sans permis ? <br />
+            <span className="text-primary italic">On vous parle comme à un adulte.</span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-slate-400 text-lg max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Nous utilisons les dernières technologies pour vous offrir un apprentissage moderne, fluide et captivant.
+            Cours après le travail (18h-20h), samedi toute la journée. Code à distance, moniteurs habitués aux adultes, zéro condescendance.
+            Discrétion possible — pas de panneau ridicule sur la voiture si vous préférez. Dossiers expat / étranger acceptés (français & anglais).
           </motion.p>
         </div>
 

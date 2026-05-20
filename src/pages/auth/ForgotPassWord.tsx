@@ -3,7 +3,8 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { AiFillExclamationCircle } from "react-icons/ai";
 
-import formImage from "@assets/authentification/form-image-1.png";
+import formImage from "@assets/authentification/form-image-1.png?w=480;960&format=avif;webp;jpg&as=picture";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import smoni_logo from "@assets/authentification/smoni-logo.svg";
 
 const ForgotPassWord = () => {
@@ -22,9 +23,13 @@ const ForgotPassWord = () => {
   return (
     <div className="w-full h-screen flex bg-white p-6 items-start justify-between">
       <div className="sticky top-10 w-full h-full lg:w-1/3 ">
-        <img
-          src={formImage}
+        <ResponsivePicture
+          picture={formImage}
           alt="Image"
+          sizes="(min-width: 1024px) 33vw, 100vw"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full rounded-[20px] object-cover "
         />
 

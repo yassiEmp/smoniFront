@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Field, Form, Formik } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import {
   step4Schema,
   RegisterFormData,

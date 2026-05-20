@@ -12,46 +12,46 @@ import { Badge } from "@/components/ui/badge";
 const statistics = [
   {
     icon: Users,
-    value: "15,000+",
-    label: "Élèves formés",
-    description: "Des milliers de conducteurs nous ont fait confiance pour leur formation."
+    value: "1",
+    label: "Récupération de dossier",
+    description: "On contacte votre ancienne auto-école, on récupère livret, code et NEPH. Sans frais."
   },
   {
     icon: Trophy,
-    value: "92%",
-    label: "Taux de réussite",
-    description: "Une méthodologie pédagogique éprouvée pour une réussite dès le premier examen."
+    value: "1h",
+    label: "Évaluation gratuite",
+    description: "Vous conduisez 1h avec un moniteur Smoni. Aucun engagement. On vous dit honnêtement où vous en êtes."
   },
   {
     icon: MapPin,
-    value: "50+",
-    label: "Points de rendez-vous",
-    description: "Une présence nationale pour faciliter vos leçons de conduite près de chez vous."
+    value: "0",
+    label: "Pack 13h imposé",
+    description: "Vous payez les heures dont vous avez besoin. Pas un forfait géant pour repartir à zéro."
   }
 ];
 
 const bentoFeatures = [
   {
-    title: "Accompagnement Personnalisé",
-    description: "Chaque élève bénéficie d'un suivi unique adapté à son rythme d'apprentissage.",
+    title: "Plan personnalisé, pas un pack",
+    description: "On bâtit votre reprise sur votre vrai niveau, pas sur le tarif le plus rentable. Préparation mentale anti-stress incluse.",
     icon: GraduationCap,
     className: "md:col-span-2 bg-slate-50 border-slate-200"
   },
   {
-    title: "Planning Flexible",
-    description: "Réservez vos heures via l'application 24/7.",
+    title: "Repasse rapide",
+    description: "Date d'examen sur Vincennes, Rungis ou Créteil — le centre le moins encombré au moment où vous êtes prêt·e.",
     icon: Calendar,
     className: "md:col-span-1 bg-primary/5 border-primary/10"
   },
   {
-    title: "Moniteurs Diplômés",
-    description: "Tous nos enseignants sont certifiés par l'État pour une expertise garantie.",
+    title: "Transfert sans frais",
+    description: "Frais de transfert facturés par l'ancienne école au-delà de l'administratif réel : illégal. On vous aide à contester.",
     icon: CheckCircle2,
     className: "md:col-span-1 bg-slate-50 border-slate-200"
   },
   {
-    title: "Financement CPF",
-    description: "Utilisez vos droits à la formation pour financer l'intégralité de votre permis de conduire chez SMONI.",
+    title: "« Plus tu rates, plus tu rates » — la spirale qu'on coupe.",
+    description: "79% des candidats qui ratent 3 fois abandonnent. Pas parce qu'ils ne savent pas conduire — parce que les écoles s'en désintéressent. Pas ici.",
     icon: Trophy,
     className: "md:col-span-2 bg-slate-900 text-white border-slate-800"
   }
@@ -83,25 +83,25 @@ const HomeImpactSection = () => {
             className="mb-4"
           >
             <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-[10px]">
-              Impact & Excellence
+              Recalés bienvenus
             </Badge>
           </motion.div>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1e1b4b] leading-tight mb-6"
           >
-            Pourquoi SMONI est le <span className="text-primary italic">leader</span> <br className="hidden md:block" /> de l'auto-école digitale
+            Vous avez déjà raté. <br className="hidden md:block" /> Ici, ça ne vous <span className="text-primary italic">pénalisera pas</span>.
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[#64748b] text-lg md:text-xl max-w-3xl font-medium"
+            className="text-slate-700 text-lg md:text-xl max-w-3xl font-medium"
           >
-            Nous avons repensé la formation au permis de conduire pour allier technologie 
-            et pédagogie humaine, offrant ainsi une expérience incomparable.
+            Les autres écoles refusent les dossiers "parce que ça baisse leur quota d'examens".
+            Chez Smoni, on a un protocole différent pour les recalés — sans pack 13h imposé, sans frais de transfert.
           </motion.p>
         </div>
 
@@ -124,7 +124,7 @@ const HomeImpactSection = () => {
               </div>
               <h3 className="text-4xl font-black text-[#1e1b4b] mb-2">{stat.value}</h3>
               <p className="text-primary font-bold uppercase tracking-widest text-xs mb-4">{stat.label}</p>
-              <p className="text-slate-500 font-medium leading-relaxed">{stat.description}</p>
+              <p className="text-slate-600 font-medium leading-relaxed">{stat.description}</p>
             </motion.div>
           ))}
         </motion.div>

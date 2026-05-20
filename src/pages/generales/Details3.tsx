@@ -6,6 +6,7 @@ import { ClipboardCheck, FileText, MousePointerClick, Check, ArrowLeft, Star } f
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details3 = () => {
     const navigate = useNavigate();
@@ -52,8 +53,13 @@ const Details3 = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Fabrication du permis de conduire - Smoni Vincennes"
+                description="Demarches, delais et suivi pour la fabrication de votre permis de conduire apres reussite a l'examen, accompagnes par Smoni Auto-Ecole."
+                canonicalPath="/fabrication-permis"
+            />
             <Header />
-            
+
             {/* Hero Section */}
             <main className="relative pt-[120px] sm:pt-[140px] pb-16 md:pb-24 overflow-hidden border-b border-slate-200">
                 <div className="absolute inset-0 pointer-events-none -z-10">

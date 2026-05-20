@@ -1,6 +1,7 @@
 import ResetStep2 from "@/components/auth/ResetStep2";
 import ResetStep3 from "@/components/auth/ResetStep3";
-import formImage from "@assets/authentification/form-image-1.png";
+import formImage from "@assets/authentification/form-image-1.png?w=480;960&format=avif;webp;jpg&as=picture";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import smoni_logo from "@assets/authentification/smoni-logo.png";
 import ResetStep1 from "@components/auth/ResetStep1";
 import { useState } from "react";
@@ -12,9 +13,13 @@ const ResetPasswordPage = () => {
   return (
     <div className="flex h-screen w-full flex-col items-start justify-between bg-white p-6 md:relative md:flex-row">
       <div className="top-10 flex w-full items-center md:justify-center md:sticky lg:w-1/3 h-full">
-        <img
-          src={formImage}
+        <ResponsivePicture
+          picture={formImage}
           alt="Image"
+          sizes="(min-width: 1024px) 33vw, 50vw"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="hidden h-full w-full rounded-[20px] object-cover md:block"
         />
 

@@ -13,11 +13,21 @@ const hexToSrgb = (hex: string) => {
 };
 
 const avatars = [
-  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=64&h=64&q=80",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=64&h=64&q=80",
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=64&h=64&q=80",
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=64&h=64&q=80",
+  "/avatars/apprenant-1.jpg",
+  "/avatars/apprenant-2.jpg",
+  "/avatars/apprenant-3.jpg",
+  "/avatars/apprenant-4.jpg",
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+};
 
 const HomeHeroSection = () => {
   const navigate = useNavigate();
@@ -26,14 +36,33 @@ const HomeHeroSection = () => {
   const brandColor = "#2c2876";
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth - 0.5) * 40,
-        y: (e.clientY / window.innerHeight - 0.5) * 40,
-      });
+    // Skip parallax on touch devices and reduced-motion users
+    if (window.matchMedia("(hover: none), (prefers-reduced-motion: reduce)").matches) return;
+
+    let rafId = 0;
+    let pendingX = 0;
+    let pendingY = 0;
+    let queued = false;
+
+    const flush = () => {
+      queued = false;
+      setMousePos({ x: pendingX, y: pendingY });
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+
+    const handleMouseMove = (e: MouseEvent) => {
+      pendingX = (e.clientX / window.innerWidth - 0.5) * 40;
+      pendingY = (e.clientY / window.innerHeight - 0.5) * 40;
+      if (!queued) {
+        queued = true;
+        rafId = requestAnimationFrame(flush);
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Initialize Sketchfab API to change color
@@ -76,16 +105,6 @@ const HomeHeroSection = () => {
 
   const smoothX = useSpring(mousePos.x, { damping: 50, stiffness: 400 });
   const smoothY = useSpring(mousePos.y, { damping: 50, stiffness: 400 });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-  };
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -132,13 +151,13 @@ const HomeHeroSection = () => {
                 variants={itemVariants}
                 className="inline-flex items-center w-fit px-4 py-1.5 2xl:px-6 2xl:py-2 bg-white/80 backdrop-blur-md rounded-full border border-[#2c2876]/10 shadow-sm"
               >
-                <span className="text-[9px] 2xl:text-[10px] font-black uppercase tracking-[0.2em] text-[#2c2876]">Auto-école nouvelle génération</span>
+                <span className="text-[9px] 2xl:text-[10px] font-black uppercase tracking-[0.2em] text-[#2c2876]">Auto-école à Vincennes — depuis 2022</span>
               </motion.div>
               <motion.div
                 variants={itemVariants}
                 className="text-[9px] 2xl:text-[10px] font-black uppercase tracking-[0.4em] text-[#2c2876]/30 ml-4 2xl:ml-6"
               >
-                Paris • Île-de-France
+                62 rue de la Jarry • 4 min du RER A
               </motion.div>
             </div>
 
@@ -148,16 +167,16 @@ const HomeHeroSection = () => {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] 2xl:text-[140px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.85] tracking-tighter"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
-                L'avenir <br />
-                <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">Conducteur.</span>
+                Le permis <br />
+                <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">sans crier dessus.</span>
               </motion.h1>
 
               <motion.p
                 variants={itemVariants}
                 className="text-base lg:text-lg 2xl:text-2xl text-slate-500 max-w-lg leading-relaxed font-medium"
               >
-                La meilleure auto-école à Paris pour apprendre à conduire sur des véhicules 100% écologiques avec une plateforme intuitive. <br />
-                <span className="text-[#2c2876] font-extrabold">— Gagnez jusqu'à 300€ offerts.</span>
+                Permis B, boîte automatique et moto à Vincennes. Prix affichés, heures pleines, moniteurs qui respectent. <br />
+                <span className="text-[#2c2876] font-extrabold">— Recalés bienvenus, sans heures imposées.</span>
               </motion.p>
             </div>
 
@@ -170,16 +189,16 @@ const HomeHeroSection = () => {
                 onClick={() => handleNavigate("/tarifs")}
                 className="bg-[#2c2876] text-white hover:bg-[#1e1b4b] rounded-xl px-8 h-14 2xl:rounded-2xl 2xl:px-12 2xl:h-20 text-base 2xl:text-xl font-black shadow-[0_20px_40px_-10px_rgba(44,40,118,0.4)] transition-all hover:scale-[1.05] group border-none"
               >
-                S'inscrire en 2 min
+                Voir nos tarifs (sans surprise)
                 <ArrowRight className="ml-3 h-5 w-5 2xl:h-6 2xl:w-6 transition-transform group-hover:translate-x-2" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                onClick={() => handleNavigate("/services")}
+                onClick={() => handleNavigate("/contact")}
                 className="bg-white border-2 border-slate-200 rounded-xl px-8 h-14 2xl:rounded-2xl 2xl:px-12 2xl:h-20 text-base 2xl:text-xl font-black text-[#2c2876] hover:bg-slate-50 transition-all hover:border-slate-300"
               >
-                Découvrir nos offres
+                Appeler — 07 71 26 51 19
               </Button>
             </motion.div>
 
@@ -198,12 +217,12 @@ const HomeHeroSection = () => {
                   <div className="w-12 h-12 rounded-full border-4 border-[#f8fafc] bg-[#2c2876] flex items-center justify-center text-[10px] font-black text-white shadow-lg">+1.5k</div>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-sm font-black text-[#2c2876] uppercase tracking-tighter whitespace-nowrap">Plus de 1500 élèves</span>
-                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Nous font confiance</span>
+                  <span className="text-sm font-black text-[#2c2876] uppercase tracking-tighter whitespace-nowrap">Adresse réelle</span>
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">62 rue de la Jarry, 94300 Vincennes</span>
                 </div>
               </div>
 
-              {/* Glassmorphism Rating Badge */}
+              {/* Glassmorphism Trust Badge */}
               <div className="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-6 py-3.5 rounded-2xl border border-white/50 shadow-sm transition-transform hover:scale-105">
                 <div className="flex text-yellow-500">
                   {[...Array(5)].map((_, i) => (
@@ -211,8 +230,8 @@ const HomeHeroSection = () => {
                   ))}
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-black text-[#2c2876] text-lg leading-none">4.9/5</span>
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Note Google</span>
+                  <span className="font-black text-[#2c2876] text-lg leading-none">SIREN</span>
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">915 387 013 — déclarée</span>
                 </div>
               </div>
             </motion.div>
@@ -233,7 +252,9 @@ const HomeHeroSection = () => {
                   ref={iframeRef}
                   className="absolute w-[130%] h-[130%] top-[-15%] left-[-15%] pointer-events-auto"
                   style={{ background: 'transparent' }}
-                  title="Peugeot e-2008"
+                  title="Smoni Auto-École Vincennes — apprendre à conduire sur véhicule récent"
+                  aria-label="Auto-école Smoni à Vincennes, 62 rue de la Jarry, 94300"
+                  loading="lazy"
                   frameBorder="0"
                   allow="autoplay; fullscreen; xr-spatial-tracking"
                   src=""

@@ -7,6 +7,7 @@ import "@/styles/blog.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
+import PageHead from "@components/SEO/PageHead";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -80,8 +81,13 @@ export default function BlogIndex() {
 
   return (
     <>
+      <PageHead
+        title="Blog - Smoni Auto-Ecole Vincennes (94300)"
+        description="Conseils, actualites et guides pour reussir votre permis B : articles rediges par les moniteurs de Smoni Auto-Ecole a Vincennes."
+        canonicalPath="/blog"
+      />
       <Header />
-      
+
       <main ref={mainRef} className="blog-main">
         {/* ── Announcement Banner ────────────────── */}
         <div className="blog-announcement">

@@ -8,7 +8,7 @@ import { RootState } from "@/store/configureStore";
 import { getMonitorsApointements } from "@/api/admin/monitor";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { imageUrl } from "@/api";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router";
 
 const PER_PAGE_OPTIONS = [10, 20, 30, 40];
 const FILTERS = [

@@ -1,5 +1,5 @@
 // pages/admin/apprenants/[id].tsx
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import { useState } from "react";
 import { InfosApprenant } from "@/components/admin/Learners/InfosApprenant";
 import { BadgesApprenant } from "@/components/admin/Learners/BadgesApprenant";

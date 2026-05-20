@@ -4,7 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { updatePassword } from "@/api/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 interface ResetStep3Props {
   email: string;

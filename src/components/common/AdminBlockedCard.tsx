@@ -3,7 +3,7 @@ import SupportContactModal from "@/components/SupportContactModal";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "@/store/slices/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const AdminBlockedCard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

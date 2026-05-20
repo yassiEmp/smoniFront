@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 import { FiDownload, FiFileText, FiArrowRight } from "react-icons/fi"
 import { useEffect, useState } from "react"
 import { useLocation } from "react-router"
+import PageHead from "@components/SEO/PageHead"
 
 // Import des fichiers PDF
 import pdf1 from "@assets/ressources/1_enjeux_de_la_formation.pdf"
@@ -275,6 +276,11 @@ const Ressources = () => {
 
     return (
         <>
+            <PageHead
+                title="Ressources et documents - Smoni Auto-Ecole Vincennes"
+                description="Telechargez les documents officiels de Smoni Auto-Ecole : reglement interieur, parcours de formation, financement et fiches pratiques."
+                canonicalPath="/ressources"
+            />
             <Header />
             <div className="pt-[120px] relative overflow-hidden">
                 <div className="min-h-screen">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ChevronRight, User, Lock, FileText, CreditCard, Folder, LogOut } from 'lucide-react';
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { logout } from "@/store/slices/authSlice";
 import InfoPerso from "./InfoPerso";
 import Password from "./Password";

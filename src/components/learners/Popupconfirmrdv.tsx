@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/configureStore";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { imageUrl } from "@/api";
 
 interface PopupconfirmrdvProps {

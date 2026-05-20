@@ -1,5 +1,6 @@
 import { useState } from "react";
-import formImage from "@assets/authentification/form-image-1.png";
+import formImage from "@assets/authentification/form-image-1.png?w=480;960&format=avif;webp;jpg&as=picture";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import smoni_logo from "@assets/authentification/smoni-logo.svg";
 import ProgressBar from "@components/generales/authentification/register/apprenant-profile/ProgressBar";
 import prof_icon from "@assets/authentification/register/prof-icon.png";
@@ -30,9 +31,13 @@ const RegisterPage = () => {
   return (
     <div className="h-screen w-full items-start justify-between bg-white p-4 md:flex">
       <div className="top-10 flex w-full items-center md:justify-center md:sticky md:h-full lg:w-1/3">
-        <img
-          src={formImage}
+        <ResponsivePicture
+          picture={formImage}
           alt="Image"
+          sizes="(min-width: 1024px) 33vw, 50vw"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="hidden h-[250px] w-full rounded-[20px] object-cover md:block md:h-full"
         /> 
 

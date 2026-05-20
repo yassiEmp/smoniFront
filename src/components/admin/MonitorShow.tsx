@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "@/components/common/Loader";
 import Spinner from "@/components/common/Spinner";

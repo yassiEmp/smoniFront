@@ -10,7 +10,7 @@ import CustomCheckbox from "@components/generales/CustomCheckbox";
 import arrow_right from "@assets/authentification/register/arrow_right_white.svg";
 import RegisterConfirmationPopUp from "@components/generales/authentification/register/apprenant-profile/RegisterConfirmationPopUp";
 import { registerLearner } from "../../api/auth";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router";
 
 interface LeanerStep4Props {
   formData: Partial<RegisterFormData>;

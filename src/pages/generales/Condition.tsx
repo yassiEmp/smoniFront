@@ -9,10 +9,16 @@ import { FiAlertCircle, FiFileText } from "react-icons/fi";
 import { BsEye } from "react-icons/bs";
 import { BiAward, BiUser } from "react-icons/bi";
 import { CgUserRemove } from "react-icons/cg";
+import PageHead from "@components/SEO/PageHead";
 
 const Condition = () => {
     return (
         <>
+            <PageHead
+                title="Conditions generales d'utilisation - Smoni Auto-Ecole"
+                description="Conditions generales d'utilisation des services de Smoni Auto-Ecole Vincennes : inscription, paiement, obligations et responsabilites."
+                canonicalPath="/cgu"
+            />
             <Header />
             <div className="pt-[120px] relative overflow-hidden">
                 <div className=" min-h-screen">

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ZoomIn, X } from "lucide-react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details7 = () => {
     const navigate = useNavigate();
@@ -51,6 +52,11 @@ const Details7 = () => {
     ];
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Formation post-permis - Smoni Auto-Ecole Vincennes"
+                description="Formation post-permis pour jeunes conducteurs a Vincennes : reduisez la periode probatoire et roulez plus sereinement avec Smoni Auto-Ecole."
+                canonicalPath="/post-permis"
+            />
             <Header />
 
             <main className="relative pt-[120px] sm:pt-[140px] pb-16 md:pb-24 overflow-hidden border-b border-slate-200">

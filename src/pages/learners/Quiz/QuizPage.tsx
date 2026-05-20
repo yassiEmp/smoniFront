@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router';
 import { ArrowLeft, ArrowRight, CheckCircle, Loader2, Info } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Header from '@components/generales/Header';

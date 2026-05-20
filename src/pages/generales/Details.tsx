@@ -6,6 +6,7 @@ import { Car, CheckCircle2, FileText, CalendarCheck, MousePointerClick, Check, A
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details = () => {
     const navigate = useNavigate();
@@ -53,6 +54,11 @@ const Details = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Location voiture double commande - Smoni Vincennes"
+                description="Louez une voiture a double commande chez Smoni Auto-Ecole Vincennes pour vous entrainer avec un accompagnateur avant votre examen du permis B."
+                canonicalPath="/location"
+            />
             <Header />
 
             {/* Hero Section */}

@@ -95,13 +95,13 @@ const HomeTarifSection = () => {
           className="px-4 py-1.5 text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 rounded-full"
         >
           <CreditCard className="w-3 h-3 mr-1.5" />
-          Tarification
+          Tarifs publics
         </Badge>
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
-          Tarification flexible
+          Combien ça coûte. Tout. Au centime.
         </h2>
-        <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-          Des offres adaptées à vos besoins et votre budget.
+        <p className="text-slate-700 text-lg max-w-xl mx-auto">
+          On affiche tout parce qu'on en a marre du « on en parle quand vous venez ». CPF, Permis 1€/jour, aide Région IDF, paiement 3×/4× — tout est possible.
         </p>
       </motion.div>
 

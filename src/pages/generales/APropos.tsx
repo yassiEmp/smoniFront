@@ -4,6 +4,7 @@ import HomeNewStudentSection from "@components/generales/HomeNewStudentSection";
 import { Award, BookOpen, Clock, HeartHandshake, Leaf, ShieldCheck, Target, Users, MapPin, Navigation, CarFront, Euro, BatteryCharging, CheckCircle2, MessageSquare, ChevronDown } from "lucide-react";
 import { motion, useSpring, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const APropos = () => {
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -71,6 +72,11 @@ const APropos = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="A propos - Smoni Auto-Ecole Vincennes (94300)"
+                description="Decouvrez Smoni Auto-Ecole a Vincennes : notre equipe, nos valeurs et notre pedagogie pour reussir votre permis dans le 94300."
+                canonicalPath="/a-propos"
+            />
             <Header />
 
             {/* Hero Section */}

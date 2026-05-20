@@ -36,7 +36,7 @@ const CustomToast = () => {
                   onClick={() => toast.dismiss(t.id)}
                   className="ml-4 text-gray-500 hover:text-gray-700"
                 >
-                  ✕
+                  ?
                 </button>
               </div>
             )}

@@ -6,6 +6,7 @@ import { ArrowRightLeft, FileText, MousePointerClick, Check, ArrowLeft, Clock, S
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details4 = () => {
     const navigate = useNavigate();
@@ -52,6 +53,11 @@ const Details4 = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Passerelle boite auto vers boite manuelle - Smoni"
+                description="Formation passerelle pour passer du permis boite automatique a la boite manuelle a Vincennes (94300) avec Smoni Auto-Ecole."
+                canonicalPath="/passerelle"
+            />
             <Header />
 
             {/* Hero Section */}

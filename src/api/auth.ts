@@ -1,7 +1,7 @@
 import axios from "axios";
 import { FormikValues } from "formik";
 import toast from "react-hot-toast";
-import { NavigateFunction } from "react-router-dom";
+import { NavigateFunction } from "react-router";
 
 import { apiUrl } from ".";
 import { ensureCsrfCookie } from "./axiosClient";

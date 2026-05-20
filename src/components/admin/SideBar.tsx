@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router';
 import Paiement from '@assets/dashboard-moniteur/payement.svg'
 import Setting from '@assets/dashboard-moniteur/Setting.svg'
 import Assistant from '@assets/dashboard-moniteur/assistant.svg'
@@ -20,7 +20,7 @@ import {  useDispatch } from "react-redux";
 // import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { LogOut } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { handleLogout } from '@/utils/auth';
 
 const SideBar = () => {

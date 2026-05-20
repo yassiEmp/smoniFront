@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router';
 import { Bell, Settings, ChevronDown, LogOut, Home } from 'lucide-react';
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@/store/configureStore";
@@ -25,7 +25,7 @@ import NavbarMobile from './NavbarMoible';
 
 import NotificationModal  from './NotificationModalLearner';
 import NotificationBadge from './NotificationBadge';
-// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
 import {fetchNotifications} from "@/api/learner/notifications";
 
 const Navbar  = () => {

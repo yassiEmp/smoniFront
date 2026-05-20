@@ -3,8 +3,10 @@
    Light mode · Sans-serif · Grid Intersections
    ───────────────────────────────────────────── */
 
-/* ── Fonts ────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Geist+Mono:wght@100..900&display=swap");
+/* ── Fonts ──────────────────────────────────
+   Inter is loaded in index.html. Geist Mono is only needed in blog
+   code blocks, so only request that family here. */
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;700&display=swap");
 
 :root {
   --geist-font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

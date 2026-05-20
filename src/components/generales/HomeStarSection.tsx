@@ -6,57 +6,57 @@ import { Users, GraduationCap, Award, Briefcase } from "lucide-react";
  * Features: Full-width edge-to-edge layout, massive typography, 
  * glassmorphism accents, and brand indigo #2c2876 synchronization.
  */
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.06,
+            delayChildren: 0
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.4,
+            ease: [0.16, 1, 0.3, 1]
+        }
+    }
+};
+
 const HomeStarSection = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 1,
-                ease: [0.16, 1, 0.3, 1]
-            }
-        }
-    };
-
     const stats = [
         {
-            category: "Expériences",
-            value: "8+",
-            label: "Années d'excellence",
-            description: "En éducation routière et formation digitale de pointe.",
+            category: "Création",
+            value: "2022",
+            label: "Auto-école indépendante",
+            description: "Créée à Vincennes en juillet 2022. Petite équipe, vraie agence.",
             icon: Award,
         },
         {
-            category: "Apprenants",
-            value: "1.5k+",
-            label: "Élèves actifs",
-            description: "Nous font confiance pour leur formation quotidienne.",
+            category: "Agence",
+            value: "1",
+            label: "Adresse physique",
+            description: "62 rue de la Jarry, 94300 Vincennes. Pas de réseau inventé.",
             icon: Users,
         },
         {
-            category: "Moniteurs",
-            value: "50+",
-            label: "Experts certifiés",
-            description: "Enseignants diplômés d'État à votre entière service.",
+            category: "Ouverture",
+            value: "6/6",
+            label: "Jours par semaine",
+            description: "Lundi à samedi, 9h-20h. Cours du soir et samedi disponibles.",
             icon: GraduationCap,
         },
         {
-            category: "Services",
-            value: "10+",
-            label: "Solutions sur-mesure",
-            description: "Un accompagnement complet pour chaque profil d'élève.",
+            category: "Permis",
+            value: "3",
+            label: "Formations enseignées",
+            description: "Permis B, boîte automatique (B78), moto selon disponibilité.",
             icon: Briefcase,
         }
     ];
@@ -72,7 +72,7 @@ const HomeStarSection = () => {
             {/* Full-Width Container (Edge-to-Edge Fluidity) */}
             <div className="w-full px-6 lg:px-12 xl:px-32 relative z-10">
                 {/* Hidden SEO Heading */}
-                <h2 className="sr-only">Pourquoi Smoni est la meilleure auto-école à Paris</h2>
+                <h2 className="sr-only">Smoni Auto-École Vincennes (94300) en quelques chiffres — Permis B, boîte automatique et moto</h2>
 
                 <motion.div
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 xl:gap-24"
@@ -93,25 +93,26 @@ const HomeStarSection = () => {
                                     <stat.icon className="w-6 h-6 transition-colors duration-700" />
                                 </div>
                                 <div className="h-px flex-grow bg-slate-200/60 group-hover:bg-[#2c2876]/20 transition-colors duration-700" />
-                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-400 group-hover:text-[#2c2876] transition-colors duration-700">
+                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-600 group-hover:text-[#2c2876] transition-colors duration-700">
                                     {stat.category}
                                 </span>
                             </div>
 
                             {/* Body Section: Massive Typography */}
                             <div className="space-y-4">
-                                <h2
+                                <p
                                     className="text-6xl lg:text-7xl xl:text-8xl 2xl:text-[110px] font-[900] text-[#2c2876] leading-none tracking-tighter transition-transform duration-700 group-hover:translate-x-2"
                                     style={{ fontFamily: "'Outfit', sans-serif" }}
+                                    aria-label={`${stat.value} — ${stat.label}`}
                                 >
                                     {stat.value}
-                                </h2>
+                                </p>
 
                                 <div className="space-y-2 border-l-4 border-slate-100 pl-4 group-hover:border-[#2c2876] transition-colors duration-700">
                                     <h3 className="text-xl xl:text-2xl font-black text-slate-900 leading-tight">
                                         {stat.label}
                                     </h3>
-                                    <p className="text-base xl:text-lg text-slate-500 font-medium leading-relaxed max-w-[280px]">
+                                    <p className="text-base xl:text-lg text-slate-600 font-medium leading-relaxed max-w-[280px]">
                                         {stat.description}
                                     </p>
                                 </div>

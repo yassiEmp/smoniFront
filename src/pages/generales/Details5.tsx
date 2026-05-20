@@ -6,6 +6,7 @@ import { BookOpen, CheckCircle2, FileText, MonitorSmartphone, MousePointerClick,
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details5 = () => {
     const navigate = useNavigate();
@@ -50,6 +51,11 @@ const Details5 = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Code de la route en ligne - Smoni Auto-Ecole Vincennes"
+                description="Revisez le code de la route en ligne avec Smoni Auto-Ecole : cours, series d'examens blancs et suivi de votre progression depuis chez vous."
+                canonicalPath="/code-en-ligne"
+            />
             <Header />
 
             {/* Hero Section */}

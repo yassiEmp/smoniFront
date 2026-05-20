@@ -13,60 +13,61 @@ import {
   Presentation,
   ShieldCheck
 } from "lucide-react";
-import Quiz from "@assets/images/home/question.png";
+import Quiz from "@assets/images/home/question.png?w=384;768&format=avif;webp;png&as=picture";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import { useNavigate } from "react-router";
 
 const steps = [
   {
     number: 1,
-    icon: Wallet,
-    title: "Abonnement",
-    description: "Choisissez un pack selon votre besoin et souscrivez à l'offre.",
+    icon: UserPlus,
+    title: "Vous appelez ou passez",
+    description: "07 71 26 51 19 ou 62 rue de la Jarry. 15 min, on évalue votre profil. Aucune vente forcée.",
     variant: "indigo",
   },
   {
     number: 2,
-    icon: UserPlus,
-    title: "Connexion",
-    description: "Créez votre compte en ligne chez SMONI",
+    icon: Wallet,
+    title: "Devis écrit sous 24h",
+    description: "Tarifs détaillés, contrat-type Smoni, charte des 5 engagements. Vous lisez à tête reposée.",
     variant: "purple",
   },
   {
     number: 3,
     icon: CalendarCheck,
-    title: "Rendez-vous",
-    description: "Recherchez des moniteurs et planifiez un rendez-vous pour un cours de conduite.",
+    title: "Inscription + 1ʳᵉ leçon",
+    description: "Dossier ANTS, code démarré (Pass Rousseau), 1ʳᵉ conduite planifiée selon vos dispos.",
     variant: "emerald",
   },
   {
     number: 4,
     icon: ShieldCheck,
-    title: "Évaluation",
-    description: "Accédez à votre espace et suivez à chaque instant votre évolution avant de passer votre examen.",
+    title: "Code → conduite → examen",
+    description: "Moniteur attitré, examen blanc en conditions réelles. Date d'examen calée sur votre niveau, pas sur un quota.",
     variant: "amber",
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06, delayChildren: 0 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
 const HomeStepSection = () => {
   const navigate = useNavigate();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -90,9 +91,12 @@ const HomeStepSection = () => {
             variants={itemVariants}
           >
             <div className="absolute -inset-10 bg-primary/5 rounded-full blur-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-1000" />
-            <img
-              src={Quiz}
+            <ResponsivePicture
+              picture={Quiz}
               alt="Comment ça marche"
+              sizes="(min-width: 768px) 384px, 100vw"
+              loading="lazy"
+              decoding="async"
               className="relative w-full max-w-sm mx-auto drop-shadow-2xl animate-float"
             />
             {/* Decorative elements */}
@@ -111,13 +115,13 @@ const HomeStepSection = () => {
                 variant="outline"
                 className="px-4 py-1 text-sm font-bold uppercase border-primary/20 text-primary rounded-lg bg-primary/5"
               >
-                Bon à savoir
+                Comment ça se passe
               </Badge>
               <h2 className="text-[42px] md:text-[52px] font-black tracking-tight text-[#1e1b4b] leading-[1.1]">
-                Comment <span className="text-primary italic">ça marche</span> ?
+                De la 1ʳᵉ question à votre <span className="text-primary italic">permis en poche</span>.
               </h2>
-              <p className="text-[#64748b] text-xl font-medium max-w-lg">
-                Commencez votre parcours chez SMONI en 4 étapes simples et intuitives.
+              <p className="text-slate-700 text-xl font-medium max-w-lg">
+                Quatre étapes, pas de boîte noire. Vous savez ce qui se passe à chaque instant.
               </p>
             </motion.div>
 
@@ -145,7 +149,7 @@ const HomeStepSection = () => {
                           <h3 className="text-[22px] font-extrabold text-[#1e1b4b]">
                             {step.title}
                           </h3>
-                          <p className="text-[14px] text-[#64748b] font-medium leading-relaxed">
+                          <p className="text-[14px] text-slate-700 font-medium leading-relaxed">
                             {step.description}
                           </p>
                         </div>

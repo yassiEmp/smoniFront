@@ -1,7 +1,7 @@
 import React, { type FC } from 'react';
 import { MapPinX, X, CalendarDays, User2, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/configureStore";
 import { fetchNoBillableRendezVous, type NoBillableRendezVous } from "@/api/noBillableRendezVous";

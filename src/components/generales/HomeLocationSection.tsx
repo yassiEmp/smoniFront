@@ -6,25 +6,25 @@ import { Button } from "@/components/ui/button";
 
 const locations = [
   {
-    city: "Vincennes (Siège)",
-    address: "62 rue de la jarry, 94300 Vincennes",
-    phone: "07 49 46 49 78",
-    hours: "Lun - Sam: 9h - 20h",
+    city: "Vincennes — Agence unique",
+    address: "62 rue de la Jarry, 94300 Vincennes",
+    phone: "07 71 26 51 19",
+    hours: "Lun - Sam: 9h - 20h • Dim: fermé",
     mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.54148!2d2.43632!3d48.84758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67299!2s62%20Rue%20de%20la%20Jarry%2C%2094300%20Vincennes!5e0!3m2!1sfr!2sfr!4v1625000000000"
   },
   {
-    city: "Paris Centre",
-    address: "12 Avenue de l'Opéra, 75001 Paris",
-    phone: "01 42 61 50 50",
-    hours: "Lun - Sam: 9h - 20h",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5216!2d2.3323!3d48.8673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e3b!2zMTIgQXYuIGRlIGwnT3DDqXJhLCA3NTAwMSBQYXJpcw!5e0!3m2!1sfr!2sfr!4v1625000000001"
+    city: "RER A Vincennes — 4 min à pied",
+    address: "Sortie place Pierre Sémard, direction rue de la Jarry",
+    phone: "07 71 26 51 19",
+    hours: "Trajet : 4 min à pied",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.54148!2d2.43632!3d48.84758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67299!2s62%20Rue%20de%20la%20Jarry%2C%2094300%20Vincennes!5e0!3m2!1sfr!2sfr!4v1625000000000"
   },
   {
-    city: "Boulogne-Billancourt",
-    address: "100 Route de la Reine, 92100 Boulogne",
-    phone: "01 46 10 20 30",
-    hours: "Lun - Sam: 9h - 19h",
-    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.345!2d2.241!3d48.835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67abe!2zMTAwIFJ0ZSBkZSBsYSBSZWluZSwgOTIxMDAgQm91bG9nbmUtQmlsbGFuY291cnQ!5e0!3m2!1sfr!2sfr!4v1625000000002"
+    city: "Métro 1 Bérault — 6 min à pied",
+    address: "Sortie Bérault, direction rue Defrance puis rue de la Jarry",
+    phone: "07 71 26 51 19",
+    hours: "Trajet : 6 min à pied",
+    mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2625.54148!2d2.43632!3d48.84758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67299!2s62%20Rue%20de%20la%20Jarry%2C%2094300%20Vincennes!5e0!3m2!1sfr!2sfr!4v1625000000000"
   }
 ];
 
@@ -48,13 +48,13 @@ const HomeLocationSection = () => {
           >
             <div className="space-y-4">
               <Badge className="bg-primary text-white font-bold px-4 py-1.5 rounded-lg uppercase tracking-widest text-[10px]">
-                Prendre Rendez-vous
+                Nous trouver
               </Badge>
               <h2 className="text-[36px] md:text-[48px] font-black text-[#1e1b4b] leading-tight">
-                Nos agences <span className="text-primary italic">près de vous</span>.
+                Une seule agence. À Vincennes. <span className="text-primary italic">Pour vrai</span>.
               </h2>
-              <p className="text-[#64748b] text-lg font-medium leading-relaxed">
-                Cliquez sur une agence pour la localiser sur la carte et obtenir les informations de contact.
+              <p className="text-slate-700 text-lg font-medium leading-relaxed">
+                Pas de « réseau national » inventé. Vous savez où nous trouver, qui vous accueille, et qui répond au téléphone.
               </p>
             </div>
             
@@ -100,7 +100,7 @@ const HomeLocationSection = () => {
             </div>
 
             <Button variant="outline" className="w-full border-primary/20 text-primary hover:bg-primary/5 rounded-xl h-12 font-bold group">
-              Toutes nos agences en France
+              Itinéraire Google Maps
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </motion.div>
@@ -115,6 +115,8 @@ const HomeLocationSection = () => {
             <div className="w-full h-full rounded-[32px] overflow-hidden border-8 border-white shadow-2xl relative">
               <iframe
                 src={activeLocation.mapUrl}
+                title={`Carte — Smoni Auto-École Vincennes, ${activeLocation.address}`}
+                aria-label={`Localisation Smoni Auto-École : ${activeLocation.city}, ${activeLocation.address}`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -130,7 +132,7 @@ const HomeLocationSection = () => {
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-white/60 leading-none mb-1">Agence sélectionnée</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-white/60 leading-none mb-1">Vincennes • 94300</p>
                   <p className="text-sm font-black leading-none">{activeLocation.city}</p>
                 </div>
               </div>

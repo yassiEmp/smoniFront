@@ -2,7 +2,7 @@ import OtpInput from "react-otp-input";
 import { useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import light from "@assets/authentification/reset/Arrow-Left.png";
 import VectorRed from "@assets/authentification/reset/Vector-red.png";
 import { resetPassword, verifyOtp } from "@/api/auth";

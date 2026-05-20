@@ -11,7 +11,7 @@ import { RootState } from "@/store/configureStore";
 import { formatDateToISO, formatDateToLocalYYYYMMDD, getMonday, isDateTimeGreaterOrEqual } from "@/utils/dateUtils";
 import toast from "react-hot-toast";
 import { imageUrl } from "@/api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 interface Props {
   onClose: () => void;

@@ -77,15 +77,15 @@ const Testimonials = () => {
         >
           <Badge
             variant="outline"
-            className="px-5 py-1 text-xs font-bold tracking-[0.2em] uppercase border-white/10 text-white/60 rounded-full bg-white/5"
+            className="px-5 py-1 text-xs font-bold tracking-[0.2em] uppercase border-white/10 text-white/85 rounded-full bg-white/5"
           >
             Témoignages
           </Badge>
           <h2 className="text-4xl md:text-6xl font-black tracking-tight text-white leading-[1.1]">
-            La réussite de <span className="text-primary italic">nos élèves</span>
+            4 voix vraies, <span className="text-primary italic">sans filtre</span>.
           </h2>
-          <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-            Leurs mots sont notre plus grande fierté.
+          <p className="text-white/85 text-lg md:text-xl max-w-2xl mx-auto font-medium">
+            On est une petite équipe. Si vous en voulez plus — envoyez-nous un message, on vous met en contact direct avec un·e ancien·ne élève.
           </p>
         </motion.div>
 
@@ -132,7 +132,7 @@ const Testimonials = () => {
                       <h4 className="text-xl font-bold text-white">
                         {testimonials[currentIndex].name}
                       </h4>
-                      <p className="text-white/50 text-sm font-semibold tracking-wide uppercase">
+                      <p className="text-white/80 text-sm font-semibold tracking-wide uppercase">
                         {testimonials[currentIndex].role}
                       </p>
                     </div>

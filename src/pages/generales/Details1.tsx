@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const Details1 = () => {
     const navigate = useNavigate();
@@ -69,6 +70,11 @@ const Details1 = () => {
 
     return (
         <div className="bg-[#f8fafc] min-h-screen">
+            <PageHead
+                title="Cours de conduite permis B - Smoni Vincennes 94300"
+                description="Lecons de conduite a Vincennes (94300) avec moniteurs diplomes : pedagogie progressive, vehicules recents et passage rapide a l'examen."
+                canonicalPath="/conduite"
+            />
             <Header />
 
             {/* Hero Section — ORIGINAL UNCHANGED */}

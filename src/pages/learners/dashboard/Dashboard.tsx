@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HelpCircle, MapPin, Clock3, CheckCircle } from "lucide-react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import calendrier from "@assets/apprenants/dashboard/calendrier.png";
 import telephon from "@assets/apprenants/dashboard/Telephon.png";

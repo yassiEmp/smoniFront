@@ -10,7 +10,7 @@ import { initialUpdateMonitorValues } from "@/utils/validations/validationShema"
 import { deletePhoto, updateMonitor, updatePassword, updatePhoto } from "@/api/monitor/parametre";
 import { imageUrl } from "@/api";
 import { handleLogout } from '@/utils/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { LogOut, Eye, EyeOff } from 'lucide-react';
 import * as Yup from 'yup';
 import { updateAdmin } from "@/api/admin/parametre";

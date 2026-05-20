@@ -8,7 +8,7 @@ import { RootState } from "@/store/configureStore";
 import { updatePassword } from "@/api/learner/password";
 import { toast } from "react-hot-toast";
 import { logout } from "@/store/slices/authSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 interface PasswordProps {
   onBack?: () => void;

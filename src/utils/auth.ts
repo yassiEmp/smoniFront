@@ -1,5 +1,5 @@
 import { logout } from "@/store/slices/authSlice";
-import { NavigateFunction } from "react-router-dom";
+import { NavigateFunction } from "react-router";
 import { Dispatch } from "@reduxjs/toolkit";
 import { onboardingService } from "@/services/onboardingService";
 import { setLogoutMonitor } from "@/store/slices/monitorSlice";

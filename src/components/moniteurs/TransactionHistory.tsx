@@ -1,5 +1,5 @@
 import { ArrowLeft, ChevronLeft, ChevronRight, Download } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import ExportButton from "@/components/exporter"

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { BookOpen, Car, Heart, Shield } from 'lucide-react';
 import Header from '@components/generales/Header';
 import Footer from '@components/generales/Footer';

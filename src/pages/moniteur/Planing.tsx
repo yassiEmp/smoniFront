@@ -9,7 +9,7 @@ import { getMonday } from "@/utils/dateUtils";
 import Loading from "@/components/generales/Loading";
 import PlanningComponent from "@components/moniteurs/PlanningComponent";
 import Ilustration from "@/assets/apprenants/dashboard/boutiqueactif.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { AlertTriangle, Mail, Phone } from "lucide-react";
 import { getUserInformation } from "@/api/auth";
 

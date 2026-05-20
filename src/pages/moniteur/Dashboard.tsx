@@ -2,7 +2,7 @@ import Welcome from '@assets/dashboard-moniteur/Welcome.png'
 import Vector from '@assets/dashboard-moniteur/Vector.png'
 import { useState, useEffect } from "react"
 
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router"
 import { useSelector } from "react-redux"
 import { RootState } from "@/store/configureStore"
 import { fetchDashboardStats } from "@/api/dashboard"

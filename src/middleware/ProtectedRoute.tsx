@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router";
 import { RootState } from "../store/configureStore";
 import { toast } from "react-hot-toast";
 interface ProtectedRouteProps {

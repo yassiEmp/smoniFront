@@ -1,10 +1,33 @@
 import { defineConfig } from 'vite'
 import path from 'path'
 import react from '@vitejs/plugin-react'
+import { imagetools } from 'vite-imagetools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), imagetools()],
+  optimizeDeps: {
+    exclude: ['unicornstudio-react'],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-motion': ['framer-motion'],
+          'vendor-mui': ['@mui/material', '@emotion/react', '@emotion/styled'],
+          'vendor-radix': [
+            '@radix-ui/react-accordion',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-navigation-menu',
+            '@radix-ui/react-separator',
+            '@radix-ui/react-slot',
+          ],
+          'vendor-redux': ['@reduxjs/toolkit', 'react-redux', 'redux-persist'],
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "src/components"),
@@ -33,5 +56,5 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
-  }
+  },
 })

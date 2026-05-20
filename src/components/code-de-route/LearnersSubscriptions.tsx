@@ -8,7 +8,7 @@ import { Toaster } from 'react-hot-toast';
 import { fetchSubscriptions, Subscription, SubscriptionsPagination } from '@/api/admin/code';
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/configureStore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import Loader from '../common/Loader';
 import { imageUrl } from "@/api";
 import { formatFrenchDate } from '@/utils/dateUtils';

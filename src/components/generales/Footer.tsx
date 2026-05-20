@@ -1,8 +1,8 @@
-import Logo2 from "@assets/images/home/logo/2.png";
-import LabelLogo from "@assets/logo/label.png";
-import LogoCPF from "@assets/logo/Logo-CPF.png";
-import LogoPermis1Euro from "@assets/logo/logo-permis-1-euro-jour-large.png";
-import LogoQualiopi from "@assets/logo/LogoQualiopi-300dpi-Avec-Marianne.png";
+import Logo2 from "@assets/images/home/logo/2.png?w=200&format=webp";
+import LabelLogo from "@assets/logo/label.png?w=200&format=webp";
+import LogoCPF from "@assets/logo/Logo-CPF.png?w=240&format=webp";
+import LogoPermis1Euro from "@assets/logo/logo-permis-1-euro-jour-large.png?w=200&format=webp";
+import LogoQualiopi from "@assets/logo/LogoQualiopi-300dpi-Avec-Marianne.png?w=240&format=webp";
 import { motion } from "framer-motion";
 import { ArrowRight, Facebook, Instagram } from "lucide-react";
 import { Link, useNavigate } from "react-router";
