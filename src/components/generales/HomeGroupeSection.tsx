@@ -29,7 +29,8 @@ const services = [
       "20 à 30h de conduite réelle, code de la route inclus avec Pass Rousseau 24/7. Pas en option payante.",
     uri: "/conduite",
     image: imgConduite,
-    badge: "Le plus demandé"
+    badge: "Le plus demandé",
+    altSuffix: "permis B 94300"
   },
   {
     icon: ArrowRightLeft,
@@ -38,7 +39,8 @@ const services = [
       "13 à 20h suffisent. 75% de réussite nationale vs 57% en manuelle. Passerelle 7h possible après.",
     uri: "/passerelle",
     image: imgPasserelle,
-    badge: "Le plus efficace"
+    badge: "Le plus efficace",
+    altSuffix: "permis accéléré Vincennes"
   },
   {
     icon: BookOpen,
@@ -47,7 +49,8 @@ const services = [
       "Plateau, circulation, code moto. Le plateau lent appris par étapes, sans panique. Selon dispo moniteur.",
     uri: "/conduite",
     image: imgLocation,
-    badge: "Sur demande"
+    badge: "Sur demande",
+    altSuffix: "auto-école Val-de-Marne"
   },
   {
     icon: Monitor,
@@ -56,7 +59,8 @@ const services = [
       "Pass Rousseau inclus dans tous nos forfaits. Tests illimités. Session présentielle hebdo à l'agence si vous préférez.",
     uri: "/code-en-ligne",
     image: imgCode,
-    badge: "Inclus"
+    badge: "Inclus",
+    altSuffix: "code de la route en ligne"
   },
   {
     icon: GraduationCap,
@@ -65,7 +69,8 @@ const services = [
       "20h de conduite sur 5-7 jours. Prix verrouillé, 0 supplément. Pour qui veut le permis vite, sans surprise.",
     uri: "/conduite",
     image: imgAccompagnement,
-    badge: "Express"
+    badge: "Express",
+    altSuffix: "près de Saint-Mandé"
   },
   {
     icon: LifeBuoy,
@@ -74,7 +79,8 @@ const services = [
       "Vous avez raté ? Évaluation gratuite (1h), plan personnalisé, pas de pack 13h imposé. Sans frais de transfert.",
     uri: "/contact",
     image: imgPostPermis,
-    badge: "Sans pénalité"
+    badge: "Sans pénalité",
+    altSuffix: "moniteurs certifiés BEPECASER"
   },
 ];
 
@@ -138,7 +144,7 @@ const HomeGroupeSection = () => {
                     {typeof service.image === "string" ? (
                       <img
                         src={service.image}
-                        alt={`${service.title} — Auto-école Smoni à Vincennes (94300)`}
+                        alt={`${service.title} — ${service.altSuffix}`}
                         loading="lazy"
                         decoding="async"
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -146,7 +152,7 @@ const HomeGroupeSection = () => {
                     ) : (
                       <ResponsivePicture
                         picture={service.image}
-                        alt={`${service.title} — Auto-école Smoni à Vincennes (94300)`}
+                        alt={`${service.title} — ${service.altSuffix}`}
                         sizes="(min-width: 1280px) 410px, (min-width: 1024px) 280px, (min-width: 640px) 45vw, 92vw"
                         loading="lazy"
                         decoding="async"

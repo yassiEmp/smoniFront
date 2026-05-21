@@ -62,11 +62,11 @@ Status: queued. Tick items as they land.
 - [x] Rename `/privacypolicy` → `/politique-confidentialite` (301 at host — nginx rule documented in routes.tsx)
 
 ### 11. Internal linking
-- [ ] Add at least one contextual in-paragraph link per blog post → `/conduite` or `/tarifs` or `/contact`
-- [ ] Verify Footer links to every service route (not just `/services`)
+- [x] Add at least one contextual in-paragraph link per blog post → `/conduite` or `/tarifs` or `/contact`
+- [x] Verify Footer links to every service route (not just `/services`)
 
 ### 12. Image alt diversity
-- [ ] Vary `HomeGroupeSection` alt suffixes — currently every card has the same `"— Auto-école Smoni à Vincennes (94300)"` tail
+- [x] Vary `HomeGroupeSection` alt suffixes — currently every card has the same `"— Auto-école Smoni à Vincennes (94300)"` tail
 
 ### 13. Sitemap
 - [ ] Stamp per-page `lastmod` at build time (currently all `2026-05-20`)
