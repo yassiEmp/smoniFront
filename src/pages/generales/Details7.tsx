@@ -9,6 +9,10 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ZoomIn, X } from "lucide-react";
 import PageHead from "@components/SEO/PageHead";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
+import imgTraditionnel from "@assets/blog/details7/conduite-traditionnelle.png?w=600;1000&format=avif;webp;png&as=picture";
+import imgAccompagnee from "@assets/blog/details7/conduite-accompagnee.png?w=600;1000&format=avif;webp;png&as=picture";
+import imgLabelQualite from "@assets/blog/details7/label-ecole-qualite.png?w=240;480&format=avif;webp;png&as=picture";
 
 const Details7 = () => {
     const navigate = useNavigate();
@@ -227,8 +231,8 @@ const Details7 = () => {
                                     <div className="absolute -inset-1 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
                                         style={{ background: 'radial-gradient(circle, rgba(147,51,234,0.35) 0%, transparent 70%)' }} />
                                     <div className="relative rounded-[2rem] overflow-hidden border border-purple-200/60 shadow-xl group-hover:shadow-2xl transition-all duration-500 bg-white cursor-zoom-in"
-                                        onClick={() => setLightbox({ src: '/4.png', alt: 'Cas n°1 : Conduite Traditionnelle' })}>
-                                        <img src="/4.png" alt="Cas n°1: Permis traditionnel" className="w-full h-auto block" />
+                                        onClick={() => setLightbox({ src: imgTraditionnel.img.src, alt: 'Cas n°1 : Conduite Traditionnelle' })}>
+                                        <ResponsivePicture picture={imgTraditionnel} alt="Cas n°1: Permis traditionnel" sizes="(min-width: 1024px) 600px, 92vw" loading="lazy" decoding="async" className="w-full h-auto block" />
                                         {/* iOS frosted glass footer */}
                                         <div className="absolute bottom-0 left-0 right-0 px-5 py-3.5 flex items-center gap-3"
                                             style={{ background: 'rgba(255,255,255,0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderTop: '1px solid rgba(255,255,255,0.6)' }}>
@@ -244,8 +248,8 @@ const Details7 = () => {
                                     <div className="absolute -inset-1 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"
                                         style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.35) 0%, transparent 70%)' }} />
                                     <div className="relative rounded-[2rem] overflow-hidden border border-indigo-200/60 shadow-xl group-hover:shadow-2xl transition-all duration-500 bg-white cursor-zoom-in"
-                                        onClick={() => setLightbox({ src: '/5.png', alt: 'Cas n°2 : Conduite Accompagnée' })}>
-                                        <img src="/5.png" alt="Cas n°2: Conduite accompagnée" className="w-full h-auto block" />
+                                        onClick={() => setLightbox({ src: imgAccompagnee.img.src, alt: 'Cas n°2 : Conduite Accompagnée' })}>
+                                        <ResponsivePicture picture={imgAccompagnee} alt="Cas n°2: Conduite accompagnée" sizes="(min-width: 1024px) 600px, 92vw" loading="lazy" decoding="async" className="w-full h-auto block" />
                                         {/* iOS frosted glass footer */}
                                         <div className="absolute bottom-0 left-0 right-0 px-5 py-3.5 flex items-center gap-3"
                                             style={{ background: 'rgba(255,255,255,0.55)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderTop: '1px solid rgba(255,255,255,0.6)' }}>
@@ -266,7 +270,7 @@ const Details7 = () => {
                                 <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, rgba(147,51,234,0.8) 0%, transparent 60%)' }} />
                                 <div className="relative z-10 flex flex-col items-center justify-center p-10 text-center">
                                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-5 mb-6 border border-white/20">
-                                        <img src="/6.png" alt="Label École Conduite Qualité" className="w-44 h-auto hover:scale-105 transition-transform" />
+                                        <ResponsivePicture picture={imgLabelQualite} alt="Label École Conduite Qualité" sizes="176px" loading="lazy" decoding="async" className="w-44 h-auto hover:scale-105 transition-transform" />
                                     </div>
                                     <p className="text-white/80 font-semibold text-sm max-w-sm leading-relaxed">
                                         SMONI est un établissement <span className="text-purple-300 font-black">labellisé par la Sécurité Routière</span>, garantissant la qualité de nos formations post-permis.

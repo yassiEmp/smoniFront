@@ -26,6 +26,15 @@ const IMAGETOOLS_SOURCES = new Set([
   "src/assets/logo/Logo-CPF.png",
   "src/assets/logo/logo-permis-1-euro-jour-large.png",
   "src/assets/logo/LogoQualiopi-300dpi-Avec-Marianne.png",
+  "src/assets/services/location.png",
+  "src/assets/services/conduite.png",
+  "src/assets/services/code.png",
+  "src/assets/services/accompagnement.png",
+  "src/assets/services/passerelle.png",
+  "src/assets/services/post-permis.png",
+  "src/assets/blog/details7/conduite-traditionnelle.png",
+  "src/assets/blog/details7/conduite-accompagnee.png",
+  "src/assets/blog/details7/label-ecole-qualite.png",
 ].map((p) => p.replace(/\//g, "\\")));
 
 const TARGETS = [

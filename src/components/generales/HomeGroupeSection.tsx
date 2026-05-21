@@ -18,6 +18,8 @@ import imgLocation from "@assets/images/home/img_hero1.jpg?w=400;640;820&format=
 import imgConduite from "@assets/images/home/img_hero2.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
 import imgCode from "@assets/images/home/img_hero3.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
 import imgAccompagnement from "@assets/images/home/img_hero4.jpg?w=400;640;820&format=avif;webp;jpg&as=picture";
+import imgPasserelle from "@assets/services/passerelle.png?w=400;640;820&format=avif;webp;png&as=picture";
+import imgPostPermis from "@assets/services/post-permis.png?w=400;640;820&format=avif;webp;png&as=picture";
 
 const services = [
   {
@@ -35,7 +37,7 @@ const services = [
     description:
       "13 à 20h suffisent. 75% de réussite nationale vs 57% en manuelle. Passerelle 7h possible après.",
     uri: "/passerelle",
-    image: "/service_passerelle_image_1774287785105.png",
+    image: imgPasserelle,
     badge: "Le plus efficace"
   },
   {
@@ -71,7 +73,7 @@ const services = [
     description:
       "Vous avez raté ? Évaluation gratuite (1h), plan personnalisé, pas de pack 13h imposé. Sans frais de transfert.",
     uri: "/contact",
-    image: "/service_post_permis_image_1774287808051.png",
+    image: imgPostPermis,
     badge: "Sans pénalité"
   },
 ];

@@ -3,8 +3,15 @@ import { Car, BookOpen, Monitor, Shield, ArrowRightLeft, RefreshCw, ClipboardChe
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
+import imgLocation from "@assets/services/location.png?w=400;800&format=avif;webp;png&as=picture";
+import imgConduite from "@assets/services/conduite.png?w=400;800&format=avif;webp;png&as=picture";
+import imgCode from "@assets/services/code.png?w=400;800&format=avif;webp;png&as=picture";
+import imgAccompagnement from "@assets/services/accompagnement.png?w=400;800&format=avif;webp;png&as=picture";
+import imgPasserelle from "@assets/services/passerelle.png?w=400;800&format=avif;webp;png&as=picture";
+import imgPostPermis from "@assets/services/post-permis.png?w=400;800&format=avif;webp;png&as=picture";
 
 const services = [
   {
@@ -14,7 +21,7 @@ const services = [
     uri: "/location",
     badge: "Populaire",
     color: "bg-blue-500/10 text-blue-600",
-    image: "/service_location_image_1774287841678.png"
+    image: imgLocation
   },
   {
     title: "Conduite",
@@ -23,7 +30,7 @@ const services = [
     uri: "/conduite",
     badge: "Indispensable",
     color: "bg-purple-500/10 text-purple-600",
-    image: "/service_conduite_image_1774288066100.png"
+    image: imgConduite
   },
   {
     title: "Code en ligne",
@@ -32,7 +39,7 @@ const services = [
     uri: "/code-en-ligne",
     badge: "100% digital",
     color: "bg-emerald-500/10 text-emerald-600",
-    image: "/service_code_image_1774288237421.png"
+    image: imgCode
   },
   {
     title: "Accompagnement",
@@ -40,7 +47,7 @@ const services = [
     icon: <Shield className="w-8 h-8" />,
     uri: "/accompagnement",
     color: "bg-orange-500/10 text-orange-600",
-    image: "/service_accompagnement_image_1774288352713.png"
+    image: imgAccompagnement
   },
   {
     title: "Passerelle",
@@ -48,7 +55,7 @@ const services = [
     icon: <ArrowRightLeft className="w-8 h-8" />,
     uri: "/passerelle",
     color: "bg-cyan-500/10 text-cyan-600",
-    image: "/service_passerelle_image_1774287785105.png"
+    image: imgPasserelle
   },
   {
     title: "Post-Permis",
@@ -57,7 +64,7 @@ const services = [
     uri: "/post-permis",
     badge: "Nouveau",
     color: "bg-teal-500/10 text-teal-600",
-    image: "/service_post_permis_image_1774287808051.png"
+    image: imgPostPermis
   },
   {
     title: "Renouvellement",
@@ -182,9 +189,12 @@ const AllService = () => {
                 {/* Image Header */}
                 {service.image && (
                   <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={service.image} 
+                    <ResponsivePicture
+                      picture={service.image}
                       alt={service.title}
+                      sizes="(min-width: 1024px) 400px, (min-width: 768px) 45vw, 92vw"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent" />
