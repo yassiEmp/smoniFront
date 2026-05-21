@@ -23,7 +23,7 @@ export const drivingSchoolSchema = () => ({
   "@id": BUSINESS_ID,
   name: "Auto-école Smoni",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}/logo-smoni.png`,
   image: `${SITE_URL}/og-home.jpg`,
   telephone: "+33 7 71 26 51 19",
   email: "contact@smoni.fr",

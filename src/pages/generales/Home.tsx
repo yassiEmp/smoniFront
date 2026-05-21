@@ -8,7 +8,8 @@ import HomeStarSection from "@components/generales/HomeStarSection";
 import { motion } from "framer-motion";
 import PageHead from "@components/SEO/PageHead";
 import JsonLd from "@components/SEO/JsonLd";
-import { drivingSchoolSchema } from "@components/SEO/schemas";
+import { drivingSchoolSchema, faqSchema } from "@components/SEO/schemas";
+import { faqData } from "@components/generales/HomeFaqSection";
 
 // react-cookie-consent is a CJS module that doesn't interop cleanly through
 // Vite's SSR externalization. Load it client-only via dynamic import.
@@ -48,6 +49,11 @@ const Home = () => {
         canonicalPath="/"
       />
       <JsonLd data={drivingSchoolSchema()} />
+      <JsonLd
+        data={faqSchema(
+          faqData.map((f) => ({ question: f.question, answer: f.answer }))
+        )}
+      />
       <Header />
       <main>
         {/* Critical Path: Loadded immediately */}

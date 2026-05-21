@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { HelpCircle } from "lucide-react";
 
-const faqData = [
+export const faqData = [
   {
     id: "item-1",
     question: "Combien coûte vraiment le permis chez Smoni, sans surprise ?",
