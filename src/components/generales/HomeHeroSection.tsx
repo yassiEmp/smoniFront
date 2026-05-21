@@ -1,8 +1,8 @@
-import { motion, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 import { useNavigate } from "react-router";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // Hex to RGB normalized for Sketchfab API
 const hexToSrgb = (hex: string) => {
@@ -32,38 +32,7 @@ const itemVariants = {
 const HomeHeroSection = () => {
   const navigate = useNavigate();
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const brandColor = "#2c2876";
-
-  useEffect(() => {
-    // Skip parallax on touch devices and reduced-motion users
-    if (window.matchMedia("(hover: none), (prefers-reduced-motion: reduce)").matches) return;
-
-    let rafId = 0;
-    let pendingX = 0;
-    let pendingY = 0;
-    let queued = false;
-
-    const flush = () => {
-      queued = false;
-      setMousePos({ x: pendingX, y: pendingY });
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      pendingX = (e.clientX / window.innerWidth - 0.5) * 40;
-      pendingY = (e.clientY / window.innerHeight - 0.5) * 40;
-      if (!queued) {
-        queued = true;
-        rafId = requestAnimationFrame(flush);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      if (rafId) cancelAnimationFrame(rafId);
-    };
-  }, []);
 
   // Initialize Sketchfab API to change color
   useEffect(() => {
@@ -103,9 +72,6 @@ const HomeHeroSection = () => {
     });
   }, []);
 
-  const smoothX = useSpring(mousePos.x, { damping: 50, stiffness: 400 });
-  const smoothY = useSpring(mousePos.y, { damping: 50, stiffness: 400 });
-
   const handleNavigate = (path: string) => {
     navigate(path);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -113,7 +79,7 @@ const HomeHeroSection = () => {
 
   return (
     <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#f8fafc] pt-24 pb-12 2xl:pt-40">
-      {/* Dynamic Background */}
+      {/* Ambient brand radial wash */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div
           className="absolute inset-0"
@@ -124,15 +90,37 @@ const HomeHeroSection = () => {
             `
           }}
         />
-        <motion.div
-          className="fixed w-[400px] h-[400px] 2xl:w-[600px] 2xl:h-[600px] rounded-full opacity-30"
+      </div>
+
+      {/* Hero side visual — 3D car as ambient background, bleeds off the right edge.
+          Hidden on mobile (perf + readability), revealed from md+. */}
+      <div
+        aria-hidden="true"
+        className="hidden md:block absolute inset-y-0 right-0 w-[65%] lg:w-[60%] xl:w-[58%] pointer-events-none z-0"
+      >
+        <div
+          className="relative w-full h-full overflow-visible"
           style={{
-            background: 'radial-gradient(circle, rgba(44, 40, 118, 0.1) 0%, transparent 70%)',
-            left: 0, top: 0, translateX: '-50%', translateY: '-50%',
-            x: mousePos.x * 20 + (typeof window !== 'undefined' ? window.innerWidth / 2 : 0),
-            y: mousePos.y * 20 + (typeof window !== 'undefined' ? window.innerHeight / 2 : 0),
+            // Soft fade on the left edge so the iframe blends into the section bg
+            // (Stripe/Linear-style hero visual — no hard panel boundary).
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, #000 38%)",
+            maskImage:
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, #000 38%)",
           }}
-        />
+        >
+          <iframe
+            ref={iframeRef}
+            className="absolute -inset-[15%] w-[130%] h-[130%]"
+            style={{ background: "transparent", pointerEvents: "auto" }}
+            title="Smoni Auto-École Vincennes — apprendre à conduire sur véhicule récent"
+            aria-label="Auto-école Smoni à Vincennes, 62 rue de la Jarry, 94300"
+            loading="lazy"
+            frameBorder="0"
+            allow="autoplay; fullscreen; xr-spatial-tracking"
+            src=""
+          />
+        </div>
       </div>
 
       <motion.div
@@ -142,10 +130,9 @@ const HomeHeroSection = () => {
         viewport={{ once: true }}
         variants={containerVariants}
       >
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 2xl:gap-32">
-
-          {/* Left Content (Elite Reference Refined) */}
-          <div className="lg:w-1/2 w-full space-y-6 2xl:space-y-10">
+        <div className="flex flex-col">
+          {/* Left content takes a constrained width so the car bg has room to breathe on the right */}
+          <div className="w-full md:max-w-[55%] lg:max-w-[52%] xl:max-w-[50%] space-y-6 2xl:space-y-10">
             <div className="flex flex-col gap-3 2xl:gap-4">
               <motion.div
                 variants={itemVariants}
@@ -236,33 +223,6 @@ const HomeHeroSection = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Right Visual (Interactive Car) */}
-          <div className="lg:w-1/2 w-full">
-            <motion.div
-              className="relative w-full aspect-square lg:aspect-auto lg:h-[500px] pointer-events-auto"
-              style={{
-                x: smoothX, y: smoothY,
-                rotateX: useTransform(smoothY, [20, -20], [-5, 5]),
-                rotateY: useTransform(smoothX, [-20, 20], [-5, 5]),
-              }}
-            >
-              <div className="w-full h-full relative overflow-hidden bg-transparent">
-                <iframe
-                  ref={iframeRef}
-                  className="absolute w-[130%] h-[130%] top-[-15%] left-[-15%] pointer-events-auto"
-                  style={{ background: 'transparent' }}
-                  title="Smoni Auto-École Vincennes — apprendre à conduire sur véhicule récent"
-                  aria-label="Auto-école Smoni à Vincennes, 62 rue de la Jarry, 94300"
-                  loading="lazy"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; xr-spatial-tracking"
-                  src=""
-                />
-              </div>
-            </motion.div>
-          </div>
-
         </div>
       </motion.div>
     </section>
