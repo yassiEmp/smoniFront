@@ -5,6 +5,7 @@ import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import smoni_logo from "@assets/authentification/smoni-logo.png";
 import ResetStep1 from "@components/auth/ResetStep1";
 import { useState } from "react";
+import PageHead from "@components/SEO/PageHead";
 
 const ResetPasswordPage = () => {
   const [step, setStep] = useState(1);
@@ -12,6 +13,12 @@ const ResetPasswordPage = () => {
   
   return (
     <div className="flex h-screen w-full flex-col items-start justify-between bg-white p-6 md:relative md:flex-row">
+      <PageHead
+        title="Réinitialiser le mot de passe — Smoni"
+        description="Réinitialisez votre mot de passe Smoni."
+        canonicalPath="/reset-password"
+        noindex
+      />
       <div className="top-10 flex w-full items-center md:justify-center md:sticky lg:w-1/3 h-full">
         <ResponsivePicture
           picture={formImage}

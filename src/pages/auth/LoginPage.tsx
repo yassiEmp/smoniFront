@@ -3,6 +3,7 @@ import LoginForm from "./LoginForm";
 import formImage from "@assets/authentification/form-image-1.png?w=480;960&format=avif;webp;jpg&as=picture";
 import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import smoni_logo from "@assets/authentification/smoni-logo.svg";
+import PageHead from "@components/SEO/PageHead";
 
 // import Footer from "@components/generales/Footer";
 // import Header from "@components/generales/Header";
@@ -14,6 +15,12 @@ const LoginPage = () => {
     // <>  
     //  <Header />
      <div className="w-full h-screen md:flex bg-white p-6 items-start justify-between ">
+      <PageHead
+        title="Connexion — Smoni"
+        description="Connectez-vous à votre espace Smoni."
+        canonicalPath="/connexion"
+        noindex
+      />
       <div className="md:sticky top-10 w-full md:h-full lg:w-1/3 flex md:justify-center items-center">
         <ResponsivePicture
           picture={formImage}

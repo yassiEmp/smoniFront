@@ -1,5 +1,16 @@
 User-agent: *
 Allow: /
 
+# Private / auth-gated sections
+Disallow: /learners/
+Disallow: /monitor/
+Disallow: /admin/
+
+# Transactional / utility routes
+Disallow: /payment-success
+Disallow: /connexion
+Disallow: /inscription
+Disallow: /reset-password
+
 # Sitemaps
 Sitemap: https://smoni.fr/sitemap.xml

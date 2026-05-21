@@ -8,6 +8,7 @@ export interface PageHeadProps {
   description: string;
   canonicalPath: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
 const PageHead = ({
@@ -15,6 +16,7 @@ const PageHead = ({
   description,
   canonicalPath,
   ogImage = DEFAULT_OG_IMAGE,
+  noindex = false,
 }: PageHeadProps) => {
   const url = `${SITE_URL}${canonicalPath}`;
   const image = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
@@ -24,6 +26,7 @@ const PageHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

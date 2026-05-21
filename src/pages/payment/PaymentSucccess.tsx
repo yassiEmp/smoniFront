@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router'
+import PageHead from '@components/SEO/PageHead'
 
 const PaymentSucccess = () => {
     const location = useLocation();
@@ -11,6 +12,12 @@ const PaymentSucccess = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-50 to-white px-4">
+            <PageHead
+                title="Paiement — Smoni"
+                description="Confirmation de paiement Smoni."
+                canonicalPath="/payment-success"
+                noindex
+            />
             <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full flex flex-col items-center">
                 {isSuccess ? (
                   <>

@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import Header from '@components/generales/Header';
 import Footer from '@components/generales/Footer';
 import HomeNewStudentSection from '@components/generales/HomeNewStudentSection';
+import PageHead from '@components/SEO/PageHead';
 
 const QuizResults = () => {
   const { attemptId } = useParams<{ attemptId: string }>();
@@ -23,6 +24,12 @@ const QuizResults = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <PageHead
+        title="Résultats du quiz — Smoni"
+        description="Résultats de votre quiz de code de la route."
+        canonicalPath="/quiz/results"
+        noindex
+      />
       <Header />
 
       <main className="flex-grow pt-40 pb-20 px-4">

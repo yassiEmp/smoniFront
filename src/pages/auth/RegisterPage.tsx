@@ -14,6 +14,7 @@ import LeanerStep3 from "@components/auth/LeanerStep3";
 import LeanerStep4 from "@components/auth/LeanerStep4";
 import { RegisterFormData, initialRegisterValues } from "@utils/validations/registerShema";
 import { Link } from "react-router";
+import PageHead from "@components/SEO/PageHead";
 
 const RegisterPage = () => {
   const [type, setType] = useState<string | null>("");
@@ -30,6 +31,12 @@ const RegisterPage = () => {
 
   return (
     <div className="h-screen w-full items-start justify-between bg-white p-4 md:flex">
+      <PageHead
+        title="Inscription — Smoni"
+        description="Créez votre compte Smoni."
+        canonicalPath="/inscription"
+        noindex
+      />
       <div className="top-10 flex w-full items-center md:justify-center md:sticky md:h-full lg:w-1/3">
         <ResponsivePicture
           picture={formImage}

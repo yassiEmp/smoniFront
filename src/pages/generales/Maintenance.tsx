@@ -2,10 +2,17 @@ import Footer from '@components/generales/Footer'
 import Header from '@components/generales/Header'
 import { HiMiniWrenchScrewdriver } from 'react-icons/hi2'
 import { Link } from 'react-router'
+import PageHead from '@components/SEO/PageHead'
 
 const Maintenance = () => {
     return (
         <>
+            <PageHead
+                title="Maintenance — Smoni"
+                description="Page en maintenance."
+                canonicalPath="/maintenance"
+                noindex
+            />
             <Header />
                 <div className="pt-[120px] py-[60px] px-10 relative overflow-hidden flex flex-col items-center justify-center">
                     <HiMiniWrenchScrewdriver className='text-[85px] text-primary'/>
