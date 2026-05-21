@@ -300,6 +300,32 @@ export default function BlogArticle() {
                 })}
               </article>
 
+              {/* "Pour aller plus loin" — contextual in-article internal link
+                  to a money page, category-aware. Keeps the article body
+                  pointing back at conversion routes without spamming links. */}
+              {(() => {
+                const target = (() => {
+                  switch (post.category) {
+                    case "Code":
+                      return { path: "/code-en-ligne", label: "notre formation code en ligne" };
+                    case "Sécurité":
+                      return { path: "/conduite", label: "nos leçons de conduite avec moniteurs diplômés" };
+                    case "Examen":
+                      return { path: "/accompagnement", label: "notre accompagnement à l'examen" };
+                    case "Conduite":
+                    default:
+                      return { path: "/conduite", label: "nos formules de conduite à Vincennes" };
+                  }
+                })();
+                return (
+                  <p className="article-deep-link" style={{ marginTop: "2rem", padding: "1rem 1.25rem", borderLeft: "3px solid #2c2876", background: "#f8fafc", fontSize: "0.95rem", lineHeight: 1.6 }}>
+                    <strong>Pour aller plus loin :</strong> envie de mettre ces conseils en pratique ?
+                    Découvrez <Link to={target.path} style={{ color: "#2c2876", textDecoration: "underline" }}>{target.label}</Link>,
+                    ou <Link to="/tarifs" style={{ color: "#2c2876", textDecoration: "underline" }}>consultez nos tarifs</Link>.
+                  </p>
+                );
+              })()}
+
               <div className="article-footer-nav">
                 <Link to="/blog" className="article-back-link">
                   <ArrowLeft size={18} strokeWidth={1.5} /> <span>Retour aux articles</span>

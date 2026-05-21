@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { ResponsivePicture } from "@/components/ui/responsive-picture";
+import imgLabelQualite from "@assets/blog/details7/label-ecole-qualite.png?w=240;480&format=avif;webp;png&as=picture";
 
 const engagements = [
   {
@@ -32,6 +34,56 @@ const HomeCertificationSection = () => {
   return (
     <section className="pb-24 pt-4 bg-[#f8fafc] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-20">
+
+        {/* Quality Certification Banner */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 mb-28 md:mb-36 pb-12 md:pb-16 border-b border-slate-200/70">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-center md:text-left max-w-md"
+          >
+            <h2 className="text-2xl md:text-3xl font-black text-[#2c2876] mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
+              Établissement Certifié Qualité
+            </h2>
+            <p className="text-slate-500 font-medium leading-relaxed">
+              SMONI est fier d'être détenteur du label <span className="text-blue-600 font-bold">"Qualité des formations au sein des écoles de conduite"</span> délivré par le Ministère de l'Intérieur.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative group"
+          >
+            <div className="absolute -inset-4 bg-yellow-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <ResponsivePicture
+              picture={imgLabelQualite}
+              alt="Label École Conduite Qualité"
+              sizes="(min-width: 768px) 224px, 160px"
+              loading="lazy"
+              decoding="async"
+              className="w-40 md:w-56 h-auto relative z-10 drop-shadow-xl hover:rotate-3 transition-transform duration-500"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col gap-4"
+          >
+            <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+              <div className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span className="text-sm font-bold text-[#2c2876]">Formation Post-Permis Agréée</span>
+            </div>
+            <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
+              <div className="w-2 h-2 rounded-full bg-blue-500" />
+              <span className="text-sm font-bold text-[#2c2876]">Intervenants Spécialisés ANTS</span>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Section Heading */}
         <motion.div
