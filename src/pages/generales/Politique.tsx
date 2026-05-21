@@ -16,7 +16,7 @@ const Politique = () => {
             <PageHead
                 title="Politique de confidentialite - Smoni Auto-Ecole"
                 description="Politique de confidentialite de Smoni Auto-Ecole Vincennes : traitement des donnees personnelles, cookies et droits des utilisateurs."
-                canonicalPath="/privacypolicy"
+                canonicalPath="/politique-confidentialite"
             />
             <Header />
             <div className="pt-[120px] relative overflow-hidden">

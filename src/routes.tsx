@@ -1,3 +1,11 @@
+// URL consistency: /privacypolicy → /politique-confidentialite (French slug).
+// React-side <Navigate replace> handles the client redirect. For SEO, the VPS
+// nginx config should also send a hard 301:
+//
+//   rewrite ^/privacypolicy$ /politique-confidentialite permanent;
+//
+// (or in an Apache .htaccess: Redirect 301 /privacypolicy /politique-confidentialite)
+
 import type { RouteRecord } from "vite-react-ssg";
 import { Navigate } from "react-router";
 import App from "./App";
@@ -25,7 +33,10 @@ export const routes: RouteRecord[] = [
       { path: "tarifs", lazy: lazyDefault(() => import("@pages/generales/Tarif")), entry: "src/pages/generales/Tarif.tsx" },
       { path: "contact", lazy: lazyDefault(() => import("@pages/generales/Contact")), entry: "src/pages/generales/Contact.tsx" },
       { path: "ressources", lazy: lazyDefault(() => import("@pages/generales/Ressources")), entry: "src/pages/generales/Ressources.tsx" },
-      { path: "privacypolicy", lazy: lazyDefault(() => import("@pages/generales/Politique")), entry: "src/pages/generales/Politique.tsx" },
+      { path: "politique-confidentialite", lazy: lazyDefault(() => import("@pages/generales/Politique")), entry: "src/pages/generales/Politique.tsx" },
+      // Client-side redirect for the legacy English slug. Server-side 301 should
+      // be added at the nginx layer (see top of file).
+      { path: "privacypolicy", element: <Navigate to="/politique-confidentialite" replace /> },
       { path: "cgu", lazy: lazyDefault(() => import("@pages/generales/Condition")), entry: "src/pages/generales/Condition.tsx" },
       { path: "maintenance", lazy: lazyDefault(() => import("@pages/generales/Maintenance")), entry: "src/pages/generales/Maintenance.tsx" },
 

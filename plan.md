@@ -59,7 +59,7 @@ Status: queued. Tick items as they land.
 - [x] Add to schema `sameAs`: GBP profile URL, Facebook page, Pages Jaunes profile (Facebook done; GBP + PJ TODO — real URLs needed)
 
 ### 10. URL consistency
-- [ ] Rename `/privacypolicy` → `/politique-confidentialite` (301 at host)
+- [x] Rename `/privacypolicy` → `/politique-confidentialite` (301 at host — nginx rule documented in routes.tsx)
 
 ### 11. Internal linking
 - [ ] Add at least one contextual in-paragraph link per blog post → `/conduite` or `/tarifs` or `/contact`

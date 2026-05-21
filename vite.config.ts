@@ -13,7 +13,7 @@ const PRERENDER_PATHS = new Set<string>([
   '/tarifs',
   '/contact',
   '/ressources',
-  '/privacypolicy',
+  '/politique-confidentialite',
   '/cgu',
   '/maintenance',
   '/location',

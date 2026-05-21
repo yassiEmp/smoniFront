@@ -54,9 +54,9 @@ const Footer = () => {
   ];
 
   const legalLinks = [
-    { name: "Mentions légales", path: "/privacypolicy" },
-    { name: "Confidentialité", path: "/privacypolicy" },
-    { name: "CGU / CGV", path: "/CGU" },
+    { name: "Mentions légales", path: "/politique-confidentialite" },
+    { name: "Confidentialité", path: "/politique-confidentialite" },
+    { name: "CGU / CGV", path: "/cgu" },
   ];
 
   return (
