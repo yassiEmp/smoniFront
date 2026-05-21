@@ -1,11 +1,15 @@
 import { Suspense, lazy } from "react";
+import { ClientOnly } from "vite-react-ssg";
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import HomeHeroSection from "@components/generales/HomeHeroSection";
 import HomeCertificationSection from "@components/generales/HomeCertificationSection";
 import HomeStarSection from "@components/generales/HomeStarSection";
-import CookieConsent from "react-cookie-consent";
 import { motion } from "framer-motion";
+
+// react-cookie-consent is a CJS module that doesn't interop cleanly through
+// Vite's SSR externalization. Load it client-only via dynamic import.
+const CookieConsent = lazy(() => import("react-cookie-consent"));
 
 // Lazy load non-critical sections below the fold
 const HomeGroupeSection = lazy(() => import("@components/generales/HomeGroupeSection"));
@@ -42,21 +46,28 @@ const Home = () => {
         <HomeCertificationSection />
         <div id="stats"><HomeStarSection /></div>
 
-        {/* Deferred Loading: Loaded as you scroll */}
-        <Suspense fallback={<div className="h-96 w-full bg-slate-50 animate-pulse rounded-3xl" />}>
-          <FadeInSection id="groupe"><HomeGroupeSection /></FadeInSection>
-          <FadeInSection id="features"><HomeFeaturesSection /></FadeInSection>
-          <FadeInSection id="impact"><HomeImpactSection /></FadeInSection>
-          <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
-          <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>
-          <FadeInSection id="etapes"><HomeStepSection /></FadeInSection>
-          <FadeInSection id="avis"><Testimonials /></FadeInSection>
-          <FadeInSection id="inscription"><HomeNewStudentSection /></FadeInSection>
-          <FadeInSection id="localisation"><HomeLocationSection /></FadeInSection>
-          <FadeInSection id="faq"><HomeFaqSection /></FadeInSection>
-        </Suspense>
+        {/* Deferred Loading: client-only (React.lazy doesn't SSR well here) */}
+        <ClientOnly>
+          {() => (
+            <Suspense fallback={<div className="h-96 w-full bg-slate-50 animate-pulse rounded-3xl" />}>
+              <FadeInSection id="groupe"><HomeGroupeSection /></FadeInSection>
+              <FadeInSection id="features"><HomeFeaturesSection /></FadeInSection>
+              <FadeInSection id="impact"><HomeImpactSection /></FadeInSection>
+              <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
+              <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>
+              <FadeInSection id="etapes"><HomeStepSection /></FadeInSection>
+              <FadeInSection id="avis"><Testimonials /></FadeInSection>
+              <FadeInSection id="inscription"><HomeNewStudentSection /></FadeInSection>
+              <FadeInSection id="localisation"><HomeLocationSection /></FadeInSection>
+              <FadeInSection id="faq"><HomeFaqSection /></FadeInSection>
+            </Suspense>
+          )}
+        </ClientOnly>
       </main>
 
+      <ClientOnly>
+        {() => (
+      <Suspense fallback={null}>
       <CookieConsent
         location="bottom"
         buttonText="J'ai compris"
@@ -74,6 +85,9 @@ const Home = () => {
       >
         <span className="text-sm font-medium">Ce site Web utilise des cookies pour améliorer votre expérience utilisateur.</span>
       </CookieConsent>
+      </Suspense>
+        )}
+      </ClientOnly>
       <Footer />
     </>
   );
