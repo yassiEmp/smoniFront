@@ -25,7 +25,7 @@ const LocationPricingCard = ({ item }: { item: BoutiqueService }) => {
            <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#2c2876]/5" />
         </div>
 
-        <CardHeader className="relative p-8 pb-4 text-center">
+        <CardHeader className="relative p-6 sm:p-8 pb-4 text-center">
             {isPremium && (
                 <div className="absolute top-6 right-6">
                     <Badge className="bg-[#2c2876] text-white border-none shadow-lg animate-pulse">
@@ -43,15 +43,15 @@ const LocationPricingCard = ({ item }: { item: BoutiqueService }) => {
             </div>
 
             <div className="flex items-center justify-center gap-1">
-                <span className="text-3xl font-black text-[#2c2876] align-top mt-1">€</span>
-                <span className="text-6xl font-[900] text-[#2c2876] tracking-tighter italic">
+                <span className="text-2xl sm:text-3xl font-black text-[#2c2876] align-top mt-1">€</span>
+                <span className="text-5xl sm:text-6xl font-[900] text-[#2c2876] tracking-tighter italic">
                     {item.price}
                 </span>
                 {/* <span className="text-slate-400 font-bold self-end mb-2">/ttc</span> */}
             </div>
         </CardHeader>
 
-        <CardContent className="flex-grow p-8 pt-4">
+        <CardContent className="flex-grow p-6 sm:p-8 pt-4">
             {item.items && item.items.length > 0 && (
                 <div className="space-y-6">
                     <div className="h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
@@ -78,7 +78,7 @@ const LocationPricingCard = ({ item }: { item: BoutiqueService }) => {
             )}
         </CardContent>
 
-        <CardFooter className="p-8 pt-0">
+        <CardFooter className="p-6 sm:p-8 pt-0">
             <Link to="/learners/boutique" className="w-full">
                 <Button 
                     className={`w-full h-14 rounded-2xl text-lg font-black transition-all duration-300 group/btn border-none shadow-[0_10px_20px_-10px_rgba(44,40,118,0.3)] 

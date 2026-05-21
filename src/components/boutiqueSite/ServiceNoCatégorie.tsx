@@ -21,11 +21,11 @@ const Autres = () => {
 
   return (
     
-      <section className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-white hover:scrollbar-thumb-gray-800 transition-all duration-300 ease-in-out  overflow-y-auto max-h-[500px] scrollbar-hide ">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-stretch">
         {loading ? (
-          <Loader />
+          <div className="col-span-full"><Loader /></div>
         ) : services.length === 0 ? (
-          <div className="text-center text-gray-500 py-12">Aucun service disponible.</div>
+          <div className="col-span-full text-center text-gray-500 py-12">Aucun service disponible.</div>
         ) : (
           services.map(service => (
             <LocationPricingCard key={service.id} item={service}  />

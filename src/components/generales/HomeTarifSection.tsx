@@ -82,14 +82,14 @@ const HomeTarifSection = () => {
 
   return (
     <motion.section
-      className="py-20 md:py-28 px-6 md:px-10 xl:px-32 bg-white"
+      className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-10 xl:px-32 bg-white"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
     >
       {/* Section Header */}
-      <motion.div className="text-center mb-12 space-y-4" variants={itemVariants}>
+      <motion.div className="text-center mb-10 sm:mb-12 space-y-4" variants={itemVariants}>
         <Badge
           variant="secondary"
           className="px-4 py-1.5 text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 rounded-full"
@@ -97,20 +97,24 @@ const HomeTarifSection = () => {
           <CreditCard className="w-3 h-3 mr-1.5" />
           Tarifs publics
         </Badge>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
           Combien ça coûte. Tout. Au centime.
         </h2>
-        <p className="text-slate-700 text-lg max-w-xl mx-auto">
+        <p className="text-slate-700 text-base sm:text-lg max-w-xl mx-auto">
           On affiche tout parce qu'on en a marre du « on en parle quand vous venez ». CPF, Permis 1€/jour, aide Région IDF, paiement 3×/4× — tout est possible.
         </p>
       </motion.div>
 
-      {/* Category Tabs */}
-      <motion.div className="flex justify-center px-2" variants={itemVariants}>
+      {/* Category Tabs — chip strip that wraps; never a tall vertical column */}
+      <motion.div className="flex justify-center" variants={itemVariants}>
         {loadingCategories ? (
           <Loader />
         ) : (
-          <div className="flex w-full flex-col justify-center gap-1.5 rounded-xl bg-muted/80 p-1.5 shadow-sm border border-border/50 md:w-auto md:flex-row">
+          <div
+            role="tablist"
+            aria-label="Catégories de tarifs"
+            className="flex flex-wrap justify-center gap-1.5 rounded-2xl bg-muted/80 p-1.5 shadow-sm border border-border/50 max-w-full"
+          >
             {categories.map((item) => (
               <Btn3 key={item.id} item={item} active={active} setActive={setActive} />
             ))}
@@ -118,36 +122,41 @@ const HomeTarifSection = () => {
         )}
       </motion.div>
 
-      {/* Type selector - always visible */}
-      {!loadingCategories && (
-          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button
-              onClick={() => setSelectedType("automatic")}
-              variant={selectedType === "automatic" ? "default" : "outline"}
-              className={`rounded-xl w-[180px] h-12 text-base font-semibold transition-all ${selectedType === "automatic"
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "border-border text-muted-foreground hover:text-foreground"
-                }`}
-            >
-              Automatique
-            </Button>
-            <Button
-              onClick={() => setSelectedType("manual")}
-              variant={selectedType === "manual" ? "default" : "outline"}
-              className={`rounded-xl w-[180px] h-12 text-base font-semibold transition-all ${selectedType === "manual"
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "border-border text-muted-foreground hover:text-foreground"
-                }`}
-            >
-              Manuel
-            </Button>
-          </div>
+      {/* Transmission type selector — hidden for CPF/Autres where it doesn't apply */}
+      {!loadingCategories && !isAutres && (
+        <motion.div
+          className="mt-6 flex flex-wrap items-center justify-center gap-3"
+          variants={itemVariants}
+        >
+          <Button
+            onClick={() => setSelectedType("automatic")}
+            variant={selectedType === "automatic" ? "default" : "outline"}
+            aria-pressed={selectedType === "automatic"}
+            className={`rounded-xl w-full sm:w-[180px] h-12 text-base font-semibold transition-all ${
+              selectedType === "automatic"
+                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                : "border-border text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Automatique
+          </Button>
+          <Button
+            onClick={() => setSelectedType("manual")}
+            variant={selectedType === "manual" ? "default" : "outline"}
+            aria-pressed={selectedType === "manual"}
+            className={`rounded-xl w-full sm:w-[180px] h-12 text-base font-semibold transition-all ${
+              selectedType === "manual"
+                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                : "border-border text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Manuel
+          </Button>
+        </motion.div>
       )}
 
-      {/* Content */}
-      <div className="mx-auto w-full max-w-5xl overflow-y-auto">
-        <div className="py-12">{renderContent()}</div>
-      </div>
+      {/* Content — flows with the page, no inner scroll */}
+      <div className="mx-auto w-full max-w-6xl mt-10 sm:mt-12">{renderContent()}</div>
     </motion.section>
   );
 };
