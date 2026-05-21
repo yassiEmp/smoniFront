@@ -18,8 +18,9 @@ const Btn3 = ({ item, active, setActive }: Btn3Props) => {
       onClick={() => setActive(item.id)}
       className={[
         "group relative inline-flex items-center gap-1.5",
-        "min-h-[44px] px-4 sm:px-5 py-2.5",
-        "rounded-full text-sm font-semibold whitespace-nowrap",
+        "min-h-[44px] px-3.5 sm:px-5 py-2.5",
+        "rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap",
+        "max-w-full",
         "border transition-all duration-200 ease-out cursor-pointer select-none",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
         isActive

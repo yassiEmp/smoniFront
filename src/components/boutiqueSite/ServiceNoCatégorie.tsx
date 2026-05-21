@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LocationPricingCard from '@/components/generales/Card/LocationPricingCard';
+import PricingCardGrid from "@/components/boutiqueSite/PricingCardGrid";
 import Loader from "@/components/common/Loader";
 import { fetchBoutiqueServices } from "@/api/boutique/services";
 import { BoutiqueService } from "@/api/boutique/types";
@@ -14,26 +14,13 @@ const Autres = () => {
   useEffect(() => {
     setLoading(true);
     fetchBoutiqueServices(AUTRES_CATEGORY_ID, "")
-      .then(res => setServices(res.data))
+      .then((res) => setServices(res.data))
       .catch(() => setServices([]))
       .finally(() => setLoading(false));
   }, []);
 
-  return (
-    
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 items-stretch">
-        {loading ? (
-          <div className="col-span-full"><Loader /></div>
-        ) : services.length === 0 ? (
-          <div className="col-span-full text-center text-gray-500 py-12">Aucun service disponible.</div>
-        ) : (
-          services.map(service => (
-            <LocationPricingCard key={service.id} item={service}  />
-          ))
-        )}
-      </section>
-    
-  );
+  if (loading) return <Loader />;
+  return <PricingCardGrid services={services} />;
 };
 
 export default Autres;
