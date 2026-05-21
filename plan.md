@@ -37,11 +37,11 @@ Status: queued. Tick items as they land.
 ## P1 — Next 2 weeks
 
 ### 6. Performance / Core Web Vitals
-- [ ] Self-host Outfit + Inter via `@fontsource/outfit` + `@fontsource/inter` (drop Google Fonts request)
-- [ ] Preload LCP hero image in `index.html`: `<link rel="preload" as="image" imagesrcset="..." imagesizes="...">`
-- [ ] Move `HomeFaqSection` + `HomeTarifSection` out of `ClientOnly` so SSG renders them (SEO-critical content)
-- [ ] Reserve actual section heights for lazy sections to prevent CLS (current `h-96` fallback too short)
-- [ ] Produce WebP variant for `og-home.jpg` for Twitter cards
+- [x] Self-host Outfit + Inter via `@fontsource/outfit` + `@fontsource/inter` (drop Google Fonts request)
+- [x] Preload LCP hero image in `index.html`: `<link rel="preload" as="image" imagesrcset="..." imagesizes="...">`
+- [x] Move `HomeFaqSection` + `HomeTarifSection` out of `ClientOnly` so SSG renders them (SEO-critical content)
+- [x] Reserve actual section heights for lazy sections to prevent CLS (current `h-96` fallback too short)
+- [x] Produce WebP variant for `og-home.jpg` for Twitter cards
 
 ### 7. Per-page Open Graph
 - [ ] Pass per-service `ogImage` through `PageHead` for all 8 service Details pages

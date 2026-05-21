@@ -10,10 +10,18 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#2c2876" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+  <!-- Fonts self-hosted via @fontsource (see src/main.tsx). Google Fonts request removed. -->
+
+  <!-- Preload LCP hero image (Peugeot 2008, served as AVIF). Files live at
+       /public/hero-car-{800,1200,1600}.avif and are NOT fingerprinted. -->
+  <link
+    rel="preload"
+    as="image"
+    type="image/avif"
+    imagesrcset="/hero-car-800.avif 800w, /hero-car-1200.avif 1200w, /hero-car-1600.avif 1600w"
+    imagesizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
+    fetchpriority="high"
+    media="(min-width: 768px)">
   <title>Auto-École Smoni Vincennes (94300) — Permis B, Boîte Auto</title>
   <meta name="description" content="Smoni, auto-école à Vincennes (94300) : permis B, boîte automatique. Prix transparents, moniteurs qui respectent, recalés bienvenus. ☎ 07 71 26 51 19">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -41,7 +49,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Smoni — Auto-École à Vincennes (94300)">
   <meta name="twitter:description" content="Permis B, boîte automatique à Vincennes (94300). Prix transparents, recalés bienvenus. 62 rue de la Jarry — RER A.">
-  <meta name="twitter:image" content="https://smoni.fr/og-home.jpg">
+  <meta name="twitter:image" content="https://smoni.fr/og-home.webp">
   <meta name="twitter:image:alt" content="Smoni — Auto-école à Vincennes (94300)">
 
   <!-- Sitewide WebSite schema (DrivingSchool/Organization, Services, FAQ, Breadcrumbs are emitted per-route via Helmet) -->

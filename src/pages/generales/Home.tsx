@@ -5,6 +5,9 @@ import Header from "@components/generales/Header";
 import HomeHeroSection from "@components/generales/HomeHeroSection";
 import HomeCertificationSection from "@components/generales/HomeCertificationSection";
 import HomeStarSection from "@components/generales/HomeStarSection";
+// SEO-critical sections: rendered in SSG HTML (no ClientOnly wrapper).
+import HomeFaqSection from "@components/generales/HomeFaqSection";
+import HomeTarifSection from "@components/generales/HomeTarifSection";
 import { motion } from "framer-motion";
 import PageHead from "@components/SEO/PageHead";
 import JsonLd from "@components/SEO/JsonLd";
@@ -20,12 +23,10 @@ const HomeGroupeSection = lazy(() => import("@components/generales/HomeGroupeSec
 const HomeFeaturesSection = lazy(() => import("@components/generales/HomeFeaturesSection"));
 const HomeImpactSection = lazy(() => import("@components/generales/HomeImpactSection"));
 const HomeUnicornSection = lazy(() => import("@components/generales/HomeUnicornSection"));
-const HomeTarifSection = lazy(() => import("@components/generales/HomeTarifSection"));
 const HomeStepSection = lazy(() => import("@components/generales/HomeStepSection"));
 const Testimonials = lazy(() => import("@components/generales/Testimonials"));
 const HomeNewStudentSection = lazy(() => import("@components/generales/HomeNewStudentSection"));
 const HomeLocationSection = lazy(() => import("@components/generales/HomeLocationSection"));
-const HomeFaqSection = lazy(() => import("@components/generales/HomeFaqSection"));
 
 // Performance-optimized Fade In wrapper
 const FadeInSection = ({ children, id }: { children: React.ReactNode; id?: string }) => (
@@ -61,23 +62,52 @@ const Home = () => {
         <HomeCertificationSection />
         <div id="stats"><HomeStarSection /></div>
 
-        {/* Deferred Loading: client-only (React.lazy doesn't SSR well here) */}
+        {/* Deferred Loading: client-only (React.lazy doesn't SSR well here).
+            Fallback heights are tuned per-section to match real rendered height
+            and avoid CLS when content swaps in. */}
         <ClientOnly>
           {() => (
-            <Suspense fallback={<div className="h-96 w-full bg-slate-50 animate-pulse rounded-3xl" />}>
-              <FadeInSection id="groupe"><HomeGroupeSection /></FadeInSection>
-              <FadeInSection id="features"><HomeFeaturesSection /></FadeInSection>
-              <FadeInSection id="impact"><HomeImpactSection /></FadeInSection>
-              <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
-              <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>
-              <FadeInSection id="etapes"><HomeStepSection /></FadeInSection>
-              <FadeInSection id="avis"><Testimonials /></FadeInSection>
-              <FadeInSection id="inscription"><HomeNewStudentSection /></FadeInSection>
-              <FadeInSection id="localisation"><HomeLocationSection /></FadeInSection>
-              <FadeInSection id="faq"><HomeFaqSection /></FadeInSection>
-            </Suspense>
+            <>
+              <Suspense fallback={<div className="min-h-[900px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="groupe"><HomeGroupeSection /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="features"><HomeFeaturesSection /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="impact"><HomeImpactSection /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
+              </Suspense>
+            </>
           )}
         </ClientOnly>
+
+        {/* SEO-critical: prerendered in SSG HTML (Tarif + FAQ surface organic queries). */}
+        <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>
+
+        <ClientOnly>
+          {() => (
+            <>
+              <Suspense fallback={<div className="min-h-[800px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="etapes"><HomeStepSection /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="avis"><Testimonials /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="inscription"><HomeNewStudentSection /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[600px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="localisation"><HomeLocationSection /></FadeInSection>
+              </Suspense>
+            </>
+          )}
+        </ClientOnly>
+
+        {/* SEO-critical: FAQ schema needs the questions in initial HTML too. */}
+        <FadeInSection id="faq"><HomeFaqSection /></FadeInSection>
       </main>
 
       <ClientOnly>
