@@ -56,8 +56,9 @@ const Details5 = () => {
         <div className="bg-[#f8fafc] min-h-screen">
             <PageHead
                 title="Code de la route en ligne - Smoni Auto-Ecole Vincennes"
-                description="Revisez le code de la route en ligne avec Smoni Auto-Ecole : cours, series d'examens blancs et suivi de votre progression depuis chez vous."
+                description="Revisez le code de la route en ligne avec Smoni Vincennes : cours, examens blancs et suivi de progression depuis chez vous."
                 canonicalPath="/code-en-ligne"
+                ogImage="/og/code-en-ligne.png"
             />
             <JsonLd
                 data={[

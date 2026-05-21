@@ -44,9 +44,9 @@ Status: queued. Tick items as they land.
 - [x] Produce WebP variant for `og-home.jpg` for Twitter cards
 
 ### 7. Per-page Open Graph
-- [ ] Pass per-service `ogImage` through `PageHead` for all 8 service Details pages
-- [ ] Verify each blog post title ≤ 60 chars in SERPs
-- [ ] Tighten meta descriptions to 140–155 chars (several currently 180+)
+- [x] Pass per-service `ogImage` through `PageHead` for all 8 service Details pages
+- [x] Verify each blog post title ≤ 60 chars in SERPs (peur-mecanique = 61 — flag for client)
+- [x] Tighten meta descriptions to 140–155 chars (several currently 180+)
 
 ### 8. E-E-A-T signals
 - [ ] Create `/equipe/arike` author page (bio, BEPECASER / Titre Pro ECSR diplomas, photo, `Person` schema)

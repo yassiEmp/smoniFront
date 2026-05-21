@@ -61,8 +61,9 @@ const Details7 = () => {
         <div className="bg-[#f8fafc] min-h-screen">
             <PageHead
                 title="Formation post-permis - Smoni Auto-Ecole Vincennes"
-                description="Formation post-permis pour jeunes conducteurs a Vincennes : reduisez la periode probatoire et roulez plus sereinement avec Smoni Auto-Ecole."
+                description="Formation post-permis a Vincennes pour jeunes conducteurs : reduisez la periode probatoire et roulez plus sereinement."
                 canonicalPath="/post-permis"
+                ogImage="/og/post-permis.png"
             />
             <JsonLd
                 data={[

@@ -46,7 +46,7 @@ const Home = () => {
     <>
       <PageHead
         title="Auto-école Smoni Vincennes (94300) — Permis B, code, conduite"
-        description="Auto-école Smoni à Vincennes (94300) : permis B boîte manuelle et automatique, code en ligne 24/7, stage accéléré, accompagnement examen. Tarifs transparents."
+        description="Auto-école Smoni à Vincennes (94300) : permis B boîte manuelle et automatique, code en ligne 24/7, stage accéléré. Tarifs transparents."
         canonicalPath="/"
       />
       <JsonLd data={drivingSchoolSchema()} />

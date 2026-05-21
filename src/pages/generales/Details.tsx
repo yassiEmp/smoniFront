@@ -59,8 +59,9 @@ const Details = () => {
         <div className="bg-[#f8fafc] min-h-screen">
             <PageHead
                 title="Location voiture double commande - Smoni Vincennes"
-                description="Louez une voiture a double commande chez Smoni Auto-Ecole Vincennes pour vous entrainer avec un accompagnateur avant votre examen du permis B."
+                description="Louez une voiture a double commande a Vincennes (94300) : entrainez-vous avec un accompagnateur avant l'examen du permis B."
                 canonicalPath="/location"
+                ogImage="/og/location.png"
             />
             <JsonLd
                 data={[

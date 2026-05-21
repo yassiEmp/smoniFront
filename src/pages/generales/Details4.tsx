@@ -60,6 +60,7 @@ const Details4 = () => {
                 title="Passerelle boite auto vers boite manuelle - Smoni"
                 description="Formation passerelle pour passer du permis boite automatique a la boite manuelle a Vincennes (94300) avec Smoni Auto-Ecole."
                 canonicalPath="/passerelle"
+                ogImage="/og/passerelle.png"
             />
             <JsonLd
                 data={[

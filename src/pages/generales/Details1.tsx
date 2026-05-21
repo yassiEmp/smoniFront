@@ -75,8 +75,9 @@ const Details1 = () => {
         <div className="bg-[#f8fafc] min-h-screen">
             <PageHead
                 title="Cours de conduite permis B - Smoni Vincennes 94300"
-                description="Lecons de conduite a Vincennes (94300) avec moniteurs diplomes : pedagogie progressive, vehicules recents et passage rapide a l'examen."
+                description="Lecons de conduite a Vincennes (94300) : moniteurs diplomes, pedagogie progressive et passage rapide a l'examen du permis B."
                 canonicalPath="/conduite"
+                ogImage="/og/conduite.png"
             />
             <JsonLd
                 data={[

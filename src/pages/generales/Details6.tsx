@@ -53,6 +53,7 @@ const Details6 = () => {
                 title="Accompagnement a l'examen du permis - Smoni Vincennes"
                 description="Accompagnement personnalise jusqu'a l'examen du permis B : preparation mentale, conseils et passage en confiance avec Smoni Auto-Ecole."
                 canonicalPath="/accompagnement"
+                ogImage="/og/accompagnement.png"
             />
             <JsonLd
                 data={[
