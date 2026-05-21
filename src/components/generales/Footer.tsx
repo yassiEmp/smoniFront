@@ -220,14 +220,13 @@ const Footer = () => {
       >
         <div className="flex flex-wrap justify-between items-center gap-10">
           <div className="flex flex-wrap items-center gap-8 opacity-40 hover:opacity-100 transition-opacity">
-            {[
-              { src: LogoCPF, alt: "Permis financé par CPF" },
-              { src: LogoPermis1Euro, alt: "Permis à 1 euro par jour" },
-              { src: LogoQualiopi, alt: "Certification Qualiopi" },
-              { src: LabelLogo, alt: "Label Qualité Auto-école" },
-            ].map((logo, i) => (
-              <img key={i} src={logo.src} alt={logo.alt} className="h-10 md:h-12 object-contain" />
-            ))}
+            <img src={LogoCPF} alt="Permis financé par CPF" className="h-10 md:h-12 object-contain" />
+            <img src={LogoPermis1Euro} alt="Permis à 1 euro par jour" className="h-10 md:h-12 object-contain" />
+            {/* TODO: link to actual Qualiopi cert PDF when received from client */}
+            <a href="#" aria-label="Voir le certificat Qualiopi (PDF)" rel="noopener">
+              <img src={LogoQualiopi} alt="Certification Qualiopi — voir le certificat" className="h-10 md:h-12 object-contain" />
+            </a>
+            <img src={LabelLogo} alt="Label Qualité Auto-école" className="h-10 md:h-12 object-contain" />
           </div>
           <div className="flex flex-wrap gap-6">
             {legalLinks.map((link) => (
@@ -237,6 +236,19 @@ const Footer = () => {
             ))}
           </div>
         </div>
+      </motion.div>
+
+      {/* Legal / regulatory line — SIREN + financial guarantee required by
+          art. L.213-2 du Code de la route for any auto-école in France. */}
+      <motion.div
+        className="px-6 xl:px-14 py-4 bg-black/30 text-center border-t border-white/5"
+        variants={itemVariants}
+      >
+        <p className="text-white/40 text-[10px] leading-relaxed">
+          SMONI AUTO-ÉCOLE — SIREN 915 387 013 · 62 rue de la Jarry, 94300 Vincennes
+          {" · "}
+          Garantie financière conforme à l'art. L.213-2 du Code de la route
+        </p>
       </motion.div>
 
       <motion.div

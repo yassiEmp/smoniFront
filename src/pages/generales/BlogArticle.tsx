@@ -214,7 +214,9 @@ export default function BlogArticle() {
               <div className="meta-sep" />
               <div className="meta-item">{post.date}</div>
               <div className="meta-sep" />
-              <div className="meta-item">Par {post.author.name}</div>
+              <div className="meta-item">
+                Par <Link to="/equipe/arike" className="underline decoration-dotted underline-offset-2 hover:text-[#2c2876]">{post.author.name}</Link>
+              </div>
             </div>
           </div>
         </header>

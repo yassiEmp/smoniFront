@@ -49,10 +49,10 @@ Status: queued. Tick items as they land.
 - [x] Tighten meta descriptions to 140–155 chars (several currently 180+)
 
 ### 8. E-E-A-T signals
-- [ ] Create `/equipe/arike` author page (bio, BEPECASER / Titre Pro ECSR diplomas, photo, `Person` schema)
-- [ ] Link each blog post's `post.author.name` to the author page
-- [ ] Add SIREN (915 387 013), Garantie financière (art. L.213-2 cite), Qualiopi cert link to footer
-- [ ] Link Qualiopi badge to the actual certificate PDF
+- [x] Create `/equipe/arike` author page (bio, BEPECASER / Titre Pro ECSR diplomas, photo, `Person` schema)
+- [x] Link each blog post's `post.author.name` to the author page
+- [x] Add SIREN (915 387 013), Garantie financière (art. L.213-2 cite), Qualiopi cert link to footer
+- [ ] Link Qualiopi badge to the actual certificate PDF (TODO in Footer — needs cert URL from client)
 
 ### 9. Local SEO foundations
 - [ ] Embed Google Maps iframe on `/contact` + add structured `Place` schema

@@ -24,6 +24,7 @@ const PRERENDER_PATHS = new Set<string>([
   '/code-en-ligne',
   '/accompagnement',
   '/post-permis',
+  '/equipe/arike',
   '/blog',
 ])
 

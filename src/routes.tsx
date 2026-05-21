@@ -39,6 +39,9 @@ export const routes: RouteRecord[] = [
       { path: "accompagnement", lazy: lazyDefault(() => import("@pages/generales/Details6")), entry: "src/pages/generales/Details6.tsx" },
       { path: "post-permis", lazy: lazyDefault(() => import("@pages/generales/Details7")), entry: "src/pages/generales/Details7.tsx" },
 
+      // E-E-A-T author page (prerendered for SEO)
+      { path: "equipe/arike", lazy: lazyDefault(() => import("@pages/generales/EquipeArike")), entry: "src/pages/generales/EquipeArike.tsx" },
+
       // Blog (prerendered: index + every article)
       { path: "blog", lazy: lazyDefault(() => import("@pages/generales/BlogIndex")), entry: "src/pages/generales/BlogIndex.tsx" },
       {
