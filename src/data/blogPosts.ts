@@ -900,6 +900,105 @@ export const blogPosts: BlogPost[] = [
         ]
       }
     ]
+  },
+  {
+    slug: "permis-b-a-vincennes-prix-duree-demarches-en-2026",
+    title: "Permis B à Vincennes : prix, durée, démarches en 2026",
+    subtitle:
+      "Prix réel à Vincennes en 2026, délais en Île-de-France, démarches NEPH/ANTS, financement CPF et permis à 1 €/jour, scénario recalé : tout ce qu'il faut savoir avant de signer.",
+    excerpt:
+      "À Vincennes (94300), le permis B coûte en moyenne 1 800 €, jusqu'à 2 300 € avec un repassage. Délais réels en Île-de-France, démarches NEPH/ANTS pas-à-pas, financement CPF en 2026 et examen pratique à Rungis : le guide complet pour candidats du Val-de-Marne.",
+    category: "Examen",
+    date: "22 Mai 2026",
+    readingTime: "12 min",
+    // TODO: replace with final hero image once generated from runs/<slug>/image-prompts.json
+    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Permis B",
+      "Vincennes",
+      "Auto-école 94",
+      "ANTS NEPH",
+      "CPF permis 2026",
+      "Examen Rungis",
+      "Prix permis"
+    ],
+    sections: [
+      {
+        title: "Combien coûte le permis B à Vincennes en 2026 ?",
+        iconName: "BarChart3",
+        content:
+          "La fourchette de référence vient de l'enquête UFC-Que Choisir 2024, menée sur 1 374 auto-écoles : le prix moyen d'un permis B en France est de 1 800 €, et grimpe à 2 300 € tout compris lorsqu'on inclut un repassage. À Paris, le permis B atteint 2 140 €. Vincennes, en proche couronne est, se situe logiquement entre la moyenne nationale et le tarif parisien — les loyers commerciaux, la pression sur les places d'examen et le coût horaire des moniteurs poussent les forfaits vers le haut, sans atteindre les sommets intra-muros.",
+        secondContent:
+          "Un forfait standard 20 h d'une auto-école de Vincennes inclut généralement : l'accès au code de la route en salle ou en ligne, vingt heures de conduite, la présentation à l'examen pratique, et les 30 € officiels du passage de l'épreuve théorique générale (ETG), un tarif réglementé partout en France selon Service-Public.gouv.fr. Ce qu'un forfait n'inclut presque jamais : les heures de conduite supplémentaires, facturées en moyenne 43 € de l'heure en auto-école traditionnelle selon Ornikar 2026 ; la seconde présentation à l'examen pratique après un échec ; les frais de dossier ; et certains frais d'inscription ANTS gérés par l'école. Ce sont ces postes qui transforment un forfait affiché bon marché en facture salée. Le choix de la boîte change aussi la donne : selon Ornikar 2026, un permis B en boîte manuelle coûte en moyenne 1 965 €, contre 1 299 € en boîte automatique. L'écart s'explique par le volume horaire minimum légal : 20 heures en boîte manuelle, 13 heures en boîte automatique. Pour le budget précis chez Smoni à Vincennes — forfait, heures sup, examen blanc, financement —, la grille Smoni détaillée est publiée sur notre page Tarifs et fait office de simulateur prix permis B local.",
+        tip: {
+          label: "Avant de signer",
+          text: "Demandez systématiquement le détail écrit du forfait avant de signer : prix de l'heure supplémentaire, frais de présentation à un deuxième passage, et conditions d'annulation. Une auto-école qui refuse de mettre ces chiffres noir sur blanc est un signal d'alerte."
+        }
+      },
+      {
+        title: "Combien de temps faut-il pour obtenir son permis B en 2026 ?",
+        iconName: "Clock",
+        content:
+          "La loi fixe un plancher, pas le temps réel. Selon Service-Public.gouv.fr, le volume minimal légal de formation pratique est de 20 heures de conduite en boîte manuelle et 13 heures en boîte automatique. Sur le terrain, la moyenne nationale tourne plutôt autour de 35 heures de conduite — un volume cohérent avec un taux de réussite à l'épreuve pratique de 58,2 % en 2024 selon la Sécurité Routière. Dit autrement : si environ 4 candidats sur 10 échouent au premier passage, c'est notamment parce que 20 heures ne suffisent pas pour la majorité — autant le savoir avant de signer.",
+        secondContent:
+          "Entre la signature du contrat et le permis en main, comptez entre 3 et 6 mois en Île-de-France hors période de saturation. Les goulots d'étranglement sont connus : le délai d'attribution du numéro NEPH par l'ANTS, la disponibilité des places d'examen pratique via RdvPermis, et le temps de progression pédagogique entre l'évaluation de départ et le seuil examen. L'épreuve pratique elle-même dure 32 minutes selon l'arrêté du 19 février 2010 (Légifrance), dont au moins 25 minutes de conduite effective, environ 5 minutes de conduite autonome, et un temps dédié aux vérifications intérieures et extérieures et aux questions de sécurité, plus une manœuvre imposée par l'inspecteur. Le permis B accéléré, vendu 4 à 8 semaines par certaines auto-écoles, fonctionne — mais à conditions strictes : vraie disponibilité (3 à 5 séances par semaine), bonne aisance dès l'évaluation de départ, discipline entre les leçons. Pour un étudiant en stage ou un actif à plein temps, c'est rarement réaliste. Bonne nouvelle pour les plus jeunes : depuis le décret du 20 décembre 2023, l'âge minimum pour le permis B est de 17 ans (Service-Public.gouv.fr). L'apprentissage anticipé de la conduite (AAC) reste accessible dès 15 ans, et la conduite supervisée est ouverte aux candidats majeurs déjà en formation."
+      },
+      {
+        title: "Les démarches administratives pas-à-pas : NEPH, ANTS, RdvPermis",
+        iconName: "ClipboardCheck",
+        content:
+          "Toute la procédure d'inscription au permis B passe désormais par ants.gouv.fr. Voici la séquence à suivre, dans l'ordre, sans rater une étape.",
+        bullets: [
+          "Étape 1 — Créer votre compte sur ants.gouv.fr et lancer une demande de permis de conduire, catégorie B.",
+          "Étape 2 — Déposer les pièces justificatives : pièce d'identité en cours de validité, justificatif de domicile de moins de 6 mois, photo-signature numérique réalisée chez un photographe agréé ou en cabine ANTS, ASSR2 ou ASR si vous avez moins de 21 ans, et justificatifs de Journée Défense et Citoyenneté (JDC) pour les 17-25 ans (Service-Public.gouv.fr).",
+          "Étape 3 — Recevoir votre numéro NEPH, l'identifiant unique du candidat au permis. Il est attribué sous quelques semaines, puis transmis à votre auto-école, qui ouvre votre livret d'apprentissage.",
+          "Étape 4 — Passer l'épreuve théorique générale (ETG, le code). L'examen comprend 40 questions, et il faut au minimum 35 bonnes réponses sur 40 pour valider. Tarif officiel : 30 € par passage. Validité du code une fois obtenu : 5 ans, ou jusqu'à 5 tentatives à l'épreuve pratique (Service-Public.gouv.fr).",
+          "Étape 5 — Réserver votre place d'examen pratique via la plateforme RdvPermis : vous recevrez une convocation officielle avant le jour J. En Île-de-France, ce passage est obligatoire — votre auto-école se charge généralement de la réservation, mais le compte est nominatif (DRIEAT Île-de-France)."
+        ],
+        secondContent:
+          "Un point crucial souvent ignoré : une place d'examen réservée puis non utilisée déclenche un délai d'attente de 40 jours avant la prochaine réservation, selon la DRIEAT Île-de-France. Un désistement de dernière minute peut décaler votre permis d'un mois et demi. Confirmez votre disponibilité avant chaque réservation, et signalez tout empêchement à votre moniteur au plus vite."
+      },
+      {
+        title: "Financer son permis B en 2026 : CPF, permis à 1 € par jour, échelonnement",
+        iconName: "ListChecks",
+        content:
+          "Trois leviers existent pour étaler ou alléger la facture, et il est légal — et fréquent — de les combiner. Le Compte personnel de formation (CPF) reste mobilisable pour le permis B en 2026, mais le cadre se durcit. Selon Codes Rousseau Pro, le CPF permis B 2026 est plafonné à 900 €. Toujours selon la même source, l'aide de 500 € pour les apprentis souhaitant passer le permis est supprimée à compter du 1er janvier 2026, et l'aide France Travail au permis sera supprimée le 1er avril 2026. Ces dates sont à confirmer auprès de votre conseiller France Travail ou de votre OPCO selon votre situation, le cadre réglementaire pouvant évoluer.",
+        secondContent:
+          "Le permis à 1 € par jour est un prêt à taux zéro réservé aux 15-25 ans pour une première formation au permis B, A1 ou A2 (Sécurité Routière). Selon le devis de l'auto-école, le montant emprunté peut être de 600 €, 800 €, 1 000 € ou 1 200 €. Le remboursement est de 30 € par mois, et les intérêts sont pris en charge par l'État. Condition non négociable : seule une auto-école labellisée qualité, signataire de la convention type avec l'État, peut proposer ce dispositif. Smoni Vincennes est labellisée Qualiopi et reconnue Qualité Ministère, ce qui rend ce financement accessible chez nous. Quand le CPF ne suffit pas ou n'est pas mobilisable, l'échelonnement direct avec l'auto-école reste l'alternative la plus simple : vous payez en plusieurs mensualités, sans frais bancaires. Combiner un solde CPF, un prêt permis à 1 €, et un échelonnement du reste est parfaitement légal en 2026, et c'est même la configuration la plus fréquente chez nos candidats. Pour chiffrer votre cas précis, prenez 20 minutes avec un conseiller Smoni."
+      },
+      {
+        title: "Recalé à l'examen : combien coûte une deuxième tentative ?",
+        iconName: "AlertTriangle",
+        content:
+          "Première chose à savoir : être recalé n'est pas l'exception. Selon UFC-Que Choisir 2024, environ 40 % des candidats échouent à la première tentative au permis B — c'est cohérent avec un taux de réussite national de 58,2 %. Vous n'êtes ni seul, ni en retard. Vous êtes dans la moyenne.",
+        secondContent:
+          "Le prix pour repasser le permis B après un échec se découpe en deux postes : les heures de conduite supplémentaires ciblées sur le point faible identifié au débrief, à 43 € de l'heure en moyenne selon Ornikar 2026, et les frais de seconde présentation pratiqués par l'auto-école. Comptez en général 2 à 5 heures supplémentaires utiles, plus le forfait de présentation. En Île-de-France, le délai d'attente entre deux passages oscille en moyenne entre 4 et 8 semaines, selon les places ouvertes par les inspecteurs et la zone d'examen. Bonne nouvelle administrative : tant que la validité du code de la route court, vous n'avez pas à le repasser. Il reste valide 5 ans après son obtention, ou jusqu'à 5 tentatives à l'épreuve pratique (Service-Public.gouv.fr). Vous repassez seulement la conduite. Notre protocole chez Smoni après un échec est précis : on analyse la grille d'évaluation de l'inspecteur, on identifie une ou deux compétences faibles (gestion d'intersection, allure adaptée, contrôles visuels, vérifications, manœuvre), et on bâtit 2 à 5 heures ciblées sur ces points. Un examen blanc est calé dans les conditions de Rungis avant le 2e passage. Pas de moralisation : un protocole concret, centré sur ce qui vous a manqué le jour J."
+      },
+      {
+        title: "Passer son permis B à Vincennes avec Smoni (94300)",
+        iconName: "Compass",
+        content:
+          "Smoni, votre auto-école à Vincennes, est ancrée 94300 à 5 minutes du château — RER A et ligne 1 du métro. Zone couverte : Vincennes, Porte de Vincennes (75012), Saint-Mandé, Fontenay-sous-Bois et l'ouest du Val-de-Marne. Si vous habitez à l'est du périphérique, vous êtes chez nous. Smoni est labellisée Qualiopi et reconnue Qualité Ministère : nos méthodes, notre transparence tarifaire et notre suivi de formation sont audités par l'État, ce qui vous ouvre le permis à 1 € par jour et le financement CPF chez nous. Vos guides pédagogiques sont signés par Arike Bello, monitrice référente sur les centres d'examen du 94 ; tous nos forfaits sont publiés noir sur blanc sur notre page Tarifs.",
+        secondContent:
+          "Le centre d'examen pratique de rattachement pour les candidats du Val-de-Marne (94) est celui de Rungis, selon la DRIEAT Île-de-France ; le centre de Joinville-le-Pont reste secondaire pour certaines zones limitrophes. C'est un centre exigeant — zones industrielles, quartiers résidentiels, accès rapides aux autoroutes A6 et A86 — et c'est précisément là que vous serez préparé. La méthode : une évaluation de départ honnête, un forfait calibré sur vos besoins réels, des leçons étalées intelligemment, et un examen blanc dans les conditions exactes de Rungis avant votre passage. À titre d'ordre de grandeur, le taux de réussite régional Île-de-France est d'environ 55 % en 2024 (Sécurité Routière), sous la moyenne nationale du fait du trafic et du volume de candidats. Aucun chiffre officiel n'est publié par centre, donc nous ne vous inventerons pas un taux Rungis. Ce qu'on vous garantit, c'est la méthode. Le plus simple pour démarrer, c'est un cours d'évaluation : 1 heure en voiture pour mesurer votre niveau réel et estimer précisément votre forfait."
+      },
+      {
+        title: "FAQ : prix, durée et démarches du permis B en 2026",
+        iconName: "HelpCircle",
+        content:
+          "Les questions les plus fréquentes posées par nos candidats vincennois, avec des réponses sourcées et datées 2026.",
+        bullets: [
+          "Quel est le prix du permis B en 2026 ? — En moyenne 1 800 € en France pour un forfait 20 heures, et jusqu'à 2 300 € tout compris en incluant un repassage, selon l'enquête UFC-Que Choisir 2024. À Paris, le tarif monte à 2 140 €. À Vincennes, le prix Smoni est publié en clair sur la page Tarifs.",
+          "Combien de temps dure l'épreuve pratique du permis B ? — 32 minutes au total, selon l'arrêté du 19 février 2010 (Légifrance) : au moins 25 minutes de conduite effective, environ 5 minutes de conduite autonome, plus les vérifications intérieures et extérieures et une manœuvre imposée par l'inspecteur.",
+          "Comment obtenir son numéro NEPH ? — Créez un compte sur ants.gouv.fr et déposez une demande de permis B avec votre pièce d'identité, un justificatif de domicile de moins de 6 mois, votre photo-signature numérique et l'ASSR2 ou l'ASR si vous avez moins de 21 ans. Le NEPH est généralement attribué sous quelques semaines, puis transmis à votre auto-école.",
+          "Peut-on payer le permis B avec le CPF en 2026 ? — Oui, dans la limite d'un plafond de 900 € fixé pour 2026, selon Codes Rousseau Pro. L'aide de 500 € pour les apprentis est supprimée au 1er janvier 2026, et l'aide France Travail au permis au 1er avril 2026. Ces calendriers restent à confirmer auprès de votre conseiller.",
+          "Quel est le prix pour repasser le permis B après un échec ? — Comptez 2 à 5 heures supplémentaires à 43 € de l'heure en moyenne selon Ornikar 2026, plus les frais de seconde présentation pratiqués par votre auto-école. La validité du code de la route reste de 5 ans après son obtention (Service-Public.gouv.fr), donc vous ne repassez que la conduite.",
+          "Où se trouve le centre d'examen pour les candidats de Vincennes ? — À Rungis, pour les candidats du Val-de-Marne (94), Vincennes inclus — selon la DRIEAT Île-de-France. Le centre de Joinville-le-Pont peut être mobilisé en secondaire selon les places disponibles. Rungis couvre zones industrielles, résidentielles et axes rapides A6 et A86.",
+          "Quel est le taux de réussite au permis B en Île-de-France ? — Environ 55 % en 2024 selon la Sécurité Routière, contre 58,2 % au niveau national. Aucun chiffre officiel n'est publié au niveau d'un centre comme Rungis, donc tout chiffre local annoncé doit être considéré avec prudence."
+        ]
+      }
+    ]
   }
 ];
 
