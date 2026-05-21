@@ -55,8 +55,8 @@ Status: queued. Tick items as they land.
 - [ ] Link Qualiopi badge to the actual certificate PDF (TODO in Footer — needs cert URL from client)
 
 ### 9. Local SEO foundations
-- [ ] Embed Google Maps iframe on `/contact` + add structured `Place` schema
-- [ ] Add to schema `sameAs`: GBP profile URL, Facebook page, Pages Jaunes profile (currently only Instagram)
+- [x] Embed Google Maps iframe on `/contact` + add structured `Place` schema (iframe pre-existed, schema added)
+- [x] Add to schema `sameAs`: GBP profile URL, Facebook page, Pages Jaunes profile (Facebook done; GBP + PJ TODO — real URLs needed)
 
 ### 10. URL consistency
 - [ ] Rename `/privacypolicy` → `/politique-confidentialite` (301 at host)

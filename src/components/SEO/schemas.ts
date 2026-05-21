@@ -49,7 +49,13 @@ export const drivingSchoolSchema = () => ({
       closes: "18:00",
     },
   ],
-  sameAs: [] as string[],
+  sameAs: [
+    "https://www.instagram.com/smoni_ame/",
+    // TODO: replace with real URL — Google Business Profile listing
+    // TODO: replace with real URL — Facebook page (currently linked in Footer as /SmoniAE)
+    "https://www.facebook.com/SmoniAE",
+    // TODO: replace with real URL — Pages Jaunes profile
+  ] as string[],
 });
 
 export const serviceSchema = (params: {
@@ -103,6 +109,21 @@ export const articleSchema = (params: {
   dateModified: params.dateModified ?? params.datePublished,
   author: { "@id": BUSINESS_ID },
   publisher: { "@id": BUSINESS_ID },
+});
+
+// Place schema for /contact — gives Google a second explicit signal for the
+// physical location (in addition to DrivingSchool.address). The @id ties back
+// to the canonical business entity so it doesn't fork the knowledge graph.
+export const placeSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "@id": `${SITE_URL}/contact#place`,
+  name: "Auto-école Smoni Vincennes",
+  url: `${SITE_URL}/contact`,
+  address: ADDRESS,
+  geo: GEO,
+  hasMap: "https://www.google.com/maps/place/Smoni+Auto-école+Vincennes/",
+  containedInPlace: { "@type": "City", name: "Vincennes" },
 });
 
 export const faqSchema = (

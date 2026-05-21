@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import PageHead from "@components/SEO/PageHead"
 import JsonLd from "@components/SEO/JsonLd"
-import { breadcrumbSchema } from "@components/SEO/schemas"
+import { breadcrumbSchema, placeSchema } from "@components/SEO/schemas"
 
 const Contact = () => {
     const navigate = useNavigate()
@@ -103,10 +103,13 @@ const Contact = () => {
                 canonicalPath="/contact"
             />
             <JsonLd
-                data={breadcrumbSchema([
-                    { name: "Accueil", path: "/" },
-                    { name: "Contact", path: "/contact" },
-                ])}
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Contact", path: "/contact" },
+                    ]),
+                    placeSchema(),
+                ]}
             />
             <Header />
 
