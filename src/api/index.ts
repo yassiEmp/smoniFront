@@ -1,13 +1,13 @@
-const isDev = import.meta.env.MODE === 'development';
+const useLocalBackend = import.meta.env.VITE_USE_LOCAL_BACKEND === 'true';
 
-export const apiUrl = isDev 
-  ? "http://localhost:8000/api/" 
+export const apiUrl = useLocalBackend
+  ? "http://localhost:8000/api/"
   : "https://api.smoni.fr/api/";
 
-export const imageUrl = isDev
+export const imageUrl = useLocalBackend
   ? "http://localhost:8000/storage/"
   : "https://api.smoni.fr/storage/";
 
-export const pdfUrl = isDev
+export const pdfUrl = useLocalBackend
   ? "http://localhost:8000/"
   : "https://api.smoni.fr/";

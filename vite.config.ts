@@ -29,18 +29,21 @@ export default defineConfig({
     },
   },
   resolve: {
-    alias: {
-      "@components": path.resolve(__dirname, "src/components"),
-      "@utils": path.resolve(__dirname, "src/utils"),
-      "@hooks": path.resolve(__dirname, "src/hooks"),
-      "@pages": path.resolve(__dirname, "src/pages"),
-      "@features": path.resolve(__dirname, "src/features"),
-      "@assets": path.resolve(__dirname, "src/assets"),
-      "@mytypes": path.resolve(__dirname, "src/types"),
-      "@store": path.resolve(__dirname, "src/store"),
-      "@api": path.resolve(__dirname, "src/api"),
-      "@": path.resolve(__dirname, "src"),
-    }
+    alias: [
+      // Bare `import ... from 'leaflet'` only. Subpaths like
+      // 'leaflet/dist/leaflet.css' must pass through unchanged.
+      { find: /^leaflet$/, replacement: path.resolve(__dirname, "src/shims/leaflet.ts") },
+      { find: "@components", replacement: path.resolve(__dirname, "src/components") },
+      { find: "@utils", replacement: path.resolve(__dirname, "src/utils") },
+      { find: "@hooks", replacement: path.resolve(__dirname, "src/hooks") },
+      { find: "@pages", replacement: path.resolve(__dirname, "src/pages") },
+      { find: "@features", replacement: path.resolve(__dirname, "src/features") },
+      { find: "@assets", replacement: path.resolve(__dirname, "src/assets") },
+      { find: "@mytypes", replacement: path.resolve(__dirname, "src/types") },
+      { find: "@store", replacement: path.resolve(__dirname, "src/store") },
+      { find: "@api", replacement: path.resolve(__dirname, "src/api") },
+      { find: /^@\//, replacement: path.resolve(__dirname, "src") + "/" },
+    ]
   },
   server: {
     host: true,
