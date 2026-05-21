@@ -18,12 +18,16 @@ const LocationPricingCard = ({ item }: { item: BoutiqueService }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Card className="group relative h-full flex flex-col border-slate-200/60 bg-white/70 backdrop-blur-md overflow-hidden rounded-3xl sm:rounded-[2.5rem] transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(44,40,118,0.15)] hover:border-[#2c2876]/20">
-
-        {/* Animated Highlight Background */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10">
-           <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#2c2876]/5" />
-        </div>
+      <Card
+        className={[
+          "group relative h-full flex flex-col bg-white overflow-hidden",
+          "rounded-3xl sm:rounded-[2.5rem]",
+          "border transition-[transform,box-shadow] duration-200 ease-out",
+          "shadow-[0_1px_2px_0_rgba(15,23,42,0.04)]",
+          "hover:-translate-y-1 hover:shadow-[0_12px_28px_-12px_rgba(15,23,42,0.18),0_4px_8px_-4px_rgba(15,23,42,0.08)]",
+          isPremium ? "border-[#2c2876]/30" : "border-slate-200",
+        ].join(" ")}
+      >
 
         <CardHeader className="relative p-5 sm:p-8 pb-3 sm:pb-4 text-center">
             {isPremium && (
@@ -65,7 +69,7 @@ const LocationPricingCard = ({ item }: { item: BoutiqueService }) => {
                                         <X className="h-3.5 w-3.5" />
                                     </div>
                                 )}
-                                <span className={`text-sm font-semibold leading-snug transition-colors ${feature.status ? 'text-slate-600 group-hover:text-[#2c2876]' : 'text-slate-400 line-through decoration-slate-300'}`}>
+                                <span className={`text-sm font-semibold leading-snug ${feature.status ? 'text-slate-700' : 'text-slate-400 line-through decoration-slate-300'}`}>
                                     {feature.label}
                                 </span>
                             </li>
@@ -86,15 +90,7 @@ const LocationPricingCard = ({ item }: { item: BoutiqueService }) => {
                 </Button>
             </Link>
         </CardFooter>
-
-        {/* Bottom Accent Decor */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#2c2876] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </Card>
-
-      {/* Background Glow Effect */}
-      {isPremium && (
-          <div className="absolute -inset-4 bg-[#2c2876]/5 rounded-[3rem] blur-2xl -z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-      )}
     </motion.div>
   );
 };
