@@ -1,0 +1,162 @@
+import type { RouteRecord } from "vite-react-ssg";
+import { Navigate } from "react-router";
+import App from "./App";
+import ProtectedRoute from "./middleware/ProtectedRoute";
+import { blogPosts } from "./data/blogPosts";
+
+// Helper: wrap default-export pages so vite-react-ssg's lazy() gets { Component }.
+const lazyDefault =
+  <T extends { default: React.ComponentType<unknown> }>(loader: () => Promise<T>) =>
+  async () => {
+    const mod = await loader();
+    return { Component: mod.default };
+  };
+
+export const routes: RouteRecord[] = [
+  {
+    path: "/",
+    Component: App,
+    entry: "src/App.tsx",
+    children: [
+      // ── Public pages (prerendered) ──────────────────────────────────────
+      { index: true, lazy: lazyDefault(() => import("@pages/generales/Home")), entry: "src/pages/generales/Home.tsx" },
+      { path: "a-propos", lazy: lazyDefault(() => import("@pages/generales/APropos")), entry: "src/pages/generales/APropos.tsx" },
+      { path: "services", lazy: lazyDefault(() => import("@pages/generales/Service")), entry: "src/pages/generales/Service.tsx" },
+      { path: "tarifs", lazy: lazyDefault(() => import("@pages/generales/Tarif")), entry: "src/pages/generales/Tarif.tsx" },
+      { path: "contact", lazy: lazyDefault(() => import("@pages/generales/Contact")), entry: "src/pages/generales/Contact.tsx" },
+      { path: "ressources", lazy: lazyDefault(() => import("@pages/generales/Ressources")), entry: "src/pages/generales/Ressources.tsx" },
+      { path: "privacypolicy", lazy: lazyDefault(() => import("@pages/generales/Politique")), entry: "src/pages/generales/Politique.tsx" },
+      { path: "cgu", lazy: lazyDefault(() => import("@pages/generales/Condition")), entry: "src/pages/generales/Condition.tsx" },
+      { path: "maintenance", lazy: lazyDefault(() => import("@pages/generales/Maintenance")), entry: "src/pages/generales/Maintenance.tsx" },
+
+      // Marketing "Details" pages (prerendered)
+      { path: "location", lazy: lazyDefault(() => import("@pages/generales/Details")), entry: "src/pages/generales/Details.tsx" },
+      { path: "conduite", lazy: lazyDefault(() => import("@pages/generales/Details1")), entry: "src/pages/generales/Details1.tsx" },
+      { path: "actualisation", lazy: lazyDefault(() => import("@pages/generales/Details2")), entry: "src/pages/generales/Details2.tsx" },
+      { path: "fabrication-permis", lazy: lazyDefault(() => import("@pages/generales/Details3")), entry: "src/pages/generales/Details3.tsx" },
+      { path: "passerelle", lazy: lazyDefault(() => import("@pages/generales/Details4")), entry: "src/pages/generales/Details4.tsx" },
+      { path: "code-en-ligne", lazy: lazyDefault(() => import("@pages/generales/Details5")), entry: "src/pages/generales/Details5.tsx" },
+      { path: "accompagnement", lazy: lazyDefault(() => import("@pages/generales/Details6")), entry: "src/pages/generales/Details6.tsx" },
+      { path: "post-permis", lazy: lazyDefault(() => import("@pages/generales/Details7")), entry: "src/pages/generales/Details7.tsx" },
+
+      // Blog (prerendered: index + every article)
+      { path: "blog", lazy: lazyDefault(() => import("@pages/generales/BlogIndex")), entry: "src/pages/generales/BlogIndex.tsx" },
+      {
+        path: "blog/:slug",
+        lazy: lazyDefault(() => import("@pages/generales/BlogArticle")),
+        entry: "src/pages/generales/BlogArticle.tsx",
+        getStaticPaths: () => blogPosts.map((p) => `blog/${p.slug}`),
+      },
+
+      // Quiz (public, client-rendered)
+      { path: "quiz", lazy: lazyDefault(() => import("@pages/generales/Quiz")) },
+
+      // ── SPA-only routes (not prerendered) ───────────────────────────────
+      { path: "connexion/:token?", lazy: lazyDefault(() => import("@pages/auth/LoginPage")) },
+      { path: "inscription", lazy: lazyDefault(() => import("@pages/auth/RegisterPage")) },
+      { path: "reset-password", lazy: lazyDefault(() => import("@pages/auth/reset-password/ResetPasswordPage")) },
+
+      // Learners
+      {
+        Component: ProtectedRoute,
+        children: [
+          {
+            path: "learners",
+            lazy: lazyDefault(() => import("@components/learners/ApprenantLayout")),
+            children: [
+              { index: true, lazy: lazyDefault(() => import("@pages/learners/dashboard/Dashboard")) },
+              { path: "dashboard", lazy: lazyDefault(() => import("@pages/learners/dashboard/Dashboard")) },
+              { path: "code", lazy: lazyDefault(() => import("@pages/learners/code/Code")) },
+              { path: "conduite", lazy: lazyDefault(() => import("@pages/learners/conduite/Conduite")) },
+              { path: "examens", lazy: lazyDefault(() => import("@pages/learners/examens/Examens")) },
+              { path: "boutique", lazy: lazyDefault(() => import("@pages/learners/boutique/Boutique")) },
+              { path: "parametres", lazy: lazyDefault(() => import("@/components/learners/Parametres/Parametres")) },
+              { path: "reservercours", lazy: lazyDefault(() => import("@pages/learners/ReserverLecon")) },
+              {
+                path: "quiz/history",
+                lazy: async () => ({ Component: (await import("@pages/learners/Quiz")).QuizHistory }),
+              },
+            ],
+          },
+        ],
+      },
+
+      // Monitor
+      {
+        Component: ProtectedRoute,
+        children: [
+          {
+            path: "monitor",
+            lazy: lazyDefault(() => import("./layout/MonitorLayout")),
+            children: [
+              { index: true, lazy: lazyDefault(() => import("@pages/moniteur/Dashboard")) },
+              { path: "dashboard", lazy: lazyDefault(() => import("@pages/moniteur/Dashboard")) },
+              { path: "planning", lazy: lazyDefault(() => import("@pages/moniteur/Planing")) },
+              { path: "apprenants", lazy: lazyDefault(() => import("@pages/moniteur/Apprenants")) },
+              { path: "assistance", lazy: lazyDefault(() => import("@pages/moniteur/Assistance")) },
+              { path: "parametres", lazy: lazyDefault(() => import("@pages/moniteur/Settings")) },
+              { path: "paiement", lazy: lazyDefault(() => import("@pages/moniteur/Paiement")) },
+              { path: "transactions", lazy: lazyDefault(() => import("@components/moniteurs/TransactionHistory")) },
+              { path: "rendez-vous", lazy: lazyDefault(() => import("./pages/moniteur/RendezVous")) },
+              { path: "examen", lazy: lazyDefault(() => import("@pages/moniteur/MonitorExamen")) },
+            ],
+          },
+        ],
+      },
+
+      // Admin
+      {
+        Component: ProtectedRoute,
+        children: [
+          {
+            path: "admin",
+            lazy: lazyDefault(() => import("./layout/AdminLayout")),
+            children: [
+              { index: true, lazy: lazyDefault(() => import("@pages/admin/Dashboard")) },
+              { path: "dashboard", lazy: lazyDefault(() => import("@pages/admin/Dashboard")) },
+              { path: "moniteurs", lazy: lazyDefault(() => import("./pages/admin/Monitor")) },
+              { path: "moniteurs/learners", lazy: lazyDefault(() => import("./pages/admin/MonitorLeanerListe")) },
+              { path: "paiement", lazy: lazyDefault(() => import("./pages/admin/Paiement")) },
+              { path: "moniteurs/rendez-vous", lazy: lazyDefault(() => import("./pages/admin/MonitorApointementListe")) },
+              { path: "moniteurs/planning", lazy: lazyDefault(() => import("./pages/admin/MonitorAvalibilities")) },
+              { path: "moniteurs/details", lazy: lazyDefault(() => import("./components/admin/MonitorShow")) },
+              { path: "parametres", lazy: lazyDefault(() => import("./pages/admin/Settings")) },
+              { path: "administrateurs", lazy: lazyDefault(() => import("./pages/admin/Administrateur")) },
+              { path: "apprenants", lazy: lazyDefault(() => import("./pages/admin/Learners/ListLearners")) },
+              { path: "apprenants/:id", lazy: lazyDefault(() => import("@pages/admin/Learners/ApprenantDetailsPage")) },
+              { path: "services", lazy: lazyDefault(() => import("./pages/admin/services/Service")) },
+              { path: "code-de-la-route", lazy: lazyDefault(() => import("./pages/admin/CodeRoute")) },
+              { path: "examen", lazy: lazyDefault(() => import("./pages/admin/Examen")) },
+            ],
+          },
+        ],
+      },
+
+      {
+        path: "modale",
+        lazy: async () => {
+          const Mod = (await import("@components/moniteurs/PlanningComponent")).default;
+          return {
+            Component: () => (
+              <Mod setIsOpenPlanningModal={() => {}} isOpenPlanningModal={false} />
+            ),
+          };
+        },
+      },
+      { path: "payment-success", lazy: lazyDefault(() => import("./pages/payment/PaymentSucccess")) },
+
+      // Public Quiz Routes
+      { path: "learners/quiz", element: <Navigate to="/quiz" replace /> },
+      {
+        path: "quiz/:categoryCode",
+        lazy: async () => ({ Component: (await import("@pages/learners/Quiz")).QuizPage }),
+      },
+      {
+        path: "quiz/results/:attemptId",
+        lazy: async () => ({ Component: (await import("@pages/learners/Quiz")).QuizResults }),
+      },
+
+      { path: "*", element: <div>404 Page Not Found</div> },
+    ],
+  },
+];

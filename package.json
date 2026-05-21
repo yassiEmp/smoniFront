@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-react-ssg build",
+    "build:spa": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest --run",
@@ -109,6 +110,7 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vite-imagetools": "^7.1.1",
+    "vite-react-ssg": "0.9.1-beta.1",
     "vitest": "^4.1.4",
     "wawoff2": "^2.0.1"
   },

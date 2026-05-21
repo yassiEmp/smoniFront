@@ -1,6 +1,15 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+
+const createNoopStorage = () => ({
+  getItem: () => Promise.resolve(null),
+  setItem: (_key: string, value: unknown) => Promise.resolve(value),
+  removeItem: () => Promise.resolve(),
+});
+
+const storage =
+  typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage();
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import authReducer from './slices/authSlice';
 import monitorReducer from './slices/monitorSlice';

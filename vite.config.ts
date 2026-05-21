@@ -3,9 +3,41 @@ import path from 'path'
 import react from '@vitejs/plugin-react'
 import { imagetools } from 'vite-imagetools'
 
+// Whitelist of routes that should be statically prerendered. Everything else
+// will be served via the SPA fallback at runtime. Dynamic blog/:slug paths are
+// added by getStaticPaths() inside src/routes.tsx.
+const PRERENDER_PATHS = new Set<string>([
+  '/',
+  '/a-propos',
+  '/services',
+  '/tarifs',
+  '/contact',
+  '/ressources',
+  '/privacypolicy',
+  '/cgu',
+  '/maintenance',
+  '/location',
+  '/conduite',
+  '/actualisation',
+  '/fabrication-permis',
+  '/passerelle',
+  '/code-en-ligne',
+  '/accompagnement',
+  '/post-permis',
+  '/blog',
+])
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), imagetools()],
+  ssgOptions: {
+    script: 'async',
+    dirStyle: 'nested',
+    formatting: 'minify',
+    includedRoutes(paths) {
+      return paths.filter((p) => PRERENDER_PATHS.has(p) || p.startsWith('/blog/'))
+    },
+  },
   optimizeDeps: {
     exclude: ['unicornstudio-react'],
   },
