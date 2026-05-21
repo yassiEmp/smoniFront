@@ -156,7 +156,7 @@ export const routes: RouteRecord[] = [
         lazy: async () => ({ Component: (await import("@pages/learners/Quiz")).QuizResults }),
       },
 
-      { path: "*", element: <div>404 Page Not Found</div> },
+      { path: "*", lazy: lazyDefault(() => import("@pages/generales/NotFound")) },
     ],
   },
 ];
