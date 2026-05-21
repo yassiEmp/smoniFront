@@ -1,7 +1,9 @@
-// Vite alias target for `leaflet`.
+// Vite alias target for `leaflet` (browser build).
 // Leaflet ships UMD which Vite/esbuild prebundles as `export default <namespace>`,
 // breaking `import { DomUtil } from 'leaflet'` from `@react-leaflet/core`.
 // This shim re-exports every member as a named export.
+//
+// SSR uses src/shims/leaflet-ssr.ts via vite.config.ts ssr alias.
 import L from 'leaflet/dist/leaflet-src.js';
 
 export default L;

@@ -1,16 +1,16 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import { BrowserRouter } from "react-router";
+import { ViteReactSSG } from "vite-react-ssg";
+import { routes } from "./routes";
 import { installAuthInterceptor } from "@api/axiosClient";
+import "./index.css";
 
-installAuthInterceptor();
-
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
+export const createRoot = ViteReactSSG(
+  {
+    routes,
+    basename: import.meta.env.BASE_URL,
+  },
+  ({ isClient }) => {
+    if (isClient) {
+      installAuthInterceptor();
+    }
+  },
 );

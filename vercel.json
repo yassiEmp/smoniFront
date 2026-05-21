@@ -1,6 +1,14 @@
 {
-  "rewrites":  [
-    {"source": "/(.*)", "destination": "/"}
+  "rewrites": [
+    { "source": "/learners/:path*", "destination": "/index.html" },
+    { "source": "/monitor/:path*", "destination": "/index.html" },
+    { "source": "/admin/:path*", "destination": "/index.html" },
+    { "source": "/connexion/:path*", "destination": "/index.html" },
+    { "source": "/inscription", "destination": "/index.html" },
+    { "source": "/reset-password", "destination": "/index.html" },
+    { "source": "/quiz/:path*", "destination": "/index.html" },
+    { "source": "/payment-success", "destination": "/index.html" },
+    { "source": "/modale", "destination": "/index.html" }
   ],
   "build": {
     "env": {
