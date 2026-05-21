@@ -1,5 +1,5 @@
 import { BoutiqueCategory } from "@/api/boutique/types";
-import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 
 interface Btn3Props {
   item: BoutiqueCategory;
@@ -8,18 +8,28 @@ interface Btn3Props {
 }
 
 const Btn3 = ({ item, active, setActive }: Btn3Props) => {
+  const isActive = active === item.id;
+
   return (
-    <Button
+    <button
+      type="button"
+      role="tab"
+      aria-selected={isActive}
       onClick={() => setActive(item.id)}
-      variant={active === item.id ? "default" : "ghost"}
-      className={`rounded-lg transition-all duration-200 font-bold ${
-        active === item.id
-          ? "bg-primary text-primary-foreground shadow-md shadow-primary/20"
-          : "text-muted-foreground hover:text-foreground hover:bg-muted"
-      }`}
+      className={[
+        "group relative inline-flex items-center gap-1.5",
+        "min-h-[44px] px-4 sm:px-5 py-2.5",
+        "rounded-full text-sm font-semibold whitespace-nowrap",
+        "border transition-all duration-200 ease-out cursor-pointer select-none",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+        isActive
+          ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/25 scale-[1.02]"
+          : "bg-white text-slate-700 border-slate-200 hover:border-primary/40 hover:bg-primary/5 hover:text-primary hover:-translate-y-0.5 hover:shadow-sm active:translate-y-0",
+      ].join(" ")}
     >
-      {item.label}
-    </Button>
+      {isActive && <Check className="w-3.5 h-3.5 -ml-0.5" aria-hidden="true" />}
+      <span>{item.label}</span>
+    </button>
   );
 };
 

@@ -105,20 +105,25 @@ const HomeTarifSection = () => {
         </p>
       </motion.div>
 
-      {/* Category Tabs — chip strip that wraps; never a tall vertical column */}
-      <motion.div className="flex justify-center" variants={itemVariants}>
+      {/* Category Tabs — wrapping chip strip with explicit affordance */}
+      <motion.div className="flex flex-col items-center gap-3" variants={itemVariants}>
         {loadingCategories ? (
           <Loader />
         ) : (
-          <div
-            role="tablist"
-            aria-label="Catégories de tarifs"
-            className="flex flex-wrap justify-center gap-1.5 rounded-2xl bg-muted/80 p-1.5 shadow-sm border border-border/50 max-w-full"
-          >
-            {categories.map((item) => (
-              <Btn3 key={item.id} item={item} active={active} setActive={setActive} />
-            ))}
-          </div>
+          <>
+            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
+              Choisissez votre formation
+            </p>
+            <div
+              role="tablist"
+              aria-label="Catégories de tarifs"
+              className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto"
+            >
+              {categories.map((item) => (
+                <Btn3 key={item.id} item={item} active={active} setActive={setActive} />
+              ))}
+            </div>
+          </>
         )}
       </motion.div>
 
