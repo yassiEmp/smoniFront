@@ -2,15 +2,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 import { useNavigate } from "react-router";
-import { useEffect, useRef } from "react";
-
-// Hex to RGB normalized for Sketchfab API
-const hexToSrgb = (hex: string) => {
-  const r = parseInt(hex.slice(1, 3), 16) / 255;
-  const g = parseInt(hex.slice(3, 5), 16) / 255;
-  const b = parseInt(hex.slice(5, 7), 16) / 255;
-  return [Math.pow(r, 2.2), Math.pow(g, 2.2), Math.pow(b, 2.2)]; // Gamma correction for PBR
-};
 
 const avatars = [
   "/avatars/apprenant-1.jpg",
@@ -31,45 +22,6 @@ const itemVariants = {
 
 const HomeHeroSection = () => {
   const navigate = useNavigate();
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const brandColor = "#2c2876";
-
-  // Initialize Sketchfab API to change color
-  useEffect(() => {
-    if (!iframeRef.current) return;
-
-    const iframe = iframeRef.current;
-    const client = new (window as any).Sketchfab('1.12.1', iframe);
-
-    client.init('1094ee784f7d4b63a9c43efefdbacca5', {
-      success: (api: any) => {
-        api.start();
-        api.addEventListener('viewerready', () => {
-          api.getMaterialList((err: any, materials: any[]) => {
-            if (err) return;
-            const targetColor = hexToSrgb(brandColor);
-
-            materials.forEach((mat) => {
-              const name = mat.name.toLowerCase();
-              if (name.includes('body') || name.includes('paint') || name.includes('car_paint') || name.includes('shell')) {
-                mat.channels.AlbedoPBR.enable = true;
-                mat.channels.AlbedoPBR.color = targetColor;
-                api.setMaterial(mat);
-              }
-            });
-          });
-        });
-      },
-      error: () => console.error('Sketchfab API Error'),
-      autostart: 1,
-      transparent: 1,
-      ui_controls: 0,
-      ui_infos: 0,
-      ui_watermark: 0,
-      preload: 1,
-      ui_loading: 0
-    });
-  }, []);
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -100,25 +52,34 @@ const HomeHeroSection = () => {
         <div
           className="relative w-full h-full overflow-visible"
           style={{
-            // Soft fade on the left edge so the iframe blends into the section bg
-            // (Stripe/Linear-style hero visual — no hard panel boundary).
             WebkitMaskImage:
               "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, #000 38%)",
             maskImage:
               "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, #000 38%)",
           }}
         >
-          <iframe
-            ref={iframeRef}
-            className="absolute -inset-[15%] w-[130%] h-[130%]"
-            style={{ background: "transparent", pointerEvents: "auto" }}
-            title="Smoni Auto-École Vincennes — apprendre à conduire sur véhicule récent"
-            aria-label="Auto-école Smoni à Vincennes, 62 rue de la Jarry, 94300"
-            loading="lazy"
-            frameBorder="0"
-            allow="autoplay; fullscreen; xr-spatial-tracking"
-            src=""
-          />
+          <picture>
+            <source
+              type="image/avif"
+              srcSet="/hero-car-800.avif 800w, /hero-car-1200.avif 1200w, /hero-car-1600.avif 1600w"
+              sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
+            />
+            <source
+              type="image/webp"
+              srcSet="/hero-car-800.webp 800w, /hero-car-1200.webp 1200w, /hero-car-1600.webp 1600w"
+              sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
+            />
+            <img
+              src="/hero-car-1200.png"
+              srcSet="/hero-car-800.png 800w, /hero-car-1200.png 1200w, /hero-car-1600.png 1600w"
+              sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
+              alt="Peugeot 2008 — voiture d'auto-école Smoni à Vincennes"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
+              className="absolute inset-0 w-full h-full object-contain object-right"
+            />
+          </picture>
         </div>
       </div>
 
@@ -150,11 +111,11 @@ const HomeHeroSection = () => {
             <div className="space-y-4 2xl:space-y-6">
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] 2xl:text-[140px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.85] tracking-tighter"
+                className="text-6xl sm:text-7xl md:text-6xl lg:text-[64px] 2xl:text-[140px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.85] tracking-tighter"
                 style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 Le permis <br />
-                <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">sans crier dessus.</span>
+                <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">sans stress.</span>
               </motion.h1>
 
               <motion.p
