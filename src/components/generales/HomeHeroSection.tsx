@@ -32,13 +32,9 @@ const itemVariants = {
 const HomeHeroSection = () => {
   const navigate = useNavigate();
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const apiRef = useRef<any>(null);
-  // Captured on viewerready: lets us orbit around the model without drifting in/out.
-  const orbitRef = useRef<{ radius: number; height: number; target: number[]; baseAngle: number } | null>(null);
   const brandColor = "#2c2876";
 
-  // Initialize Sketchfab API to change color + capture initial camera orbit
+  // Initialize Sketchfab API to change color
   useEffect(() => {
     if (!iframeRef.current) return;
 
@@ -48,33 +44,11 @@ const HomeHeroSection = () => {
     client.init('1094ee784f7d4b63a9c43efefdbacca5', {
       success: (api: any) => {
         api.start();
-        apiRef.current = api;
         api.addEventListener('viewerready', () => {
-          // Stop autospin — mouse drives rotation now.
-          if (typeof api.stop === 'function') {
-            // no-op; placeholder if SDK exposes it
-          }
-          if (typeof api.setAutospin === 'function') api.setAutospin(0);
-
-          // Cache initial orbit (radius around target, height, starting angle).
-          api.getCameraLookAt((err: any, cam: any) => {
-            if (err || !cam) return;
-            const [ex, ey, ez] = cam.position;
-            const [tx, ty, tz] = cam.target;
-            const dx = ex - tx;
-            const dy = ey - ty;
-            const dz = ez - tz;
-            orbitRef.current = {
-              radius: Math.sqrt(dx * dx + dz * dz),
-              height: dy,
-              target: [tx, ty, tz],
-              baseAngle: Math.atan2(dz, dx),
-            };
-          });
-
           api.getMaterialList((err: any, materials: any[]) => {
             if (err) return;
             const targetColor = hexToSrgb(brandColor);
+
             materials.forEach((mat) => {
               const name = mat.name.toLowerCase();
               if (name.includes('body') || name.includes('paint') || name.includes('car_paint') || name.includes('shell')) {
@@ -88,51 +62,13 @@ const HomeHeroSection = () => {
       },
       error: () => console.error('Sketchfab API Error'),
       autostart: 1,
-      autospin: 0,
       transparent: 1,
       ui_controls: 0,
       ui_infos: 0,
       ui_watermark: 0,
       preload: 1,
-      ui_loading: 0,
+      ui_loading: 0
     });
-  }, []);
-
-  // Mouse-driven orbit: car rotates left/right with cursor inside the hero.
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    if (window.matchMedia('(hover: none), (prefers-reduced-motion: reduce)').matches) return;
-
-    let raf = 0;
-    let pendingNX = 0; // normalized cursor X within section, -1..1
-
-    const apply = () => {
-      raf = 0;
-      const api = apiRef.current;
-      const orbit = orbitRef.current;
-      if (!api || !orbit) return;
-      const swing = (Math.PI / 5) * pendingNX; // ±36°
-      const angle = orbit.baseAngle + swing;
-      const newX = orbit.target[0] + orbit.radius * Math.cos(angle);
-      const newZ = orbit.target[2] + orbit.radius * Math.sin(angle);
-      const newY = orbit.target[1] + orbit.height;
-      // Small duration smooths between updates without queueing a long animation.
-      api.setCameraLookAt([newX, newY, newZ], orbit.target, 0.25);
-    };
-
-    const onMove = (e: MouseEvent) => {
-      const rect = section.getBoundingClientRect();
-      const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      pendingNX = Math.max(-1, Math.min(1, nx));
-      if (!raf) raf = requestAnimationFrame(apply);
-    };
-
-    section.addEventListener('mousemove', onMove, { passive: true });
-    return () => {
-      section.removeEventListener('mousemove', onMove);
-      if (raf) cancelAnimationFrame(raf);
-    };
   }, []);
 
   const handleNavigate = (path: string) => {
@@ -141,10 +77,7 @@ const HomeHeroSection = () => {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#f8fafc] pt-24 pb-12 2xl:pt-40 select-none"
-    >
+    <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#f8fafc] pt-24 pb-12 2xl:pt-40 select-none">
       {/* Ambient brand radial wash */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div
