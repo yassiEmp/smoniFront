@@ -4,6 +4,8 @@ import HomeFaqSection from "@components/generales/HomeFaqSection";
 import Testimonials from "@components/generales/Testimonials";
 import HomeTarifSection from "@components/generales/HomeTarifSection";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
 
 const Tarif = () => {
   return (
@@ -12,6 +14,21 @@ const Tarif = () => {
         title="Tarifs permis B - Smoni Auto-Ecole Vincennes 94300"
         description="Decouvrez nos tarifs transparents pour le permis B a Vincennes (94300) : forfaits code, conduite, accompagnement et financement."
         canonicalPath="/tarifs"
+      />
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Tarifs", path: "/tarifs" },
+          ]),
+          serviceSchema({
+            name: "Forfaits permis de conduire",
+            description:
+              "Forfaits code, conduite et accompagnement pour le permis B à Vincennes. Tarifs transparents, sans frais cachés.",
+            path: "/tarifs",
+            serviceType: "Formation au permis de conduire",
+          }),
+        ]}
       />
       <Header />
       <div className="relative overflow-hidden pt-[120px]">

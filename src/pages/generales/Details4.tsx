@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details4 = () => {
     const navigate = useNavigate();
@@ -57,6 +60,20 @@ const Details4 = () => {
                 title="Passerelle boite auto vers boite manuelle - Smoni"
                 description="Formation passerelle pour passer du permis boite automatique a la boite manuelle a Vincennes (94300) avec Smoni Auto-Ecole."
                 canonicalPath="/passerelle"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Passerelle B78", path: "/passerelle" },
+                    ]),
+                    serviceSchema({
+                        name: "Passerelle boîte automatique vers manuelle (B78)",
+                        description:
+                            "Formation passerelle 7h pour passer du permis B automatique au permis B manuel chez Smoni Vincennes.",
+                        path: "/passerelle",
+                    }),
+                ]}
             />
             <Header />
 
@@ -752,6 +769,8 @@ const Details4 = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
+
+            <RelatedServices currentSlug="passerelle" />
 
             <Footer />
         </div>

@@ -14,6 +14,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import PageHead from "@components/SEO/PageHead"
+import JsonLd from "@components/SEO/JsonLd"
+import { breadcrumbSchema } from "@components/SEO/schemas"
 
 const Contact = () => {
     const navigate = useNavigate()
@@ -99,6 +101,12 @@ const Contact = () => {
                 title="Contact - Smoni Auto-Ecole Vincennes (94300)"
                 description="Contactez Smoni Auto-Ecole a Vincennes : adresse, telephone, formulaire en ligne pour vos demandes d'information et inscriptions."
                 canonicalPath="/contact"
+            />
+            <JsonLd
+                data={breadcrumbSchema([
+                    { name: "Accueil", path: "/" },
+                    { name: "Contact", path: "/contact" },
+                ])}
             />
             <Header />
 

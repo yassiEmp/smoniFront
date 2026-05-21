@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details5 = () => {
     const navigate = useNavigate();
@@ -55,6 +58,20 @@ const Details5 = () => {
                 title="Code de la route en ligne - Smoni Auto-Ecole Vincennes"
                 description="Revisez le code de la route en ligne avec Smoni Auto-Ecole : cours, series d'examens blancs et suivi de votre progression depuis chez vous."
                 canonicalPath="/code-en-ligne"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Code en ligne", path: "/code-en-ligne" },
+                    ]),
+                    serviceSchema({
+                        name: "Code de la route en ligne 24/7",
+                        description:
+                            "Plateforme Pass Rousseau incluse : tests illimités, accessible 24h/24, sessions présentielles hebdo à l'agence Smoni Vincennes.",
+                        path: "/code-en-ligne",
+                    }),
+                ]}
             />
             <Header />
 
@@ -1071,6 +1088,8 @@ const Details5 = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
+
+            <RelatedServices currentSlug="code-en-ligne" />
 
             <Footer />
         </div>

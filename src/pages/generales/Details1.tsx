@@ -12,6 +12,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details1 = () => {
     const navigate = useNavigate();
@@ -74,6 +77,20 @@ const Details1 = () => {
                 title="Cours de conduite permis B - Smoni Vincennes 94300"
                 description="Lecons de conduite a Vincennes (94300) avec moniteurs diplomes : pedagogie progressive, vehicules recents et passage rapide a l'examen."
                 canonicalPath="/conduite"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Conduite", path: "/conduite" },
+                    ]),
+                    serviceSchema({
+                        name: "Cours de conduite — permis B",
+                        description:
+                            "Leçons de conduite à Vincennes avec moniteurs diplômés : pédagogie progressive, véhicules récents, passage rapide à l'examen.",
+                        path: "/conduite",
+                    }),
+                ]}
             />
             <Header />
 
@@ -858,6 +875,8 @@ const Details1 = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
+
+            <RelatedServices currentSlug="conduite" />
 
             <Footer />
         </div>

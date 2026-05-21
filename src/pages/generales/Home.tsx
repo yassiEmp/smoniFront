@@ -6,6 +6,9 @@ import HomeCertificationSection from "@components/generales/HomeCertificationSec
 import HomeStarSection from "@components/generales/HomeStarSection";
 import CookieConsent from "react-cookie-consent";
 import { motion } from "framer-motion";
+import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { drivingSchoolSchema } from "@components/SEO/schemas";
 
 // Lazy load non-critical sections below the fold
 const HomeGroupeSection = lazy(() => import("@components/generales/HomeGroupeSection"));
@@ -35,6 +38,12 @@ const FadeInSection = ({ children, id }: { children: React.ReactNode; id?: strin
 const Home = () => {
   return (
     <>
+      <PageHead
+        title="Auto-école Smoni Vincennes (94300) — Permis B, code, conduite"
+        description="Auto-école Smoni à Vincennes (94300) : permis B boîte manuelle et automatique, code en ligne 24/7, stage accéléré, accompagnement examen. Tarifs transparents."
+        canonicalPath="/"
+      />
+      <JsonLd data={drivingSchoolSchema()} />
       <Header />
       <main>
         {/* Critical Path: Loadded immediately */}

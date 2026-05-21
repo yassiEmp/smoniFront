@@ -9,6 +9,9 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/configureStore";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details2 = () => {
     const navigate = useNavigate();
@@ -53,6 +56,20 @@ const Details2 = () => {
                 title="Actualisation des connaissances - Smoni Auto-Ecole"
                 description="Reactualisez vos connaissances du code de la route et de la conduite avec Smoni Auto-Ecole Vincennes : stages courts et personnalises."
                 canonicalPath="/actualisation"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Renouvellement", path: "/actualisation" },
+                    ]),
+                    serviceSchema({
+                        name: "Renouvellement de formation",
+                        description:
+                            "Prolongez votre abonnement Smoni et continuez votre formation au permis sans interruption.",
+                        path: "/actualisation",
+                    }),
+                ]}
             />
             <Header />
 
@@ -180,7 +197,9 @@ const Details2 = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
-            
+
+            <RelatedServices currentSlug="actualisation" />
+
             <Footer />
         </div>
     );

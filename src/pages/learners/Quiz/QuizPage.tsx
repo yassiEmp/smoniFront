@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import Header from '@components/generales/Header';
 import Footer from '@components/generales/Footer';
 import HomeNewStudentSection from '@components/generales/HomeNewStudentSection';
+import PageHead from '@components/SEO/PageHead';
 
 interface Question {
   id: number;
@@ -177,8 +178,15 @@ const QuizPage = () => {
 
   const currentQ = quizData.questions[currentIdx];
 
+  const categoryName = quizData.category?.name ?? "Quiz";
+
   return (
     <div className="min-h-screen bg-background">
+      <PageHead
+        title={`Quiz ${categoryName} — Code de la route Smoni`}
+        description={`Entraînez-vous gratuitement aux questions de ${categoryName.toLowerCase()} avec le quiz Smoni Auto-école. Préparation au permis B.`}
+        canonicalPath={`/quiz/${categoryCode}`}
+      />
       <Header />
       <main className="pt-32 pb-20 px-4">
         <div className="max-w-5xl mx-auto">

@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details = () => {
     const navigate = useNavigate();
@@ -58,6 +61,20 @@ const Details = () => {
                 title="Location voiture double commande - Smoni Vincennes"
                 description="Louez une voiture a double commande chez Smoni Auto-Ecole Vincennes pour vous entrainer avec un accompagnateur avant votre examen du permis B."
                 canonicalPath="/location"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Location véhicule", path: "/location" },
+                    ]),
+                    serviceSchema({
+                        name: "Location de véhicule double-commande",
+                        description:
+                            "Louez un véhicule double-commande pour vous entraîner ou passer l'examen avec un accompagnateur agréé Smoni à Vincennes.",
+                        path: "/location",
+                    }),
+                ]}
             />
             <Header />
 
@@ -798,6 +815,8 @@ const Details = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
+
+            <RelatedServices currentSlug="location" />
 
             <Footer />
         </div>

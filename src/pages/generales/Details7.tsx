@@ -9,6 +9,9 @@ import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ZoomIn, X } from "lucide-react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import imgTraditionnel from "@assets/blog/details7/conduite-traditionnelle.png?w=600;1000&format=avif;webp;png&as=picture";
 import imgAccompagnee from "@assets/blog/details7/conduite-accompagnee.png?w=600;1000&format=avif;webp;png&as=picture";
@@ -60,6 +63,20 @@ const Details7 = () => {
                 title="Formation post-permis - Smoni Auto-Ecole Vincennes"
                 description="Formation post-permis pour jeunes conducteurs a Vincennes : reduisez la periode probatoire et roulez plus sereinement avec Smoni Auto-Ecole."
                 canonicalPath="/post-permis"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Post-permis", path: "/post-permis" },
+                    ]),
+                    serviceSchema({
+                        name: "Formation post-permis",
+                        description:
+                            "Réduisez la période probatoire et gagnez vos 12 points plus vite grâce à la formation post-permis Smoni à Vincennes.",
+                        path: "/post-permis",
+                    }),
+                ]}
             />
             <Header />
 
@@ -802,6 +819,8 @@ const Details7 = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
+
+            <RelatedServices currentSlug="post-permis" />
 
             <Footer />
 

@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details6 = () => {
     const navigate = useNavigate();
@@ -50,6 +53,20 @@ const Details6 = () => {
                 title="Accompagnement a l'examen du permis - Smoni Vincennes"
                 description="Accompagnement personnalise jusqu'a l'examen du permis B : preparation mentale, conseils et passage en confiance avec Smoni Auto-Ecole."
                 canonicalPath="/accompagnement"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Accompagnement examen", path: "/accompagnement" },
+                    ]),
+                    serviceSchema({
+                        name: "Accompagnement au centre d'examen",
+                        description:
+                            "Smoni vous accompagne au centre d'examen avec un véhicule loué et un accompagnateur agréé au volant.",
+                        path: "/accompagnement",
+                    }),
+                ]}
             />
             <Header />
 
@@ -704,6 +721,8 @@ const Details6 = () => {
             <div className="relative z-10 bg-white">
                 <HomeNewStudentSection />
             </div>
+
+            <RelatedServices currentSlug="accompagnement" />
 
             <Footer />
         </div>

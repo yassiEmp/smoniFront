@@ -6,6 +6,9 @@ import Footer from "@/components/generales/Footer";
 import "@/styles/blog.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { articleSchema, breadcrumbSchema } from "@components/SEO/schemas";
 import {
   ArrowLeft,
   ArrowRight,
@@ -153,8 +156,32 @@ export default function BlogArticle() {
     alert("URL copiée !");
   };
 
+  const canonical = `/blog/${post.slug}`;
+
   return (
     <>
+      <PageHead
+        title={`${post.title} — Blog Smoni`}
+        description={post.subtitle}
+        canonicalPath={canonical}
+        ogImage={post.image}
+      />
+      <JsonLd
+        data={[
+          breadcrumbSchema([
+            { name: "Accueil", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: canonical },
+          ]),
+          articleSchema({
+            headline: post.title,
+            description: post.subtitle,
+            path: canonical,
+            image: post.image,
+            datePublished: post.date,
+          }),
+        ]}
+      />
       <Header />
 
       <div className="article-progress-container">

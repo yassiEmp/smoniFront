@@ -13,7 +13,7 @@ const FaqComponent = ({title, text}: {title:string, text: string}) => {
     return (
         <div className='lg:w-[843px] w-full bg-[#F8F9F9] rounded-[24px] px-4 md:px-[32px] py-4 md:py-[24px] mb-2 border border-primary'>
             <div onClick={()=>handleOpen()} className="w-full flex flex-row justify-between items-center cursor-pointer mb-1" ref={openRef}>
-                <h1 className='text-primary text-[16px] md:text-[20px] font-bold'>{title}</h1>
+                <h3 className='text-primary text-[16px] md:text-[20px] font-bold'>{title}</h3>
                 {!opened ? <HiPlus className='text-xl md:text-2xl' /> : <HiMinus className='text-xl md:text-2xl' /> }
             </div>
             <div 

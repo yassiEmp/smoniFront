@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
+import JsonLd from "@components/SEO/JsonLd";
+import { serviceSchema, breadcrumbSchema } from "@components/SEO/schemas";
+import RelatedServices from "@components/SEO/RelatedServices";
 
 const Details3 = () => {
     const navigate = useNavigate();
@@ -57,6 +60,20 @@ const Details3 = () => {
                 title="Fabrication du permis de conduire - Smoni Vincennes"
                 description="Demarches, delais et suivi pour la fabrication de votre permis de conduire apres reussite a l'examen, accompagnes par Smoni Auto-Ecole."
                 canonicalPath="/fabrication-permis"
+            />
+            <JsonLd
+                data={[
+                    breadcrumbSchema([
+                        { name: "Accueil", path: "/" },
+                        { name: "Fabrication du permis", path: "/fabrication-permis" },
+                    ]),
+                    serviceSchema({
+                        name: "Demande de fabrication du permis",
+                        description:
+                            "Accompagnement Smoni pour la demande de fabrication de votre permis de conduire après réussite à l'examen.",
+                        path: "/fabrication-permis",
+                    }),
+                ]}
             />
             <Header />
 
@@ -199,7 +216,9 @@ const Details3 = () => {
             <div className="relative z-10 bg-white border-t border-slate-100">
                 <HomeNewStudentSection />
             </div>
-            
+
+            <RelatedServices currentSlug="fabrication-permis" />
+
             <Footer />
         </div>
     );
