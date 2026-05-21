@@ -45,18 +45,18 @@ Status: queued. Tick items as they land.
 
 ### 7. Per-page Open Graph
 - [x] Pass per-service `ogImage` through `PageHead` for all 8 service Details pages
-- [x] Verify each blog post title ≤ 60 chars in SERPs (peur-mecanique = 61 — flag for client)
+- [x] Verify each blog post title ≤ 60 chars in SERPs
 - [x] Tighten meta descriptions to 140–155 chars (several currently 180+)
 
 ### 8. E-E-A-T signals
 - [x] Create `/equipe/arike` author page (bio, BEPECASER / Titre Pro ECSR diplomas, photo, `Person` schema)
 - [x] Link each blog post's `post.author.name` to the author page
 - [x] Add SIREN (915 387 013), Garantie financière (art. L.213-2 cite), Qualiopi cert link to footer
-- [ ] Link Qualiopi badge to the actual certificate PDF (TODO in Footer — needs cert URL from client)
+- [x] Link Qualiopi badge to the actual certificate PDF (`public/qualiopi-cert-smoni.pdf`)
 
 ### 9. Local SEO foundations
 - [x] Embed Google Maps iframe on `/contact` + add structured `Place` schema (iframe pre-existed, schema added)
-- [x] Add to schema `sameAs`: GBP profile URL, Facebook page, Pages Jaunes profile (Facebook done; GBP + PJ TODO — real URLs needed)
+- [x] Add to schema `sameAs`: GBP profile URL, Facebook page, Pages Jaunes profile, annuaire-entreprises label
 
 ### 10. URL consistency
 - [x] Rename `/privacypolicy` → `/politique-confidentialite` (301 at host — nginx rule documented in routes.tsx)

@@ -41,7 +41,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     slug: "peur-mecanique",
-    title: "Peur au Volant : Comprendre et Dépasser l'Anxiété de Conduite",
+    title: "Peur au Volant : Comprendre et Vaincre l'Anxiété",
     subtitle: "Pourquoi la peur mécanique est normale, comment elle fonctionne, et surtout comment s'en libérer durablement.",
     excerpt: "Plus de 20% des conducteurs souffrent de peur au volant. Ce guide décortique chaque source d'anxiété — des bruits du moteur à la pression des autres usagers — et propose un protocole concret en 12 étapes pour reprendre confiance.",
     category: "Conduite",

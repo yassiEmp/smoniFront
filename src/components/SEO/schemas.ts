@@ -51,10 +51,10 @@ export const drivingSchoolSchema = () => ({
   ],
   sameAs: [
     "https://www.instagram.com/smoni_ame/",
-    // TODO: replace with real URL — Google Business Profile listing
-    // TODO: replace with real URL — Facebook page (currently linked in Footer as /SmoniAE)
     "https://www.facebook.com/SmoniAE",
-    // TODO: replace with real URL — Pages Jaunes profile
+    "https://share.google/xjkuqJFNroRyaldmW",
+    "https://www.pagesjaunes.fr/pros/61706499",
+    "https://annuaire-entreprises.data.gouv.fr/labels-certificats/915387013#organisme-de-formation",
   ] as string[],
 });
 

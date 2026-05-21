@@ -44,6 +44,8 @@ const Footer = () => {
     { name: "Ressources & Blog", path: "/ressources" },
   ];
 
+  // All 8 service detail routes — keeps internal link graph dense for SEO so
+  // every service page is one hop from any other page (Footer renders sitewide).
   const serviceLinks = [
     { name: "Location double commande", path: "/location" },
     { name: "Permis B", path: "/conduite" },
@@ -51,6 +53,8 @@ const Footer = () => {
     { name: "Fabrication de permis", path: "/fabrication-permis" },
     { name: "Passerelle Boîte Auto", path: "/passerelle" },
     { name: "Code de la route en ligne", path: "/code-en-ligne" },
+    { name: "Accompagnement examen", path: "/accompagnement" },
+    { name: "Formation post-permis", path: "/post-permis" },
   ];
 
   const legalLinks = [
@@ -222,8 +226,12 @@ const Footer = () => {
           <div className="flex flex-wrap items-center gap-8 opacity-40 hover:opacity-100 transition-opacity">
             <img src={LogoCPF} alt="Permis financé par CPF" className="h-10 md:h-12 object-contain" />
             <img src={LogoPermis1Euro} alt="Permis à 1 euro par jour" className="h-10 md:h-12 object-contain" />
-            {/* TODO: link to actual Qualiopi cert PDF when received from client */}
-            <a href="#" aria-label="Voir le certificat Qualiopi (PDF)" rel="noopener">
+            <a
+              href="/qualiopi-cert-smoni.pdf"
+              target="_blank"
+              rel="noopener"
+              aria-label="Voir le certificat Qualiopi (PDF)"
+            >
               <img src={LogoQualiopi} alt="Certification Qualiopi — voir le certificat" className="h-10 md:h-12 object-contain" />
             </a>
             <img src={LabelLogo} alt="Label Qualité Auto-école" className="h-10 md:h-12 object-contain" />
