@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "postinstall": "node scripts/patch-rrd-server.mjs",
+    "prebuild": "node scripts/generate-sitemap.mjs",
     "build": "node scripts/patch-rrd-server.mjs && vite-react-ssg build",
     "build:spa": "vite build",
     "lint": "eslint .",

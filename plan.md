@@ -69,8 +69,8 @@ Status: queued. Tick items as they land.
 - [x] Vary `HomeGroupeSection` alt suffixes — currently every card has the same `"— Auto-école Smoni à Vincennes (94300)"` tail
 
 ### 13. Sitemap
-- [ ] Stamp per-page `lastmod` at build time (currently all `2026-05-20`)
-- [ ] Generate image sitemap for blog images
+- [x] Stamp per-page `lastmod` at build time (currently all `2026-05-20`) — `scripts/generate-sitemap.mjs` runs as `prebuild`, stamps each URL's `<lastmod>` from `git log -1 --format=%cI` of the backing source file (mtime fallback)
+- [ ] Generate image sitemap for blog images — **deferred** (low ROI for current image volume; revisit when blog hits 20+ posts or when first GSC image-coverage warnings appear)
 
 ---
 
