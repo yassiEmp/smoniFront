@@ -133,12 +133,6 @@ const HomeCertificationSection = () => {
                 <div className="relative aspect-[16/9] bg-[#f3f1ff]">
                   <Illustration />
                   <span
-                    className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/85 backdrop-blur-sm text-[10px] font-bold tracking-[0.18em] text-[#2c2876]"
-                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-                  >
-                    ENGAGEMENT · N°{e.n}
-                  </span>
-                  <span
                     className="absolute top-3 right-3 text-[10px] font-bold tabular-nums text-[#2c2876]/70"
                     style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
                   >
