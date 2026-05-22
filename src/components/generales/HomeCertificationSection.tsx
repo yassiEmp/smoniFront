@@ -11,38 +11,64 @@ import {
   IllustrationGarantie,
 } from "./EngagementIllustrations";
 
+// Each card carries a scannable micro-hierarchy: KEYWORD (F-pattern landing) → title → body w/ one bolded promise.
+// `featured: true` triggers the Von Restorff visual anchor (1 card, distinct treatment) so the eye enters there.
 const engagements = [
   {
     n: "01",
+    keyword: "Tarif",
+    featured: true,
     title: "Prix tout-compris, écrit dans le contrat.",
-    body: "Tous nos tarifs sont publics. Pas de \"supplément examen\", pas d'\"heures de centre\" ajoutées à la dernière minute. Ce que vous voyez = ce que vous payez.",
+    body: "Tous nos tarifs sont publics. Pas de « supplément examen », pas d'« heures de centre » ajoutées à la dernière minute. Ce que vous voyez = ce que vous payez.",
+    emphasis: "Ce que vous voyez = ce que vous payez.",
     Illustration: IllustrationPrix,
   },
   {
     n: "02",
+    keyword: "60 min",
     title: "1 heure de conduite = 60 minutes au volant.",
-    body: "Pas de plein d'essence, pas de café, pas de \"déposer un dossier\". Heure de début et heure de fin notées sur votre livret.",
+    body: "Pas de plein d'essence, pas de café, pas de « déposer un dossier ». Heure de début et heure de fin notées sur votre livret.",
+    emphasis: "Heure de début et heure de fin notées sur votre livret.",
     Illustration: Illustration60Min,
   },
   {
     n: "03",
+    keyword: "Respect",
     title: "Aucun moniteur ne vous criera dessus.",
     body: "Si ça arrive, vous nous le dites. Changement gratuit, et entretien avec le moniteur concerné. C'est écrit dans la charte.",
+    emphasis: "Changement gratuit",
     Illustration: IllustrationPasDeCris,
   },
   {
     n: "04",
+    keyword: "Accès",
     title: "Recalés bienvenus — sans pack 13h imposé.",
     body: "Vous venez d'une autre auto-école ou vous avez raté ? On évalue votre niveau gratuitement, sans minimum d'heures forcé.",
+    emphasis: "sans minimum d'heures forcé",
     Illustration: IllustrationRecales,
   },
   {
     n: "05",
+    keyword: "Garantie",
     title: "Garantie financière obligatoire (loi).",
     body: "Article L.213-2 du Code de la route : votre argent est protégé. Si on ferme, vous récupérez vos leçons. Attestation sur demande.",
+    emphasis: "votre argent est protégé",
     Illustration: IllustrationGarantie,
   },
 ];
+
+// Render body text with the emphasis fragment bolded so a single scannable promise pops inside the paragraph.
+const renderBody = (body: string, emphasis: string) => {
+  const idx = body.indexOf(emphasis);
+  if (idx === -1) return body;
+  return (
+    <>
+      {body.slice(0, idx)}
+      <strong className="font-extrabold text-[#2c2876]">{body.slice(idx, idx + emphasis.length)}</strong>
+      {body.slice(idx + emphasis.length)}
+    </>
+  );
+};
 
 const engagementsItemListSchema = {
   "@context": "https://schema.org",
@@ -187,30 +213,62 @@ const HomeCertificationSection = () => {
               >
                 <article
                   aria-labelledby={`engagement-${e.n}-title`}
-                  className="group h-full bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-[#2c2876]/15 transition-[box-shadow,border-color] duration-300 overflow-hidden flex flex-col"
+                  className={`group h-full rounded-2xl overflow-hidden flex flex-col transition-[box-shadow,border-color] duration-300 ${
+                    e.featured
+                      ? "bg-white shadow-md ring-2 ring-blue-500/25 hover:shadow-2xl hover:ring-blue-500/40"
+                      : "bg-white shadow-sm border border-slate-100 hover:shadow-xl hover:border-[#2c2876]/15"
+                  }`}
                 >
                   <div className="relative aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
-                    <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.03]">
+                    {/* Decoration — opacity reduced so it reads as context, not content (Bringhurst hierarchy).
+                        Featured card stays at full strength so it dominates the row. */}
+                    <div
+                      className={`absolute inset-0 transition-[transform,opacity] duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-100 ${
+                        e.featured ? "opacity-100" : "opacity-[0.78]"
+                      }`}
+                    >
                       <Illustration />
                     </div>
-                    <span
-                      className="absolute top-3 right-3 text-[10px] font-bold tabular-nums text-[#2c2876]/70"
-                      style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-                      aria-hidden="true"
-                    >
-                      {e.n} / 05
-                    </span>
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-b from-transparent to-white" />
+                    {e.featured && (
+                      <span
+                        className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black tracking-[0.14em] shadow-sm"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        ★ LE PLUS DEMANDÉ
+                      </span>
+                    )}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-transparent to-white" />
                   </div>
                   <div className="p-5 sm:p-6 pt-5 flex-1 flex flex-col">
+                    {/* F-pattern landing: keyword (left, hi-contrast blue) + counter (right). Eye reads keyword first → title → emphasis. */}
+                    <div className="flex items-baseline justify-between mb-3">
+                      <span
+                        className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-600"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        {e.keyword}
+                      </span>
+                      <span
+                        className="text-[10px] font-bold tabular-nums text-slate-400"
+                        style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                        aria-hidden="true"
+                      >
+                        N°{e.n} / 05
+                      </span>
+                    </div>
                     <h3
                       id={`engagement-${e.n}-title`}
-                      className="text-[15px] sm:text-base font-extrabold text-[#2c2876] leading-snug mb-2"
+                      className={`font-black text-[#2c2876] leading-snug mb-2.5 ${
+                        e.featured ? "text-[17px] sm:text-lg" : "text-[15px] sm:text-base"
+                      }`}
+                      style={{ fontFamily: "'Outfit', sans-serif" }}
                     >
                       <span className="sr-only">Engagement n°{e.n} — </span>
                       {e.title}
                     </h3>
-                    <p className="text-sm text-slate-600 font-medium leading-relaxed">{e.body}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {renderBody(e.body, e.emphasis)}
+                    </p>
                   </div>
                 </article>
               </motion.li>
