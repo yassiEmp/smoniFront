@@ -1958,6 +1958,97 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
+  },
+  {
+    slug: "transfert-dossier-auto-ecole-droits-procedure-2026",
+    title: "Transfert de dossier auto-école : vos droits et la procédure en 2026",
+    subtitle:
+      "Changer d'auto-école sans perdre vos heures ni payer de frais abusifs : cadre légal, procédure complète, modèle de lettre recommandée et recours en 2026.",
+    excerpt:
+      "Votre dossier de candidat au permis vous appartient. Le Code de la route, la DGCCRF et service-public.gouv.fr posent un cadre clair : restitution due, frais encadrés, NEPH portable. Ce guide détaille la procédure étape par étape, le modèle de lettre recommandée qui débloque la plupart des situations, et les recours quand l'auto-école freine.",
+    category: "Formation",
+    date: "22 Mai 2026",
+    readingTime: "12 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Transfert dossier",
+      "Changer d'auto-école",
+      "NEPH",
+      "Droits candidat",
+      "DGCCRF",
+      "Code de la route",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title: "Transfert de dossier auto-école : pourquoi tant de candidats se font bloquer en 2026",
+        iconName: "AlertTriangle",
+        content: "Vous avez signé il y a six mois, peut-être un an, dans une auto-école qui vous semblait sérieuse. Et puis quelque chose a coincé. Des leçons annulées la veille, un moniteur différent à chaque fois, une date d'examen qui n'arrive jamais, ou pire : des heures payées qui disparaissent du livret. Vous savez que vous voulez changer. Mais une question vous bloque : est-ce que vous allez perdre tout ce que vous avez déjà payé ? Est-ce qu'on va vous facturer des frais surprises pour récupérer votre dossier ? Est-ce que vous aurez le droit de garder votre code déjà obtenu ? Cette peur de perdre ses acquis est exactement ce sur quoi misent les auto-écoles qui gèrent mal leurs candidats. Plus le candidat doute, plus il reste — c'est mécanique. Et pourtant, le droit français est sans ambiguïté : votre dossier de candidat au permis vous appartient, votre numéro NEPH vous suit, et aucune auto-école ne peut légalement vous retenir prisonnier d'un contrat dysfonctionnel.",
+      },
+      {
+        title: "Ce que dit la loi : votre dossier vous appartient (et c'est non négociable)",
+        iconName: "ShieldAlert",
+        content: "Le cadre est posé par le Code de la route, principalement à l'article L213-2 et à l'article R213-3, qui encadrent les contrats d'enseignement de la conduite. Ces textes imposent à toute auto-école de signer un contrat écrit avec son élève, mentionnant le prix, les prestations incluses, et — c'est le point décisif — les conditions de restitution du dossier en cas de rupture. Concrètement, deux principes ne sont pas négociables. D'abord, votre dossier de candidat au permis vous appartient personnellement. Il contient votre numéro NEPH, votre attestation de réussite au code si vous l'avez obtenue, votre fiche de suivi pédagogique avec le nombre d'heures réellement effectuées, et l'ensemble des pièces administratives que vous avez fournies. L'auto-école n'en est que le dépositaire. Ensuite, le NEPH (Numéro d'Enregistrement Préfectoral Harmonisé), géré par l'ANTS via la plateforme officielle permisdeconduire.ants.gouv.fr, est attaché à votre identité, pas à votre auto-école. Quand vous changez d'établissement, vous gardez le même NEPH, vos résultats restent valables, et la nouvelle auto-école n'a qu'à se rattacher administrativement à votre dossier existant. En clair : il n'y a rien à racheter, rien à repasser, rien à perdre.",
+      },
+      {
+        title: "Les frais que l'auto-école peut (ou ne peut pas) vous facturer",
+        iconName: "BarChart3",
+        content: "La question qui fâche, c'est celle des frais. La règle de fond, rappelée par la DGCCRF (la répression des fraudes du ministère de l'Économie), tient en une phrase : la restitution de votre dossier en elle-même ne peut pas faire l'objet d'une facturation arbitraire. Votre dossier est votre propriété, pas un service. Cela ne veut pas dire que tout est gratuit. L'auto-école peut légitimement facturer ce qui figure noir sur blanc dans le contrat que vous avez signé, à condition que ce soit clair et proportionné. Sont considérés comme acceptables : la facturation des prestations déjà réalisées et non encore payées (les heures de conduite consommées, la part de code utilisée), et une éventuelle clause de frais administratifs raisonnables si elle était stipulée explicitement à la signature. Sont en revanche presque toujours abusifs et contestables : les frais de restitution dits forfaitaires qui apparaissent uniquement au moment du départ, les pénalités de rupture qui n'ont pas été annoncées au contrat, la facturation d'heures non consommées, et toute somme dont l'intitulé reste flou. La règle simple à retenir : si ce n'est pas écrit dans votre contrat initial, ce n'est probablement pas dû. Un repère utile : la jurisprudence et les positions publiques de la DGCCRF distinguent toujours deux logiques. La rémunération d'un service rendu (une heure de conduite donnée, du code consommé) reste due. La pénalité déguisée pour vous décourager de partir ne l'est jamais. En pratique, demandez systématiquement une facture détaillée précisant la ventilation des sommes réclamées : si l'auto-école ne peut pas justifier ligne par ligne, vous avez de très bons arguments pour refuser.",
+      },
+      {
+        title: "La procédure étape par étape pour récupérer votre dossier sans drame",
+        iconName: "ListChecks",
+        content: "Voici la procédure qui fonctionne, ordonnée pour minimiser les frictions et verrouiller la preuve à chaque étape. Cette séquence est conforme à ce que recommande service-public.gouv.fr, le portail officiel de l'administration française. Avant toute chose, un principe : agissez par écrit. À chaque étape, gardez une trace datée — e-mail, courrier, copie d'écran de la plateforme. C'est ce qui transforme un litige potentiel en dossier déjà gagné si jamais vous devez aller au-delà du dialogue amiable.",
+        bullets: [
+          "Étape 1 — Faites le point écrit sur votre situation : nombre d'heures de conduite consommées, code obtenu ou non, sommes versées avec preuves de paiement, contrat signé.",
+          "Étape 2 — Identifiez une nouvelle auto-école avant d'engager la rupture, et obtenez d'elle un accord de principe pour reprendre votre dossier en l'état.",
+          "Étape 3 — Envoyez à votre auto-école actuelle une lettre recommandée avec accusé de réception (LRAR) demandant la restitution complète du dossier sous quinze jours.",
+          "Étape 4 — Réceptionnez votre dossier complet : NEPH, livret d'apprentissage, attestation de réussite au code si applicable, fiche de suivi pédagogique signée.",
+          "Étape 5 — Transmettez l'ensemble à la nouvelle auto-école qui se rattache administrativement à votre NEPH existant via le portail ANTS.",
+        ],
+        secondContent: "Une dernière chose : ne signez jamais un nouveau contrat avant d'avoir la preuve écrite que l'ancien dossier est en cours de restitution. Sinon, vous risquez de payer deux fois la même chose.",
+      },
+      {
+        title: "Le modèle de lettre recommandée qui fait débloquer 9 dossiers sur 10",
+        iconName: "ClipboardCheck",
+        content: "La lettre recommandée avec accusé de réception (LRAR) est l'outil qui débloque la situation dans la grande majorité des cas. Pourquoi ? Parce qu'elle crée une preuve juridique opposable, et qu'une auto-école sérieuse sait que sa marge de manœuvre devient nulle dès qu'un courrier daté est entre vos mains. Le contenu efficace tient en quelques éléments simples : votre identité complète et votre numéro NEPH si vous le connaissez, la référence du contrat signé, votre demande explicite de restitution du dossier sous quinze jours, et la mention que vous vous réservez le droit de saisir la DGCCRF via SignalConso ainsi que la juridiction compétente en cas de blocage. Pas besoin de jargon juridique : la clarté pèse plus lourd que le vocabulaire.",
+        bullets: [
+          "Vos coordonnées complètes et celles de l'auto-école (raison sociale + adresse de l'agrément préfectoral).",
+          "Référence du contrat et date de signature.",
+          "Votre numéro NEPH si vous le connaissez.",
+          "Demande explicite de restitution du dossier complet sous quinze jours.",
+          "Mention du recours à SignalConso (DGCCRF) et à la juridiction compétente en cas de non-réponse.",
+          "Date, signature, copie conservée.",
+        ],
+        secondContent: "Gardez précieusement le récépissé d'envoi et l'accusé de réception : ces deux documents sont votre dossier en cas de litige.",
+        tip: {
+          label: "Astuce LRAR",
+          text: "Conservez systématiquement la copie du courrier envoyé, le récépissé de dépôt et l'accusé de réception. Ces trois pièces forment un dossier de preuve quasi imparable en cas de litige ultérieur.",
+        },
+      },
+      {
+        title: "Quand l'auto-école refuse : les vrais recours qui fonctionnent",
+        iconName: "Wrench",
+        content: "Si malgré la lettre recommandée le dossier reste bloqué au-delà du délai annoncé, trois recours s'enchaînent dans cet ordre. Premier niveau, SignalConso (signal.conso.gouv.fr), la plateforme officielle de signalement consommateur opérée par la DGCCRF. Le signalement est gratuit, traité par les agents de la répression des fraudes, et déclenche très souvent une mise en demeure de l'auto-école. C'est l'étape qui suffit dans la majorité des cas réellement bloqués. Deuxième niveau, la médiation de la consommation. Chaque auto-école est tenue d'adhérer à un médiateur agréé dont les coordonnées doivent figurer sur le contrat ou en boutique. La saisine est gratuite pour le consommateur. Troisième niveau, si rien n'a fonctionné, le tribunal judiciaire pour les litiges supérieurs à un certain seuil, ou le juge de proximité en dessous. À ce stade, vous êtes très loin du parcours normal — mais les jugements rendus en faveur des candidats dans ce type de litige sont massivement majoritaires. Un détail qui change tout : conservez de bout en bout des traces écrites. Tous les échanges par SMS, e-mail, ou messagerie de l'auto-école doivent être sauvegardés. Une capture d'écran datée a valeur de preuve, à condition que la conversation soit identifiable et complète. C'est souvent ce qui fait basculer un dossier en votre faveur quand la médiation s'enlise.",
+      },
+      {
+        title: "Cas particulier : votre auto-école a fermé ou est en liquidation",
+        iconName: "HelpCircle",
+        content: "Cas plus rare mais traumatique : votre auto-école a fermé du jour au lendemain, est passée en liquidation judiciaire, ou son dirigeant est injoignable. Vous n'êtes pas pour autant démuni. Votre NEPH est conservé dans le système de l'ANTS, indépendamment de toute auto-école. Vos résultats d'examen obtenus restent valables. La nouvelle auto-école que vous choisissez peut, dans la majorité des cas, reconstituer votre fiche de suivi à partir des justificatifs que vous avez gardés (reçus de paiement, attestations, livret papier si vous l'avez). Si vous aviez payé un forfait d'avance non consommé, vous devenez créancier de l'auto-école en liquidation. Il faut alors déclarer votre créance auprès du mandataire judiciaire dans les délais légaux — l'information est publiée au BODACC et relayée par le greffe du tribunal de commerce dont dépendait l'école. Récupérer l'intégralité de la somme n'est pas garanti, mais déclarer la créance est gratuit et c'est la seule manière de figurer parmi les bénéficiaires en cas de répartition.",
+      },
+      {
+        title: "Reprendre votre formation sereinement après le transfert",
+        iconName: "Target",
+        content: "Une fois le dossier transféré, la tentation est grande de tout enchaîner pour rattraper le temps perdu. C'est rarement la bonne idée. Prenez d'abord une séance d'évaluation avec votre nouvelle auto-école : elle permet de calibrer le nombre d'heures restantes, d'éviter de payer en double ce que vous savez déjà faire, et de fixer une date d'examen réaliste plutôt qu'une date d'espoir. Choisir une auto-école qui prend au sérieux les candidats venus d'ailleurs change beaucoup de choses. Chez nous, à Vincennes, nous accueillons régulièrement des candidats qui ont vécu un blocage de dossier ou un parcours raté ailleurs. Le premier rendez-vous sert à faire un point honnête sur ce que vous avez déjà acquis, à vérifier votre solde CPF et les aides mobilisables, et à construire un plan personnalisé. Vous pouvez aussi consulter pour voir une grille tarifaire entièrement transparente, ligne par ligne, ainsi que pour découvrir les formules adaptées au cas par cas. Et si vous voulez savoir qui sera en face de vous, présente l'équipe pédagogique. Le transfert de dossier n'est pas une punition. C'est un droit, c'est rapide quand on connaît la procédure, et c'est souvent le déclic qui débloque toute une formation. Le seul vrai risque, c'est de rester par lassitude dans un parcours qui ne fonctionne pas.",
+        quote: {
+          text: "Le dossier appartient au candidat. Le rôle de l'auto-école est de l'accompagner, pas de le retenir.",
+          author: "Principe rappelé par la DGCCRF — fiche pratique auto-écoles",
+        },
+      },
+    ],
   }
 ];
 
