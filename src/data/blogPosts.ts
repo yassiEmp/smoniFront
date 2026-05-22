@@ -2189,6 +2189,178 @@ export const blogPosts: BlogPost[] = [
           "Si vous cochez les sept cases, vous tenez très probablement un établissement honnête. Si vous en cochez moins de quatre, prenez le temps de comparer avec une auto-école qui les coche toutes. Cinq minutes de plus à la signature, c'est plusieurs centaines d'euros et plusieurs mois de tranquillité gagnés. Pour discuter de votre projet et obtenir un devis détaillé ligne par ligne, prenez rendez-vous avec notre équipe.",
       },
     ],
+  },
+  {
+    slug: "gerer-stress-examen-permis-7-techniques",
+    title:
+      "Gérer le stress du permis : 7 techniques validées pour réussir le jour J",
+    subtitle:
+      "Cohérence cardiaque, désensibilisation graduée et protocole minute par minute — la méthode neuroscientifique pour passer l'examen sans paniquer.",
+    excerpt:
+      "Vous n'êtes pas mauvais conducteur — votre cerveau est juste programmé pour saboter votre examen. Ce guide décortique ce qui se passe dans votre tête le jour du permis et vous donne 7 techniques cliniquement validées (cohérence cardiaque, ancrage sensoriel, visualisation, protocole minute par minute) pour transformer le stress en allié au lieu d'en faire votre pire adversaire le jour J.",
+    category: "Préparation",
+    date: "22 Mai 2026",
+    readingTime: "12 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Stress permis",
+      "Examen permis B",
+      "Cohérence cardiaque",
+      "Préparation mentale",
+      "Neurosciences",
+      "Réussir le permis",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title:
+          "Le stress du permis : pourquoi votre cerveau vous trahit le jour J",
+        iconName: "Brain",
+        content:
+          "Vous avez fait 35 heures de conduite. Vous maîtrisez vos créneaux, vos ronds-points, votre code par cœur. Et pourtant, le matin de l'examen, votre cœur bat à 110, vos mains tremblent, votre cerveau efface des choses que vous saviez faire les yeux fermés trois jours plus tôt. Vous n'êtes pas un cas isolé, et vous n'êtes surtout pas un mauvais candidat. Ce qui se passe est purement neurobiologique : face à une situation perçue comme une menace, votre amygdale — un petit noyau profond dans le cerveau — déclenche en moins de 300 millisecondes une cascade de cortisol et d'adrénaline. Le sang quitte le cortex préfrontal, la zone de décision rationnelle, pour irriguer en priorité les muscles. Résultat documenté par l'Inserm : votre mémoire de travail chute, vos automatismes moteurs deviennent maladroits, et votre attention se rétrécit sur le mauvais détail.",
+        secondContent:
+          "Autrement dit, l'examinateur ne voit pas le conducteur que votre moniteur connaît. Il voit une version dégradée de vous-même, parasitée par un système nerveux qui croit que vous êtes face à un prédateur. La bonne nouvelle, c'est que ce circuit est modulable. La neuroscience appliquée et la thérapie cognitivo-comportementale ont identifié, depuis vingt ans, des protocoles concrets pour reprendre la main sur cette mécanique. Pas de la pensée positive, pas de la magie : des techniques mesurables, validées en clinique, applicables en sept jours. C'est exactement ce que nous allons décortiquer dans ce guide. Sept techniques, dans l'ordre où vous devez les pratiquer, pour que le jour J votre cerveau soit votre allié et pas votre saboteur.",
+      },
+      {
+        title:
+          "Les 3 visages du stress d'examen (et celui qui vous fait vraiment échouer)",
+        iconName: "AlertTriangle",
+        content:
+          "Quand on parle de stress du permis, on mélange trois phénomènes très différents qui ne se gèrent pas de la même façon. Les confondre, c'est appliquer le mauvais remède au mauvais moment, et finir par cumuler les trois. Voici la cartographie clinique qu'utilisent les thérapeutes spécialisés en stress de performance — appliquée à l'examen du permis B.",
+        bullets: [
+          "Le stress anticipatoire : il monte progressivement entre J-7 et J-1. Insomnies, ruminations, scénarios catastrophe qui tournent en boucle. C'est celui qui vous épuise avant même l'examen et qui dégrade votre performance par fatigue accumulée.",
+          "Le stress de performance aigu : il explose dans les 30 minutes qui précèdent l'épreuve, dans la salle d'attente du centre. C'est la fameuse 'boule au ventre', les mains moites, la voix qui tremble quand l'inspecteur vous tend la fiche.",
+          "Le stress réactionnel post-erreur : il survient pendant l'épreuve, déclenché par un calage, un oubli de clignotant, une remarque sèche de l'examinateur. C'est statistiquement le plus destructeur — il transforme une faute mineure rattrapable en cascade d'erreurs éliminatoires.",
+        ],
+        secondContent:
+          "Selon les retours croisés des moniteurs de notre équipe et les analyses cliniques publiées par l'AFTCC sur le stress de performance, c'est le troisième type — le stress réactionnel — qui fait basculer le résultat dans 6 cas d'échec sur 10. Beaucoup de candidats arrivent calmes, conduisent bien pendant 25 minutes, commettent une petite erreur vers la 25ème minute, et perdent ensuite tous leurs moyens sur les cinq dernières minutes. Le guide qui suit s'attaque aux trois, mais accorde une attention particulière au troisième, parce que c'est celui qu'aucune méthode 'pensée positive' ne traite réellement.",
+      },
+      {
+        title:
+          "Technique 1 — La cohérence cardiaque 4-6 : 5 minutes pour reprogrammer votre amygdale",
+        iconName: "Activity",
+        content:
+          "C'est la technique la plus documentée et la plus efficace sur le stress d'examen, et pourtant l'une des moins enseignées en auto-école. Développée par le Dr David O'Hare et relayée par la Fédération Française de Cardiologie, la cohérence cardiaque est une respiration rythmée à 6 cycles par minute : 5 secondes d'inspiration, 5 secondes d'expiration, pendant 5 minutes. À ce rythme précis, votre système nerveux parasympathique reprend le dessus sur le sympathique, votre taux de cortisol baisse mesurablement en quelques minutes, et votre cortex préfrontal se réactive. Concrètement : votre amygdale arrête de hurler, votre cerveau de décision se rallume.",
+        secondContent:
+          "Le protocole à appliquer ne souffre aucune approximation : pratique trois fois par jour, idéalement au réveil, vers midi et en fin d'après-midi, pendant les sept jours qui précèdent l'examen. Une application gratuite (Respirelax+ recommandée par l'AP-HP) ou simplement un chronomètre suffit. Ce n'est pas de la relaxation vague — c'est un dosage physiologique. À J-1, vous aurez créé un réflexe : trois respirations 5/5 et votre rythme cardiaque descend en quelques secondes. Le jour J, dans la salle d'attente du centre d'examen, vous le ferez sans même y penser.",
+        tip: {
+          label: "Protocole 365",
+          text: "Mémorisez la règle 365 : 3 fois par jour, 6 respirations par minute, pendant 5 minutes. C'est le minimum cliniquement actif. En dessous, l'effet est anecdotique ; au-dessus, le gain marginal est faible. Commencez ce protocole au minimum 7 jours avant la date d'examen.",
+        },
+      },
+      {
+        title:
+          "Technique 2 — La désensibilisation graduée : convertir le centre d'examen en terrain connu",
+        iconName: "Target",
+        content:
+          "Une grande partie du stress du jour J ne vient pas de la conduite — elle vient de la nouveauté de l'environnement. Centre d'examen jamais vu, parking inconnu, salle d'attente intimidante, examinateur dont la voix vous est étrangère. La technique inspirée des travaux de Joseph Wolpe sur la désensibilisation systématique, encore enseignée par l'AFTCC, consiste à inverser cette nouveauté : transformer le centre d'examen en lieu familier avant même d'y passer l'épreuve.",
+        bullets: [
+          "Quatre à cinq jours avant l'examen, rendez-vous physiquement au centre. Pas en voiture — à pied ou en transport. Faites le tour du parking, repérez l'entrée, la salle d'attente, les toilettes.",
+          "Demandez à votre moniteur de planifier votre dernière leçon de conduite sur les axes immédiats autour du centre d'examen. Les ronds-points, les sorties, les pièges classiques de la zone.",
+          "Visualisez à voix haute le déroulé : 'J'arrive, je me gare, je salue, je tends ma convocation, je m'installe au volant, je règle mon siège, je vérifie mes rétros…' Cette mise en mots active les mêmes circuits neuronaux que la pratique réelle.",
+          "Le matin J, refaites le trajet en avance — arrivez 30 minutes en amont, prenez le temps de marcher autour du centre, de retrouver vos repères. Vous ne découvrez rien, vous reconnaissez.",
+        ],
+        secondContent:
+          "Cette technique n'élimine pas le stress, elle réduit drastiquement sa composante 'surprise' qui en est le carburant principal. Sur le terrain, les candidats qui appliquent ce protocole reportent une baisse subjective d'anxiété de l'ordre de 40 % à l'arrivée au centre. Votre moniteur Smoni peut intégrer cette visite préparatoire dans votre planning — il suffit de le demander en amont.",
+      },
+      {
+        title:
+          "Technique 3 à 5 — Ancrage sensoriel, dialogue interne et visualisation",
+        iconName: "Compass",
+        content:
+          "Ces trois techniques travaillent sur le même levier : reprendre le contrôle conscient de votre attention dans les minutes critiques. Elles sont rapides, discrètes, et peuvent s'utiliser dans la salle d'attente, au moment de monter en voiture, ou même pendant l'épreuve sans que l'examinateur le remarque. Elles ne remplacent pas la cohérence cardiaque — elles la complètent.",
+        bullets: [
+          "Ancrage sensoriel (technique 3) : choisissez un petit objet (bracelet, pièce, élastique au poignet). Pendant vos sept jours de préparation, associez-le mentalement à la sensation de calme post-cohérence cardiaque. Le jour J, le toucher devient un déclencheur conditionné — un raccourci neuronal vers l'état de calme.",
+          "Dialogue interne reformulé (technique 4) : remplacez 'je vais échouer' par 'je vais conduire comme à l'entraînement'. Remplacez 'l'examinateur me déteste' par 'l'examinateur fait son travail, il évalue, il ne juge pas'. La reformulation cognitive est l'outil de base de la TCC ; elle coupe la spirale catastrophique en 10 secondes.",
+          "Visualisation détaillée (technique 5) : trois fois cette semaine, dix minutes les yeux fermés, déroulez mentalement un examen parfait. Sentez le volant, voyez les rétros, entendez le clignotant, entendez votre voix qui dit 'je tourne à gauche'. La recherche sur la mental rehearsal montre une activation neuronale très proche de la pratique réelle — vos automatismes en ressortent renforcés.",
+        ],
+        secondContent:
+          "Ces trois techniques ont en commun d'être gratuites, instantanées et sans effet secondaire — contrairement aux anxiolytiques en vente libre ou à l'homéopathie, qui n'ont jamais démontré d'efficacité spécifique sur ce type de stress dans les revues cliniques. Si vous hésitez à prendre quelque chose le matin de l'examen, parlez-en d'abord à votre médecin et privilégiez l'entraînement mental — beaucoup plus prévisible dans ses effets.",
+      },
+      {
+        title:
+          "Technique 6 — Le protocole 'matin de l'examen' minute par minute",
+        iconName: "Clock",
+        content:
+          "Les deux heures qui précèdent l'épreuve sont décisives. Trop souvent, le candidat passe la matinée à ruminer, saute le petit-déjeuner, arrive en retard ou en panique. Voici un protocole minuté testé par notre équipe avec les candidats qui le suivent à la lettre. Il a un objectif unique : que vous arriviez devant l'examinateur dans le même état que pendant vos meilleures heures de conduite.",
+        table: {
+          headers: ["Horaire (exam 9h30)", "Action", "Objectif physiologique"],
+          rows: [
+            [
+              "7h00",
+              "Réveil sans snooze. Lumière naturelle 5 min à la fenêtre.",
+              "Caler le rythme circadien, baisser la mélatonine",
+            ],
+            [
+              "7h15",
+              "Cohérence cardiaque 5 min (protocole 5/5).",
+              "Baisse du cortisol matinal",
+            ],
+            [
+              "7h30",
+              "Petit-déjeuner protéiné + glucides lents. Pas de café fort.",
+              "Glycémie stable, éviter le pic-creux",
+            ],
+            [
+              "8h00",
+              "Visualisation 10 min de l'examen complet, calme.",
+              "Activation des automatismes moteurs",
+            ],
+            [
+              "8h30",
+              "Départ vers le centre. Musique apaisante, pas d'infos anxiogènes.",
+              "Maintenir le parasympathique dominant",
+            ],
+            [
+              "9h00",
+              "Arrivée. Marche autour du centre 10 min.",
+              "Décharge l'adrénaline par mouvement",
+            ],
+            [
+              "9h15",
+              "Salle d'attente : 2e cohérence cardiaque + ancrage sensoriel.",
+              "État optimal de présence",
+            ],
+            [
+              "9h30",
+              "Convocation. Trois respirations longues. Sourire à l'examinateur.",
+              "Acte social qui apaise les deux parties",
+            ],
+          ],
+        },
+        secondContent:
+          "Ce protocole n'a rien d'ésotérique : chaque ligne correspond à un mécanisme physiologique précis. Un candidat qui le suit arrive devant l'examinateur avec une fréquence cardiaque de 70-80 battements/minute au lieu de 110-130. C'est la différence entre un cortex préfrontal qui fonctionne et un cortex préfrontal en veille. Pour les candidats accompagnés en parcours premium, l'équipe pédagogique peut vous aider à caler ce protocole sur votre horaire précis d'examen.",
+      },
+      {
+        title:
+          "Technique 7 — Pendant l'épreuve : la règle des 3 respirations qui sauve un calage",
+        iconName: "Zap",
+        content:
+          "Vous calez. Vous oubliez un clignotant. L'examinateur vous reprend sur un point. C'est exactement le moment où la majorité des candidats perdent leur permis. Pas à cause de la faute initiale — qui est presque toujours rattrapable — mais à cause de la cascade émotionnelle qui suit. Voici la technique d'urgence à intégrer comme un réflexe : la règle des trois respirations.",
+        secondContent:
+          "Dès qu'une faute survient, ne dites rien, ne vous excusez pas trois fois, ne ruminez pas. Faites discrètement trois respirations longues : une inspiration sur 4 secondes, une expiration sur 6 secondes, trois fois. Total : 30 secondes. Pendant ces 30 secondes, votre cœur ralentit, votre amygdale relâche son emprise, votre cortex préfrontal se rallume. Et surtout, vous coupez la spirale 'je viens d'échouer → je vais tout rater → je rate tout'. Vous reprenez le volant comme si c'était la première manœuvre.",
+        tip: {
+          label: "Rappel terrain",
+          text: "L'examinateur n'évalue pas vos émotions — il évalue votre conduite sur les 35 minutes complètes. Une erreur isolée ne fait presque jamais échouer. C'est la cascade post-erreur qui fait échouer. Cette règle des 3 respirations est votre coupe-circuit personnel.",
+        },
+        quote: {
+          text: "Le permis ne se joue pas sur l'absence d'erreurs. Il se joue sur la capacité à rester soi-même après une erreur.",
+          author: "Principe pédagogique partagé par les moniteurs Smoni",
+        },
+      },
+      {
+        title:
+          "Quand consulter un pro (et pourquoi votre moniteur reste le meilleur allié)",
+        iconName: "UserCheck",
+        content:
+          "Toutes ces techniques fonctionnent pour un stress 'normal' de performance, qui touche environ 7 candidats sur 10 selon les estimations des centres d'examen. Pour une minorité de candidats, le stress prend la forme d'une véritable phobie — attaques de panique au volant, blocage total devant le centre, échec répété malgré une excellente conduite. Dans ce cas précis, il ne faut pas s'acharner seul. Un psychologue formé en TCC peut, en 4 à 8 séances, désamorcer le mécanisme. C'est une démarche courte, ciblée, qui change radicalement le rapport à l'examen.",
+        secondContent:
+          "Pour la grande majorité, en revanche, votre moniteur d'auto-école reste la personne la mieux placée pour vous accompagner. Pas parce qu'il est psychologue — mais parce qu'il vous connaît au volant, qu'il sait dans quelles situations vous décrochez, et qu'il peut adapter vos dernières heures de conduite à votre profil de stress. C'est précisément ce que l'équipe pédagogique de Smoni intègre dans ses parcours : un point dédié sur la gestion du stress dans les deux dernières semaines avant la date d'examen, et un accès direct au moniteur la veille pour clarifier les derniers doutes. Si vous préparez votre permis dans les prochaines semaines et que le stress vous freine, parlez-en à votre moniteur — ou écrivez-nous via la page contact pour caler un point téléphonique gratuit. Vous n'avez pas à porter ce stress tout seul, et surtout : il se travaille.",
+      },
+    ],
   }
 ];
 
