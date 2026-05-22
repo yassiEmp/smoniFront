@@ -1432,6 +1432,141 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
+  },
+  {
+    slug: "jai-rate-ma-manoeuvre-au-permis-quoi-faire",
+    title:
+      "J'ai raté ma manoeuvre au permis : est-ce éliminatoire et comment rebondir ?",
+    subtitle:
+      "Créneau, demi-tour, marche arrière : ce que la grille mesure vraiment, manoeuvre par manoeuvre, et le drill correctif pour repasser sereinement.",
+    excerpt:
+      "Rater une manoeuvre au permis n'est presque jamais éliminatoire en soi. Ce qui élimine, c'est la mise en danger — pas le créneau imparfait, pas le demi-tour repris, pas le calage. Guide manoeuvre par manoeuvre : ce que l'examinateur regarde dans sa grille, les vraies erreurs qui font basculer la note, et un drill correctif en 5 séances pour repasser sans la boule au ventre.",
+    category: "Examen",
+    date: "22 Mai 2026",
+    readingTime: "11 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1532751203793-812308a10d8e?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Permis B",
+      "Manoeuvre permis",
+      "Créneau",
+      "Demi-tour",
+      "Examen pratique",
+      "Échec permis",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title:
+          "J'ai raté ma manoeuvre au permis : est-ce vraiment éliminatoire ?",
+        iconName: "HelpCircle",
+        content:
+          "Vous sortez du véhicule, vous savez exactement à quel moment vous avez tout fait basculer : ce créneau qui s'est terminé à un mètre du trottoir, ce demi-tour où vous avez calé deux fois, cette marche arrière où vous avez mordu la ligne. Et là, une seule question tourne en boucle : c'est éliminatoire, oui ou non ? La réponse honnête, celle qu'on n'entend presque jamais clairement, est plus nuancée que ce que les forums laissent croire. Rater une manoeuvre au permis n'est, dans l'immense majorité des cas, pas éliminatoire en soi. Ce qui élimine, c'est autre chose.",
+        secondContent:
+          "Première chose à poser sur la table : l'examen pratique du permis B dure environ 32 minutes et il est noté sur 31 points. Pour obtenir le permis, il faut atteindre 20 points minimum et ne commettre aucune faute éliminatoire. Sur cette grille, chaque compétence reçoit une note A, B, C ou D. La compétence qui couvre les manoeuvres est notée comme toutes les autres : vous pouvez très bien obtenir un C sur votre créneau et décrocher quand même votre permis si le reste de votre examen est solide. Ce qui élimine, en revanche, c'est une faute dangereuse — provoquer un freinage d'urgence chez un autre usager, monter sur le trottoir avec un piéton à proximité, refuser une priorité, franchir une ligne continue. Ces fautes-là sont indépendantes de la manoeuvre elle-même.",
+        tip: {
+          label: "À retenir",
+          text: "Un créneau imparfait, un demi-tour repris, un calage pendant une marche arrière : ce sont des points perdus, parfois beaucoup, jamais une élimination automatique. L'élimination vient de la mise en danger, pas du ratage technique.",
+        },
+      },
+      {
+        title:
+          "Les 5 manoeuvres que l'examinateur peut vous demander (et ce qu'il regarde vraiment)",
+        iconName: "ListChecks",
+        content:
+          "L'arrêté du 19 février 2010, le texte qui encadre les conditions de l'examen, liste précisément les manoeuvres que vous pouvez tirer au sort le jour J. Il y en a cinq, et l'examinateur en choisit une, pas plus.",
+        bullets: [
+          "Le créneau — stationnement en parallèle entre deux véhicules.",
+          "Le rangement en épi — en avant ou en arrière.",
+          "Le rangement en bataille — en avant ou en arrière.",
+          "La marche arrière en ligne droite — parfois enchaînée d'une marche arrière en courbe.",
+          "Le demi-tour — en utilisant la chaussée, parfois une entrée d'allée.",
+        ],
+        secondContent:
+          "Sur chacune, l'examinateur observe quatre choses, dans cet ordre de priorité. D'abord la sécurité : avez-vous regardé partout avant de bouger, contrôlé les angles morts, anticipé les autres usagers ? C'est le critère numéro un. Un créneau parfaitement positionné sans contrôle visuel sera moins bien noté qu'un créneau imparfait mais sécurisé. Ensuite la trajectoire : sans à-coups extrêmes, sans monter sur le trottoir, sans accrocher une autre voiture. Puis la maîtrise du véhicule : embrayage maîtrisé, volant tenu correctement, vitesse lente. Enfin la finalisation : êtes-vous arrivé à un résultat acceptable, même après une reprise ? Vous avez le droit de reprendre une manoeuvre. Reprendre n'est pas raté.",
+      },
+      {
+        title: "Créneau raté : ce qui compte, ce qui ne compte pas",
+        iconName: "Target",
+        content:
+          "Le créneau est la manoeuvre la plus redoutée, et probablement la plus mal comprise. Beaucoup de candidats croient qu'il faut absolument finir collé au trottoir, à 30 centimètres maximum, sinon c'est foutu. C'est faux. Voici ce qui se passe vraiment dans la tête de l'examinateur quand vous faites un créneau.",
+        bullets: [
+          "Ralenti et signalé avec le clignotant avant de vous positionner — bon début.",
+          "Rétroviseur intérieur, rétroviseur gauche, tête tournée avant de braquer — excellent.",
+          "Monté sur le trottoir avec un piéton proche — bascule possible vers la faute éliminatoire (mise en danger).",
+          "Fini à 80 cm du trottoir au lieu de 30 — points perdus sur la finalisation, mais pas d'élimination.",
+          "Repris une ou deux fois calmement — toléré, à condition que la sécurité reste assurée à chaque reprise.",
+        ],
+        secondContent:
+          "Le piège classique, ce n'est pas la finition imparfaite. C'est de paniquer en cours de manoeuvre, d'oublier les contrôles visuels, et de braquer en aveugle pour sauver la manoeuvre. C'est là qu'on bascule du C au D, voire à la faute éliminatoire si on cogne un véhicule garé ou si on déborde sur une voie où circulent d'autres usagers. Si vous avez raté un créneau récemment, posez-vous une seule question : qu'est-ce qui a vraiment lâché ? La trajectoire, ou les contrôles visuels ? La réponse oriente tout le drill correctif. L'équipe peut vous écouter raconter votre examen et identifier la cause réelle via la page Contact.",
+      },
+      {
+        title:
+          "Demi-tour : les 3 erreurs qui font perdre des points (et celle qui élimine)",
+        iconName: "Compass",
+        content:
+          "Le demi-tour est techniquement plus simple que le créneau, mais c'est celui où on voit le plus de candidats craquer mentalement. Trois erreurs reviennent en boucle, et une quatrième élimine.",
+        bullets: [
+          "Ne pas regarder loin devant ET loin derrière avant de bouger : si vous n'observez pas l'absence de véhicules sur 50 à 80 mètres en agglomération, vous prenez un D direct sur la sécurité.",
+          "Caler une ou deux fois : perte de points sur la maîtrise, oui. Mais pas éliminatoire. L'important : redémarrer calmement, en refaisant les contrôles visuels.",
+          "Reprendre cinq, six, sept fois en oubliant les contrôles à chaque reprise : à ce stade, l'examinateur ne vous reproche pas la manoeuvre en elle-même, il vous reproche d'avoir cessé d'observer.",
+          "Forcer la priorité d'un autre usager pour finir votre demi-tour — celle qui élimine. Si une voiture arrive et que vous décidez quand même de couper sa trajectoire, c'est mise en danger.",
+        ],
+        secondContent:
+          "Le réflexe correct, toujours : freiner, attendre, reprendre les contrôles, repartir. Le temps perdu à laisser passer un véhicule n'est jamais comptabilisé contre vous. La précipitation qui crée une situation à risque, elle, oui.",
+      },
+      {
+        title:
+          "Marche arrière en ligne droite et rangement en épi : les pièges silencieux",
+        iconName: "AlertTriangle",
+        content:
+          "La marche arrière en ligne droite paraît la manoeuvre la plus facile. C'est aussi celle où le plus grand nombre de candidats perdent des points sans s'en rendre compte. Pourquoi ? Parce qu'ils oublient simplement de tourner la tête. Reculer en ne regardant que par le rétroviseur intérieur est une erreur classique. L'examinateur attend que vous tourniez la tête vers l'arrière droit du véhicule, idéalement en passant le bras sur le siège passager. C'est la position qui prouve que vous voyez réellement la zone derrière vous. Sans ce geste, même si votre trajectoire est parfaite, vous prenez un C sur les contrôles.",
+        secondContent:
+          "Le rangement en épi, lui, est piégeux pour une autre raison : la fluidité. L'examinateur regarde si vous savez positionner le véhicule dès le premier mouvement, ou si vous multipliez les corrections de volant. Une stratégie qui marche bien : vous arrêter parallèle à la place, faire vos contrôles complets, puis braquer en une seule fois en avançant lentement, embrayage maîtrisé. Si vous devez reprendre, prenez le temps de marquer un arrêt complet avant de repartir. C'est ce temps d'arrêt qui prouve que vous reprenez le contrôle, pas que vous improvisez. Le rangement en bataille suit la même logique, avec une variante : en marche arrière, l'angle de braquage est plus précis. Beaucoup de candidats braquent trop tôt et finissent en biais. La correction se fait en deux temps : reculer un peu, avancer un peu, reculer à nouveau.",
+        tip: {
+          label: "Le geste qui change tout",
+          text: "En marche arrière, tournez la tête vers la lunette arrière droite, bras posé sur le dossier passager. Ce seul geste convaincra l'examinateur que vous voyez ce qui se passe — et passera votre note de C à B sur les contrôles.",
+        },
+      },
+      {
+        title:
+          "Le drill correctif : 5 séances pour ne plus jamais rater une manoeuvre",
+        iconName: "ClipboardCheck",
+        content:
+          "Maintenant qu'on a compris ce que la grille mesure vraiment, voici un drill correctif qui marche. Il tient en cinq séances de conduite ciblées, idéalement espacées sur trois à quatre semaines. Si vous voulez le faire encadré par un moniteur qui sait exactement quoi corriger, l'équipe peut vous caler un parcours de leçons correctives dédiées via la page Contact.",
+        bullets: [
+          "Séance 1 — Diagnostic. Vous refaites les cinq manoeuvres sans pression. L'objectif : identifier précisément où votre regard décroche. Le moniteur prend des notes sur les contrôles visuels manqués.",
+          "Séance 2 — Contrôles visuels en boucle. Vous reprenez UNE manoeuvre, celle où le diagnostic a montré le plus de trous, et vous la répétez en verbalisant à voix haute chaque contrôle. La séance la moins glamour, la plus utile.",
+          "Séance 3 — Reprises propres. Vous travaillez délibérément l'art de reprendre une manoeuvre : marquer l'arrêt, refaire les contrôles, repartir. Transformer la reprise en geste réflexe propre, pas en panique.",
+          "Séance 4 — Conditions d'examen. Le moniteur joue l'examinateur, vous tire une manoeuvre au sort, vous l'exécutez sans aide. Débriefing à la fin, pas pendant.",
+          "Séance 5 — Simulation complète. Examen blanc de 32 minutes avec manoeuvre intégrée. Si vous obtenez les 20 points sur cette simulation, vous êtes prêt à repasser.",
+        ],
+        secondContent:
+          "Ce drill fonctionne parce qu'il sépare le diagnostic, l'entraînement et la mise en condition. La plupart des candidats échouent à corriger leurs manoeuvres parce qu'ils répètent au hasard, sans cibler la vraie cause de leur erreur. Pour le détail des leçons correctives et stages de préparation à l'examen, la page Services liste les formats disponibles, et la page Tarifs affiche chaque ligne sans astérisque.",
+      },
+      {
+        title:
+          "Repasser l'examen sereinement : checklist J-7 et état d'esprit",
+        iconName: "Calendar",
+        content:
+          "À une semaine du repassage, votre travail technique est derrière vous. Les sept derniers jours servent uniquement à arriver dans le bon état mental. Voici ce qui fait la différence.",
+        bullets: [
+          "Dormez normalement. Ne relisez pas le code la veille à 23h. Votre cerveau a besoin d'être frais, pas saturé.",
+          "Le jour J, arrivez 30 minutes en avance au centre d'examen pour éviter la course, le stress du retard, l'embouteillage de dernière minute.",
+          "Quand l'examinateur vous donne la manoeuvre, prenez 3 secondes de respiration calme avant de bouger. Ces 3 secondes réactivent la séquence des contrôles répétée en séance 2.",
+          "Si vous ratez votre première tentative, reprenez. Marquez l'arrêt, refaites les contrôles, repartez. Ce n'est pas un signe de faiblesse, c'est exactement ce que l'examinateur veut voir.",
+          "Sortez de l'examen sans demander à l'examinateur si vous l'avez eu. Vous le saurez par le résultat officiel.",
+        ],
+        secondContent:
+          "Le mot de la fin : raté une manoeuvre, ce n'est pas raté un permis. C'est une donnée, pas un verdict. La grille B est faite pour ça — elle pondère, elle nuance, elle laisse de la place à l'humain qui apprend. Ce qui élimine vraiment, ce n'est pas l'erreur technique, c'est l'erreur de sécurité. Et ça, ça se travaille — séance par séance, contrôle visuel par contrôle visuel. Pour comprendre le coût réel d'un repassage, le guide Prix pour repasser le permis B après échec détaille chaque poste. Et pour démarrer un parcours de leçons correctives ciblées sur vos manoeuvres faibles, la page Contact est la porte d'entrée.",
+        quote: {
+          text: "Reprendre une manoeuvre n'est jamais éliminatoire. Forcer une priorité pour ne pas la reprendre, si.",
+          author: "Principe de la grille d'évaluation E (arrêté du 19 février 2010)",
+        },
+      },
+    ],
   }
 ];
 
