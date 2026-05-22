@@ -2049,6 +2049,146 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
+  },
+  {
+    slug: "auto-ecole-sans-frais-caches-grille-tarifaire-honnete-2026",
+    title:
+      "Auto-école sans frais cachés : les 12 pièges du devis et comment les éviter en 2026",
+    subtitle:
+      "Comment reconnaître une auto-école vraiment sans frais cachés ? Les 12 surcoûts pièges, les clauses abusives à refuser et la checklist avant de signer en 2026.",
+    excerpt:
+      "Forfait à 999 € affiché, facture finale à 1 800 € : l'écart entre prix d'appel et coût réel atteint 40 à 80 % selon UFC-Que Choisir. Ce guide décortique les 12 frais cachés les plus fréquents, vous donne la grille de lecture d'un devis honnête, liste les 5 clauses abusives à refuser avant de signer, et détaille les vrais signaux d'une auto-école transparente (Qualiopi, label préfecture, publication des tarifs).",
+    category: "Tarifs",
+    date: "22 Mai 2026",
+    readingTime: "10 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Frais cachés",
+      "Tarifs auto-école",
+      "Contrat auto-école",
+      "Transparence",
+      "Permis B",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title: "Pourquoi tant de candidats se font piéger",
+        iconName: "AlertTriangle",
+        content:
+          "Vous comparez trois auto-écoles, vous lisez trois forfaits affichés autour de 999 €, et au bout du parcours vous payez 1 800 €. Vous n'êtes pas seul : c'est le scénario décrit par UFC-Que Choisir dans ses enquêtes successives sur le secteur, où l'association documente régulièrement un écart de 40 à 80 % entre le prix d'appel et le coût final. La promesse d'une auto-école sans frais cachés n'est donc pas un argument marketing creux — c'est une vraie demande de transparence, formulée par des candidats qui se sont déjà brûlés ou qui ont peur de l'être.",
+        secondContent:
+          "Le problème est structurel. Le marché du permis est entièrement dérégulé sur le prix : chaque établissement fixe librement ses tarifs, et la seule règle imposée par la DGCCRF est qu'un contrat doit lister précisément ce qui est inclus. Mais lister ce qui est inclus n'oblige pas à expliquer clairement ce qui ne l'est pas. C'est dans cet angle mort que prospèrent les frais cachés. Le candidat type découvre l'addition au moment où il a déjà investi 8 à 12 mois de sa vie dans une école — l'asymétrie d'information est totale, et l'effort psychologique pour changer d'établissement décourage la grande majorité des candidats lésés. Avant de signer, vous avez donc besoin d'une grille de lecture concrète : quels frais surgissent après coup, à quoi ressemble un devis honnête, quelles clauses doivent vous faire sortir du bureau du gérant, et quels signaux externes — Qualiopi, label préfectoral, publication des tarifs — trahissent une école sérieuse d'une école opaque. Ce guide vous donne les sept points à vérifier avant de poser le stylo, et vous pouvez comparer en parallèle notre grille tarifaire publique pour étalonner vos devis sur un référentiel concret.",
+      },
+      {
+        title: "Les 12 frais cachés qui gonflent la facture",
+        iconName: "ListChecks",
+        content:
+          "Aucun de ces frais n'est illégal en soi. Ce qui l'est, c'est de les noyer en bas du contrat sans les annoncer pendant la phase commerciale. Voici les douze surcoûts que nos candidats nous racontent le plus souvent avoir découverts trop tard chez d'anciennes auto-écoles.",
+        bullets: [
+          "Frais de dossier administratif : 50 à 250 € selon l'établissement, parfois facturés en plus du forfait.",
+          "Gestion du NEPH : la démarche est gratuite côté ANTS, mais l'auto-école peut facturer 30 à 80 € pour la saisir à votre place.",
+          "Frais de présentation à l'examen pratique : entre 0 et 200 € le jour J, parfois absents du forfait initial.",
+          "Frais d'accompagnement le jour de l'examen : facturation d'un moniteur en plus du voyage, parfois 60 à 120 €.",
+          "Frais de représentation au code après échec : 30 € officiels payés à l'État, plus 20 à 50 € facturés en double par l'école.",
+          "Heures de conduite supplémentaires plus chères que le tarif du forfait : 40 €/h au forfait peut basculer à 55 €/h hors forfait.",
+          "Frais de location du véhicule le jour de l'examen pratique : 40 à 90 € souvent invisibles dans le forfait d'appel.",
+          "Cours de perfectionnement obligatoires imposés avant l'examen, à l'appréciation du moniteur, 4 à 8 heures non comprises.",
+          "Frais d'édition du livret d'apprentissage ou d'accès à la plateforme e-learning : 0 à 100 €.",
+          "Frais de transfert de dossier si vous quittez l'école : couramment 150 à 300 €, en petits caractères.",
+          "Pénalités d'annulation tardive : 30 à 60 € à moins de 48 h, même pour cause médicale dans certains contrats.",
+          "Frais de gestion annuels sur les forfaits étalés : 5 à 15 € par mois après les douze premiers mois.",
+        ],
+        secondContent:
+          "Mis bout à bout, ces postes représentent en moyenne 400 à 700 € d'écart entre le prix affiché et la facture finale d'après les chiffres compilés par UFC-Que Choisir. La mécanique est mathématique : un forfait de base couvre 20 heures de conduite, mais le candidat moyen en consomme 35 — soit 15 heures supplémentaires à 50 € en moyenne, juste pour rattraper la sous-estimation initiale. C'est précisément cet écart que la mention sans frais cachés doit faire disparaître — pas seulement promettre dans la communication, mais documenter chaque ligne dans le contrat. Une auto-école sérieuse vous remet un devis qui dépasse parfois le prix d'appel de ses concurrents, justement parce qu'elle intègre ces 35 heures réalistes dès le départ. Au final, le candidat paye moins qu'avec un forfait à 999 € multiplié par 15 heures supplémentaires hors forfait.",
+      },
+      {
+        title: "Comment lire un devis auto-école ligne par ligne",
+        iconName: "Eye",
+        content:
+          "Un devis honnête tient en une page et répond à six questions sans ambiguïté. Si l'une des réponses manque ou est floue, c'est un drapeau rouge. Voici la grille de lecture que la DGCCRF impose comme socle minimum d'information préalable, et que vous devez exiger pour comparer deux propositions équivalentes.",
+        table: {
+          headers: ["Ligne du devis", "Ce que vous devez lire", "Drapeau rouge si"],
+          rows: [
+            ["Forfait code", "Présentiel illimité ou e-learning, durée d'accès", "Code inclus sans précision de durée"],
+            ["Forfait conduite", "Nombre d'heures, tarif au forfait ET hors forfait", "Un seul tarif horaire affiché"],
+            ["Frais d'inscription", "Montant fixe, payable une fois", "Frais à régler ultérieurement"],
+            ["Présentations examen", "Combien incluses, prix de la suivante", "Aucun chiffre"],
+            ["Heures supplémentaires", "Tarif chiffré avec plafond", "Tarif sans plafond mentionné"],
+            ["Conditions de rupture", "Frais de transfert et remboursement au prorata", "Indemnité forfaitaire non chiffrée"],
+          ],
+        },
+        secondContent:
+          "Demandez systématiquement le devis par écrit, pas uniquement à l'oral. Article L221-9 du Code de la consommation : pour un contrat conclu hors établissement (en ligne, à domicile), vous disposez de 14 jours de rétractation. À l'intérieur du local de l'auto-école, ce droit n'existe pas — d'où l'importance de lire le contrat AVANT de signer, pas après. Si on vous presse de signer tout de suite pour bloquer le tarif, c'est déjà une réponse en soi.",
+      },
+      {
+        title: "Les 5 clauses abusives à refuser avant de signer",
+        iconName: "ShieldAlert",
+        content:
+          "Une clause abusive n'est pas seulement immorale, elle est légalement nulle. La DGCCRF et la jurisprudence ont identifié plusieurs catégories de stipulations qui ne tiennent pas devant un tribunal — mais qui restent fréquemment glissées dans les contrats d'auto-écoles qui comptent sur le fait que personne ne les conteste. Refusez par avance ces cinq familles.",
+        bullets: [
+          "Le paiement intégral d'avance non remboursable. La jurisprudence exige un remboursement au prorata des prestations non consommées.",
+          "La pénalité de transfert disproportionnée. Facturer 300 € pour une enveloppe et un courriel n'est pas proportionnel. Refusez au-delà de 60 €.",
+          "L'évaluation pédagogique payante imposée comme condition d'examen. Un moniteur qui décide unilatéralement de 10 heures obligatoires sans grille chiffrée a un conflit d'intérêt.",
+          "La validité limitée du forfait à 6 ou 12 mois. Refusez les clauses qui forcent à repayer si vous mettez 14 mois à passer votre permis.",
+          "La clause de juridiction exclusive éloignée du domicile : clause abusive standard en droit de la consommation.",
+        ],
+        secondContent:
+          "Si l'auto-école refuse de retirer l'une de ces clauses, sortez. C'est un test simple et il filtre la majorité des établissements problématiques. Une école qui se sait à risque sur une clause va presque toujours préférer la retirer pour vous inscrire plutôt que perdre un contrat ; une école qui refuse en bloc vous indique que cette clause est centrale à son modèle économique — donc qu'elle compte bien l'invoquer un jour contre vous.",
+        tip: {
+          label: "Astuce",
+          text: "Une clause abusive ne devient pas valide parce que vous l'avez signée : elle reste juridiquement nulle. Vous pouvez la contester a posteriori auprès de la DGCCRF ou d'une association de consommateurs.",
+        },
+      },
+      {
+        title: "Les vrais signaux d'une auto-école transparente",
+        iconName: "UserCheck",
+        content:
+          "Au-delà du contrat, plusieurs marqueurs externes vous renseignent sur le sérieux d'un établissement. Aucun ne suffit seul, mais leur cumul est un bon proxy de transparence réelle.",
+        bullets: [
+          "Certification Qualiopi : condition d'éligibilité CPF depuis 2022. Le référentiel national qualité impose au critère 4.1 une information préalable claire et au critère 5.1 la publication des tarifs.",
+          "Publication publique de la grille tarifaire sur le site web, sans formulaire, sans appel, sans demande de devis personnalisé.",
+          "Label Qualité des formations au sein des écoles de conduite délivré par la préfecture : vérifie agrément, affichage en vitrine et contrat type conforme.",
+          "Avis détaillés et longs mentionnant explicitement le prix payé, le nombre d'heures finales et l'écart avec le devis initial — bien plus parlants que la note moyenne.",
+        ],
+        secondContent:
+          "Une auto-école Qualiopi n'est pas automatiquement transparente, mais une auto-école non Qualiopi qui prétend l'être ment par omission. Et une école qui n'a aucun commentaire détaillé sur plusieurs années d'activité a probablement quelque chose à cacher.",
+      },
+      {
+        title: "La promesse Smoni : ce que veut dire sans frais cachés chez nous",
+        iconName: "ClipboardCheck",
+        content:
+          "Chez Smoni, sans frais cachés n'est pas un slogan d'accroche : c'est un engagement opérationnel que vous pouvez vérifier ligne par ligne sur notre grille tarifaire publique. Concrètement, cela veut dire trois choses.",
+        bullets: [
+          "Le devis remis à l'inscription est un engagement de prix maximum. Si nous estimons 28 heures de conduite, c'est le chiffre qui apparaît sur le contrat — pas le minimum légal de 20 heures destiné à baisser artificiellement le prix d'appel. Si vous en avez besoin de moins, vous payez moins.",
+          "La grille tarifaire publiée en ligne est strictement identique à celle affichée en vitrine et au tarif facturé. Pas de tarif spécial étudiant, pas de tarif premier rendez-vous : un seul prix par prestation, accessible à tous.",
+          "Nous publions le détail de ce qui est inclus, ce qui ne l'est pas, et les écarts possibles entre devis et facture finale. Notre page transparence est consultable librement.",
+        ],
+        tip: {
+          label: "Engagement",
+          text: "C'est la version honnête du principe « ce que vous voyez est ce que vous payez » — un engagement vérifiable, pas un slogan.",
+        },
+      },
+      {
+        title: "Votre checklist avant de signer",
+        iconName: "ClipboardCheck",
+        content:
+          "Avant tout engagement écrit, passez ces sept points en revue. Si une seule réponse manque, demandez-la par écrit avant de poser le stylo.",
+        bullets: [
+          "Le devis détaille-t-il chaque ligne de prestation avec son tarif unitaire ?",
+          "Le tarif horaire hors forfait est-il chiffré et plafonné ?",
+          "Les conditions de rupture précisent-elles le montant exact et le mode de calcul ?",
+          "L'établissement est-il certifié Qualiopi (vérifiable sur le portail public) ?",
+          "Les heures supplémentaires sont-elles soumises à votre validation préalable ?",
+          "Le contrat mentionne-t-il une présentation examen incluse et le tarif de la suivante ?",
+          "La grille tarifaire est-elle accessible publiquement sur le site web ?",
+        ],
+        secondContent:
+          "Si vous cochez les sept cases, vous tenez très probablement un établissement honnête. Si vous en cochez moins de quatre, prenez le temps de comparer avec une auto-école qui les coche toutes. Cinq minutes de plus à la signature, c'est plusieurs centaines d'euros et plusieurs mois de tranquillité gagnés. Pour discuter de votre projet et obtenir un devis détaillé ligne par ligne, prenez rendez-vous avec notre équipe.",
+      },
+    ],
   }
 ];
 
