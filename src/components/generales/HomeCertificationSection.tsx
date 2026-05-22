@@ -99,9 +99,10 @@ const HomeCertificationSection = () => {
 
         {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-14"
         >
           <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-[#2c2876]/90 mb-3">
@@ -117,27 +118,54 @@ const HomeCertificationSection = () => {
           </p>
         </motion.div>
 
-        {/* Engagements Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Engagements Grid — 6-col on lg / 4-col on md so the orphan row (4 & 5) sits centered */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
+          }}
+          className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5"
+        >
           {engagements.map((e, i) => {
             const Illustration = e.Illustration;
+            // Center the last row: on md (4 cols) item 5 → col-start-2; on lg (6 cols) items 4 → col-start-2, item 5 → col-start-4
+            const placement =
+              i === 3
+                ? "md:col-span-2 lg:col-span-2 lg:col-start-2"
+                : i === 4
+                  ? "md:col-span-2 md:col-start-2 lg:col-span-2 lg:col-start-4"
+                  : "md:col-span-2 lg:col-span-2";
             return (
               <motion.div
                 key={e.n}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all overflow-hidden flex flex-col"
+                variants={{
+                  hidden: { opacity: 0, y: 28, scale: 0.97 },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                className={`group bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl hover:border-[#2c2876]/15 transition-[box-shadow,border-color] duration-300 overflow-hidden flex flex-col ${placement}`}
               >
-                <div className="relative aspect-[16/9] bg-[#f3f1ff]">
-                  <Illustration />
+                <div className="relative aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
+                  <div className="absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-[1.03]">
+                    <Illustration />
+                  </div>
                   <span
                     className="absolute top-3 right-3 text-[10px] font-bold tabular-nums text-[#2c2876]/70"
                     style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
                   >
                     {e.n} / 05
                   </span>
+                  {/* soft bottom fade to dissolve illustration into the card body */}
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-b from-transparent to-white" />
                 </div>
                 <div className="p-6 pt-5 flex-1 flex flex-col">
                   <h3 className="text-base font-extrabold text-[#2c2876] leading-snug mb-2">{e.title}</h3>
@@ -146,7 +174,7 @@ const HomeCertificationSection = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         <p className="text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-10">
           Auto-école déclarée • SAS Arike Bello • SIREN 915 387 013 • Agrément préfectoral sur demande
