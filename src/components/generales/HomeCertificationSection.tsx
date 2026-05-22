@@ -89,14 +89,14 @@ const engagementsItemListSchema = {
 const HomeCertificationSection = () => {
   return (
     <section
-      className="pb-24 pt-4 bg-[#f8fafc] relative overflow-hidden"
+      className="pb-16 sm:pb-24 pt-4 bg-[#f8fafc] relative overflow-hidden"
       aria-labelledby="engagements-heading"
     >
       <JsonLd data={engagementsItemListSchema} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-20">
 
         {/* Quality Certification Banner */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 mb-28 md:mb-36 pb-12 md:pb-16 border-b border-slate-200/70">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 mb-16 md:mb-36 pb-10 md:pb-16 border-b border-slate-200/70">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -153,16 +153,15 @@ const HomeCertificationSection = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
         >
-          <p className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-[#2c2876]/90 mb-3">
+          <p className="inline-block text-[11px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.3em] text-[#2c2876]/90 mb-3 px-2">
             Notre différence — Auto-école Smoni Vincennes
           </p>
           <h2
             id="engagements-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-black text-[#2c2876] leading-tight"
+            className="text-[26px] sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#2c2876] leading-tight text-balance"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
-            Nos 5 engagements <span className="italic text-blue-600">écrits</span>{" "}
-            <span className="whitespace-nowrap">pour le permis B</span>.
+            Nos 5 engagements <span className="italic text-blue-600">écrits</span> pour le permis B.
           </h2>
           <p className="sr-only">
             Auto-école Smoni à Vincennes 94300 — cinq engagements contractuels pour les candidats au permis B,
@@ -221,9 +220,10 @@ const HomeCertificationSection = () => {
                 >
                   <div className="relative aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
                     {/* Decoration — opacity reduced so it reads as context, not content (Bringhurst hierarchy).
-                        Featured card stays at full strength so it dominates the row. */}
+                        Featured card stays at full strength so it dominates the row. motion-safe guards
+                        suppress the scale on touch devices where :hover state can stick after a tap. */}
                     <div
-                      className={`absolute inset-0 transition-[transform,opacity] duration-500 ease-out group-hover:scale-[1.03] group-hover:opacity-100 ${
+                      className={`absolute inset-0 transition-[transform,opacity] duration-500 ease-out motion-safe:group-hover:scale-[1.03] group-hover:opacity-100 ${
                         e.featured ? "opacity-100" : "opacity-[0.78]"
                       }`}
                     >
@@ -231,7 +231,7 @@ const HomeCertificationSection = () => {
                     </div>
                     {e.featured && (
                       <span
-                        className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black tracking-[0.14em] shadow-sm"
+                        className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-blue-600 text-white text-[9px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.14em] shadow-sm"
                         style={{ fontFamily: "'Outfit', sans-serif" }}
                       >
                         ★ LE PLUS DEMANDÉ
@@ -239,17 +239,17 @@ const HomeCertificationSection = () => {
                     )}
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-transparent to-white" />
                   </div>
-                  <div className="p-5 sm:p-6 pt-5 flex-1 flex flex-col">
+                  <div className="p-5 sm:p-6 pt-4 sm:pt-5 flex-1 flex flex-col">
                     {/* F-pattern landing: keyword (left, hi-contrast blue) + counter (right). Eye reads keyword first → title → emphasis. */}
-                    <div className="flex items-baseline justify-between mb-3">
+                    <div className="flex items-baseline justify-between gap-2 mb-2.5 sm:mb-3">
                       <span
-                        className="text-[11px] font-black uppercase tracking-[0.22em] text-blue-600"
+                        className="text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] text-blue-600 truncate"
                         style={{ fontFamily: "'Outfit', sans-serif" }}
                       >
                         {e.keyword}
                       </span>
                       <span
-                        className="text-[10px] font-bold tabular-nums text-slate-400"
+                        className="text-[10px] font-bold tabular-nums text-slate-400 shrink-0"
                         style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
                         aria-hidden="true"
                       >
@@ -258,15 +258,15 @@ const HomeCertificationSection = () => {
                     </div>
                     <h3
                       id={`engagement-${e.n}-title`}
-                      className={`font-black text-[#2c2876] leading-snug mb-2.5 ${
-                        e.featured ? "text-[17px] sm:text-lg" : "text-[15px] sm:text-base"
+                      className={`font-black text-[#2c2876] leading-snug mb-2.5 text-balance ${
+                        e.featured ? "text-[17px] sm:text-lg" : "text-[16px] sm:text-base"
                       }`}
                       style={{ fontFamily: "'Outfit', sans-serif" }}
                     >
                       <span className="sr-only">Engagement n°{e.n} — </span>
                       {e.title}
                     </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <p className="text-[15px] sm:text-sm text-slate-600 leading-relaxed">
                       {renderBody(e.body, e.emphasis)}
                     </p>
                   </div>
