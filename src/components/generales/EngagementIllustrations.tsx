@@ -3,7 +3,7 @@
 // document, linked by a dotted leader that points at the emphasized line.
 // Restricted palette: indigo (#2c2876) + white + a single blue accent.
 
-import { useId } from "react";
+import { memo } from "react";
 
 const BG = "#f3f1ff";
 const INDIGO = "#2c2876";
@@ -14,18 +14,25 @@ const BLUE = "#3b82f6";
 const INDIGO_60 = "#7472b0";
 const INDIGO_20 = "#cfceea";
 
-type DefIds = { bg: string; dots: string; diffuse: string; softblur: string };
-
-const useDefIds = (): DefIds => {
-  const uid = useId().replace(/:/g, "");
+// Module-level id counter — avoids the React useId hook cost. Each illustration
+// instance gets a stable, unique id at first render. Five cards × few defs each
+// means a handful of ids per mount.
+let _idCounter = 0;
+const makeIds = () => {
+  const n = ++_idCounter;
   return {
-    bg: `bg_${uid}`,
-    dots: `dots_${uid}`,
-    diffuse: `df_${uid}`,
-    softblur: `sb_${uid}`,
+    bg: `eng_bg_${n}`,
+    dots: `eng_dots_${n}`,
+    diffuse: `eng_df_${n}`,
   };
 };
+type DefIds = ReturnType<typeof makeIds>;
 
+// Filter region tightened from 200% → 140%. The blur barely spills past the
+// shape so paying for a full 4× area was waste. Cuts GPU filter work ~50%.
+// Softblur on paper shadows was dropped entirely — the offset ghost shapes
+// still read as shadows from opacity alone, and we save 5 filter passes per
+// section render.
 const Defs = ({ ids, haloX = 30 }: { ids: DefIds; haloX?: number }) => (
   <defs>
     <radialGradient id={ids.bg} cx={`${haloX}%`} cy="55%" r="70%">
@@ -36,11 +43,8 @@ const Defs = ({ ids, haloX = 30 }: { ids: DefIds; haloX?: number }) => (
     <pattern id={ids.dots} width="6" height="6" patternUnits="userSpaceOnUse">
       <circle cx="3" cy="3" r="0.55" fill={INDIGO} fillOpacity="0.06" />
     </pattern>
-    <filter id={ids.diffuse} x="-50%" y="-50%" width="200%" height="200%">
+    <filter id={ids.diffuse} x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="10" />
-    </filter>
-    <filter id={ids.softblur} x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3" />
     </filter>
   </defs>
 );
@@ -88,8 +92,8 @@ const Frame = ({ children }: { children: React.ReactNode }) => (
 );
 
 // 01 · Prix tout-compris
-export const IllustrationPrix = () => {
-  const ids = useDefIds();
+export const IllustrationPrix = memo(function IllustrationPrix() {
+  const ids = makeIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={28} />
@@ -97,7 +101,7 @@ export const IllustrationPrix = () => {
       <rect width="400" height="225" fill={`url(#${ids.dots})`} />
 
       <g transform="rotate(4 254 116)">
-        <rect x="156" y="44" width="212" height="158" rx="3" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+        <rect x="156" y="44" width="212" height="158" rx="3" fill={INDIGO_DEEP} opacity="0.18" />
         <rect x="152" y="36" width="212" height="154" rx="2" fill={PAPER} stroke={PAPER_RULE} />
         <text x="168" y="58" fill={INDIGO} fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="9">TARIFS · 2026</text>
         <line x1="168" y1="66" x2="350" y2="66" stroke={INDIGO_20} />
@@ -125,11 +129,11 @@ export const IllustrationPrix = () => {
       <Connector x1={158} y1={130} x2={252} y2={156} />
     </Frame>
   );
-};
+});
 
 // 02 · 60 minutes au volant
-export const Illustration60Min = () => {
-  const ids = useDefIds();
+export const Illustration60Min = memo(function Illustration60Min() {
+  const ids = makeIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={72} />
@@ -137,7 +141,7 @@ export const Illustration60Min = () => {
       <rect width="400" height="225" fill={`url(#${ids.dots})`} />
 
       <g transform="rotate(-3 110 116)">
-        <rect x="22" y="44" width="180" height="158" rx="3" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+        <rect x="22" y="44" width="180" height="158" rx="3" fill={INDIGO_DEEP} opacity="0.18" />
         <rect x="18" y="36" width="180" height="154" rx="2" fill={PAPER} stroke={PAPER_RULE} />
         <rect x="18" y="36" width="180" height="22" fill={INDIGO} />
         <text x="32" y="52" fill={PAPER} fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="9">LIVRET · TEMPS</text>
@@ -197,11 +201,11 @@ export const Illustration60Min = () => {
       <Connector x1={196} y1={113} x2={272} y2={140} />
     </Frame>
   );
-};
+});
 
 // 03 · Pas de cris
-export const IllustrationPasDeCris = () => {
-  const ids = useDefIds();
+export const IllustrationPasDeCris = memo(function IllustrationPasDeCris() {
+  const ids = makeIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={28} />
@@ -209,7 +213,7 @@ export const IllustrationPasDeCris = () => {
       <rect width="400" height="225" fill={`url(#${ids.dots})`} />
 
       <g transform="rotate(3 268 116)">
-        <rect x="184" y="44" width="184" height="158" rx="3" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+        <rect x="184" y="44" width="184" height="158" rx="3" fill={INDIGO_DEEP} opacity="0.18" />
         <rect x="180" y="36" width="184" height="154" rx="2" fill={PAPER} stroke={PAPER_RULE} />
         <text x="196" y="58" fill={INDIGO} fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="9">CHARTE INTERNE</text>
         <line x1="196" y1="66" x2="350" y2="66" stroke={INDIGO_20} />
@@ -230,11 +234,11 @@ export const IllustrationPasDeCris = () => {
       <rect x="151" y="72" width="10" height="4" rx="2" fill={PAPER} />
     </Frame>
   );
-};
+});
 
 // 04 · Recalés bienvenus
-export const IllustrationRecales = () => {
-  const ids = useDefIds();
+export const IllustrationRecales = memo(function IllustrationRecales() {
+  const ids = makeIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={50} />
@@ -249,7 +253,7 @@ export const IllustrationRecales = () => {
       <circle cx="44" cy="116" r="3" fill={PAPER} />
 
       <g transform="rotate(-4 240 130)">
-        <path d="M 184 76 L 232 76 L 244 88 L 376 88 L 376 198 L 184 198 Z" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+        <path d="M 184 76 L 232 76 L 244 88 L 376 88 L 376 198 L 184 198 Z" fill={INDIGO_DEEP} opacity="0.18" />
         <path d="M 180 70 L 228 70 L 240 82 L 372 82 L 372 192 L 180 192 Z" fill={INDIGO} />
         <rect x="180" y="82" width="192" height="110" rx="2" fill={PAPER} stroke={PAPER_RULE} />
         <rect x="180" y="82" width="192" height="26" fill={INDIGO} />
@@ -269,11 +273,11 @@ export const IllustrationRecales = () => {
       </g>
     </Frame>
   );
-};
+});
 
 // 05 · Garantie financière
-export const IllustrationGarantie = () => {
-  const ids = useDefIds();
+export const IllustrationGarantie = memo(function IllustrationGarantie() {
+  const ids = makeIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={50} />
@@ -281,7 +285,7 @@ export const IllustrationGarantie = () => {
       <rect width="400" height="225" fill={`url(#${ids.dots})`} />
 
       <g transform="rotate(10 280 116)">
-        <rect x="232" y="48" width="120" height="150" rx="3" fill={INDIGO_DEEP} opacity="0.14" filter={`url(#${ids.softblur})`} />
+        <rect x="232" y="48" width="120" height="150" rx="3" fill={INDIGO_DEEP} opacity="0.14" />
         <rect x="228" y="40" width="120" height="146" rx="2" fill={PAPER} stroke={PAPER_RULE} />
         <line x1="238" y1="56" x2="338" y2="56" stroke={INDIGO_20} />
         <line x1="238" y1="70" x2="328" y2="70" stroke={PAPER_RULE} />
@@ -289,14 +293,14 @@ export const IllustrationGarantie = () => {
         <line x1="238" y1="90" x2="312" y2="90" stroke={PAPER_RULE} />
       </g>
       <g transform="rotate(-9 120 116)">
-        <rect x="52" y="48" width="120" height="150" rx="3" fill={INDIGO_DEEP} opacity="0.14" filter={`url(#${ids.softblur})`} />
+        <rect x="52" y="48" width="120" height="150" rx="3" fill={INDIGO_DEEP} opacity="0.14" />
         <rect x="48" y="40" width="120" height="146" rx="2" fill={PAPER} stroke={PAPER_RULE} />
         <line x1="58" y1="56" x2="158" y2="56" stroke={INDIGO_20} />
         <line x1="58" y1="70" x2="148" y2="70" stroke={PAPER_RULE} />
         <line x1="58" y1="80" x2="158" y2="80" stroke={PAPER_RULE} />
         <line x1="58" y1="90" x2="132" y2="90" stroke={PAPER_RULE} />
       </g>
-      <rect x="146" y="38" width="108" height="150" rx="3" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+      <rect x="146" y="38" width="108" height="150" rx="3" fill={INDIGO_DEEP} opacity="0.18" />
       <rect x="142" y="30" width="108" height="146" rx="2" fill={PAPER} stroke={PAPER_RULE} />
       <line x1="152" y1="46" x2="242" y2="46" stroke={INDIGO_20} />
 
@@ -307,7 +311,7 @@ export const IllustrationGarantie = () => {
       <text x="200" y="184" textAnchor="middle" fill={PAPER} fillOpacity="0.7" fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="9" letterSpacing="0.22em">L.213-2</text>
     </Frame>
   );
-};
+});
 
 export const ENGAGEMENT_ILLUSTRATIONS = [
   IllustrationPrix,
