@@ -1719,6 +1719,138 @@ export const blogPosts: BlogPost[] = [
           "Garder en tête une chose simple : vous n'êtes pas seul dans ce cas. Le sujet revient régulièrement dans les enquêtes consommateurs et le cadre légal existe précisément parce que le législateur a constaté l'existence de pratiques abusives dans une partie du secteur. La très grande majorité des auto-écoles, en France comme en Île-de-France, travaillent honnêtement. Mais quand vous tombez sur une école qui dérape, vous avez désormais la marche à suivre. Si vous cherchez une auto-école dont la grille tarifaire et les conditions de présentation à l'examen sont publiques et lisibles avant même que vous signiez, la page Tarifs vous donnera tous les éléments pour comparer.",
       },
     ],
+  },
+  {
+    slug: "boite-automatique-vs-manuelle-quel-permis-choisir-2026",
+    title:
+      "Boîte automatique ou manuelle : quel permis choisir en 2026 ?",
+    subtitle:
+      "13h vs 20h de conduite, prix, passerelle 7h, revente, ZFE : le cadre de décision pour choisir le bon format de permis B sans le regretter dans 5 ans.",
+    excerpt:
+      "Boîte automatique ou manuelle pour votre permis B ? En 2026, l'arbitrage se joue sur 4 paramètres concrets : 13h vs 20h de conduite légale, taux de réussite (66,5 % vs 61,9 %), restriction code 78, et bascule du marché (54 % des voitures neuves sont en BVA). Ce guide vous donne le cadre de décision en 5 questions, l'analyse chiffrée par format et le plan B en 7 heures (passerelle) si vous changez d'avis plus tard.",
+    category: "Conduite",
+    date: "22 Mai 2026",
+    readingTime: "13 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Permis B",
+      "Boîte automatique",
+      "Boîte manuelle",
+      "Code 78",
+      "Passerelle 7h",
+      "Permis 2026",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title: "Boîte auto ou manuelle : la question qu'on se pose trop tard",
+        iconName: "BarChart3",
+        content:
+          "Vous hésitez entre la boîte automatique et la boîte manuelle pour votre permis B. C'est probablement l'arbitrage le plus mal traité du parcours candidat en 2026, parce que la décision se prend le jour de l'inscription, alors qu'on en mesure les conséquences trois, cinq ou dix ans plus tard, quand on cherche à acheter une voiture, à louer en vacances, à reprendre la conduite après un long arrêt, ou simplement quand on regarde le prix d'une boîte manuelle d'occasion. Le débat boîte automatique vs manuelle permis n'est pas un débat de génération ni d'opinion : c'est un calcul concret entre gain de temps immédiat (13 heures légales contre 20), prix d'examen (forfait souvent moins cher), taux de réussite (4 à 5 points au-dessus en automatique selon les données Ornikar 2026), et restriction administrative future (le fameux code 78 sur le permis). La majorité des candidats tranche en 90 secondes en se basant sur deux faux critères : ce que leurs parents leur disent, et la voiture qu'ils ont sous la main pour la conduite accompagnée.",
+        secondContent:
+          "Le résultat de ce raccourci est mécanique. Un tiers des permis boîte auto délivrés en 2025 vont à des candidats qui auraient économisé du temps et du stress en optant directement pour ce format, et n'ont jamais conduit une boîte manuelle depuis. Inversement, beaucoup de jeunes urbains paient encore le tarif boîte manuelle par défaut, alors qu'ils n'utiliseront probablement jamais un embrayage de leur vie. Le but de ce guide est simple : remplacer la décision par défaut par une décision documentée. Nous regardons d'abord ce que la loi impose en 2026, ensuite ce que les chiffres du marché disent vraiment, et enfin nous proposons un cadre de décision en 5 questions pour trancher en 10 minutes. Pour situer le contexte plus large du parcours, vous pouvez parcourir la page dédiée au permis B.",
+      },
+      {
+        title: "13h vs 20h : ce que la loi impose vraiment en 2026",
+        iconName: "Clock",
+        content:
+          "La différence de volume horaire est le premier paramètre objectif. Le Code de la route et la fiche officielle du service public sont sans ambiguïté en 2026 : un candidat au permis B en boîte manuelle doit effectuer un minimum légal de 20 heures de conduite avant de pouvoir se présenter à l'épreuve pratique. Un candidat en boîte automatique doit en effectuer 13, dont au moins 10 heures sur voie ouverte à la circulation ou, à défaut, 7 heures sur un simulateur agréé. Ce différentiel de 7 heures n'est pas un détail marketing : à un tarif horaire moyen de 50 à 55 euros en Île-de-France, cela représente une économie brute de 350 à 400 euros sur le forfait initial, avant même de parler des heures supplémentaires.",
+        secondContent:
+          "Mais le vrai gain ne se mesure pas en euros, il se mesure en délais. Dans une auto-école où les créneaux sont rares (Vincennes, Paris est, première couronne), 7 heures de conduite, c'est typiquement 4 à 6 semaines de gagnées sur la date d'examen. Pour un étudiant qui démarre un stage ou un apprenti qui doit prendre un poste à la rentrée, c'est concret. Attention en revanche : le minimum légal n'est pas la moyenne réelle. Sur les 6 dernières années, la Sécurité Routière constate qu'un candidat moyen consomme 33 à 35 heures effectives en boîte manuelle, et autour de 22 à 25 en boîte auto. La règle des 13 et des 20 heures vous dit le seuil minimal pour se présenter, pas le volume réel pour réussir.",
+      },
+      {
+        title: "Prix, taux de réussite, délais : la comparaison chiffrée",
+        iconName: "BarChart3",
+        content:
+          "Quand on additionne les données 2026 publiées par les acteurs sérieux du secteur (Ornikar, Sécurité Routière, UFC Que Choisir, fédérations professionnelles), on obtient une grille de comparaison stable. Le tableau ci-dessous synthétise les ordres de grandeur observés à prestation équivalente, pour un parcours classique en région parisienne. Ces chiffres ne sont pas une promesse : ils dépendent de votre zone, de votre auto-école, et de votre rythme d'apprentissage. Mais ils donnent la direction.",
+        table: {
+          headers: ["Critère", "Boîte manuelle", "Boîte automatique"],
+          rows: [
+            ["Heures légales minimum", "20 h", "13 h"],
+            ["Heures réelles moyennes", "33 à 35 h", "22 à 25 h"],
+            ["Forfait moyen 2026 (IDF)", "1 500 à 1 800 €", "1 100 à 1 600 €"],
+            ["Taux de réussite 1er passage", "61,9 %", "66,5 %"],
+            ["Délai moyen d'obtention", "5 à 9 mois", "3 à 6 mois"],
+            ["Restriction sur le permis", "Aucune", "Code 78"],
+            ["Boîte conduite après passerelle", "Toutes", "Toutes après 7 h"],
+          ],
+        },
+        secondContent:
+          "Trois choses sautent aux yeux. D'abord, l'écart de taux de réussite (4,6 points en faveur de l'automatique) est statistiquement significatif et stable depuis 3 ans : moins de gestes à gérer simultanément, moins de calages, moins de manœuvres ratées en circulation. Ensuite, le prix d'appel est plus bas en automatique, mais l'écart se réduit fortement à mesure qu'on intègre les aides cumulables (CPF, permis 1€/jour, aides régionales) qui s'appliquent indifféremment aux deux formats. Enfin, la durée totale du parcours est l'écart le plus sous-estimé : 2 à 3 mois de gagnés en moyenne, ce qui change la planification d'une année. Pour comparer les forfaits ligne par ligne sur un cas concret, vous pouvez consulter notre grille tarifaire détaillée.",
+        tip: {
+          label: "Lecture du tableau",
+          text: "Avant de signer, demandez à votre auto-école son taux de réussite séparé par format (boîte auto vs manuelle) sur les 12 derniers mois. Une école qui ne sait pas le donner ne le suit pas ; une école qui le donne et affiche au-dessus de 70 % en automatique est un excellent indicateur de qualité pédagogique.",
+        },
+      },
+      {
+        title: "Le code 78 et la passerelle 7h : votre assurance flexibilité",
+        iconName: "ShieldAlert",
+        content:
+          "C'est le point qui terrifie injustement les indécis : si vous passez votre permis en boîte automatique, votre permis B porte la mention code 78 (ou catégorie BEA, selon les supports). Concrètement, cela signifie que vous n'êtes pas autorisé à conduire un véhicule à boîte manuelle, sous peine d'amende et de retrait de points. Cette restriction est réelle, et c'est elle qui pousse beaucoup de candidats à choisir la manuelle au cas où. Sauf que cette restriction n'est pas définitive. Le Code de la route prévoit une passerelle officielle d'une durée minimale de 7 heures en école labellisée, à l'issue de laquelle le code 78 est retiré et vous récupérez un permis B sans aucune restriction.",
+        secondContent:
+          "Cette passerelle est un instrument souvent sous-utilisé. Elle coûte généralement entre 350 et 500 euros selon l'école, peut se faire à tout moment de votre vie (3 mois après le permis ou 15 ans plus tard, indifféremment), et ne nécessite pas de repasser le moindre examen théorique. Vous suivez 7 heures avec un moniteur, l'école atteste de votre aptitude, et la préfecture met à jour votre permis. Vu autrement : choisir la boîte automatique en 2026, ce n'est pas se priver de la manuelle à vie. C'est différer cet apprentissage à un moment où vous en aurez réellement besoin, plutôt que de l'imposer aujourd'hui sans savoir si ce sera jamais utile. Si vous voulez voir le détail du parcours et la disponibilité des sessions passerelle, l'information est centralisée sur la page dédiée.",
+        tip: {
+          label: "Bon à savoir",
+          text: "La passerelle 7h ne peut être effectuée qu'au moins 3 mois après l'obtention du permis B boîte auto. Anticipez si vous savez que vous en aurez besoin (déménagement en zone rurale, achat d'une voiture spécifique, métier qui l'exige). Les places se libèrent par vagues et certaines écoles ont 6 à 8 semaines d'attente.",
+        },
+      },
+      {
+        title: "Le marché 2026 : pourquoi la boîte auto n'est plus un compromis",
+        iconName: "Compass",
+        content:
+          "L'argument historique contre la boîte automatique était simple : la majorité des voitures sur la route sont manuelles, donc apprendre uniquement l'automatique vous limite. Cet argument vacille en 2026. Selon les données Ornikar consolidées sur le marché français, 54 % des voitures neuves vendues cette année sont équipées d'une boîte automatique, contre moins de 20 % il y a 10 ans. Cette bascule est tirée par trois forces qui ne vont pas s'inverser : l'électrification (tous les véhicules 100 % électriques sont, par construction, sans embrayage), la généralisation des transmissions automatiques sur les SUV et compactes neuves même thermiques, et la pression réglementaire des zones à faibles émissions (ZFE) qui pousse au renouvellement du parc.",
+        secondContent:
+          "Concrètement, cela veut dire que le marché de l'occasion à 5 ans va lui aussi basculer. Quand vous chercherez une voiture en 2030 ou 2032, le ratio sera probablement inversé en automatique, surtout sur les segments citadins et compacts qui intéressent les jeunes conducteurs. La revente d'une voiture manuelle est déjà aujourd'hui plus difficile sur certains segments urbains, et cette tendance s'accélère. Choisir la boîte auto en 2026, ce n'est plus se priver d'une option : c'est s'aligner sur le format qui sera dominant le jour où vous chercherez votre première voiture. Pour les profils urbains, jeunes actifs, ou candidats qui visent une utilisation périurbaine, le choix devient évident.",
+      },
+      {
+        title: "Les 4 profils où la boîte manuelle reste pertinente",
+        iconName: "Target",
+        content:
+          "Pour autant, le débat n'est pas à sens unique. Quatre profils ont un intérêt objectif à passer leur permis en boîte manuelle en 2026, même si la tendance générale va dans l'autre sens. Voici lesquels, et pourquoi.",
+        bullets: [
+          "Vous visez un métier de la route à court terme : VTC, livraison, taxi, ambulancier, moniteur. Beaucoup de flottes professionnelles roulent encore en manuelle, et vous gagnez en flexibilité d'embauche.",
+          "Vous habitez en zone rurale ou semi-rurale avec un budget contraint : le marché de l'occasion manuelle reste large et moins cher dans ces zones, et une voiture à 3 000 € en manuelle existe ; en automatique, le ticket d'entrée est souvent 1 500 à 2 500 € au-dessus.",
+          "Vous avez déjà accès à une voiture manuelle pour la conduite accompagnée (AAC) avec un parent ou proche : l'avantage pédagogique de l'AAC dépasse largement le bénéfice d'aller en boîte auto, et votre taux de réussite sera très élevé.",
+          "Vous prévoyez de voyager ou louer fréquemment à l'étranger dans des pays où la manuelle domine encore (Europe du Sud, Maghreb, certains pays d'Afrique) : la flexibilité de la location y est encore aujourd'hui meilleure en manuelle.",
+        ],
+        secondContent:
+          "Hors de ces cas, l'arbitrage rationnel penche très majoritairement vers la boîte automatique en 2026. Et même pour ces 4 profils, la passerelle 7h reste une porte de sortie économique si vous changez d'avis dans 2 ou 3 ans. Le bon réflexe est de ne pas raisonner au cas où mais au plus probable.",
+      },
+      {
+        title: "Le cadre de décision en 5 questions",
+        iconName: "HelpCircle",
+        content:
+          "Plutôt que de relire 30 forums et 8 vidéos contradictoires, posez-vous les 5 questions suivantes dans l'ordre, et notez vos réponses. Si vous obtenez 3 oui ou plus dans les 4 premières, la boîte automatique est statistiquement la meilleure décision pour vous. Sinon, la boîte manuelle reste cohérente. La cinquième question est un tie-breaker en cas d'hésitation.",
+        bullets: [
+          "Question 1 : Votre usage prévu de la voiture sera-t-il principalement urbain ou périurbain dans les 5 prochaines années ? (Oui = boîte auto)",
+          "Question 2 : Êtes-vous prêt à payer 350 à 500 euros plus tard pour faire la passerelle 7h si vous en avez besoin ? (Oui = la restriction code 78 n'est pas un blocage)",
+          "Question 3 : Le délai d'obtention du permis (gain de 2 à 3 mois) est-il important pour vos plans (stage, emploi, déménagement, indépendance) ? (Oui = boîte auto)",
+          "Question 4 : Anticipez-vous que votre première voiture, dans les 3 à 5 ans, sera plutôt récente (neuve, occasion récente, électrique, hybride) ? (Oui = boîte auto)",
+          "Question 5 (tie-breaker) : Avez-vous calé plus de 3 fois lors de votre cours d'évaluation ou d'un essai en manuelle ? (Oui = boîte auto, vraiment)",
+        ],
+        secondContent:
+          "Ce cadre de décision n'élimine pas l'incertitude — aucun cadre ne le fait — mais il déplace la décision d'une intuition à une analyse. Beaucoup de candidats qui appliquent ce cadre lors de leur cours d'évaluation choisissent un format différent de celui qu'ils avaient en tête en arrivant. Si vous voulez en discuter en face à face avec un moniteur expérimenté avant de trancher, c'est exactement le rôle du cours d'évaluation gratuit que nous proposons, et toutes les modalités sont expliquées sur la page Permis B.",
+        tip: {
+          label: "Astuce décision",
+          text: "Si après ces 5 questions vous hésitez encore, faites le cours d'évaluation en manuelle. C'est 1 heure, c'est révélateur, et c'est sans engagement. Le ressenti réel du véhicule est un signal beaucoup plus fiable que tous les avis sur internet.",
+        },
+      },
+      {
+        title: "Et si je me trompe ? Le plan B en 7 heures",
+        iconName: "Calendar",
+        content:
+          "Dernier réflexe utile à avoir : ce choix n'est pas irréversible. Si vous passez votre permis en boîte automatique en 2026 et que, dans 18 mois ou 4 ans, votre situation change (nouvel emploi qui nécessite une voiture de fonction manuelle, achat d'une occasion manuelle, déménagement en zone rurale), vous activez la passerelle 7 heures et la restriction disparaît. Si vous passez votre permis en manuelle et que vous ne touchez plus qu'à des automatiques pour les 20 prochaines années, vous aurez simplement payé 7 heures et 2 à 3 mois de plus pour rien. Aucune de ces situations n'est dramatique. Mais la première est plus probable que la seconde pour un jeune urbain en 2026.",
+        secondContent:
+          "Le vrai risque n'est pas de mal choisir. Le vrai risque est de ne pas choisir activement et de subir le défaut d'inscription. La transparence sur ces arbitrages — gain de temps, restriction code 78, passerelle 7h, contexte marché 2026 — est exactement ce que nous appliquons avec chaque candidat lors du rendez-vous initial. Si vous souhaitez ce point de situation personnalisé avant de signer le moindre contrat, vous pouvez prendre rendez-vous avec l'équipe. Et si vous voulez d'abord parcourir tranquillement le détail du parcours, des formats disponibles et des tarifs, la page Permis B est le meilleur point d'entrée.",
+        quote: {
+          text: "Le bon permis, ce n'est pas celui que vos parents ont passé. C'est celui qui correspond à la voiture que vous conduirez dans 5 ans.",
+          author: "Principe de décision orientée usage (Ornikar — données marché 2026)",
+        },
+      },
+    ],
   }
 ];
 
