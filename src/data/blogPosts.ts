@@ -1851,6 +1851,113 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
+  },
+  {
+    slug: "passer-son-permis-a-30-40-ans-guide-2026",
+    title: "Passer son permis à 30 ans (et après) : le guide adulte 2026",
+    subtitle: "Vous avez 30, 35, 40 ans ou plus et vous n'avez toujours pas le permis ? Vous n'êtes ni en retard, ni seul. Voici comment passer le pas, sereinement, en 2026.",
+    excerpt: "Passer son permis à 30 ans, 40 ans ou même au-delà, ce n'est pas une exception : c'est l'un des profils qui pousse aujourd'hui la porte des auto-écoles le plus souvent. Ce guide reconnaît la charge émotionnelle propre aux adultes — peur du jugement, peur de l'examen, manque de temps — et donne un plan concret en trois étapes : choisir une auto-école qui sait former des adultes, organiser la formation autour du boulot et de la famille, et financer le permis avec les bons leviers (CPF, France Travail, employeur, aides régionales). Inclut une section dédiée aux 40 ans et plus.",
+    category: "Formation",
+    date: "22 Mai 2026",
+    readingTime: "12 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image: "https://images.unsplash.com/photo-1517994112540-009c47ea476b?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Permis adulte",
+      "Permis à 30 ans",
+      "Permis à 40 ans",
+      "Aides permis",
+      "Peur de l'examen",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title: "Passer son permis à 30 ans : non, vous n'êtes pas en retard (et vous êtes loin d'être seul)",
+        iconName: "Compass",
+        content: "Si vous tapez \"passer son permis à 30 ans\" dans Google, vous cherchez probablement deux choses en même temps : une réponse pratique, et une autorisation. L'autorisation de ne pas l'avoir fait à 18 ans comme tout le monde. L'autorisation d'être un adulte qui apprend à conduire, sans que ce soit gênant. La bonne nouvelle, et il faut le dire d'entrée, c'est que vous êtes très loin d'être seul. Dans nos salles de cours, à Vincennes, les profils 30-50 ans représentent une part croissante des élèves, année après année. Certains n'ont jamais essayé, d'autres ont échoué à 19 ans et ont rangé le projet dans un coin. D'autres encore ont vécu vingt ans en ville en se débrouillant avec les transports, et un déménagement, un enfant, un nouveau poste a soudain rendu le permis indispensable.",
+        secondContent: "Le point commun de tous ces parcours adultes, c'est que le déclic est rarement une envie : c'est une nécessité. C'est aussi pour cela que la motivation, une fois lancée, est plus stable et plus puissante qu'à 18 ans. Vous n'êtes pas en train de cocher une case parce que vos parents vous y poussent. Vous savez exactement pourquoi vous le faites. Cette clarté, c'est votre principal atout — et c'est exactement ce qu'une bonne auto-école adulte doit savoir reconnaître et accompagner dès la première rencontre. Pour découvrir l'équipe qui accueille des élèves adultes à Vincennes au quotidien, vous pouvez parcourir la page de présentation.",
+      },
+      {
+        title: "Ce qui change vraiment quand on apprend à conduire après 30 ans",
+        iconName: "Brain",
+        content: "Apprendre à conduire à 30 ans n'a presque rien à voir avec apprendre à 18 ans. Pas au niveau du code, ni du Code de la route lui-même, qui est identique pour tout le monde. Mais sur tout le reste : la psychologie, l'emploi du temps, la mémoire, la relation au moniteur. À 18 ans, on apprend dans une bulle où le permis est l'événement de l'année. À 30, 35 ou 40 ans, le permis se glisse dans une vie déjà pleine : un travail, parfois des enfants, des trajets domicile-bureau, des week-ends chargés, une charge mentale qui ne s'arrête jamais.",
+        secondContent: "Plusieurs choses changent concrètement dans la formation. La mémoire de travail fonctionne moins vite qu'à 18 ans pour absorber une règle nouvelle, mais la mémoire à long terme et l'esprit d'analyse sont nettement plus aiguisés — vous comprenez les pourquoi, vous anticipez. La fatigue cognitive après le boulot est réelle : enchaîner une journée de réunions et deux heures de conduite dans le trafic, c'est dur, et il faut le caler intelligemment. Enfin, la peur du ridicule est plus forte à 35 ans qu'à 18, parce que vous êtes habitué à être compétent dans votre vie pro et que vous redécouvrez la maladresse du débutant. Tous ces points sont normaux, attendus, et une auto-école qui forme régulièrement des adultes les anticipe — c'est ce qu'on détaille dans la suite, après avoir nommé les peurs.",
+      },
+      {
+        title: "Honte, peur du jugement, peur de l'examen : pourquoi c'est normal, et comment on les désamorce",
+        iconName: "ShieldAlert",
+        content: "Le sujet qui revient le plus souvent en début de formation adulte n'est pas technique. Ce n'est pas la boîte de vitesses, ni les créneaux, ni les ronds-points. C'est une phrase, dite à voix basse au premier rendez-vous : \"j'ai un peu honte de venir aussi tard\". On voudrait commencer par balayer cette honte. Elle est compréhensible — la société française associe encore largement le permis à l'entrée dans l'âge adulte vers 18-20 ans — mais elle est aussi profondément injuste, parce qu'elle empêche des gens parfaitement capables de franchir le pas.",
+        secondContent: "Trois peurs très précises remontent presque toujours : la peur du jugement du moniteur (\"il va me trouver lent\"), la peur du jugement des autres élèves (\"je vais être le plus vieux dans la salle\"), et la peur de l'examen (\"si j'échoue à mon âge, c'est encore plus humiliant\"). La manière de désamorcer ces peurs, ce n'est pas de les nier — c'est de les nommer, de poser un cadre clair dès le départ, et de structurer la formation pour qu'elles n'aient pas l'occasion d'enfler. Concrètement : un cours d'évaluation gratuit et privé, sans test piégé, juste pour faire connaissance et caler vos objectifs. Une affectation à un moniteur ou une monitrice qui a déjà formé des adultes et qui sait que personne n'est nul à 35 ans, juste débutant. Et un découpage en étapes courtes, avec des micro-réussites, plutôt qu'une grosse échéance lointaine. Cette manière de travailler, on l'utilise au quotidien — vous pouvez la découvrir plus en détail sur la page d'accompagnement.",
+        tip: {
+          label: "À retenir",
+          text: "La honte n'est pas une preuve que vous êtes en retard. C'est une émotion sociale liée à des normes qui ne disent rien de votre capacité à conduire. Reconnue, nommée, posée sur la table dès le premier rendez-vous, elle perd les trois quarts de sa puissance.",
+        },
+      },
+      {
+        title: "Étape 1 — choisir une auto-école qui sait vraiment former des adultes",
+        iconName: "UserCheck",
+        content: "Toutes les auto-écoles ne se valent pas pour un public adulte. Ce n'est pas une question de qualité technique — la plupart enseignent correctement le code et la conduite — mais une question de posture et d'organisation. Une école dont 95 % des élèves ont 18-22 ans n'aura ni les créneaux horaires adaptés à un salarié, ni l'habitude de gérer la pression émotionnelle d'un adulte qui revient sur les bancs. Voici les critères concrets à regarder avant de signer un contrat.",
+        secondContent: "Ces critères ne sont pas un luxe : ils sont la condition pour que la formation se passe bien et ne s'enlise pas. Une auto-école qui coche ces cases ne vous traitera pas comme un adolescent attardé. Elle vous traitera comme l'adulte expérimenté que vous êtes, qui se retrouve simplement débutant sur une compétence précise. Pour comparer concrètement, vous pouvez consulter la grille tarifaire détaillée puis prendre rendez-vous pour une rencontre d'évaluation sans engagement.",
+        bullets: [
+          "La répartition d'âge des élèves récents : demandez-le directement. Une école qui forme régulièrement des 30-50 ans saura vous donner une fourchette honnête.",
+          "Les créneaux du soir et du samedi : si l'école ne propose des leçons qu'entre 9h et 17h en semaine, ce n'est pas viable pour un salarié.",
+          "La possibilité d'un cours d'évaluation gratuit, calme, et sans engagement, AVANT toute signature.",
+          "Le profil des moniteurs : sont-ils habitués au public adulte ? Tutoiement systématique ou vouvoiement respectueux ?",
+          "La transparence tarifaire : un devis détaillé ligne par ligne, sans frais cachés. Si l'école est floue sur les heures supplémentaires, c'est mauvais signe.",
+          "Le taux de réussite à l'examen sur les 12 derniers mois — un chiffre qu'une école sérieuse communique sans hésiter.",
+          "L'ancrage local : une école qui connaît votre centre d'examen et les itinéraires de quartier vous fera gagner du temps.",
+        ],
+      },
+      {
+        title: "Étape 2 — caler la formation autour du boulot, des enfants, du quotidien",
+        iconName: "Calendar",
+        content: "Le deuxième écueil classique du permis adulte, c'est le planning. On signe en septembre, plein de bonnes intentions, et en mars on a fait quatre leçons parce que la vie s'est mise en travers. Ce n'est pas un problème de motivation : c'est un problème d'organisation. La bonne nouvelle, c'est que ce problème se résout par méthode, pas par volonté pure.",
+        secondContent: "Le piège classique à éviter : vouloir tout faire en un mois en stage accéléré quand on a un boulot prenant. C'est viable pour certains, mais épuisant et risqué. La formule la plus solide pour la majorité des adultes salariés, c'est une formation étalée sur 3 à 5 mois, avec une cadence soutenue et régulière. Pour voir comment on structure concrètement un parcours adulte chez Smoni, vous pouvez consulter le détail des formations.",
+        bullets: [
+          "Bloquer les créneaux à l'avance, dans l'agenda, comme un rendez-vous médical : non négociables, non déplaçables sauf urgence.",
+          "Viser deux leçons par semaine minimum pendant la phase active. Une seule leçon par semaine, c'est trop peu : on oublie entre deux séances.",
+          "Profiter des soirs (18h-20h) ou des samedis matin pour les élèves salariés. Si possible, intercaler une leçon de 1h30 le mercredi matin si vous êtes en télétravail.",
+          "Découper la formation en blocs de 6 à 8 semaines, avec une évaluation à la fin de chaque bloc, plutôt qu'un parcours linéaire sans repère.",
+          "Anticiper les pauses scolaires : si vous avez des enfants, prévoir les semaines de vacances comme des accélérateurs (plus de disponibilité) ou des pauses (selon votre situation).",
+          "Préparer le code en parallèle, en e-learning court (10-15 minutes le matin), pour ne pas empiler les charges mentales.",
+        ],
+      },
+      {
+        title: "Étape 3 — financer son permis quand on est adulte : CPF, employeur, France Travail",
+        iconName: "HelpCircle",
+        content: "Quand on a 30 ans et plus, on ne bénéficie plus du permis 1€/jour (réservé aux 15-25 ans) ni de l'aide à l'apprentissage. Mais on accède en revanche à plusieurs leviers qui, eux, sont taillés pour les adultes. Mobilisés ensemble, ils peuvent réduire significativement votre reste à charge. Voici l'inventaire pratique des aides à connaître en 2026, sans promesses marketing.",
+        secondContent: "La règle d'or, vraie pour tous ces dispositifs : faites votre dossier AVANT de signer le contrat de formation. Beaucoup d'aides exigent que la formation n'ait pas encore démarré pour ouvrir le financement. Et plusieurs leviers se cumulent — CPF partiel + paiement fractionné, par exemple. Si vous voulez un point gratuit sur les aides activables dans votre situation précise, l'équipe Smoni le fait sans engagement, par téléphone ou en rendez-vous.",
+        bullets: [
+          "Le CPF (Compte Personnel de Formation), si vous justifiez d'un lien entre le permis et votre activité professionnelle. Vérifiez votre solde et l'éligibilité sur moncompteformation.gouv.fr avant de signer un devis. Une participation forfaitaire du bénéficiaire reste due (sauf exonération).",
+          "L'aide France Travail, jusqu'à un plafond, pour les demandeurs d'emploi dont le permis est un frein direct à un retour à l'emploi. Demande à faire AVANT de commencer la formation, auprès du conseiller référent.",
+          "Le financement par l'employeur, dans le cadre d'un plan de développement des compétences ou d'un accord négocié individuellement (notamment si le permis débloque un poste ou une mobilité interne).",
+          "Les aides régionales et départementales, variables selon votre lieu de résidence. À vérifier sur le site de votre conseil régional ou auprès de votre mairie.",
+          "Le micro-crédit personnel via la Caisse des Dépôts ou un réseau associatif (Adie, Crésus), avec un taux modéré et un remboursement étalé sur 12 à 36 mois.",
+          "Le paiement fractionné directement chez l'auto-école, dispositif courant qui permet d'étaler 1 500 à 2 000 euros sur 6 à 12 mensualités, sans intérêt selon l'établissement.",
+        ],
+        tip: {
+          label: "Avant de signer",
+          text: "Si une auto-école vous dit que votre CPF \"couvre tout\" sans vérification, demandez systématiquement un devis daté et un identifiant de session sur moncompteformation. C'est ce qui vous protège en cas de litige et garantit que les heures facturées correspondent aux heures réalisées.",
+        },
+      },
+      {
+        title: "40, 45, 50 ans : encore plus tard, et encore une excellente idée",
+        iconName: "Activity",
+        content: "Une partie importante des candidats adultes a dépassé les 40 ans. Et la question revient, presque toujours formulée avec hésitation : \"est-ce que c'est encore raisonnable de se lancer ?\" La réponse est oui, sans hésitation, et pour plusieurs raisons concrètes. Sur le plan légal d'abord : il n'y a aucune limite d'âge supérieure pour passer le permis B en France. Les seules contraintes sont médicales, et elles concernent une minorité de profils (maladies neurologiques, troubles graves de la vision). Pour la grande majorité des plus de 40 ans, le permis est parfaitement accessible.",
+        secondContent: "Sur le plan pédagogique ensuite : les adultes 40+ ont souvent une qualité que les jeunes n'ont pas — la prudence naturelle. Vous n'allez pas chercher la vitesse, vous allez chercher la sécurité, et c'est précisément ce que l'examen évalue. Plusieurs études et retours d'auto-écoles spécialisées montrent que le profil 40+ rate moins souvent l'examen sur des erreurs de comportement que les 18-25 ans. Là où ça se complique, c'est sur la manipulation pure (boîte manuelle, créneaux, demi-tours), où la mémoire procédurale demande plus de répétitions. La solution est connue : un peu plus d'heures de conduite que la moyenne, et idéalement, une orientation vers la boîte automatique si vous n'avez pas un besoin précis de la manuelle. La boîte auto demande moins d'heures réglementaires (13h légales contre 20h) et libère beaucoup de charge cognitive — vous vous concentrez uniquement sur la route. C'est souvent le meilleur choix après 40 ans, sauf cas particulier.",
+      },
+      {
+        title: "Le premier pas concret : une rencontre d'évaluation, sans jugement et sans engagement",
+        iconName: "Target",
+        content: "Si vous êtes arrivé jusqu'à cette dernière section, c'est probablement parce que la décision est déjà en train de mûrir dans votre tête depuis un moment. Vous savez pourquoi vous voulez le permis, vous avez une idée de votre planning, et vous commencez à voir le chemin. Le seul vrai pas qui reste, c'est de transformer cette décision en un premier rendez-vous concret. Pas un engagement, pas un contrat, pas un paiement — juste une rencontre.",
+        secondContent: "Chez Smoni, à Vincennes, ce premier rendez-vous est gratuit, calme, et conçu pour les adultes. On fait connaissance, on écoute votre parcours (les essais précédents s'il y en a eu, les peurs, les contraintes pro et familiales), on évalue où vous en êtes sur le code et la conduite, et on dessine ensemble un plan réaliste — pas un plan optimiste qui ne tiendra pas. Aucune pression commerciale, aucun engagement. Si à la fin de la rencontre, vous décidez que ce n'est pas le bon moment ou pas la bonne école, c'est parfaitement OK. Ce qui compte, c'est que vous ayez les éléments pour décider en adulte. Pour caler cette première rencontre, vous pouvez prendre rendez-vous directement via la page contact, ou consulter d'abord la grille tarifaire si vous voulez vous faire une idée du budget.",
+        quote: {
+          text: "Personne n'est en retard sur sa propre vie. Le permis se passe quand il devient utile, pas quand la société pense qu'il devrait l'être.",
+          author: "Principe de l'accompagnement adulte (Smoni, charte 2026)",
+        },
+      },
+    ],
   }
 ];
 
