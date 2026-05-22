@@ -1224,6 +1224,214 @@ export const blogPosts: BlogPost[] = [
         ],
       },
     ],
+  },
+  {
+    slug: "prix-permis-b-2026-tarifs-aides-cpf",
+    title:
+      "Prix du permis B en 2026 : combien ça coûte vraiment et comment payer moins ?",
+    subtitle:
+      "Tarif moyen, fourchette régionale, permis accéléré, aides CPF et permis 1€/jour : le vrai budget à prévoir et les leviers pour le réduire.",
+    excerpt:
+      "Le permis B coûte en moyenne 1 804 € en France en 2026, avec une fourchette de 1 468 € à 2 140 €. Mais ce chiffre cache des coûts supplémentaires (heures dépassées, frais annexes) et ignore les aides cumulables — CPF, permis 1€/jour, France Travail, aides régionales — qui peuvent diviser votre reste à charge par deux. Guide complet : décomposition ligne par ligne, comparaison par format, aides 2026 et leviers concrets pour réduire la facture.",
+    category: "Conduite",
+    date: "22 Mai 2026",
+    readingTime: "16 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Permis B",
+      "Prix permis",
+      "CPF 2026",
+      "Aides permis",
+      "Permis 1€/jour",
+      "NEPH",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title:
+          "Le vrai prix du permis B en 2026 (et pourquoi personne ne vous le dit clairement)",
+        iconName: "BarChart3",
+        content:
+          "Quand on tape \"prix permis b\" sur Google, on tombe sur tout et n'importe quoi : des forfaits à 519 €, des moyennes à 1 800 €, des témoignages qui parlent de 3 000 €. La vérité, c'est qu'aucun de ces chiffres n'est faux pris isolément. Mais aucun ne raconte l'histoire complète non plus. En 2026, le permis B coûte en moyenne 1 804 € en auto-école traditionnelle en France, selon les données compilées par UFC Que Choisir et relayées par les plateformes du secteur. La fourchette réelle observée s'étend de 1 468 € à 2 140 € pour un parcours classique. Et ce chiffre, déjà déstabilisant, ne reflète qu'une partie du budget total : il suppose que vous passez votre examen du premier coup, que vous ne dépassez pas le forfait d'heures, et que vous n'avez pas besoin de cours particuliers. Dans la réalité, l'UFC Que Choisir constate qu'un candidat moyen consomme environ 35 heures de conduite, alors que le forfait de base en couvre 20.",
+        secondContent:
+          "La conséquence est mécanique : la facture finale dépasse presque toujours le devis initial. Et c'est précisément là que se joue la différence entre une bonne décision et une mauvaise. Comprendre la structure du prix avant de signer permet d'éviter les mauvaises surprises et de comparer les auto-écoles sur des critères réels, pas sur un prix d'appel. Dans ce guide, nous décomposons chaque ligne du budget réel d'un permis B en 2026, nous expliquons pourquoi les tarifs varient autant d'une ville à l'autre, et nous listons toutes les aides mobilisables — y compris celles que les auto-écoles ne mentionnent jamais spontanément. Pour voir directement la grille tarifaire d'une auto-école qui affiche tout sans surcoût caché, vous pouvez consulter la page Tarifs.",
+      },
+      {
+        title: "Décomposition ligne par ligne : ce que vous payez vraiment",
+        iconName: "ListChecks",
+        content:
+          "Un permis B ne se résume pas à \"un forfait d'auto-école\". C'est un empilement de postes de coût, dont certains sont fixes et régulés par l'État, d'autres totalement libres. Comprendre cette décomposition, c'est avoir une grille de lecture pour comparer deux devis qui paraissent identiques mais qui ne le sont pas. Voici ce que vous payez réellement quand vous payez votre permis B en 2026.",
+        bullets: [
+          "Frais d'inscription administrative à l'auto-école : entre 50 € et 250 € selon l'établissement (libre).",
+          "Demande de NEPH (Numéro d'Enregistrement Préfectoral Harmonisé) : 0 €, mais l'auto-école peut facturer la gestion du dossier (souvent inclus, parfois 30-80 € en supplément).",
+          "Forfait code de la route : 150 à 400 € selon que vous prenez du présentiel illimité ou de l'e-learning.",
+          "Examen théorique (le code) : 30 € — tarif officiel uniforme dans toute la France, fixé par l'État.",
+          "Forfait conduite (20 heures minimum boîte manuelle, 13 heures boîte automatique) : 800 à 1 600 €.",
+          "Heures supplémentaires : 45 à 65 € l'heure en moyenne, parfois plus à Paris.",
+          "Présentation à l'examen pratique : entre 0 € (gratuit pour l'État) et 100-200 € (frais d'accompagnement facturés par l'auto-école le jour J).",
+          "Frais administratifs annexes (édition du livret, accès plateforme, gestion en ligne) : 0 à 100 €.",
+        ],
+        secondContent:
+          "Le piège classique : un \"forfait à 999 €\" affiché en vitrine ne contient souvent que le code, les 20 heures réglementaires et une présentation à chaque examen. Si vous échouez au code, c'est 30 € de plus. Si vous dépassez 20 heures de conduite — ce qui est statistiquement la norme — chaque heure supplémentaire à 55 € en moyenne s'ajoute. Quinze heures de plus, c'est déjà 825 € de surcoût. Voilà comment un \"forfait à 999 €\" devient un budget réel de 1 800 €. Pour éviter ce piège, demandez systématiquement un devis qui inclut une estimation honnête du nombre d'heures probable, et pas seulement le minimum légal.",
+      },
+      {
+        title:
+          "Pourquoi le prix varie autant selon la ville (et l'auto-école)",
+        iconName: "Compass",
+        content:
+          "Un permis B passé à Lille ne coûte pas la même chose qu'un permis B passé à Paris. L'écart peut atteindre 40 % à prestation équivalente. Pourquoi ? Parce que le marché du permis est entièrement dérégulé sur le prix : chaque auto-école fixe ses tarifs librement, et plusieurs facteurs structurels créent ces écarts importants. Le coût du foncier d'abord — un local à Paris coûte plusieurs fois le prix d'un local dans le Nord, et cette charge fixe se répercute sur l'heure de conduite. La densité de trafic ensuite : enseigner la conduite en zone urbaine dense use davantage les véhicules et exige des moniteurs plus expérimentés, donc mieux payés. Enfin, la pression concurrentielle : dans les zones où les auto-écoles en ligne sont très implantées, les écoles traditionnelles sont obligées de tirer leurs prix vers le bas.",
+        table: {
+          headers: [
+            "Zone",
+            "Prix moyen permis B 2026",
+            "Heure de conduite (moyenne)",
+          ],
+          rows: [
+            ["Paris / Île-de-France", "1 800 € à 2 140 €", "55-65 €"],
+            [
+              "Grandes métropoles (Lyon, Marseille, Bordeaux)",
+              "1 500 € à 1 900 €",
+              "50-58 €",
+            ],
+            [
+              "Villes moyennes (Vincennes, Nantes, Rennes)",
+              "1 400 € à 1 800 €",
+              "48-55 €",
+            ],
+            ["Province / zones rurales", "1 100 € à 1 400 €", "42-48 €"],
+            ["Nord (référence basse)", "1 484 € moyenne", "45 €"],
+            ["Auto-écoles 100 % en ligne", "519 € à 1 200 €", "35-45 €"],
+          ],
+        },
+        secondContent:
+          "Cette grille n'est pas une fatalité. Vous avez deux leviers concrets. Le premier : si vous habitez à la limite de deux zones, comparez les auto-écoles des deux côtés — la différence sur une frontière administrative peut représenter plusieurs centaines d'euros. Le deuxième : un parcours hybride, où le code se fait en ligne (très peu cher) et la conduite avec une auto-école locale qui connaît bien votre centre d'examen, donne souvent le meilleur ratio prix/réussite. Si vous êtes en région parisienne et que vous souhaitez ce type de parcours hybride à un tarif transparent, l'équipe vous accompagne via la page Préinscription pour un parcours sur mesure.",
+      },
+      {
+        title:
+          "Permis classique, accéléré, boîte auto : quel format pour quel budget ?",
+        iconName: "Zap",
+        content:
+          "Trois grands formats coexistent sur le marché, et chacun obéit à une logique économique différente. Choisir le bon format n'est pas qu'une question de prix : c'est aussi une question de temps disponible, de stress toléré et d'objectif de date d'obtention. Voici ce que coûte chaque format en 2026, et dans quel cas il est rationnel de le choisir.",
+        bullets: [
+          "Permis B classique (boîte manuelle, 20h légales) : 1 400 à 2 100 € en moyenne. Délai 3 à 9 mois. C'est le format universel, qui maximise vos options (vous pourrez conduire toutes les voitures).",
+          "Permis B automatique (13h légales) : 1 100 à 1 700 €. Délai souvent plus court car moins d'heures requises. Restriction : vous ne pourrez conduire qu'en boîte automatique (sauf passerelle ultérieure de 7h).",
+          "Permis B accéléré (stage intensif) : 959 à 1 469 € en formule en ligne, 1 600 à 2 200 € en formule premium présentielle. Délai 2 à 6 semaines. Format adapté si vous avez un besoin pro urgent et un emploi du temps libérable à 100 %.",
+          "Permis 100 % en ligne (Ornikar, lePERMISLIBRE et concurrents) : 519 à 1 200 €. Code en e-learning, conduite avec moniteurs indépendants. Économie réelle mais demande beaucoup d'autonomie.",
+        ],
+        secondContent:
+          "Le réflexe à éviter : choisir uniquement sur le prix d'affichage. Un permis accéléré à 1 600 € peut être plus rentable qu'un permis classique à 1 400 € si vous obtenez votre permis en 4 semaines et que cela vous permet de prendre un emploi 6 mois plus tôt. À l'inverse, un permis en ligne à 519 € peut finir à 1 800 € si vous prenez 25 heures supplémentaires parce que vous n'avez pas trouvé le bon moniteur. Le bon réflexe : raisonner en coût total estimé (forfait + heures supplémentaires prévisibles), pas en prix d'appel.",
+        tip: {
+          label: "Astuce budget",
+          text: "Avant de signer, demandez à voir le taux de réussite à l'examen pratique de l'auto-école pour les 12 derniers mois. Une école avec 75 % de réussite vous coûtera quasi systématiquement moins cher au total qu'une école à 45 %, même si son forfait initial est plus élevé. Le coût d'un échec, c'est 200 à 600 € de leçons supplémentaires plus le délai d'attente d'une nouvelle place d'examen.",
+        },
+      },
+      {
+        title:
+          "CPF, permis 1€/jour, aides régionales : ce que vous pouvez vraiment toucher en 2026",
+        iconName: "HelpCircle",
+        content:
+          "La majorité des candidats au permis B ignorent l'existence de la moitié des aides auxquelles ils ont droit. Pourtant, en combinant intelligemment plusieurs dispositifs, beaucoup de profils peuvent réduire leur reste à charge de 50 % ou plus. Voici l'inventaire à jour des aides mobilisables pour le permis B en 2026, avec les conditions et les montants concrets — pas les promesses marketing.",
+        bullets: [
+          "CPF (Compte Personnel de Formation) : peut financer jusqu'à 100 % du permis B si vous justifiez d'un lien avec votre activité professionnelle. Une participation obligatoire du bénéficiaire reste due (100 € forfaitaires, sauf exonération). La réforme 2026 a réintroduit des conditions plus strictes : vérifiez votre solde et l'éligibilité sur moncompteformation.gouv.fr avant de signer un devis.",
+          "Permis 1€/jour : prêt à taux zéro pour les 15 à 25 ans, montant de 600 à 1 200 € remboursé à environ 30 € par mois. C'est l'État qui prend en charge les intérêts. Conditions : être en formation initiale ou en début de vie active, présenter une attestation de l'auto-école partenaire.",
+          "Aide de France Travail : jusqu'à 1 200 € pour les demandeurs d'emploi dont le permis est un frein direct à un retour à l'emploi. Demande à faire auprès de votre conseiller avant de commencer la formation.",
+          "Aides régionales et départementales : 200 à 1 500 € selon votre département. Les conseils régionaux Île-de-France, Hauts-de-France et Auvergne-Rhône-Alpes ont chacun leurs dispositifs. À vérifier sur le site de votre conseil régional.",
+          "Aide à l'apprentissage : 500 € versés par l'État aux apprentis majeurs en cours de contrat (dispositif maintenu en 2026).",
+          "Aide jeune via la mission locale ou la CAF : variable, souvent forfaitaire (300 à 500 €), conditionnée à un projet professionnel.",
+        ],
+        secondContent:
+          "La règle d'or pour maximiser ces aides : faites votre demande AVANT de signer le contrat avec l'auto-école, pas après. Beaucoup de dispositifs exigent que la formation ne soit pas encore commencée pour ouvrir le financement. Et surtout, les aides peuvent se cumuler. Un apprenti de 19 ans peut, par exemple, combiner le permis 1€/jour (1 200 €), l'aide à l'apprentissage (500 €) et une aide régionale (300 €), pour réduire un budget de 1 800 € à un reste à charge réel inférieur à 100 €. Pour savoir précisément quelles aides vous pouvez activer dans votre situation, l'équipe peut faire un point gratuit avec vous via la page Contact.",
+        tip: {
+          label: "Vérification CPF",
+          text: "Avant de signer un devis qui mobilise votre CPF, exigez de l'auto-école un devis daté et un identifiant de session sur moncompteformation. C'est ce qui vous protège en cas de litige sur les heures effectivement réalisées.",
+        },
+      },
+      {
+        title: "Les coûts cachés que personne ne vous facture clairement",
+        iconName: "AlertTriangle",
+        content:
+          "Au-delà du forfait affiché, plusieurs lignes de coût apparaissent en cours de route et peuvent gonfler la facture de 200 à 800 €. Les connaître avant de signer permet soit de les négocier dès le départ, soit de choisir une auto-école qui les inclut déjà. Voici les huit coûts cachés les plus fréquents constatés sur le marché français en 2026.",
+        bullets: [
+          "Frais de présentation au permis : 80 à 200 € facturés par certaines auto-écoles pour 'l'accompagnement à l'examen' (la place d'examen est gratuite côté État).",
+          "Heures de conduite supplémentaires en cas de moniteur absent ou de véhicule indisponible : parfois facturées même quand l'erreur vient de l'école. À clarifier au contrat.",
+          "Frais de transfert de dossier si vous changez d'auto-école : 100 à 250 €. Ce frais est encadré mais souvent abusif. Demandez le détail.",
+          "Édition du livret d'apprentissage et accès à la plateforme en ligne : 30 à 80 €.",
+          "Heures de conduite sur boîte automatique facturées plus cher (5 à 10 € de plus l'heure dans certaines écoles).",
+          "Frais de prise en charge dossier ANTS / NEPH : devrait être gratuit, parfois facturé 50-100 €.",
+          "Stage de récupération de points si vous accumulez une infraction pendant la période probatoire : 150 à 280 €.",
+          "Cours particuliers ou stage de perfectionnement avant examen : 200 à 500 € selon le format.",
+        ],
+        secondContent:
+          "La parade simple : demandez un devis détaillé avec mention \"tout inclus\" et faites-le mentionner sur le contrat. Une auto-école sérieuse n'a aucun problème à le faire. Si l'établissement refuse ou reste vague, c'est un signal de méfiance. La transparence tarifaire est l'un des principaux critères de qualité que retiennent les organismes de contrôle Qualiopi et les fédérations professionnelles, et c'est la même logique que nous appliquons sur la page Tarifs où chaque ligne est listée sans astérisque.",
+      },
+      {
+        title:
+          "Comment réduire concrètement votre facture (sans sacrifier la qualité)",
+        iconName: "Target",
+        content:
+          "Réduire le coût de son permis B sans passer par une auto-école au rabais est possible. Cela demande surtout de la méthode et un peu d'anticipation. Voici les sept leviers les plus efficaces, classés par ordre d'impact financier décroissant. Combinés, ils peuvent diviser votre budget par deux.",
+        bullets: [
+          "Maximiser les aides cumulables (CPF + permis 1€/jour + aide régionale) : économie potentielle de 800 à 2 000 €.",
+          "Choisir la boîte automatique si vous n'avez pas besoin de la manuelle : 13h légales au lieu de 20h, économie de 400 à 700 €.",
+          "Passer le code en e-learning (15 à 30 €) au lieu d'un forfait présentiel : économie de 150 à 350 €.",
+          "Préparer l'examen pratique en conduite accompagnée (AAC) à partir de 15 ans : taux de réussite très supérieur, donc moins d'heures supplémentaires payées et moins d'échecs. Économie indirecte de 300 à 800 €.",
+          "Comparer trois auto-écoles minimum, en demandant systématiquement le taux de réussite, le détail du forfait et les frais annexes : économie de 200 à 600 €.",
+          "Réserver les heures de conduite par paquets (10 ou 20 heures) plutôt qu'à l'unité : remise fréquente de 5 à 15 %.",
+          "Passer son permis en province pendant les vacances si vous étudiez à Paris : économie de 400 à 900 € sur le forfait total.",
+        ],
+        secondContent:
+          "L'erreur la plus coûteuse, ironiquement, c'est de choisir la solution la moins chère sans analyser le taux de réussite. Un permis à 700 € avec 35 % de réussite finit à 1 800 € après deux échecs. Un permis à 1 500 € avec 75 % de réussite reste à 1 500 €. Le bon arbitrage se fait sur le coût total probable, pas sur le prix d'appel. Si vous souhaitez voir une grille construite sur cette logique — chaque ligne incluse, pas de surprise, taux de réussite publié — vous pouvez consulter directement la page Tarifs ou découvrir le détail du parcours sur la page Permis B.",
+      },
+      {
+        title: "Le budget réaliste à prévoir selon votre profil",
+        iconName: "Calendar",
+        content:
+          "Pour conclure, voici quatre profils typiques avec leur budget total réaliste 2026, en intégrant les heures supplémentaires probables, les aides activables et les frais annexes. Utilisez ces fourchettes comme repère pour évaluer si un devis que vous recevez est cohérent ou s'il faut creuser.",
+        table: {
+          headers: [
+            "Profil",
+            "Budget brut prévisible",
+            "Aides mobilisables",
+            "Reste à charge réel",
+          ],
+          rows: [
+            [
+              "Étudiant 19 ans, Paris, boîte manuelle",
+              "1 900 - 2 200 €",
+              "CPF + permis 1€/jour + aide régionale",
+              "200 - 700 €",
+            ],
+            [
+              "Apprenti 18 ans, province, boîte auto",
+              "1 300 - 1 600 €",
+              "Aide apprentissage + permis 1€/jour",
+              "100 - 400 €",
+            ],
+            [
+              "Demandeur d'emploi 32 ans, IDF",
+              "1 700 - 2 000 €",
+              "France Travail + aide régionale",
+              "300 - 800 €",
+            ],
+            [
+              "Salarié 28 ans, formule accélérée",
+              "1 800 - 2 200 €",
+              "CPF (selon solde) + paiement fractionné",
+              "500 - 1 500 €",
+            ],
+          ],
+        },
+        secondContent:
+          "Le permis B reste un investissement important, mais en 2026, c'est aussi l'un des dispositifs de formation les mieux subventionnés en France pour les profils éligibles. Le plus important, c'est de ne pas signer le premier devis venu et de prendre le temps de monter votre dossier d'aides. Une heure consacrée à explorer vos droits peut représenter plusieurs centaines d'euros d'économie réelle. Pour démarrer votre parcours avec une grille tarifaire détaillée et un accompagnement sur les aides mobilisables dans votre situation, vous pouvez passer par la page Préinscription ou consulter la page Tarifs qui détaille chaque ligne de coût.",
+        quote: {
+          text: "Le vrai prix d'un permis, ce n'est pas le chiffre sur la vitrine. C'est le chiffre à la fin, quand vous tenez le rose entre les mains.",
+          author: "Principe de transparence tarifaire (UFC Que Choisir, rapport 2024)",
+        },
+      },
+    ],
   }
 ];
 
