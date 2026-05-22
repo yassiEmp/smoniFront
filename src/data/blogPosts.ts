@@ -1108,6 +1108,122 @@ export const blogPosts: BlogPost[] = [
           "Côté tarifs, transparence stricte : pas de frais cachés, devis détaillé avant engagement, échelonnement 3 à 4 fois sans frais. Nous sommes certifiés Qualiopi, labellisés Qualité Ministère et \"École conduite qualité\" — éligibles au permis 1€/jour, prêt complémentaire de 300 € après échec inclus. Centre d'examen principal : Rungis, délais observés 6 à 10 semaines en 2026. Pour un diagnostic précis — état du forfait, heures à prévoir, date réaliste — réservez en 2 minutes votre leçon d'évaluation d'une heure, sans engagement. Vous repartirez avec un plan de retry chiffré."
       }
     ]
+  },
+  {
+    slug: "auto-ecole-vincennes-formation-permis-b-2026",
+    title: "Auto-école à Vincennes : choisir sa formation permis B en 2026",
+    subtitle:
+      "Comment choisir une auto-école à Vincennes, comparer les formules permis B, AAC ou boîte automatique, et préparer sereinement votre examen en 2026.",
+    excerpt:
+      "Choisir une auto-école à Vincennes en 2026, c'est arbitrer entre quatre filières permis B encadrées par Service-Public.gouv.fr (traditionnelle, AAC dès 15 ans, conduite supervisée, boîte automatique), comparer sept critères de qualité dont la certification Qualiopi, et anticiper un examen pratique de 32 minutes noté sur 20 points. Ce guide local détaille la checklist avant signature, les pièges du forfait à 20 heures, et les itinéraires d'apprentissage spécifiques au Bois de Vincennes et à l'est francilien.",
+    category: "Formation",
+    date: "22 Mai 2026",
+    readingTime: "10 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Auto-école Vincennes",
+      "Permis B 2026",
+      "AAC",
+      "Conduite supervisée",
+      "Boîte automatique",
+      "Qualiopi",
+      "Val-de-Marne",
+      "Formation conduite",
+    ],
+    sections: [
+      {
+        title: "Pourquoi choisir une auto-école à Vincennes plutôt qu'à Paris ?",
+        iconName: "Compass",
+        content:
+          "Vincennes (94300) est une commune du Val-de-Marne intégrée à l'intercommunalité Paris Est Marne & Bois, selon le site officiel de la mairie. Sa position immédiatement à l'est de Paris en fait un terrain d'apprentissage très intéressant pour le permis B : la circulation y est dense, mais beaucoup plus prévisible qu'à l'intérieur du périphérique. Le réseau de voies ouvertes — avenues larges autour du Château de Vincennes, accès rapide à l'A4 par la Porte de Bercy, traversée du Bois de Vincennes pour les manœuvres — permet aux moniteurs de couvrir toutes les exigences pédagogiques du référentiel REMC sans subir une heure d'embouteillage par leçon.",
+        secondContent:
+          "Pour un candidat qui vise un examen pratique dans l'un des centres de la grande couronne est (Rosny-sous-Bois, Nogent-sur-Marne, Joinville), une auto-école implantée à Vincennes offre un avantage logistique réel : les zones d'examen sont traversées régulièrement en formation, ce qui réduit le stress le jour J. À budget équivalent, une heure de conduite à Vincennes vaut souvent une heure et demie à Paris intra-muros, simplement parce que l'on roule plus. Comparer les forfaits ne suffit donc pas — il faut aussi comparer le temps réel passé volant en main.",
+        tip: {
+          label: "Repère local",
+          text: "Demandez systématiquement à votre auto-école si les leçons couvrent au moins une fois chaque centre d'examen accessible depuis Vincennes : c'est l'un des meilleurs indicateurs de préparation réelle.",
+        },
+      },
+      {
+        title: "Les 4 formules permis B en 2026 : ce que dit la loi",
+        iconName: "Book",
+        content:
+          "Le cadre réglementaire 2026 s'appuie sur les règles fixées par le Code de la route et précisées sur Service-Public.gouv.fr (fiches F2828 et F2826, vérifiées en mai 2025). Quatre filières coexistent et chacune a des conditions d'âge et d'heures différentes.",
+        secondContent:
+          "La formule traditionnelle s'adresse aux candidats de 17 ans ou plus, avec un minimum de 20 heures de conduite dont au moins 15 heures sur voies ouvertes (ou 10 heures avec simulateur agréé). L'apprentissage anticipé de la conduite (AAC) ouvre dès 15 ans, suivi d'au moins 1 an et 3 000 km accompagnés, et permet le passage de l'examen à 17 ans avec période probatoire réduite à 2 ans. La conduite supervisée s'adresse aux 18 ans ou plus déjà inscrits qui souhaitent renforcer leur expérience. La boîte automatique raccourcit la formation initiale et reste convertible vers la boîte manuelle.",
+        bullets: [
+          "Traditionnelle : 17 ans, 20 h minimum dont 15 h sur voies ouvertes (Service-Public.gouv.fr F2828).",
+          "AAC : dès 15 ans, 20 h en auto-école puis 1 an et 3 000 km accompagnés (F2826).",
+          "Conduite supervisée : 18 ans ou plus, accompagnateur titulaire du permis B depuis 5 ans (F2826).",
+          "Boîte automatique (BEA) : durée raccourcie, conversion possible vers boîte manuelle.",
+        ],
+      },
+      {
+        title: "Critères pour comparer les auto-écoles à Vincennes",
+        iconName: "ListChecks",
+        content:
+          "Au-delà du prix affiché, sept critères distinguent une auto-école sérieuse à Vincennes d'une enseigne qui maquille ses tarifs. Voici la checklist à parcourir avant de signer.",
+        bullets: [
+          "Certification Qualiopi : obligatoire pour accepter les financements CPF, audit annuel sur la qualité pédagogique.",
+          "Label École conduite qualité : signal fort, attribué après contrôle préfectoral.",
+          "Contrat type clair : nombre d'heures, tarif des heures supplémentaires, frais d'examen, conditions de rupture.",
+          "Taux de réussite affiché : la transparence sur ce taux est un indicateur clé.",
+          "Simulateur agréé : permet de remplacer jusqu'à 10 heures sur voies ouvertes (cadre Service-Public).",
+          "Disponibilité du planning : un cycle de plus de 10 jours entre deux leçons allonge mécaniquement la formation.",
+          "Examens internes blancs : indispensables avant le passage officiel.",
+        ],
+        tip: {
+          label: "Piège fréquent",
+          text: "Le forfait '20 h à 990 €' qui ne couvre ni les frais d'examen, ni l'accompagnement, ni le code, ni la présentation à l'examen. Demandez systématiquement un devis détaillé écrit avant tout versement.",
+        },
+      },
+      {
+        title: "Comprendre les coûts d'une formation à Vincennes",
+        iconName: "BarChart3",
+        content:
+          "Le budget total d'un permis B à Vincennes se compose de quatre lignes principales : l'inscription administrative (dossier ANTS, photo, signature électronique), la formation au code de la route (ETG, en présentiel ou en ligne), le forfait de 20 heures de conduite, et le passage de l'examen (présentation + accompagnement). À cela s'ajoutent, pour une large majorité de candidats, des heures supplémentaires — non parce que le candidat est en difficulté, mais parce que les 20 heures réglementaires sont un plancher, pas une moyenne réaliste pour réussir.",
+        secondContent:
+          "Le fonctionnement transparent consiste à fournir, dès le premier rendez-vous, une grille tarifaire complète : prix de l'heure supplémentaire (souvent au même tarif que les heures du forfait), prix d'une présentation à l'examen, prix d'un rendez-vous pédagogique en AAC. Tout flou sur ces lignes est un signal d'alerte.",
+      },
+      {
+        title: "Préparer l'examen pratique : 32 minutes, 20 points",
+        iconName: "Target",
+        content:
+          "L'examen pratique du permis B est cadré par l'arrêté du 19 février 2010, mis à jour pour 2026. Selon Service-Public.gouv.fr, il dure 32 minutes, et le candidat doit obtenir 20 points ou plus sans commettre d'erreur éliminatoire. La grille couvre la maîtrise du véhicule, le respect du code, l'autonomie de décision, la conscience du risque, et le partage de la route avec les autres usagers.",
+        secondContent:
+          "Pour les candidats inscrits à Vincennes, les centres d'examen accessibles couvrent l'est francilien. Ce qui compte : avoir conduit dans les conditions du centre d'examen pendant la formation. Les 15 heures minimum sur voies ouvertes prennent ici tout leur sens. Elles ne sont pas une formalité : c'est ce qui transforme une compétence motrice en réflexes de conduite. Une bonne auto-école à Vincennes organise ces heures pour couvrir au moins une fois chaque configuration que l'examinateur peut demander : créneau en pente, demi-tour en sécurité, dépassement, intégration sur voie rapide.",
+      },
+      {
+        title: "Conduite accompagnée à Vincennes : itinéraires malins",
+        iconName: "UserCheck",
+        content:
+          "L'AAC est régulièrement présentée comme la filière la plus solide pour aborder l'examen pratique, en raison du volume de kilomètres accumulés avant le passage. Pour un jeune de 15 à 17 ans à Vincennes, c'est une formule particulièrement adaptée : le Bois de Vincennes permet de travailler les manœuvres lentes en environnement sécurisé, la Nationale 4 et la Nationale 34 fournissent des conditions de route ouverte sans quitter le département, et l'A4 est accessible en quelques minutes pour les phases autoroute.",
+        secondContent:
+          "Le profil de l'accompagnateur reste strict : permis B depuis 5 ans ou plus, sans retrait du permis dans les 5 années précédentes (Service-Public.gouv.fr F2826). C'est souvent un parent, mais cela peut aussi être un proche, ce que beaucoup de familles ignorent. Les deux rendez-vous pédagogiques de 3 heures avec un moniteur — premier 4 à 6 mois après la formation initiale, second après les 3 000 km parcourus — sont obligatoires et permettent de corriger d'éventuels mauvais réflexes pris en accompagnement. Démarrer trop tard rend la filière mathématiquement impossible : la fenêtre de deux ans entre 15 et 17 ans est juste suffisante pour cumuler les 3 000 km.",
+      },
+      {
+        title: "Qualité d'enseignement : ce que Qualiopi change vraiment",
+        iconName: "ShieldAlert",
+        content:
+          "Qualiopi est devenue, depuis 2022, la certification de référence pour les organismes de formation professionnelle en France — y compris les auto-écoles qui acceptent les financements CPF. Mais Qualiopi va plus loin qu'une simple accréditation administrative : il s'agit d'un audit annuel par un organisme tiers, qui vérifie la qualité pédagogique réelle, la traçabilité des heures, la formation continue des moniteurs, et le suivi individuel des candidats.",
+        secondContent:
+          "Concrètement, une auto-école certifiée Qualiopi doit pouvoir vous présenter un livret pédagogique nominatif, un suivi écrit après chaque leçon, des objectifs de compétences alignés sur le REMC (Référentiel pour l'Éducation à une Mobilité Citoyenne), et un dispositif d'évaluation finale avant présentation à l'examen. Un audit annuel signifie qu'aucun de ces points ne peut être improvisé. Smoni détient cette certification et la rend consultable.",
+      },
+      {
+        title: "Questions fréquentes",
+        iconName: "HelpCircle",
+        content:
+          "Quatre questions reviennent systématiquement lors des premiers échanges avec les candidats à Vincennes. Voici les réponses cadrées sur le droit en vigueur.",
+        bullets: [
+          "À quel âge commencer ? AAC dès 15 ans, conduite supervisée à 18 ans, formule classique dès 16 ans pour passer l'examen à 17 ans.",
+          "Combien de temps dure la formation ? Minimum 20 heures de conduite ; durée moyenne réelle plus longue. Comptez 4 à 9 mois entre l'inscription et l'obtention selon votre rythme.",
+          "Boîte auto ou manuelle ? La BEA raccourcit la formation initiale et reste convertible vers la boîte manuelle après quelques heures supplémentaires.",
+          "Candidat libre ? Le code (ETG) peut se passer via une auto-école ou en candidat libre selon Service-Public.gouv.fr ; pour la conduite, l'accompagnement professionnel reste fortement recommandé.",
+        ],
+      },
+    ],
   }
 ];
 
