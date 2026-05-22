@@ -999,6 +999,115 @@ export const blogPosts: BlogPost[] = [
         ]
       }
     ]
+  },
+  {
+    slug: "prix-pour-repasser-le-permis-b-apres-echec",
+    title: "Prix pour repasser le permis B après échec : guide complet 2026",
+    subtitle:
+      "Combien coûte vraiment de repasser le permis B après un échec en 2026 ? Delta réel, trois scénarios chiffrés, délais d'attente en Île-de-France et financement CPF post-réforme, expliqués pour les candidats franciliens.",
+    excerpt:
+      "Repasser le permis B après échec coûte 50 à 600 € en 2026 selon votre situation, et 250 à 450 € pour la majorité des candidats à Vincennes — bien loin des 2 140 € d'un permis complet en Île-de-France. Trois scénarios chiffrés, délais réels franciliens et leviers de financement post-réforme CPF du 21 février 2026 : le guide complet pour rebondir sans se ruiner.",
+    category: "Examen",
+    date: "22 Mai 2026",
+    readingTime: "12 min",
+    // TODO: replace with final hero image once generated from runs/<slug>/image-prompts.json
+    image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Permis B",
+      "Échec permis",
+      "Repassage",
+      "CPF 2026",
+      "Auto-école Vincennes",
+      "Permis 1€/jour",
+      "NEPH",
+      "Examen Rungis"
+    ],
+    sections: [
+      {
+        title: "Échec au permis B : ce qui se passe vraiment juste après",
+        iconName: "AlertTriangle",
+        content:
+          "Premier recadrage : l'échec à l'épreuve pratique est la norme, pas l'exception. Le taux de réussite en première présentation au permis B s'établissait à 57,5 % en 2023 (Bilan Sécurité Routière 2023, relayé par SANEER). Près de 42,5 % des candidats repassent — vous n'êtes ni seul, ni en retard.",
+        secondContent:
+          "Deuxième point : vous ne repartez pas de zéro. Votre NEPH reste valide, votre code de la route reste valide 5 ans (Service-Public.fr, 2025), et depuis le décret du 17 novembre 2022 il n'y a plus de plafond de 5 tentatives à l'épreuve pratique tant que le code court. Vous repassez jusqu'à la convocation positive. Troisième point, économique : vous ne \"repayez pas tout\". Le forfait initial reste acquis. Vous réglez uniquement le delta — frais de présentation, heures de conduite supplémentaires, éventuelle nouvelle inscription. La suite chiffre ce delta sur trois scénarios.",
+        tip: {
+          label: "Bon à savoir",
+          text: "Plus de plafond de 5 tentatives à l'épreuve pratique depuis le décret du 17 novembre 2022. Tant que votre code court (5 ans), vous repassez la conduite autant de fois que nécessaire."
+        }
+      },
+      {
+        title: "Combien coûte précisément de repasser le permis B en 2026 ?",
+        iconName: "Euro",
+        content:
+          "En 2026, le prix pour repasser le permis B après échec va de 50 € (présentation seule, candidat libre, forfait actif) à 600 € (réinscription avec heures de conduite supplémentaires en auto-école). Pour la majorité des candidats franciliens, comptez 250 à 450 €. Trois variables expliquent le coût : état du forfait initial, heures de conduite nécessaires, formule choisie.",
+        secondContent:
+          "Ce n'est pas le prix d'un permis B complet (1 804 € national, 2 140 € en Île-de-France selon UFC-Que Choisir 2024 et En Voiture Simone 2026) : le repassage, c'est uniquement le surcoût marginal. Décomposition : (1) frais d'accompagnement à l'examen — souvent inclus ; (2) heures supplémentaires, à partir de 47,40 €/h en boîte manuelle (Lepermislibre 2026), généralement un peu plus en IDF ; (3) frais de dossier si changement d'école. Le code de la route n'est à repasser que si plus de 5 ans se sont écoulés depuis l'obtention (Service-Public.fr) : prévoyez alors 30 € de droit d'examen réglementé. Sinon, code et NEPH restent intacts. Grille détaillée 2026 publiée sur notre page Tarifs."
+      },
+      {
+        title: "Les 3 scénarios de repassage et leur prix réel",
+        iconName: "ListChecks",
+        content:
+          "Trois cas de figure couvrent l'écrasante majorité des candidats qui repassent. Chacun a son coût marginal type et son délai indicatif en Île-de-France en 2026.",
+        bullets: [
+          "Scénario 1 — Présentation seule. Forfait initial encore actif, vous re-réservez une date. Coût marginal 0 à 100 € selon que les frais de présentation sont inclus ou facturés à part. Délai indicatif 6 à 10 semaines. Cas le plus fréquent quand l'échec arrive tôt dans la formation.",
+          "Scénario 2 — Présentation + heures supplémentaires. Forfait actif, besoin de réactivation : typiquement 5 à 10 heures pour consolider. La moyenne nationale est de 35 heures consommées contre les 20 du forfait initial (UFC-Que Choisir 2024) — l'écart couvre tout le parcours, la fourchette 5 à 10 est une estimation observée chez Smoni en 2026. À un tarif francilien estimé autour de 47-55 €/h, comptez 235 à 550 € plus les frais de présentation. Délai 6 à 12 semaines.",
+          "Scénario 3 — Réinscription complète. Forfait expiré ou changement d'école : nouveau contrat, frais de dossier (à demander en devis), forfait partiel adapté aux heures restantes. Budget à partir de 600 €, variable selon l'école. Délai 8 à 16 semaines. Cas le plus lourd, le plus rare."
+        ],
+        secondContent:
+          "Hors location véhicule double-commandes en candidat libre et certificat médical éventuel. Variante boîte automatique : moins d'heures en moyenne, mais le permis BEA implique une restriction temporaire à la boîte automatique. Le tarif détaillé chez Smoni est publié en clair sur notre page Tarifs."
+      },
+      {
+        title: "Quand pouvez-vous repasser ? Délais légaux vs délais réels en Île-de-France",
+        iconName: "Clock",
+        content:
+          "Sur le papier, le délai de représentation est de 2 jours date à date après l'échec (Service-Public.fr 2025). Vous pourriez théoriquement repasser le surlendemain. Dans la vraie vie francilienne, c'est tout autre chose.",
+        secondContent:
+          "La sénatrice Catherine Dumas a rapporté dans sa question écrite n° 07724 au Sénat (9 octobre 2025) que les délais d'attente pour une place d'examen pratique atteignent jusqu'à 8 mois en Île-de-France. Origine du goulot : moins de 1 500 inspecteurs IPCSR pour environ 1,4 million de candidats annuels. La pénurie est née sur le 92, 94 et 95 avant de se généraliser (Permis Mag 2025) — Vincennes est en plein dedans. Concrètement, depuis Vincennes vous passez par Rungis et Joinville-le-Pont. Nous y observons des délais réels de 6 à 10 semaines en 2026 (observation Smoni, non sourcée publiquement) — loin des 8 mois du pire scénario régional, mais bien au-delà des 2 jours légaux. Levier auto-école : votre école dispose d'un quota de places attribuées par la préfecture. Une auto-école active sur RdvPermis vous fera gagner des semaines. Re-réservez dès J+2 : vous pourrez décaler, mais pas avancer une date non posée.",
+        tip: {
+          label: "Réflexe utile",
+          text: "Re-réservez votre date d'examen dès J+2 après l'échec. Vous pourrez toujours la décaler si besoin, mais vous ne pourrez jamais avancer une date qui n'a pas été posée."
+        }
+      },
+      {
+        title: "Financer le repassage : CPF, permis 1€/jour et autres leviers en 2026",
+        iconName: "Wrench",
+        content:
+          "La réforme du compte personnel de formation du 21 février 2026 a rebattu les cartes. Désormais, mobiliser son CPF pour le permis B exige soit d'être demandeur d'emploi inscrit à France Travail, soit, pour les salariés, un cofinancement tiers d'au moins 100 € (Mon Compte Formation 2026 ; Service-Public.fr 2026). Le plafond est désormais de 900 € pour les permis du groupe léger.",
+        secondContent:
+          "Point critique souvent ignoré pour qui cherche un permis B pas cher : si votre CPF a déjà financé votre première inscription, son solde résiduel peut couvrir des heures supplémentaires — uniquement si ces heures étaient déclarées au dossier initial. Sinon, refus a posteriori. Méfiez-vous des promesses \"permis 1€/jour\" sans condition : le dispositif existe (Service-Public.fr, 1er avril 2026) mais reste réservé aux 15-25 ans, en auto-école labellisée \"École conduite qualité\", accordé une seule fois par catégorie (Ornikar 2025). Spécificité repassants : un prêt complémentaire de 300 € peut s'ajouter au prêt initial de 600 à 1 200 € après un échec, remboursement plafonné à 30 €/mois sans intérêt. Aides locales à ne pas négliger : ville, département (Val-de-Marne) et région proposent ponctuellement des aides — vérifiez à la mairie de Vincennes et au Conseil départemental 94. Demandez l'échelonnement : 3 à 4 fois sans frais, rarement affiché, presque toujours négociable."
+      },
+      {
+        title: "Préparation mentale : rebondir sans se saboter à la 2e tentative",
+        iconName: "Brain",
+        content:
+          "Le piège numéro un : attendre trop longtemps pour \"reprendre confiance\". Plus l'attente est longue, plus les automatismes s'érodent. Pas de statistique publique sur le taux d'abandon post-échec, mais nous observons chez Smoni en 2026 que les candidats qui repassent dans les 6 semaines réussissent mieux que ceux qui attendent 3 mois.",
+        secondContent:
+          "Protocole de 7 jours, à poser sur agenda dès la sortie du centre. (1) Débrief écrit dans les 48 h, livret à l'appui : les 2 ou 3 erreurs éliminatoires précises. (2) Deux heures de conduite ciblées entre J+5 et J+10. (3) Re-réservation avant J+14. Un retry tenu sur dates réussit mieux qu'un retry \"quand je me sentirai prêt\". Travaillez l'erreur précise. Refus de priorité ? Une heure ronds-points. Vitesse mal gérée ? Une heure zones 30. Calage en côte ? Les rampes de Fontenay-sous-Bois. La spécificité bat la généralité. Désensibilisez-vous au stress : une présentation \"blanche\" avec votre moniteur jouant l'inspecteur vaut dix heures de révision théorique. Pour repartir de zéro à Vincennes, voir notre guide complet du permis B à Vincennes ; pour le travail technique, notre page Conduite."
+      },
+      {
+        title: "Questions fréquentes sur le repassage du permis B",
+        iconName: "HelpCircle",
+        content:
+          "Les questions les plus posées par nos candidats post-échec à Vincennes, avec des réponses sourcées et datées 2026.",
+        bullets: [
+          "Combien coûte de repasser le permis B après un échec ? — Entre 50 € (présentation seule en candidat libre, forfait actif) et 600 € (réinscription avec heures de conduite supplémentaires) en 2026. À Vincennes, comptez 250 à 450 € — bien en-deçà du permis complet (1 804 € national, 2 140 € IDF).",
+          "Quand peut-on repasser le permis après un échec ? — Légalement, 2 jours date à date (Service-Public.fr), sans limite de tentatives tant que votre code de la route reste valide 5 ans. En Île-de-France, le délai réel va de 6 semaines à 8 mois — pénurie d'inspecteurs IPCSR marquée sur le 92, 94 et 95.",
+          "Faut-il tout repayer si on est recalé au permis B ? — Non. NEPH valide, code valide 5 ans, dossier auto-école valide tant que le contrat court. Vous payez uniquement le delta : frais de présentation (souvent inclus), heures de conduite supplémentaires (à partir de 47,40 €/h, plus en IDF), et le code seulement si plus de 5 ans se sont écoulés.",
+          "Le CPF peut-il financer un repassage du permis B en 2026 ? — Depuis le 21 février 2026, le CPF pour le permis B est réservé aux demandeurs d'emploi France Travail ou aux salariés avec cofinancement tiers d'au moins 100 €, plafonné à 900 € (Mon Compte Formation et Service-Public.fr 2026). Pour un repassage, le solde résiduel ne couvre des heures sup que si elles étaient déclarées au dossier initial.",
+          "Peut-on repasser le permis B en candidat libre après un échec en auto-école ? — Oui, à condition de récupérer votre NEPH et votre livret d'apprentissage auprès de l'auto-école d'origine. La présentation en candidat libre revient moins cher (l'inscription à l'examen pratique est gratuite auprès de l'État, seule la location d'un véhicule à double commandes est à votre charge), mais vous gérez seul la réservation via RdvPermis — chronophage en Île-de-France.",
+          "Que faire si on échoue deux fois au permis B ? — Aucun plafond légal depuis le décret du 17 novembre 2022. Après deux échecs : débrief avec un moniteur différent, leçon d'évaluation pour repartir sur bases neutres, heures ciblées sur les erreurs éliminatoires, présentation blanche avant la 3e tentative. Une fois le permis obtenu, vous entrez en permis probatoire."
+        ]
+      },
+      {
+        title: "Repasser le permis B à Vincennes avec Smoni : notre accompagnement post-échec",
+        iconName: "Compass",
+        content:
+          "Smoni est une auto-école Vincennes de quartier ancrée au 94300. Vouvoiement systématique, anti-bullshit, recalés bienvenus — notre ADN. Nous accompagnons chaque semaine des candidats recalés ailleurs. Notre programme retry tient sur 7 jours : débrief écrit dans les 48 heures, deux heures ciblées sur l'erreur éliminatoire, présentation blanche avant la nouvelle date. Une méthode, pas une promesse.",
+        secondContent:
+          "Côté tarifs, transparence stricte : pas de frais cachés, devis détaillé avant engagement, échelonnement 3 à 4 fois sans frais. Nous sommes certifiés Qualiopi, labellisés Qualité Ministère et \"École conduite qualité\" — éligibles au permis 1€/jour, prêt complémentaire de 300 € après échec inclus. Centre d'examen principal : Rungis, délais observés 6 à 10 semaines en 2026. Pour un diagnostic précis — état du forfait, heures à prévoir, date réaliste — réservez en 2 minutes votre leçon d'évaluation d'une heure, sans engagement. Vous repartirez avec un plan de retry chiffré."
+      }
+    ]
   }
 ];
 
