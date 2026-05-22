@@ -1,32 +1,44 @@
 import { motion } from "framer-motion";
 import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import imgLabelQualite from "@assets/blog/details7/label-ecole-qualite.png?w=240;480&format=avif;webp;png&as=picture";
+import {
+  IllustrationPrix,
+  Illustration60Min,
+  IllustrationPasDeCris,
+  IllustrationRecales,
+  IllustrationGarantie,
+} from "./EngagementIllustrations";
 
 const engagements = [
   {
     n: "01",
     title: "Prix tout-compris, écrit dans le contrat.",
     body: "Tous nos tarifs sont publics. Pas de \"supplément examen\", pas d'\"heures de centre\" ajoutées à la dernière minute. Ce que vous voyez = ce que vous payez.",
+    Illustration: IllustrationPrix,
   },
   {
     n: "02",
     title: "1 heure de conduite = 60 minutes au volant.",
     body: "Pas de plein d'essence, pas de café, pas de \"déposer un dossier\". Heure de début et heure de fin notées sur votre livret.",
+    Illustration: Illustration60Min,
   },
   {
     n: "03",
     title: "Aucun moniteur ne vous criera dessus.",
     body: "Si ça arrive, vous nous le dites. Changement gratuit, et entretien avec le moniteur concerné. C'est écrit dans la charte.",
+    Illustration: IllustrationPasDeCris,
   },
   {
     n: "04",
     title: "Recalés bienvenus — sans pack 13h imposé.",
     body: "Vous venez d'une autre auto-école ou vous avez raté ? On évalue votre niveau gratuitement, sans minimum d'heures forcé.",
+    Illustration: IllustrationRecales,
   },
   {
     n: "05",
     title: "Garantie financière obligatoire (loi).",
     body: "Article L.213-2 du Code de la route : votre argent est protégé. Si on ferme, vous récupérez vos leçons. Attestation sur demande.",
+    Illustration: IllustrationGarantie,
   },
 ];
 
@@ -107,22 +119,39 @@ const HomeCertificationSection = () => {
 
         {/* Engagements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {engagements.map((e, i) => (
-            <motion.div
-              key={e.n}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all"
-            >
-              <div className="flex items-baseline gap-3 mb-3">
-                <span className="text-2xl font-black text-[#2c2876]/20 tabular-nums">{e.n}</span>
-                <h3 className="text-base font-extrabold text-[#2c2876] leading-snug">{e.title}</h3>
-              </div>
-              <p className="text-sm text-slate-600 font-medium leading-relaxed">{e.body}</p>
-            </motion.div>
-          ))}
+          {engagements.map((e, i) => {
+            const Illustration = e.Illustration;
+            return (
+              <motion.div
+                key={e.n}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:-translate-y-0.5 transition-all overflow-hidden flex flex-col"
+              >
+                <div className="relative aspect-[16/9] bg-[#f3f1ff]">
+                  <Illustration />
+                  <span
+                    className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-white/85 backdrop-blur-sm text-[10px] font-bold tracking-[0.18em] text-[#2c2876]"
+                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                  >
+                    ENGAGEMENT · N°{e.n}
+                  </span>
+                  <span
+                    className="absolute top-3 right-3 text-[10px] font-bold tabular-nums text-[#2c2876]/70"
+                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                  >
+                    {e.n} / 05
+                  </span>
+                </div>
+                <div className="p-6 pt-5 flex-1 flex flex-col">
+                  <h3 className="text-base font-extrabold text-[#2c2876] leading-snug mb-2">{e.title}</h3>
+                  <p className="text-sm text-slate-600 font-medium leading-relaxed">{e.body}</p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <p className="text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-10">
