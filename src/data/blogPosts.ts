@@ -1567,6 +1567,158 @@ export const blogPosts: BlogPost[] = [
         },
       },
     ],
+  },
+  {
+    slug: "heures-supplementaires-auto-ecole-vos-droits-2026",
+    title:
+      "Heures supplémentaires en auto-école : vos droits et vos recours en 2026",
+    subtitle:
+      "Ce que la loi dit vraiment, comment refuser des heures imposées et les trois recours officiels (contrat type, DGCCRF, médiateur) à activer en cas de litige.",
+    excerpt:
+      "Votre auto-école vous demande de payer cinq, dix, parfois quinze heures supplémentaires avant de vous présenter au permis ? Avant de signer le chèque, sachez ceci : aucune loi ne vous oblige à acheter des heures que votre moniteur ne peut pas justifier pédagogiquement. Le Code de la consommation, le Code de la route et le contrat type d'enseignement encadrent strictement ce que l'école peut exiger. Guide complet 2026 : verdict juridique clair, script de refus mot à mot, et les trois recours officiels (DGCCRF, médiation, tribunal) à activer si l'établissement insiste.",
+    category: "Tarifs",
+    date: "22 Mai 2026",
+    readingTime: "13 min",
+    // TODO: replace with final hero image once generated from image-prompts.json
+    image:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=2000",
+    author: { name: "Arike Bello", avatar: "AB" },
+    tags: [
+      "Heures supplémentaires",
+      "Droits du candidat",
+      "Contrat auto-école",
+      "Litige auto-école",
+      "DGCCRF",
+      "Médiation consommation",
+      "Permis B 2026",
+      "Auto-école Vincennes",
+    ],
+    sections: [
+      {
+        title:
+          "Le malaise commence souvent par un texto, jamais par un face-à-face",
+        iconName: "ShieldAlert",
+        content:
+          "La scène est presque toujours la même. Vous avez fait vos vingt heures réglementaires. Vous attendiez la date d'examen. Et là, un message : \"Bonjour, le moniteur estime qu'il vous faut encore huit à dix heures avant la présentation. Merci de passer régler à l'accueil cette semaine.\" Pas d'évaluation détaillée, pas de grille de compétences cochée, pas de discussion en face-à-face. Juste une somme à payer et un délai. Beaucoup de candidats, à cet instant, ressentent un mélange précis : colère, doute sur leur niveau réel, et surtout peur que refuser revienne à se voir refuser l'examen.",
+        secondContent:
+          "Ce malaise est tellement répandu qu'il a un nom dans les enquêtes consommateurs : la pression aux heures supplémentaires. UFC Que Choisir documente le phénomène depuis plus de dix ans et constate que le candidat moyen consomme environ trente-cinq heures de conduite, contre vingt prévues dans le forfait standard. Une partie de ces heures est légitime. Une autre, non. Le problème n'est pas qu'il faille parfois plus de vingt heures pour être prêt — c'est statistiquement la norme. Le problème, c'est quand l'auto-école transforme ces heures supplémentaires en obligation déguisée, sans justification écrite, sans grille pédagogique, et avec la menace implicite que sans elles vous ne passerez pas l'examen. Ce guide existe pour vous remettre la maîtrise du dossier.",
+      },
+      {
+        title:
+          "Ce que la loi dit vraiment sur les heures supplémentaires en auto-école",
+        iconName: "Book",
+        content:
+          "Soyons clairs sur le verdict juridique, parce qu'il est rarement énoncé sans détour. Aucun texte de loi français n'oblige un élève à acheter des heures supplémentaires. Les vingt heures du permis B en boîte manuelle et les treize heures en boîte automatique sont des minimums légaux, pas des maximums au-delà desquels l'élève devrait obligatoirement payer pour passer l'examen. Trois textes encadrent la relation entre vous et votre auto-école, et il est utile de les avoir en tête.",
+        bullets: [
+          "L'article L.111-1 du Code de la consommation impose au professionnel de communiquer, avant la conclusion du contrat, les caractéristiques essentielles du service, son prix détaillé et les modalités d'exécution. Une auto-école doit donc, dès le devis, indiquer le prix d'une heure supplémentaire et les conditions dans lesquelles elle peut en exiger.",
+          "L'article L.213-2 du Code de la route impose un contrat écrit entre l'élève et l'établissement, avec mentions obligatoires (programme, durée, prix, conditions de rupture). Sans contrat écrit conforme, l'école est en infraction.",
+          "L'arrêté du 14 octobre 2016 fixe le contenu du contrat type d'enseignement de la conduite. Il prévoit que toute heure supplémentaire doit être proposée et acceptée par l'élève, pas imposée. La présentation à l'examen ne peut pas être conditionnée à un volume d'heures non prévu au contrat.",
+        ],
+        secondContent:
+          "Autrement dit : si votre auto-école refuse de vous présenter à l'examen tant que vous n'avez pas payé des heures supplémentaires non prévues au contrat initial, elle est en infraction. C'est l'évaluation pédagogique de votre moniteur, formalisée dans un bilan écrit, qui doit justifier toute heure supplémentaire — et c'est vous, en tant que client, qui acceptez ou refusez cette proposition. Cette base juridique est solide et opposable. Pour la suite du guide, gardez-la en tête : votre position de négociation est plus forte que vous ne le pensez.",
+      },
+      {
+        title:
+          "Pourquoi votre auto-école insiste — et quand c'est réellement justifié",
+        iconName: "HelpCircle",
+        content:
+          "Avant de partir au combat, il faut savoir distinguer la pression abusive de la recommandation pédagogique honnête. Toutes les auto-écoles ne sont pas malhonnêtes, loin de là. Certaines insistent pour de bonnes raisons : leur taux de réussite à l'examen pratique dépend directement du niveau réel des candidats qu'elles présentent, et un échec coûte cher à tout le monde, y compris à elles. Voici comment lire la situation honnêtement.",
+        bullets: [
+          "Pression légitime : le moniteur vous a remis une grille d'évaluation détaillée (compétences acquises, en cours d'acquisition, non acquises), il pointe précisément les lacunes (giratoires, voies rapides, créneau), et il propose un nombre d'heures cohérent avec ces lacunes.",
+          "Pression douteuse : la demande tombe par SMS ou en accueil rapide, sans bilan écrit, et le nombre d'heures supplémentaires semble standardisé (toujours huit, toujours dix) quel que soit le niveau réel des élèves.",
+          "Pression abusive : la présentation à l'examen est conditionnée au paiement immédiat, votre place déjà réservée disparaît si vous discutez, ou l'école refuse de vous remettre votre bilan par écrit.",
+        ],
+        secondContent:
+          "La règle simple à appliquer : demandez systématiquement le bilan écrit. Une auto-école qui travaille honnêtement vous le remettra sans difficulté, parce que c'est précisément l'outil qu'utilise le moniteur pour évaluer votre progression et justifier ses recommandations. Une école qui refuse ou tergiverse vous donne, en creux, la réponse sur ses pratiques. C'est aussi l'occasion de demander, factuellement, son taux de réussite des douze derniers mois : une école qui prépare bien n'a aucune raison de le cacher.",
+        tip: {
+          label: "Astuce",
+          text: "Avant tout paiement, exigez par écrit (mail suffit) la grille de compétences cochée par le moniteur, la liste précise des lacunes identifiées, et le nombre d'heures supplémentaires proposées avec justification. Cette demande seule fait souvent retomber la pression.",
+        },
+      },
+      {
+        title: "Votre contrat : la pièce maîtresse de votre dossier",
+        iconName: "ClipboardCheck",
+        content:
+          "Avant de refuser quoi que ce soit, sortez votre contrat. Pas le dépliant commercial, pas le devis affiché en vitrine : le contrat d'enseignement que vous avez signé en début de formation, conforme à l'arrêté du 14 octobre 2016. Ce document est votre principale arme. Il contient, ou doit contenir, plusieurs clauses essentielles que vous allez utiliser dans la discussion qui s'ouvre.",
+        bullets: [
+          "Le forfait initial souscrit (par exemple 20 heures à 1 400 euros) et ce qu'il couvre exactement.",
+          "Le prix unitaire des heures supplémentaires, qui doit être affiché clairement et identique pour tous.",
+          "Les conditions de présentation à l'examen pratique : doivent être listées objectivement, sans clause de présentation discrétionnaire.",
+          "Les modalités de rupture du contrat et de transfert du dossier vers une autre auto-école.",
+          "Les mentions du médiateur de la consommation compétent (coordonnées obligatoires depuis 2016).",
+        ],
+        secondContent:
+          "Relisez chaque ligne. Si la clause de présentation à l'examen est conditionnée à \"l'avis favorable du moniteur\" sans aucune procédure objective (pas de grille, pas de seuil chiffré), elle est juridiquement fragile : la jurisprudence considère qu'une clause potestative — qui laisse l'exécution d'une obligation à la seule volonté du professionnel — est susceptible d'être écartée. Si le contrat ne mentionne pas le médiateur, l'école est également en infraction. Ces deux points seuls vous donnent un levier de négociation immédiat. Pour comparer ce que devrait contenir un contrat sérieux et lisible, vous pouvez regarder le détail de la grille publiée sur la page Tarifs : chaque ligne y est listée sans astérisque ni clause floue.",
+      },
+      {
+        title:
+          "Refuser des heures supplémentaires : le script mot à mot à utiliser",
+        iconName: "Volume2",
+        content:
+          "Quand la demande tombe, beaucoup de candidats répondent dans l'émotion : soit en cédant tout de suite, soit en agressant l'école. Ni l'un ni l'autre ne fonctionne. Ce qui fonctionne, c'est un message écrit, calme, factuel, qui place la conversation sur un terrain juridique. Voici la trame à utiliser, à adapter à votre situation. Envoyez-la par mail — la trace écrite est essentielle pour la suite.",
+        secondContent:
+          "Trame de message : \"Bonjour, je fais suite à votre demande de huit heures supplémentaires avant ma présentation à l'examen pratique. Avant tout engagement de ma part, je vous demande de bien vouloir me transmettre par écrit, conformément à l'article L.111-1 du Code de la consommation et à l'arrêté du 14 octobre 2016 sur le contrat type, les éléments suivants : la grille de compétences renseignée par mon moniteur, le détail des lacunes identifiées justifiant le volume d'heures proposé, et le rappel du nombre d'heures supplémentaires déjà consommées le cas échéant. Je vous précise que je suis disposé à discuter de la suite de ma formation sur la base de ces éléments objectifs, mais que je ne souscrirai aucun engagement financier supplémentaire sans cette communication préalable. Bien cordialement.\"",
+        bullets: [
+          "Pourquoi ça marche : vous ne refusez pas l'idée d'heures supplémentaires — vous demandez une justification écrite. Une école sérieuse vous la donnera. Une école abusive battra en retraite.",
+          "Délai à laisser : sept à dix jours ouvrés pour une réponse écrite, c'est raisonnable.",
+          "Conservez tout : devis, contrat, échanges SMS, mails, accusés de réception postaux. C'est votre dossier en cas de recours.",
+          "Si l'école répond avec une vraie grille pédagogique cohérente, prenez le temps d'évaluer honnêtement : il est tout à fait possible qu'elle ait raison sur le besoin réel d'heures supplémentaires.",
+        ],
+      },
+      {
+        title:
+          "Les trois recours officiels à activer si l'auto-école insiste",
+        iconName: "AlertTriangle",
+        content:
+          "Si malgré votre demande écrite l'auto-école continue d'exiger des heures non justifiées, ou pire, vous menace de ne pas vous présenter à l'examen, vous disposez de trois recours officiels, dans l'ordre. Ils ne se substituent pas l'un à l'autre : ils s'enchaînent. Chacun augmente la pression sur l'établissement et la plupart des litiges se règlent dès les deux premiers niveaux.",
+        bullets: [
+          "Recours 1 — Signalement à la DGCCRF via SignalConso (gratuit, en ligne, sans avocat). La Direction générale de la concurrence, de la consommation et de la répression des fraudes traite spécifiquement les pratiques commerciales déloyales et les manquements à l'obligation d'information précontractuelle. Un signalement bien documenté déclenche, le cas échéant, une enquête sur place.",
+          "Recours 2 — Saisine du médiateur de la consommation, obligatoire depuis l'ordonnance n°2015-1033. Chaque auto-école doit désigner un médiateur dont les coordonnées figurent au contrat et sur le site de l'établissement. La saisine est gratuite pour le consommateur. Le médiateur instruit le dossier et propose une solution dans un délai de quatre-vingt-dix jours en moyenne. La procédure est confidentielle, écrite, et statistiquement favorable au consommateur quand le dossier est solide.",
+          "Recours 3 — Action devant le tribunal judiciaire (anciennement tribunal d'instance) pour les litiges en dessous de 10 000 euros. Procédure simplifiée, sans avocat obligatoire en dessous de 5 000 euros. À envisager uniquement si les deux premiers recours n'ont rien donné et que les sommes en jeu le justifient.",
+        ],
+        secondContent:
+          "Un point important : dans 80 % des cas documentés, la simple mention écrite que vous envisagez de saisir SignalConso et le médiateur suffit à régler le différend. Les auto-écoles savent qu'une enquête de la DGCCRF n'est pas un risque théorique et qu'un rapport défavorable peut entraîner des sanctions et nuire à leur agrément préfectoral. La menace crédible vaut souvent autant que l'action elle-même — à condition qu'elle soit formulée par écrit, calmement, avec les références légales que ce guide vous a données.",
+        tip: {
+          label: "Repère utile",
+          text: "Le médiateur de la consommation rattaché à votre auto-école est toujours indiqué au contrat. S'il n'y figure pas, c'est en soi une infraction à signaler à la DGCCRF. La majorité des auto-écoles adhèrent à un médiateur professionnel sectoriel ou à la Médiation de la consommation - ANM.",
+        },
+      },
+      {
+        title:
+          "Reconnaître une auto-école transparente avant même de signer",
+        iconName: "Eye",
+        content:
+          "Le meilleur recours, c'est de ne pas en avoir besoin. Si vous n'avez pas encore signé, ou si vous envisagez un transfert de dossier, voici les signaux concrets d'une auto-école qui ne vous transformera pas en client captif. Ce sont les mêmes critères qui distinguent, dans n'importe quel secteur, une relation commerciale saine d'une relation à problème.",
+        bullets: [
+          "Le prix unitaire de l'heure supplémentaire est affiché clairement, identique pour tous, et figure au contrat dès la signature.",
+          "Le taux de réussite à l'examen pratique des douze derniers mois est communiqué sans hésitation, par écrit si vous le demandez.",
+          "L'évaluation initiale (parfois appelée évaluation préalable) est réalisée sérieusement, avec une grille remise à l'élève, et débouche sur une estimation honnête du nombre d'heures probable.",
+          "Le contrat mentionne explicitement le médiateur de la consommation, les conditions de transfert de dossier, et les modalités de remboursement en cas de rupture.",
+          "L'accueil accepte que vous emportiez le contrat pour le lire à tête reposée avant signature — un refus de cette demande est un signal d'alerte majeur.",
+        ],
+        secondContent:
+          "Cette logique de transparence n'est pas un confort accessoire : c'est ce qui distingue un partenaire de formation d'un vendeur d'heures. Vous pouvez vérifier ces critères point par point sur la page Tarifs, où chaque ligne du forfait est listée sans astérisque, et confronter avec le contrat type que vous propose votre école actuelle. C'est l'exercice le plus utile que vous puissiez faire avant de signer ou de continuer.",
+        quote: {
+          text: "Une auto-école qui refuse de mettre par écrit ce qu'elle vous dit à l'oral vous dit déjà quelque chose d'important sur ce qui vous attend.",
+          author: "Principe de transparence consumériste, inspiré des enquêtes UFC Que Choisir",
+        },
+      },
+      {
+        title: "Votre plan d'action en cinq étapes",
+        iconName: "Target",
+        content:
+          "Pour conclure, voici la séquence concrète à appliquer si on vous demande des heures supplémentaires que vous estimez injustifiées. Chaque étape se construit sur la précédente et vous garde sur un terrain juridique solide. La plupart des dossiers se règlent à l'étape 2 ou 3 — il est rare d'avoir besoin d'aller plus loin.",
+        bullets: [
+          "Étape 1 — Sortir le contrat signé et identifier les clauses sur les heures supplémentaires, la présentation à l'examen et le médiateur. C'est le socle de tout ce qui suit.",
+          "Étape 2 — Envoyer le message écrit demandant la grille de compétences et la justification des heures proposées. Conserver l'accusé de réception.",
+          "Étape 3 — Si la réponse est floue ou absente sous dix jours, envoyer un courrier recommandé rappelant les articles L.111-1 du Code de la consommation et L.213-2 du Code de la route, et annonçant la saisine prochaine du médiateur.",
+          "Étape 4 — Si pas de résolution sous quinze jours supplémentaires : déposer un signalement sur SignalConso (DGCCRF) et saisir le médiateur de la consommation indiqué au contrat. Ces deux démarches sont gratuites et se font en ligne.",
+          "Étape 5 — En dernier recours, et seulement si les sommes le justifient, ouvrir une procédure simplifiée devant le tribunal judiciaire. Conserver l'ensemble du dossier (contrats, échanges, bilans).",
+        ],
+        secondContent:
+          "Garder en tête une chose simple : vous n'êtes pas seul dans ce cas. Le sujet revient régulièrement dans les enquêtes consommateurs et le cadre légal existe précisément parce que le législateur a constaté l'existence de pratiques abusives dans une partie du secteur. La très grande majorité des auto-écoles, en France comme en Île-de-France, travaillent honnêtement. Mais quand vous tombez sur une école qui dérape, vous avez désormais la marche à suivre. Si vous cherchez une auto-école dont la grille tarifaire et les conditions de présentation à l'examen sont publiques et lisibles avant même que vous signiez, la page Tarifs vous donnera tous les éléments pour comparer.",
+      },
+    ],
   }
 ];
 
