@@ -33,7 +33,7 @@ const baseCard: CSSProperties = {
   position: "relative",
   background: C.paper,
   border: "1px solid #eef0f7",
-  borderRadius: 20,
+  borderRadius: 16,
   overflow: "hidden",
   display: "flex",
   flexDirection: "column",
@@ -155,7 +155,7 @@ const HeroCard = () => {
       <div
         data-rec="hero-body"
         style={{
-          padding: "32px 36px 36px",
+          padding: "24px 28px 28px",
           borderTop: "1px solid #eef0f7",
           background: "#fafafd",
         }}
@@ -167,7 +167,7 @@ const HeroCard = () => {
             margin: 0,
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 900,
-            fontSize: 36,
+            fontSize: 28,
             lineHeight: 1.06,
             letterSpacing: "-0.026em",
             color: C.deep,
@@ -206,7 +206,7 @@ const HeroCard = () => {
             maxWidth: 560,
             fontFamily: "'Inter', sans-serif",
             fontWeight: 500,
-            fontSize: 15.5,
+            fontSize: 13.5,
             lineHeight: 1.6,
             color: C.ink60,
             textWrap: "pretty",
@@ -234,7 +234,7 @@ const StatCard = () => {
         background: C.deep,
         border: "1px solid #2c2876",
         color: C.paper,
-        padding: "28px 30px",
+        padding: "22px 24px",
         justifyContent: "space-between",
         ...h.hoverStyle,
       }}
@@ -282,7 +282,7 @@ const StatCard = () => {
           style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 900,
-            fontSize: 96,
+            fontSize: 72,
             lineHeight: 0.86,
             letterSpacing: "-0.045em",
             color: C.paper,
@@ -294,7 +294,7 @@ const StatCard = () => {
           style={{
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
-            fontSize: 36,
+            fontSize: 28,
             lineHeight: 1,
             color: "rgba(255,255,255,0.8)",
           }}
@@ -306,11 +306,11 @@ const StatCard = () => {
       <p
         style={{
           position: "relative",
-          margin: "16px 0 0",
+          margin: "12px 0 0",
           maxWidth: 360,
           fontFamily: "'Inter', sans-serif",
           fontWeight: 500,
-          fontSize: 13.5,
+          fontSize: 12.5,
           lineHeight: 1.55,
           color: "rgba(255,255,255,0.72)",
           textWrap: "pretty",
@@ -355,7 +355,7 @@ const QuoteCard = () => {
         ...baseCard,
         gridColumn: "8 / 13",
         gridRow: "2 / 3",
-        padding: "30px 32px",
+        padding: "22px 24px",
         justifyContent: "space-between",
         background: "linear-gradient(180deg, #ffffff 0%, #f7f6fc 100%)",
         ...h.hoverStyle,
@@ -389,7 +389,7 @@ const QuoteCard = () => {
           margin: 0,
           fontFamily: "'Outfit', sans-serif",
           fontWeight: 800,
-          fontSize: 28,
+          fontSize: 22,
           lineHeight: 1.15,
           letterSpacing: "-0.022em",
           color: C.deep,
@@ -483,7 +483,7 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
       </div>
       <div
         style={{
-          padding: "22px 24px 24px",
+          padding: "18px 20px 20px",
           display: "flex",
           flexDirection: "column",
           flex: 1,
@@ -506,7 +506,7 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
             margin: "8px 0 0",
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
-            fontSize: 20,
+            fontSize: 16,
             lineHeight: 1.18,
             letterSpacing: "-0.018em",
             color: C.deep,
@@ -531,7 +531,7 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
             margin: 0,
             fontFamily: "'Inter', sans-serif",
             fontWeight: 500,
-            fontSize: 13.5,
+            fontSize: 12.5,
             lineHeight: 1.55,
             color: C.ink60,
             textWrap: "pretty",
@@ -587,10 +587,10 @@ const BenefitCard = ({ n, gridColumn, Icon, title, body }: BenefitData) => {
         ...baseCard,
         gridColumn,
         gridRow: "4 / 5",
-        padding: "26px 28px 28px",
+        padding: "20px 22px 22px",
         flexDirection: "row",
         alignItems: "flex-start",
-        gap: 20,
+        gap: 16,
         ...h.hoverStyle,
       }}
       onMouseEnter={h.onMouseEnter}
@@ -617,7 +617,7 @@ const BenefitCard = ({ n, gridColumn, Icon, title, body }: BenefitData) => {
             margin: "6px 0 0",
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
-            fontSize: 18,
+            fontSize: 14,
             lineHeight: 1.18,
             letterSpacing: "-0.015em",
             color: C.deep,
@@ -642,7 +642,7 @@ const BenefitCard = ({ n, gridColumn, Icon, title, body }: BenefitData) => {
             margin: 0,
             fontFamily: "'Inter', sans-serif",
             fontWeight: 500,
-            fontSize: 13.5,
+            fontSize: 12.5,
             lineHeight: 1.55,
             color: C.ink60,
             textWrap: "pretty",
@@ -714,48 +714,48 @@ const BENEFITS: BenefitData[] = [
 // the live page as in the design canvas.
 const responsiveCSS = `
 @container rec (max-width: 1180px) {
-  [data-rec="section"] { padding: 88px 28px 104px !important; }
-  [data-rec="header"]  { gap: 40px !important; margin-bottom: 44px !important; }
-  [data-rec="headline"] { font-size: 48px !important; }
+  [data-rec="section"] { padding: 64px 24px 78px !important; }
+  [data-rec="header"]  { gap: 32px !important; margin-bottom: 32px !important; }
+  [data-rec="headline"] { font-size: 38px !important; }
 }
 @container rec (max-width: 960px) {
-  [data-rec="section"] { padding: 72px 24px 88px !important; }
-  [data-rec="header"]  { grid-template-columns: 1fr !important; gap: 20px !important; align-items: start !important; margin-bottom: 36px !important; }
-  [data-rec="headline"] { font-size: 42px !important; line-height: 1.05 !important; }
-  [data-rec="header-sub"] p { font-size: 16px !important; max-width: 640px !important; }
+  [data-rec="section"] { padding: 56px 20px 68px !important; }
+  [data-rec="header"]  { grid-template-columns: 1fr !important; gap: 16px !important; align-items: start !important; margin-bottom: 28px !important; }
+  [data-rec="headline"] { font-size: 34px !important; line-height: 1.05 !important; }
+  [data-rec="header-sub"] p { font-size: 14px !important; max-width: 560px !important; }
   [data-rec="grid"]    { grid-template-columns: repeat(6, 1fr) !important; grid-auto-rows: auto !important; }
   [data-rec="hero"]    { grid-column: 1 / 7 !important; grid-row: auto !important; }
   [data-rec="stat"]    { grid-column: 1 / 4 !important; grid-row: auto !important; }
   [data-rec="quote"]   { grid-column: 4 / 7 !important; grid-row: auto !important; }
   [data-rec="step"]    { grid-column: span 2 !important; grid-row: auto !important; }
   [data-rec="benefit"] { grid-column: span 6 !important; grid-row: auto !important; }
-  [data-rec="hero-body"]  { padding: 28px 30px 32px !important; }
-  [data-rec="hero-title"] { font-size: 30px !important; }
+  [data-rec="hero-body"]  { padding: 22px 24px 26px !important; }
+  [data-rec="hero-title"] { font-size: 24px !important; }
 }
 @container rec (max-width: 680px) {
-  [data-rec="section"]   { padding: 56px 20px 72px !important; }
-  [data-rec="headline"]  { font-size: 36px !important; }
-  [data-rec="header-sub"] p { font-size: 15px !important; }
-  [data-rec="grid"]      { grid-template-columns: 1fr !important; gap: 14px !important; }
+  [data-rec="section"]   { padding: 44px 16px 56px !important; }
+  [data-rec="headline"]  { font-size: 28px !important; }
+  [data-rec="header-sub"] p { font-size: 13.5px !important; }
+  [data-rec="grid"]      { grid-template-columns: 1fr !important; gap: 10px !important; }
   [data-rec="hero"],
   [data-rec="stat"],
   [data-rec="quote"],
   [data-rec="step"],
   [data-rec="benefit"]   { grid-column: 1 / -1 !important; grid-row: auto !important; }
-  [data-rec="hero-body"]  { padding: 24px 22px 26px !important; }
-  [data-rec="hero-title"] { font-size: 26px !important; }
-  [data-rec="stat"]       { padding: 24px 22px !important; }
-  [data-rec="stat-num"]   { font-size: 76px !important; }
-  [data-rec="quote"]      { padding: 24px 22px !important; }
-  [data-rec="quote-text"] { font-size: 24px !important; }
+  [data-rec="hero-body"]  { padding: 18px 18px 20px !important; }
+  [data-rec="hero-title"] { font-size: 20px !important; }
+  [data-rec="stat"]       { padding: 18px 18px !important; }
+  [data-rec="stat-num"]   { font-size: 58px !important; }
+  [data-rec="quote"]      { padding: 18px 18px !important; }
+  [data-rec="quote-text"] { font-size: 18px !important; }
 }
 @container rec (max-width: 460px) {
-  [data-rec="section"]   { padding: 48px 16px 64px !important; }
-  [data-rec="headline"]  { font-size: 30px !important; letter-spacing: -0.024em !important; }
-  [data-rec="hero-title"] { font-size: 22px !important; }
-  [data-rec="quote-text"] { font-size: 20px !important; }
-  [data-rec="stat-num"]   { font-size: 64px !important; }
-  [data-rec="benefit"]    { flex-direction: column !important; align-items: flex-start !important; gap: 14px !important; padding: 22px 22px 24px !important; }
+  [data-rec="section"]   { padding: 36px 14px 48px !important; }
+  [data-rec="headline"]  { font-size: 24px !important; letter-spacing: -0.024em !important; }
+  [data-rec="hero-title"] { font-size: 18px !important; }
+  [data-rec="quote-text"] { font-size: 16px !important; }
+  [data-rec="stat-num"]   { font-size: 48px !important; }
+  [data-rec="benefit"]    { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; padding: 18px 18px 20px !important; }
 }
 @supports not (container-type: inline-size) {
   @media (max-width: 1180px) { [data-rec="headline"] { font-size: 48px; } }
@@ -781,7 +781,7 @@ const HomeRecalesSection = () => (
     aria-labelledby="recales-heading"
     style={{
       position: "relative",
-      padding: "96px 24px 120px",
+      padding: "72px 24px 88px",
       background: C.paper,
       overflow: "hidden",
       containerType: "inline-size",
@@ -819,15 +819,15 @@ const HomeRecalesSection = () => (
       }}
     />
 
-    <div style={{ position: "relative", maxWidth: 1280, margin: "0 auto" }}>
+    <div style={{ position: "relative", maxWidth: 960, margin: "0 auto" }}>
       <header
         data-rec="header"
         style={{
           display: "grid",
           gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 1fr)",
-          gap: 56,
+          gap: 40,
           alignItems: "end",
-          marginBottom: 48,
+          marginBottom: 36,
         }}
       >
         <div>
@@ -862,7 +862,7 @@ const HomeRecalesSection = () => (
               margin: 0,
               fontFamily: "'Outfit', sans-serif",
               fontWeight: 900,
-              fontSize: 60,
+              fontSize: 46,
               lineHeight: 1.04,
               letterSpacing: "-0.028em",
               color: C.deep,
@@ -890,7 +890,7 @@ const HomeRecalesSection = () => (
             style={{
               margin: 0,
               fontFamily: "'Inter', sans-serif",
-              fontSize: 17,
+              fontSize: 14.5,
               lineHeight: 1.55,
               color: "#334155",
               fontWeight: 500,
@@ -910,8 +910,8 @@ const HomeRecalesSection = () => (
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(12, 1fr)",
-          gridAutoRows: "minmax(260px, auto)",
-          gap: 16,
+          gridAutoRows: "minmax(200px, auto)",
+          gap: 12,
         }}
       >
         <HeroCard />

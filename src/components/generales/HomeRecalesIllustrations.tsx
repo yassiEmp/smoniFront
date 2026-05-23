@@ -378,7 +378,7 @@ export const R_Step3 = memo(() => {
 export const R_BenefitPlan = memo(() => {
   const ids = makeIds();
   return (
-    <svg viewBox="0 0 64 64" width="56" height="56" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <defs>
         <filter id={ids.diffuse} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" />
@@ -401,7 +401,7 @@ export const R_BenefitPlan = memo(() => {
 export const R_BenefitFast = memo(() => {
   const ids = makeIds();
   return (
-    <svg viewBox="0 0 64 64" width="56" height="56" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <defs>
         <filter id={ids.diffuse} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" />
@@ -423,7 +423,7 @@ export const R_BenefitFast = memo(() => {
 export const R_BenefitFree = memo(() => {
   const ids = makeIds();
   return (
-    <svg viewBox="0 0 64 64" width="56" height="56" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <defs>
         <filter id={ids.diffuse} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" />
