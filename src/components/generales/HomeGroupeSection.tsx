@@ -470,8 +470,7 @@ const ArtCode = ({ title }: { title: string }) => {
         textAnchor="middle"
         letterSpacing="-0.04em"
       >
-        <text x="148" y="146" fontSize="104">24</text>
-        <text x="252" y="146" fontSize="104">7</text>
+        <text x="200" y="146" fontSize="104">24/7</text>
       </g>
       <line
         x1="208"

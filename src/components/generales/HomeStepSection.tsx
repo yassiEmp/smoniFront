@@ -578,26 +578,6 @@ const StepCard = ({ step, total }: { step: Step; total: number }) => {
         }}
       >
         <Illustration />
-        <span
-          style={{
-            position: "absolute",
-            top: 14,
-            right: 16,
-            fontFamily: MONO,
-            fontWeight: 700,
-            fontSize: 10,
-            letterSpacing: "0.22em",
-            color: "rgba(44, 40, 118, 0.55)",
-            background: "rgba(255, 255, 255, 0.78)",
-            backdropFilter: "blur(6px)",
-            padding: "4px 9px",
-            borderRadius: 999,
-            border: "1px solid rgba(44, 40, 118, 0.10)",
-          }}
-        >
-          {step.n} <span style={{ opacity: 0.45, padding: "0 1px" }}>/</span>{" "}
-          {String(total).padStart(2, "0")}
-        </span>
       </div>
 
       <div

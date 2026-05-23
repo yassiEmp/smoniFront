@@ -129,13 +129,6 @@ const HomeStarSection = () => {
                 </div>
 
                 <div className="relative -mt-4 bg-white rounded-t-[20px] px-[26px] pt-[26px] pb-[28px] min-[1240px]:px-7 min-[1240px]:pt-7 min-[1240px]:pb-8">
-                  <div
-                    className="text-[10px] font-bold tracking-[0.22em] text-[#2c2876] uppercase"
-                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-                  >
-                    SMONI · N°{s.n} <span className="text-[#7472b0] font-semibold">· {s.category}</span>
-                  </div>
-
                   <div className="flex items-baseline gap-3.5 mt-2.5 mb-1.5">
                     <span
                       className="font-black text-[#2c2876] leading-[0.9] tracking-[-0.045em]"

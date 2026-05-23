@@ -87,7 +87,7 @@ const engagementsItemListSchema = {
   "@type": "ItemList",
   name: "Les 5 engagements écrits de l'auto-école Smoni Vincennes",
   description:
-    "Les cinq engagements contractuels de l'auto-école Smoni à Vincennes (94300) pour le permis B : prix tout-compris, heures de 60 minutes réelles, charte de respect, accueil des candidats recalés, garantie financière L.213-2.",
+    "Les cinq engagements contractuels de l'auto-école Smoni à Vincennes (94300) pour toutes nos formations : prix tout-compris, heures de 60 minutes réelles, charte de respect, accueil des candidats recalés, garantie financière L.213-2.",
   numberOfItems: 5,
   itemListOrder: "https://schema.org/ItemListOrderAscending",
   itemListElement: engagements.map((e, i) => ({
@@ -108,7 +108,7 @@ const HomeCertificationSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-20">
 
         {/* Quality Certification Banner */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 mb-16 md:mb-36 pb-10 md:pb-16 border-b border-slate-200/70">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 mb-16 md:mb-36 pt-10 md:pt-16 pb-10 md:pb-16 border-b border-slate-200/70">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -173,11 +173,10 @@ const HomeCertificationSection = () => {
             className="text-[26px] sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#2c2876] leading-tight text-balance"
             style={{ fontFamily: "'Outfit', sans-serif" }}
           >
-            Nos 5 engagements <span className="italic text-blue-600">écrits</span> pour le permis B.
+            Nos 5 engagements <span className="italic text-blue-600">écrits</span> pour toutes nos formations.
           </h2>
           <p className="sr-only">
-            Auto-école Smoni à Vincennes 94300 — cinq engagements contractuels pour les candidats au permis B,
-            boîte manuelle, boîte automatique BVA et conduite accompagnée.
+            Auto-école Smoni à Vincennes 94300 — cinq engagements contractuels valables pour toutes nos formations.
           </p>
           <p className="text-slate-600 font-medium leading-relaxed mt-4 max-w-2xl mx-auto text-[15px] sm:text-base">
             Moniteur qui crie, heures « obligatoires » la veille de l'examen, factures qui doublent — on connaît
@@ -291,9 +290,9 @@ const HomeCertificationSection = () => {
           <Link
             to="/tarifs"
             className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-full bg-[#2c2876] text-white font-bold text-sm sm:text-[15px] shadow-sm hover:bg-[#1e1b4b] hover:shadow-md transition-all w-full sm:w-auto"
-            aria-label="Voir les tarifs détaillés du permis B à Vincennes"
+            aria-label="Voir les tarifs détaillés à Vincennes"
           >
-            Voir les tarifs détaillés du permis B →
+            Voir les tarifs détaillés →
           </Link>
           <Link
             to="/contact"

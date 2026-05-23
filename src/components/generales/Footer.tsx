@@ -196,7 +196,7 @@ const Footer = () => {
               margin: 0,
               fontFamily: display,
               fontWeight: 900,
-              fontSize: "clamp(72px, 14vw, 220px)",
+              fontSize: "clamp(48px, 6.5vw, 96px)",
               lineHeight: 0.85,
               letterSpacing: "-0.055em",
               color: INDIGO_DEEP,

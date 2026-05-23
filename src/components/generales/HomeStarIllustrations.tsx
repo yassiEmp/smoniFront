@@ -308,7 +308,7 @@ export const IllustrationPermis = memo(function IllustrationPermis() {
       <Card rot={6} x={178} y={66} code="B78" label="AUTOMATIQUE" accent={true} />
 
       <g transform="translate(28 28)">
-        <rect x="0" y="0" width="64" height="22" rx="11" fill={PAPER} stroke={PAPER_RULE} />
+        <rect x="0" y="0" width="86" height="22" rx="11" fill={PAPER} stroke={PAPER_RULE} />
         <circle cx="11" cy="11" r="3" fill={BLUE} />
         <text x="22" y="15" fill={INDIGO_DEEP} fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="9" letterSpacing="0.18em">3 · TYPES</text>
       </g>
