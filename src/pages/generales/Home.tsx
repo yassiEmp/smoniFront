@@ -128,7 +128,7 @@ const Home = () => {
         </ClientOnly>
 
         {/* SEO-critical: FAQ schema needs the questions in initial HTML too. */}
-        <FadeInSection id="faq"><HomeFaqSection /></FadeInSection>
+        <div id="faq"><HomeFaqSection /></div>
       </main>
 
       <ClientOnly>

@@ -1,4 +1,5 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
+import Reveal from "./Reveal";
 
 export const faqData = [
   {
@@ -504,7 +505,7 @@ const HomeFaqSection = () => {
                 background: FQP.rule,
               }}
             />
-            {ROWS.map((entry) => {
+            {ROWS.map((entry, rowIdx) => {
               if (entry.kind === "divider") {
                 return (
                   <li
@@ -564,6 +565,7 @@ const HomeFaqSection = () => {
               const isOpen = !!open[item.n];
               return (
                 <li key={item.n} style={{ borderBottom: `1px solid ${FQP.rule}` }}>
+                <Reveal delay={rowIdx * 60}>
                   <button
                     type="button"
                     onClick={() => toggle(item.n)}
@@ -705,6 +707,7 @@ const HomeFaqSection = () => {
                       <Plus open={isOpen} color={isOpen ? FQP.blue : FQP.indigo} />
                     </div>
                   </button>
+                </Reveal>
                 </li>
               );
             })}
