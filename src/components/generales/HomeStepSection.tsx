@@ -1,4 +1,5 @@
 import type { CSSProperties, MouseEvent, ReactElement } from "react";
+import Reveal from "./Reveal";
 
 // ──────────────────────────────────────────────────────────────
 // Smoni · "Comment ça se passe" — 4 étapes
@@ -772,15 +773,16 @@ const HomeStepSection = () => {
             alignItems: "stretch",
           }}
         >
-          {STEPS.map((step) => (
+          {STEPS.map((step, i) => (
             <li key={step.n} style={{ display: "flex" }}>
-              <div style={{ width: "100%" }}>
+              <Reveal delay={i * 90} style={{ width: "100%" }}>
                 <StepCard step={step} total={total} />
-              </div>
+              </Reveal>
             </li>
           ))}
         </ol>
 
+        <Reveal delay={STEPS.length * 90 + 120}>
         <div
           className="process-cta"
           style={{
@@ -925,6 +927,7 @@ const HomeStepSection = () => {
             </a>
           </div>
         </div>
+        </Reveal>
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `

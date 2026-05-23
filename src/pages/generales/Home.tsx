@@ -112,7 +112,7 @@ const Home = () => {
           {() => (
             <>
               <Suspense fallback={<div className="min-h-[800px] w-full bg-slate-50/50" />}>
-                <FadeInSection id="etapes"><HomeStepSection /></FadeInSection>
+                <div id="etapes"><HomeStepSection /></div>
               </Suspense>
               <Suspense fallback={<div className="min-h-[600px] w-full bg-slate-50/50" />}>
                 <FadeInSection id="avis"><Testimonials /></FadeInSection>
