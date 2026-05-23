@@ -67,7 +67,7 @@ const onCardLeave = (e: MouseEvent<HTMLElement>) => {
   e.currentTarget.style.borderColor = "#eef0f7";
 };
 
-const Eyebrow = ({ tag, n }: { tag: string; n: string }) => (
+const Eyebrow = ({ tag }: { tag: string }) => (
   <div
     style={{
       display: "flex",
@@ -83,35 +83,11 @@ const Eyebrow = ({ tag, n }: { tag: string; n: string }) => (
       marginBottom: 12,
     }}
   >
-    <span style={{ color: "#a5a3c9" }}>{n}</span>
     <span>{tag}</span>
     <span aria-hidden="true" style={{ flex: 1, height: 1, background: "#e6e3f5" }} />
   </div>
 );
 
-const IndexBadge = ({ n }: { n: string }) => (
-  <div
-    aria-hidden="true"
-    style={{
-      position: "absolute",
-      top: 14,
-      right: 18,
-      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: "0.22em",
-      color: "rgba(44,40,118,0.55)",
-      background: "rgba(255, 255, 255, 0.75)",
-      backdropFilter: "blur(6px)",
-      padding: "4px 9px",
-      borderRadius: 999,
-      border: "1px solid rgba(44, 40, 118, 0.1)",
-      zIndex: 2,
-    }}
-  >
-    {n} <span style={{ opacity: 0.45 }}>/</span> 04
-  </div>
-);
 
 const PhoneIcon = ({ size = 14 }: { size?: number }) => (
   <svg viewBox="0 0 16 16" width={size} height={size}>
@@ -126,10 +102,9 @@ const QuadCard = ({ c }: { c: Promise }) => (
   <article style={cardBase} onMouseEnter={onCardEnter} onMouseLeave={onCardLeave}>
     <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", flexShrink: 0 }}>
       <c.Art />
-      <IndexBadge n={c.n} />
     </div>
     <div style={{ padding: "24px 26px 26px", display: "flex", flexDirection: "column", flex: 1 }}>
-      <Eyebrow tag={c.tag} n={c.n} />
+      <Eyebrow tag={c.tag} />
       <h3
         style={{
           margin: 0,

@@ -81,33 +81,6 @@ const Badge = ({
   </span>
 );
 
-const IndexBadge = ({
-  n,
-  of = "06",
-  tone = "light",
-}: {
-  n: string;
-  of?: string;
-  tone?: "light" | "dark";
-}) => (
-  <div
-    aria-hidden="true"
-    style={{
-      position: "absolute",
-      top: 14,
-      right: 18,
-      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: "0.22em",
-      color:
-        tone === "dark" ? "rgba(255,255,255,0.55)" : "rgba(44,40,118,0.55)",
-      zIndex: 2,
-    }}
-  >
-    {n} / {of}
-  </div>
-);
 
 const Cta = ({
   children = "Voir détails",
@@ -965,6 +938,7 @@ const HomeGroupeSection = () => {
                   WebkitBackgroundClip: "text",
                   backgroundClip: "text",
                   WebkitTextFillColor: "transparent",
+                  paddingRight: "0.06em",
                 }}
               >
                 enseigner — bien
@@ -1017,7 +991,6 @@ const HomeGroupeSection = () => {
               <div className="absolute left-4 top-4 z-10">
                 <Badge>Le plus demandé</Badge>
               </div>
-              <IndexBadge n="01" />
             </div>
             <div
               className="flex flex-col"
@@ -1132,7 +1105,6 @@ const HomeGroupeSection = () => {
                 pointerEvents: "none",
               }}
             />
-            <IndexBadge n="02" tone="dark" />
             <Badge tone="dark">Le plus efficace</Badge>
 
             <div
@@ -1224,7 +1196,6 @@ const HomeGroupeSection = () => {
               <div className="absolute left-4 top-4 z-10">
                 <Badge>Inclus</Badge>
               </div>
-              <IndexBadge n="04" />
             </div>
             <div
               className="flex flex-1 flex-col"
@@ -1362,7 +1333,6 @@ const FormationCard = ({
       <div className="absolute left-4 top-4 z-10">
         <Badge>{badge}</Badge>
       </div>
-      <IndexBadge n={n} />
     </div>
     <div
       className="flex flex-1 flex-col"
@@ -1410,31 +1380,14 @@ const FormationCard = ({
       {chip && (
         <div
           style={{
-            alignSelf: "flex-start",
             marginTop: 14,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
             fontFamily: "'JetBrains Mono', ui-monospace, monospace",
             fontSize: 10,
             fontWeight: 700,
             letterSpacing: "0.18em",
-            color: FC.indigo,
-            background: FC.bgTint,
-            border: `1px solid ${FC.rule}`,
-            padding: "6px 10px",
-            borderRadius: 999,
+            color: FC.ink60,
           }}
         >
-          <span
-            style={{
-              width: 6,
-              height: 6,
-              background: FC.blue,
-              borderRadius: 999,
-            }}
-            aria-hidden="true"
-          />
           {chip}
         </div>
       )}

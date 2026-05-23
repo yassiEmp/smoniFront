@@ -290,25 +290,25 @@ const NHero = () => {
 
       {/* ============ DOSSIER COMPLET STAMP — circular ============ */}
       <g transform="translate(372 92) rotate(-14)">
-        <circle r="46" fill={BLUE} fillOpacity="0.08" />
-        <circle r="40" fill="none" stroke={BLUE} strokeWidth="2.4" opacity="0.95" />
-        <circle r="33" fill="none" stroke={BLUE} strokeWidth="0.9" opacity="0.7" />
-        <line x1="-40" y1="0" x2="-33" y2="0" stroke={BLUE} strokeWidth="2" />
-        <line x1="33" y1="0" x2="40" y2="0" stroke={BLUE} strokeWidth="2" />
-        <text textAnchor="middle" fill={BLUE} fontFamily={FONT_MONO} fontWeight="700" fontSize="7" letterSpacing="0.28em">
+        <circle r="46" fill={INDIGO} fillOpacity="0.06" />
+        <circle r="40" fill="none" stroke={INDIGO} strokeWidth="2.4" opacity="0.85" />
+        <circle r="33" fill="none" stroke={INDIGO} strokeWidth="0.9" opacity="0.5" />
+        <line x1="-40" y1="0" x2="-33" y2="0" stroke={INDIGO} strokeWidth="2" opacity="0.7" />
+        <line x1="33" y1="0" x2="40" y2="0" stroke={INDIGO} strokeWidth="2" opacity="0.7" />
+        <text textAnchor="middle" fill={INDIGO} fontFamily={FONT_MONO} fontWeight="700" fontSize="7" letterSpacing="0.28em">
           <tspan x="0" y="-18">DOSSIER</tspan>
         </text>
-        <text textAnchor="middle" fill={BLUE} fontFamily={FONT_DISPLAY} fontWeight="900" fontSize="16" letterSpacing="-0.01em">
+        <text textAnchor="middle" fill={INDIGO} fontFamily={FONT_DISPLAY} fontWeight="900" fontSize="16" letterSpacing="-0.01em">
           <tspan x="0" y="4">COMPLET</tspan>
         </text>
-        <text textAnchor="middle" fill={BLUE} opacity="0.85" fontFamily={FONT_MONO} fontWeight="700" fontSize="6" letterSpacing="0.22em">
+        <text textAnchor="middle" fill={INDIGO} opacity="0.75" fontFamily={FONT_MONO} fontWeight="700" fontSize="6" letterSpacing="0.22em">
           <tspan x="0" y="22">2026 · OK</tspan>
         </text>
       </g>
 
       {/* connector: stamp -> dossier tab */}
-      <line x1="346" y1="118" x2="262" y2="158" stroke={BLUE} strokeWidth="1.5" strokeDasharray="2 3" opacity="0.75" />
-      <circle cx="262" cy="158" r="2.5" fill={BLUE} />
+      <line x1="346" y1="118" x2="262" y2="158" stroke={INDIGO_60} strokeWidth="1.5" strokeDasharray="2 3" opacity="0.6" />
+      <circle cx="262" cy="158" r="2.5" fill={INDIGO_60} />
 
       {/* mono caption — bottom-left */}
       <g transform="translate(40 420)">
@@ -554,13 +554,12 @@ const HomeNewStudentSection = () => {
         {/* HEADER */}
         <motion.header className="max-w-[760px] mb-14 lg:mb-[72px]" variants={itemVariants}>
           <span
-            className="inline-block font-mono font-bold rounded-full px-3 py-1.5 bg-white"
+            className="inline-block font-mono font-bold"
             style={{
               fontFamily: FONT_MONO,
               fontSize: "11px",
               letterSpacing: "0.22em",
               color: INDIGO,
-              border: `1px solid ${INDIGO_20}`,
             }}
           >
             SMONI · DOSSIER · 05 PIÈCES
@@ -653,24 +652,24 @@ const HomeNewStudentSection = () => {
               {/* phone callout */}
               <a
                 href="tel:+33771265119"
-                className="grid items-center gap-3.5 no-underline text-inherit transition-colors hover:bg-[rgba(59,130,246,0.07)]"
+                className="grid items-center gap-3.5 no-underline text-inherit transition-colors"
                 style={{
                   gridTemplateColumns: "auto 1fr auto",
                   padding: "16px 18px",
                   borderRadius: 14,
-                  background: "linear-gradient(180deg, rgba(59,130,246,0.07), rgba(59,130,246,0.04))",
-                  border: "1px solid rgba(59,130,246,0.22)",
+                  background: BG_TINT,
+                  border: `1px solid ${INDIGO_20}`,
                 }}
               >
                 <span
                   className="inline-flex items-center justify-center"
-                  style={{ width: 36, height: 36, borderRadius: 10, background: BLUE, color: PAPER }}
+                  style={{ width: 36, height: 36, borderRadius: 10, background: INDIGO, color: PAPER }}
                   aria-hidden="true"
                 >
                   <Phone className="w-4 h-4" />
                 </span>
                 <span className="flex flex-col gap-0.5 min-w-0">
-                  <span className="font-semibold" style={{ fontSize: "12.5px", color: "#475569" }}>
+                  <span className="font-semibold" style={{ fontSize: "12.5px", color: INDIGO_60 }}>
                     Pas tous les documents&nbsp;? Appelez-nous
                   </span>
                   <span className="font-black tracking-tight" style={{ fontFamily: FONT_DISPLAY, fontSize: 22, letterSpacing: "-0.01em", color: INDIGO }}>
@@ -679,7 +678,7 @@ const HomeNewStudentSection = () => {
                 </span>
                 <span
                   className="font-mono font-bold self-center whitespace-nowrap hidden sm:inline"
-                  style={{ fontFamily: FONT_MONO, fontSize: 9, letterSpacing: "0.22em", color: BLUE }}
+                  style={{ fontFamily: FONT_MONO, fontSize: 9, letterSpacing: "0.22em", color: INDIGO_60 }}
                 >
                   GRATUIT · SANS RDV
                 </span>
@@ -806,15 +805,7 @@ const HomeNewStudentSection = () => {
             </div>
 
             {/* footer */}
-            <footer
-              className="flex items-center gap-2.5 mt-4"
-              style={{ padding: "12px 14px", background: BG_TINT, borderRadius: 10 }}
-            >
-              <span
-                aria-hidden="true"
-                className="rounded-full flex-shrink-0"
-                style={{ width: 6, height: 6, background: BLUE }}
-              />
+            <footer className="flex items-center gap-2.5 mt-4 pt-4" style={{ borderTop: `1px solid ${INDIGO_10}` }}>
               <span className="font-medium" style={{ fontSize: 13, color: "#475569", lineHeight: 1.45 }}>
                 Apportez les <strong style={{ color: INDIGO, fontWeight: 700 }}>originaux</strong>&nbsp;— on scanne sur place
                 et on garde les copies pour votre dossier.

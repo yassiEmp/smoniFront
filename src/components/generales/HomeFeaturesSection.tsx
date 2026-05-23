@@ -182,20 +182,12 @@ const HomeFeaturesSection = () => {
                     <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-transparent to-white" />
                   </div>
                   <div className="p-5 sm:p-6 pt-4 sm:pt-5 flex-1 flex flex-col">
-                    {/* F-pattern landing: short blue keyword (left, hi-contrast) + counter (right). Eye reads keyword → title → bolded promise. */}
-                    <div className="flex items-baseline justify-between gap-2 mb-2.5 sm:mb-3">
+                    <div className="mb-2.5 sm:mb-3">
                       <span
                         className="text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] text-blue-600 truncate"
                         style={{ fontFamily: "'Outfit', sans-serif" }}
                       >
                         {f.keyword}
-                      </span>
-                      <span
-                        className="text-[10px] font-bold tabular-nums text-slate-400 shrink-0"
-                        style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-                        aria-hidden="true"
-                      >
-                        N°{f.n} / 06
                       </span>
                     </div>
                     <h3

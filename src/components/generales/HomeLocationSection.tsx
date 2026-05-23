@@ -226,13 +226,6 @@ const HomeLocationSection = () => {
                 <span className="nt-hero-corner nt-hero-corner--br" aria-hidden="true" />
                 <span className="nt-hero-coords" aria-hidden="true">48.8476°N · 2.4363°E</span>
 
-                <div className="nt-hero-chip">
-                  <span className="nt-hero-chip-dot" />
-                  <div>
-                    <span className="nt-hero-chip-label">AGENCE UNIQUE · 94300</span>
-                    <span className="nt-hero-chip-value">62 rue de la Jarry</span>
-                  </div>
-                </div>
               </div>
 
               <div className="nt-hero-legend">

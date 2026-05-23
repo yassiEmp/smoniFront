@@ -222,10 +222,6 @@ const Testimonials = () => {
               letterSpacing: "0.22em",
               textTransform: "uppercase",
               color: "#2c2876",
-              padding: "6px 12px",
-              borderRadius: 999,
-              background: "#f3f1ff",
-              border: "1px solid #cfceea",
             }}
           >
             Avis · mot pour mot

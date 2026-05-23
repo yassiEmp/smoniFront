@@ -126,12 +126,6 @@ const HomeStarSection = () => {
               >
                 <div className="relative w-full aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
                   <Illustration />
-                  <span
-                    className="absolute top-3.5 right-4 text-[10px] font-bold tracking-[0.22em] text-[#2c2876]/55 bg-white/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#2c2876]/10"
-                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-                  >
-                    {s.n} <span className="opacity-45 px-px">/</span> {String(total).padStart(2, "0")}
-                  </span>
                 </div>
 
                 <div className="relative -mt-4 bg-white rounded-t-[20px] px-[26px] pt-[26px] pb-[28px] min-[1240px]:px-7 min-[1240px]:pt-7 min-[1240px]:pb-8">
