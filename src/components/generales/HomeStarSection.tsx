@@ -1,131 +1,185 @@
 import { motion } from "framer-motion";
-import { Users, GraduationCap, Award, Briefcase } from "lucide-react";
+import {
+  IllustrationCreation,
+  IllustrationAgence,
+  IllustrationOuverture,
+  IllustrationPermis,
+} from "./HomeStarIllustrations";
 
-/**
- * HomeStarSection - Redesigned for Elite Fluidity
- * Features: Full-width edge-to-edge layout, massive typography, 
- * glassmorphism accents, and brand indigo #2c2876 synchronization.
- */
+// "Une vraie agence, pas une vitrine" — 4 chiffres-clés cards.
+// Layout per the design (smoni home-star.html §6 in-context card):
+//   • 16:9 illustration banner top, no fade
+//   • Body lifted -16px to overlap into the illustration's base
+//   • Mono "SMONI · N°XX · CATEGORY" tag → Outfit value → 32×2 indigo rule → label/desc
+//   • Top-right counter "0X / 04" pill, brand-tinted low alpha over the illustration
+const stats = [
+  {
+    n: "01",
+    category: "CRÉATION",
+    value: "2022",
+    label: "Auto-école indépendante",
+    description: "Créée à Vincennes en juillet 2022. Petite équipe, vraie agence.",
+    Illustration: IllustrationCreation,
+  },
+  {
+    n: "02",
+    category: "AGENCE",
+    value: "1",
+    label: "Adresse physique",
+    description: "62 rue de la Jarry, 94300 Vincennes. Pas de réseau inventé.",
+    Illustration: IllustrationAgence,
+  },
+  {
+    n: "03",
+    category: "OUVERTURE",
+    value: "6/6",
+    label: "Jours par semaine",
+    description: "Lundi à samedi, 9h-20h. Cours du soir et samedi disponibles.",
+    Illustration: IllustrationOuverture,
+  },
+  {
+    n: "04",
+    category: "PERMIS",
+    value: "3",
+    label: "Formations enseignées",
+    description: "Permis B, boîte automatique (B78), moto selon disponibilité.",
+    Illustration: IllustrationPermis,
+  },
+];
+
 const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: {
-            staggerChildren: 0.06,
-            delayChildren: 0
-        }
-    }
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
 };
 
 const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.4,
-            ease: [0.16, 1, 0.3, 1]
-        }
-    }
+  hidden: { opacity: 0, y: 28, scale: 0.97 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 const HomeStarSection = () => {
-    const stats = [
-        {
-            category: "Création",
-            value: "2022",
-            label: "Auto-école indépendante",
-            description: "Créée à Vincennes en juillet 2022. Petite équipe, vraie agence.",
-            icon: Award,
-        },
-        {
-            category: "Agence",
-            value: "1",
-            label: "Adresse physique",
-            description: "62 rue de la Jarry, 94300 Vincennes. Pas de réseau inventé.",
-            icon: Users,
-        },
-        {
-            category: "Ouverture",
-            value: "6/6",
-            label: "Jours par semaine",
-            description: "Lundi à samedi, 9h-20h. Cours du soir et samedi disponibles.",
-            icon: GraduationCap,
-        },
-        {
-            category: "Permis",
-            value: "3",
-            label: "Formations enseignées",
-            description: "Permis B, boîte automatique (B78), moto selon disponibilité.",
-            icon: Briefcase,
-        }
-    ];
+  const total = stats.length;
+  return (
+    <section className="relative py-24 lg:py-32 bg-[#f8fafc] overflow-hidden">
+      {/* Atmospheric halos behind the grid */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-[120px] left-[20%] w-[720px] h-[720px] rounded-full blur-[140px] bg-[#2c2876]/[0.06]"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-[80px] right-[12%] w-[560px] h-[560px] rounded-full blur-[140px] bg-blue-500/[0.05]"
+      />
 
-    return (
-        <section className="relative py-24 lg:py-32 bg-[#f8fafc] overflow-hidden">
-            {/* Ultra-Wide Background Atmosphere */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#2c2876]/[0.02] rounded-full blur-[150px]" />
-                <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-blue-100/20 rounded-full blur-[120px]" />
-            </div>
+      <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 xl:px-16">
+        <motion.header
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-[720px] mb-14 lg:mb-18"
+        >
+          <span
+            className="inline-block text-[11px] font-bold tracking-[0.22em] text-[#2c2876] bg-white border border-[#cfceea] rounded-full px-3 py-1.5"
+            style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+          >
+            SMONI · CHIFFRES CLÉS · 2026
+          </span>
+          <h2
+            className="mt-[18px] mb-[14px] font-black text-[#2c2876] leading-[0.98] tracking-[-0.035em] text-balance"
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: "clamp(40px, 5.4vw, 76px)",
+            }}
+          >
+            Une vraie agence, <br className="md:hidden" />
+            <span className="italic font-extrabold text-blue-500">pas une vitrine</span>.
+          </h2>
+          <p className="max-w-[560px] text-slate-600 font-medium text-[17px] leading-[1.55]">
+            Quatre choses qu'on peut vérifier sur place, au 62&nbsp;rue de la Jarry.
+            Pas de chiffres gonflés, pas de réseau inventé.
+          </p>
+        </motion.header>
 
-            {/* Full-Width Container (Edge-to-Edge Fluidity) */}
-            <div className="w-full px-6 lg:px-12 xl:px-32 relative z-10">
-                {/* Hidden SEO Heading */}
-                <h2 className="sr-only">Smoni Auto-École Vincennes (94300) en quelques chiffres — Permis B, boîte automatique et moto</h2>
+        {/* Hidden SEO heading kept from previous version. */}
+        <h2 className="sr-only">
+          Smoni Auto-École Vincennes (94300) en quelques chiffres — Permis B, boîte automatique et moto
+        </h2>
 
-                <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 xl:gap-24"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={containerVariants}
-                >
-                    {stats.map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            className="group flex flex-col items-start"
-                            variants={itemVariants}
-                        >
-                            {/* Head Section: Large Icon & Label */}
-                            <div className="flex items-center gap-4 mb-8 w-full">
-                                <div className="w-14 h-14 rounded-[1.5rem] bg-white shadow-[0_10px_30px_-5px_rgba(44,40,118,0.1)] flex items-center justify-center transition-all duration-700 group-hover:rounded-2xl group-hover:bg-[#2c2876] group-hover:text-white group-hover:scale-110">
-                                    <stat.icon className="w-6 h-6 transition-colors duration-700" />
-                                </div>
-                                <div className="h-px flex-grow bg-slate-200/60 group-hover:bg-[#2c2876]/20 transition-colors duration-700" />
-                                <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-600 group-hover:text-[#2c2876] transition-colors duration-700">
-                                    {stat.category}
-                                </span>
-                            </div>
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 min-[1240px]:grid-cols-4 gap-7 sm:gap-8 min-[1240px]:gap-7"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+        >
+          {stats.map((s) => {
+            const Illustration = s.Illustration;
+            return (
+              <motion.article
+                key={s.n}
+                variants={itemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                className="group relative bg-white rounded-[20px] border border-[#eef2f7] overflow-hidden shadow-[0_24px_50px_-28px_rgba(15,23,42,0.22),0_2px_6px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_36px_70px_-32px_rgba(15,23,42,0.32),0_4px_10px_-2px_rgba(15,23,42,0.08)] transition-shadow duration-500"
+              >
+                <div className="relative w-full aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
+                  <Illustration />
+                  <span
+                    className="absolute top-3.5 right-4 text-[10px] font-bold tracking-[0.22em] text-[#2c2876]/55 bg-white/75 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#2c2876]/10"
+                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                  >
+                    {s.n} <span className="opacity-45 px-px">/</span> {String(total).padStart(2, "0")}
+                  </span>
+                </div>
 
-                            {/* Body Section: Massive Typography */}
-                            <div className="space-y-4">
-                                <p
-                                    className="text-6xl lg:text-7xl xl:text-8xl 2xl:text-[110px] font-[900] text-[#2c2876] leading-none tracking-tighter transition-transform duration-700 group-hover:translate-x-2"
-                                    style={{ fontFamily: "'Outfit', sans-serif" }}
-                                    aria-label={`${stat.value} — ${stat.label}`}
-                                >
-                                    {stat.value}
-                                </p>
+                <div className="relative -mt-4 bg-white rounded-t-[20px] px-[26px] pt-[26px] pb-[28px] min-[1240px]:px-7 min-[1240px]:pt-7 min-[1240px]:pb-8">
+                  <div
+                    className="text-[10px] font-bold tracking-[0.22em] text-[#2c2876] uppercase"
+                    style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                  >
+                    SMONI · N°{s.n} <span className="text-[#7472b0] font-semibold">· {s.category}</span>
+                  </div>
 
-                                <div className="space-y-2 border-l-4 border-slate-100 pl-4 group-hover:border-[#2c2876] transition-colors duration-700">
-                                    <h3 className="text-xl xl:text-2xl font-black text-slate-900 leading-tight">
-                                        {stat.label}
-                                    </h3>
-                                    <p className="text-base xl:text-lg text-slate-600 font-medium leading-relaxed max-w-[280px]">
-                                        {stat.description}
-                                    </p>
-                                </div>
-                            </div>
+                  <div className="flex items-baseline gap-3.5 mt-2.5 mb-1.5">
+                    <span
+                      className="font-black text-[#2c2876] leading-[0.9] tracking-[-0.045em]"
+                      style={{
+                        fontFamily: "'Outfit', sans-serif",
+                        fontSize: "clamp(64px, 7vw, 96px)",
+                      }}
+                      aria-label={`${s.value} — ${s.label}`}
+                    >
+                      {s.value}
+                    </span>
+                  </div>
 
-                            {/* Decorative Background Glow (Hover) */}
-                            <div className="absolute -inset-8 bg-[#2c2876]/[0.01] rounded-[4rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </div>
-        </section>
-    );
+                  <span aria-hidden="true" className="block w-8 h-0.5 bg-[#2c2876] my-3.5" />
+
+                  <h3
+                    className="font-extrabold text-slate-900 text-[19px] leading-[1.2] tracking-[-0.005em] mb-2"
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
+                  >
+                    {s.label}
+                  </h3>
+                  <p className="text-slate-600 font-medium text-[14.5px] leading-[1.55] text-pretty">
+                    {s.description}
+                  </p>
+                </div>
+              </motion.article>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default HomeStarSection;
