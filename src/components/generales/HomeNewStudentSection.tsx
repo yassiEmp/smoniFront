@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Phone } from "lucide-react";
 
 const containerVariants = {
@@ -37,12 +37,16 @@ type DocItem = {
 
 const INDIGO = "#2c2876";
 const INDIGO_DEEP = "#1e1b4b";
+const INDIGO_60 = "#7472b0";
 const INDIGO_20 = "#cfceea";
 const INDIGO_10 = "#e6e3f5";
 const BLUE = "#3b82f6";
 const PAPER = "#ffffff";
 const BG_TINT = "#f3f1ff";
 const RULE = "#e6e3f5";
+
+const FONT_MONO = '"JetBrains Mono", ui-monospace, monospace';
+const FONT_DISPLAY = '"Outfit", sans-serif';
 
 /* ---------- mini icons (light-theme indigo pictograms) ---------- */
 
@@ -118,121 +122,203 @@ const MTuteur = () => (
   </MFrame>
 );
 
-/* ---------- hero illustration (dossier + 5 fanned papers + stamp) ---------- */
+/* ---------- hero illustration (dossier + 4 labeled fanned papers + circular stamp) ---------- */
 
-const NHero = () => (
-  <svg
-    viewBox="0 0 520 460"
-    width="100%"
-    height="100%"
-    preserveAspectRatio="xMidYMid meet"
-    xmlns="http://www.w3.org/2000/svg"
-    style={{ display: "block" }}
-  >
-    <defs>
-      <radialGradient id="nhBg" cx="42%" cy="48%" r="78%">
-        <stop offset="0%" stopColor="#e6e3ff" />
-        <stop offset="55%" stopColor={BG_TINT} />
-        <stop offset="100%" stopColor="#f8fafc" />
-      </radialGradient>
-      <pattern id="nhDots" width="6" height="6" patternUnits="userSpaceOnUse">
-        <circle cx="3" cy="3" r="0.55" fill={INDIGO} fillOpacity="0.06" />
-      </pattern>
-      <filter id="nhBlur" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" />
-      </filter>
-    </defs>
+const NHero = () => {
+  const uid = useId().replace(/:/g, "");
+  const ids = {
+    bg: `nh_bg_${uid}`,
+    dots: `nh_dots_${uid}`,
+    diffuse: `nh_df_${uid}`,
+    softblur: `nh_sb_${uid}`,
+  };
 
-    <rect width="520" height="460" fill="url(#nhBg)" />
-    <rect width="520" height="460" fill="url(#nhDots)" />
-    <line x1="40" y1="392" x2="480" y2="392" stroke={INDIGO_20} strokeWidth="0.8" strokeDasharray="2 4" opacity="0.7" />
+  return (
+    <svg
+      viewBox="0 0 520 460"
+      width="100%"
+      height="100%"
+      preserveAspectRatio="xMidYMid meet"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ display: "block" }}
+    >
+      <defs>
+        <radialGradient id={ids.bg} cx="42%" cy="48%" r="78%">
+          <stop offset="0%" stopColor="#e6e3ff" />
+          <stop offset="55%" stopColor={BG_TINT} />
+          <stop offset="100%" stopColor="#f8fafc" />
+        </radialGradient>
+        <pattern id={ids.dots} width="6" height="6" patternUnits="userSpaceOnUse">
+          <circle cx="3" cy="3" r="0.55" fill={INDIGO} fillOpacity="0.06" />
+        </pattern>
+        <filter id={ids.diffuse} x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+        <filter id={ids.softblur} x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" />
+        </filter>
+      </defs>
 
-    {/* fanned papers behind the dossier */}
-    <g transform="rotate(-14 200 230)">
-      <rect x="64" y="106" width="158" height="208" rx="3" fill={INDIGO_DEEP} opacity="0.16" filter="url(#nhBlur)" />
-      <rect x="60" y="100" width="158" height="208" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
-      <rect x="60" y="100" width="158" height="14" fill={INDIGO_DEEP} />
-      {[130, 144, 158, 172, 186, 200, 220, 234, 248].map((y, i) => (
-        <rect key={i} x="72" y={y} width={i % 2 === 0 ? 110 : 86} height="3" rx="1.5" fill={INDIGO_20} opacity={0.55} />
-      ))}
-    </g>
+      <rect width="520" height="460" fill={`url(#${ids.bg})`} />
+      <rect width="520" height="460" fill={`url(#${ids.dots})`} />
 
-    <g transform="rotate(-7 220 240)">
-      <rect x="124" y="98" width="158" height="216" rx="3" fill={INDIGO} opacity="0.14" filter="url(#nhBlur)" />
-      <rect x="120" y="92" width="158" height="216" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
-      <rect x="120" y="92" width="158" height="14" fill={INDIGO} />
-      {[124, 142, 160, 178, 196, 214, 232, 250, 268].map((y, i) => (
-        <rect key={i} x="132" y={y} width={i % 2 === 0 ? 122 : 92} height="3" rx="1.5" fill={INDIGO_20} opacity={0.55} />
-      ))}
-    </g>
+      {/* faint horizontal "desk" line for grounding */}
+      <line x1="40" y1="392" x2="480" y2="392" stroke={INDIGO_20} strokeWidth="0.8" strokeDasharray="2 4" opacity="0.7" />
 
-    <g transform="rotate(6 260 250)">
-      <rect x="184" y="96" width="158" height="220" rx="3" fill={INDIGO} opacity="0.14" filter="url(#nhBlur)" />
-      <rect x="180" y="90" width="158" height="220" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
-      <rect x="180" y="90" width="158" height="14" fill={INDIGO} />
-      {[120, 138, 156, 174, 192, 210, 228, 246, 264].map((y, i) => (
-        <rect key={i} x="192" y={y} width={i % 2 === 0 ? 128 : 96} height="3" rx="1.5" fill={INDIGO_20} opacity={0.55} />
-      ))}
-    </g>
-
-    <g transform="rotate(13 290 245)">
-      <rect x="244" y="106" width="158" height="208" rx="3" fill={INDIGO_DEEP} opacity="0.16" filter="url(#nhBlur)" />
-      <rect x="240" y="100" width="158" height="208" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
-      <rect x="240" y="100" width="158" height="14" fill={INDIGO_DEEP} />
-      {[130, 144, 158, 172, 186, 200, 220, 234, 248].map((y, i) => (
-        <rect key={i} x="252" y={y} width={i % 2 === 0 ? 110 : 86} height="3" rx="1.5" fill={INDIGO_20} opacity={0.55} />
-      ))}
-    </g>
-
-    {/* dossier folder (front) */}
-    <g>
-      <rect x="120" y="180" width="280" height="200" rx="6" fill={INDIGO_DEEP} opacity="0.18" filter="url(#nhBlur)" />
-      <rect x="118" y="170" width="284" height="206" rx="8" fill={INDIGO} />
-      {/* tab */}
-      <rect x="148" y="160" width="120" height="20" rx="4" fill={INDIGO_DEEP} />
-      {/* paper peeking out of the dossier — top paper with stamp */}
-      <rect x="148" y="190" width="224" height="160" rx="4" fill={PAPER} stroke={INDIGO_20} strokeWidth="1" />
-      {/* paper header band */}
-      <rect x="148" y="190" width="224" height="22" rx="4" fill={BG_TINT} />
-      <rect x="160" y="199" width="80" height="5" rx="2" fill={INDIGO} opacity="0.7" />
-      {/* paper body lines */}
-      {[224, 240, 256, 272, 288, 304, 320, 336].map((y, i) => (
-        <rect key={i} x="162" y={y} width={i % 3 === 0 ? 200 : i % 3 === 1 ? 160 : 184} height="4" rx="2" fill={INDIGO_20} opacity={0.7} />
-      ))}
-      {/* "DOSSIER COMPLET" stamp */}
-      <g transform="rotate(-9 300 270)">
-        <rect x="220" y="240" width="170" height="60" rx="6" fill="none" stroke={BLUE} strokeWidth="3" />
-        <text
-          x="305"
-          y="266"
-          textAnchor="middle"
-          fill={BLUE}
-          fontFamily="ui-monospace, monospace"
-          fontWeight="800"
-          fontSize="16"
-          letterSpacing="0.18em"
-        >
-          DOSSIER
+      {/* ============ BACK FANNED PAPERS ============ */}
+      {/* P5 — back-back (tuteur) */}
+      <g transform="rotate(-14 200 230)">
+        <rect x="64" y="106" width="158" height="208" rx="3" fill={INDIGO_DEEP} opacity="0.16" filter={`url(#${ids.softblur})`} />
+        <rect x="60" y="100" width="158" height="208" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
+        <rect x="60" y="100" width="158" height="14" fill={INDIGO_DEEP} />
+        <text x="68" y="110" fill={PAPER} fontFamily={FONT_MONO} fontWeight="700" fontSize="6" letterSpacing="0.22em">
+          PIÈCE · TUTEUR
         </text>
-        <text
-          x="305"
-          y="288"
-          textAnchor="middle"
-          fill={BLUE}
-          fontFamily="ui-monospace, monospace"
-          fontWeight="800"
-          fontSize="16"
-          letterSpacing="0.18em"
-        >
-          COMPLET
+        {[130, 144, 158, 172, 186, 200, 220, 234, 248].map((y, i) => (
+          <rect key={i} x="72" y={y} width={i % 2 === 0 ? 110 : 86} height="3" rx="1.5" fill={INDIGO_20} opacity={0.55} />
+        ))}
+      </g>
+
+      {/* P4 — back-mid (JDC) */}
+      <g transform="rotate(-7 220 240)">
+        <rect x="98" y="112" width="158" height="212" rx="3" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+        <rect x="94" y="106" width="158" height="212" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
+        <rect x="94" y="106" width="158" height="16" fill={INDIGO} />
+        <text x="102" y="117" fill={PAPER} fontFamily={FONT_MONO} fontWeight="700" fontSize="7" letterSpacing="0.22em">
+          ATTESTATION · JDC
+        </text>
+        {[140, 156, 172, 188, 204, 220, 244, 260, 276].map((y, i) => (
+          <rect key={i} x="106" y={y} width={i === 0 ? 124 : i % 2 === 0 ? 96 : 118} height="3.5" rx="1.5" fill={INDIGO_20} opacity={0.7} />
+        ))}
+        <circle cx="218" cy="294" r="14" fill="none" stroke={INDIGO_60} strokeWidth="1" opacity="0.5" />
+      </g>
+
+      {/* P3 — center (photo d'identité) */}
+      <g>
+        <rect x="194" y="124" width="148" height="200" rx="3" fill={INDIGO_DEEP} opacity="0.18" filter={`url(#${ids.softblur})`} />
+        <rect x="190" y="118" width="148" height="200" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
+        <rect x="206" y="138" width="116" height="148" rx="2" fill={INDIGO} stroke={PAPER} strokeWidth="2" style={{ paintOrder: "stroke" }} />
+        <circle cx="264" cy="186" r="22" fill={PAPER} opacity="0.92" />
+        <path d="M 222 280 Q 264 232 306 280 L 306 286 L 222 286 Z" fill={PAPER} opacity="0.92" />
+        <text x="264" y="304" textAnchor="middle" fill={INDIGO_60} fontFamily={FONT_MONO} fontWeight="600" fontSize="6.5" letterSpacing="0.22em">
+          PHOTO · 35×45 MM
         </text>
       </g>
-      {/* dossier front lip */}
-      <path d="M 118 280 L 402 280 L 402 376 L 118 376 Z" fill={INDIGO_DEEP} opacity="0.92" />
-      <rect x="118" y="278" width="284" height="4" fill={INDIGO_DEEP} opacity="0.4" />
-    </g>
-  </svg>
-);
+
+      {/* P2 — front-mid (justificatif de domicile) */}
+      <g transform="rotate(8 300 250)">
+        <rect x="248" y="120" width="158" height="208" rx="3" fill={INDIGO_DEEP} opacity="0.2" filter={`url(#${ids.softblur})`} />
+        <rect x="244" y="114" width="158" height="208" rx="3" fill={PAPER} stroke={RULE} strokeWidth="1" />
+        <rect x="244" y="114" width="158" height="16" fill={INDIGO} />
+        <text x="252" y="125" fill={PAPER} fontFamily={FONT_MONO} fontWeight="700" fontSize="7" letterSpacing="0.22em">
+          JUSTIFICATIF · DOMICILE
+        </text>
+        <text x="256" y="148" fill={INDIGO_DEEP} fontFamily={FONT_DISPLAY} fontWeight="900" fontSize="14">
+          FACTURE
+        </text>
+        <text x="256" y="162" fill={INDIGO_60} fontFamily='"Inter", sans-serif' fontWeight="500" fontSize="8">
+          Mars 2026 · &lt; 6 mois
+        </text>
+        {[180, 196, 212, 232, 248, 264, 284].map((y, i) => (
+          <rect key={i} x="256" y={y} width={i === 3 ? 132 : i % 2 === 0 ? 108 : 124} height="3.5" rx="1.5" fill={INDIGO_20} opacity={0.7} />
+        ))}
+      </g>
+
+      {/* ============ DOSSIER FOLDER ============ */}
+      <g transform="translate(132 142)">
+        {/* diffuse brand shadow */}
+        <ellipse cx="128" cy="244" rx="120" ry="14" fill={INDIGO} opacity="0.32" filter={`url(#${ids.diffuse})`} />
+
+        {/* back flap */}
+        <path d="M 0 24 L 92 24 L 108 8 L 256 8 L 256 240 L 0 240 Z" fill={INDIGO_DEEP} opacity="0.55" />
+
+        {/* front pocket */}
+        <path
+          d="M 0 40 L 256 40 L 256 240 Q 256 248 248 248 L 8 248 Q 0 248 0 240 Z"
+          fill={INDIGO}
+          stroke={PAPER}
+          strokeWidth="2.5"
+          style={{ paintOrder: "stroke" }}
+        />
+
+        {/* folder tab */}
+        <path
+          d="M 18 10 L 110 10 L 124 40 L 4 40 Z"
+          fill={INDIGO}
+          stroke={PAPER}
+          strokeWidth="2.5"
+          style={{ paintOrder: "stroke" }}
+        />
+
+        <text x="64" y="29" textAnchor="middle" fill={PAPER} fontFamily={FONT_MONO} fontWeight="700" fontSize="8" letterSpacing="0.22em">
+          DOSSIER · 01
+        </text>
+
+        {/* embossed pocket title */}
+        <text x="128" y="86" textAnchor="middle" fill={PAPER} opacity="0.92" fontFamily={FONT_MONO} fontWeight="700" fontSize="9" letterSpacing="0.32em">
+          SMONI · INSCRIPTION
+        </text>
+        <line x1="68" y1="96" x2="188" y2="96" stroke={PAPER} strokeOpacity="0.3" strokeWidth="0.8" />
+
+        {/* 5-row mini-checklist on pocket front */}
+        <g transform="translate(40 116)">
+          {[
+            "Pièce d'identité",
+            "Justificatif domicile",
+            "Photo (35×45 mm)",
+            "Attestation JDC",
+            "Tuteur — si mineur",
+          ].map((t, i) => (
+            <g key={i} transform={`translate(0 ${i * 18})`}>
+              <rect x="0" y="-1" width="10" height="10" rx="2" fill="none" stroke={PAPER} strokeOpacity="0.55" strokeWidth="1.2" />
+              <path d="M 2 4 L 4.5 6.5 L 8 2.5" fill="none" stroke={PAPER} strokeOpacity="0.85" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              <text x="18" y="8" fill={PAPER} opacity="0.82" fontFamily='"Inter", sans-serif' fontWeight="600" fontSize="10">
+                {t}
+              </text>
+            </g>
+          ))}
+        </g>
+
+        {/* dashed corner chip */}
+        <g transform="translate(186 218)">
+          <rect x="0" y="0" width="58" height="20" rx="3" fill="none" stroke={PAPER} strokeOpacity="0.4" strokeWidth="1" strokeDasharray="2 3" />
+          <text x="29" y="13" textAnchor="middle" fill={PAPER} opacity="0.6" fontFamily={FONT_MONO} fontWeight="700" fontSize="7" letterSpacing="0.18em">
+            5 / 5
+          </text>
+        </g>
+      </g>
+
+      {/* ============ DOSSIER COMPLET STAMP — circular ============ */}
+      <g transform="translate(372 92) rotate(-14)">
+        <circle r="46" fill={BLUE} fillOpacity="0.08" />
+        <circle r="40" fill="none" stroke={BLUE} strokeWidth="2.4" opacity="0.95" />
+        <circle r="33" fill="none" stroke={BLUE} strokeWidth="0.9" opacity="0.7" />
+        <line x1="-40" y1="0" x2="-33" y2="0" stroke={BLUE} strokeWidth="2" />
+        <line x1="33" y1="0" x2="40" y2="0" stroke={BLUE} strokeWidth="2" />
+        <text textAnchor="middle" fill={BLUE} fontFamily={FONT_MONO} fontWeight="700" fontSize="7" letterSpacing="0.28em">
+          <tspan x="0" y="-18">DOSSIER</tspan>
+        </text>
+        <text textAnchor="middle" fill={BLUE} fontFamily={FONT_DISPLAY} fontWeight="900" fontSize="16" letterSpacing="-0.01em">
+          <tspan x="0" y="4">COMPLET</tspan>
+        </text>
+        <text textAnchor="middle" fill={BLUE} opacity="0.85" fontFamily={FONT_MONO} fontWeight="700" fontSize="6" letterSpacing="0.22em">
+          <tspan x="0" y="22">2026 · OK</tspan>
+        </text>
+      </g>
+
+      {/* connector: stamp -> dossier tab */}
+      <line x1="346" y1="118" x2="262" y2="158" stroke={BLUE} strokeWidth="1.5" strokeDasharray="2 3" opacity="0.75" />
+      <circle cx="262" cy="158" r="2.5" fill={BLUE} />
+
+      {/* mono caption — bottom-left */}
+      <g transform="translate(40 420)">
+        <text fill={INDIGO_60} fontFamily={FONT_MONO} fontWeight="700" fontSize="9" letterSpacing="0.22em">
+          5 PIÈCES · 1 DOSSIER · 0 VA-ET-VIENT
+        </text>
+      </g>
+    </svg>
+  );
+};
 
 /* ---------- data ---------- */
 
@@ -293,6 +379,7 @@ const ListGroup = ({ label, count, docs, checked, toggle, variant }: ListGroupPr
       <span
         className="font-mono font-bold uppercase"
         style={{
+          fontFamily: FONT_MONO,
           fontSize: "10.5px",
           letterSpacing: "0.22em",
           color: variant === "cond" ? "#7472b0" : INDIGO,
@@ -302,7 +389,7 @@ const ListGroup = ({ label, count, docs, checked, toggle, variant }: ListGroupPr
       </span>
       <span
         className="font-mono font-semibold uppercase"
-        style={{ fontSize: "10px", letterSpacing: "0.18em", color: "#7472b0" }}
+        style={{ fontFamily: FONT_MONO, fontSize: "10px", letterSpacing: "0.18em", color: "#7472b0" }}
       >
         {count}
       </span>
@@ -323,6 +410,7 @@ const ListGroup = ({ label, count, docs, checked, toggle, variant }: ListGroupPr
               <span
                 className="font-mono font-bold text-center"
                 style={{
+                  fontFamily: FONT_MONO,
                   fontSize: "11px",
                   letterSpacing: "0.16em",
                   color: isOn ? BLUE : "#7472b0",
@@ -346,7 +434,7 @@ const ListGroup = ({ label, count, docs, checked, toggle, variant }: ListGroupPr
                 <span className="flex items-baseline gap-2.5 flex-wrap">
                   <span
                     className="font-bold tracking-tight"
-                    style={{ fontSize: "15px", lineHeight: 1.18, color: isOn ? INDIGO : "#0f172a" }}
+                    style={{ fontFamily: FONT_DISPLAY, fontSize: "15px", lineHeight: 1.18, color: isOn ? INDIGO : "#0f172a" }}
                   >
                     {d.title}
                   </span>
@@ -354,6 +442,7 @@ const ListGroup = ({ label, count, docs, checked, toggle, variant }: ListGroupPr
                     <span
                       className="font-mono font-bold uppercase whitespace-nowrap rounded-full border border-dashed bg-white px-1.5 py-0.5"
                       style={{
+                        fontFamily: FONT_MONO,
                         fontSize: "9.5px",
                         letterSpacing: "0.18em",
                         color: "#7472b0",
@@ -395,6 +484,7 @@ const ListGroup = ({ label, count, docs, checked, toggle, variant }: ListGroupPr
               href="tel:+33771265119"
               className="block overflow-hidden font-mono font-bold transition-all max-h-0 group-hover:max-h-8 group-focus-within:max-h-8 group-hover:pb-3 group-focus-within:pb-3"
               style={{
+                fontFamily: FONT_MONO,
                 paddingLeft: 60,
                 fontSize: "10.5px",
                 letterSpacing: "0.14em",
@@ -466,6 +556,7 @@ const HomeNewStudentSection = () => {
           <span
             className="inline-block font-mono font-bold rounded-full px-3 py-1.5 bg-white"
             style={{
+              fontFamily: FONT_MONO,
               fontSize: "11px",
               letterSpacing: "0.22em",
               color: INDIGO,
@@ -475,8 +566,9 @@ const HomeNewStudentSection = () => {
             SMONI · DOSSIER · 05 PIÈCES
           </span>
           <h2
-            className="mt-4 mb-3 font-black tracking-tighter"
+            className="mt-[18px] mb-[14px] font-black tracking-tighter"
             style={{
+              fontFamily: FONT_DISPLAY,
               fontSize: "clamp(40px, 5.4vw, 76px)",
               lineHeight: 0.98,
               letterSpacing: "-0.035em",
@@ -529,7 +621,7 @@ const HomeNewStudentSection = () => {
             >
               <div
                 className="inline-flex items-center gap-2 font-mono font-bold uppercase"
-                style={{ fontSize: 10, letterSpacing: "0.22em", color: INDIGO }}
+                style={{ fontFamily: FONT_MONO, fontSize: 10, letterSpacing: "0.22em", color: INDIGO }}
               >
                 SMONI · INSCRIPTION
                 <span style={{ opacity: 0.4 }}>·</span>
@@ -538,6 +630,7 @@ const HomeNewStudentSection = () => {
               <h3
                 className="mt-3.5 mb-0 font-black tracking-tight"
                 style={{
+                  fontFamily: FONT_DISPLAY,
                   fontSize: "clamp(28px, 3.4vw, 40px)",
                   lineHeight: 1.02,
                   letterSpacing: "-0.025em",
@@ -580,13 +673,13 @@ const HomeNewStudentSection = () => {
                   <span className="font-semibold" style={{ fontSize: "12.5px", color: "#475569" }}>
                     Pas tous les documents&nbsp;? Appelez-nous
                   </span>
-                  <span className="font-black tracking-tight" style={{ fontSize: 22, color: INDIGO }}>
+                  <span className="font-black tracking-tight" style={{ fontFamily: FONT_DISPLAY, fontSize: 22, letterSpacing: "-0.01em", color: INDIGO }}>
                     07 71 26 51 19
                   </span>
                 </span>
                 <span
                   className="font-mono font-bold self-center whitespace-nowrap hidden sm:inline"
-                  style={{ fontSize: 9, letterSpacing: "0.22em", color: BLUE }}
+                  style={{ fontFamily: FONT_MONO, fontSize: 9, letterSpacing: "0.22em", color: BLUE }}
                 >
                   GRATUIT · SANS RDV
                 </span>
@@ -609,13 +702,13 @@ const HomeNewStudentSection = () => {
               <div className="flex flex-col gap-1.5">
                 <span
                   className="font-mono font-bold uppercase"
-                  style={{ fontSize: "10.5px", letterSpacing: "0.22em", color: "#7472b0" }}
+                  style={{ fontFamily: FONT_MONO, fontSize: "10.5px", letterSpacing: "0.22em", color: "#7472b0" }}
                 >
                   VOTRE DOSSIER
                 </span>
                 <h3
                   className="m-0 font-extrabold tracking-tight"
-                  style={{ fontSize: 22, lineHeight: 1.1, color: INDIGO }}
+                  style={{ fontFamily: FONT_DISPLAY, fontSize: 22, lineHeight: 1.1, color: INDIGO }}
                 >
                   Cochez au fur et à mesure
                 </h3>
@@ -623,6 +716,7 @@ const HomeNewStudentSection = () => {
               <div
                 className="font-mono font-bold whitespace-nowrap transition-all"
                 style={{
+                  fontFamily: FONT_MONO,
                   fontSize: 11,
                   letterSpacing: "0.2em",
                   padding: "8px 12px",
@@ -680,7 +774,7 @@ const HomeNewStudentSection = () => {
               </div>
               <div
                 className="flex items-center gap-2 mt-2.5 font-mono font-semibold uppercase"
-                style={{ fontSize: "10.5px", letterSpacing: "0.16em", color: "#7472b0" }}
+                style={{ fontFamily: FONT_MONO, fontSize: "10.5px", letterSpacing: "0.16em", color: "#7472b0" }}
               >
                 <span>
                   <strong style={{ color: INDIGO, fontWeight: 700 }}>{reqDone}</strong> / {REQUIRED_COUNT} obligatoires
