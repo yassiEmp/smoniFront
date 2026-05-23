@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { ClientOnly } from "vite-react-ssg";
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
@@ -10,7 +10,6 @@ import HomeAdultesSection from "@components/generales/HomeAdultesSection";
 // SEO-critical sections: rendered in SSG HTML (no ClientOnly wrapper).
 import HomeFaqSection from "@components/generales/HomeFaqSection";
 import HomeTarifSection from "@components/generales/HomeTarifSection";
-import { motion } from "framer-motion";
 import PageHead from "@components/SEO/PageHead";
 import JsonLd from "@components/SEO/JsonLd";
 import { drivingSchoolSchema, faqSchema } from "@components/SEO/schemas";
@@ -28,18 +27,42 @@ const Testimonials = lazy(() => import("@components/generales/Testimonials"));
 const HomeNewStudentSection = lazy(() => import("@components/generales/HomeNewStudentSection"));
 const HomeLocationSection = lazy(() => import("@components/generales/HomeLocationSection"));
 
-// Performance-optimized Fade In wrapper
-const FadeInSection = ({ children, id }: { children: React.ReactNode; id?: string }) => (
-  <motion.div
-    id={id}
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-  >
-    {children}
-  </motion.div>
-);
+// CSS-only fade+blur reveal — no framer-motion. SSR-safe (server renders the
+// initial class; client toggles `is-visible` via IntersectionObserver). Avoids
+// React 19 hydration mismatches that came from framer-motion's inline styles.
+const FadeInSection = ({ children, id }: { children: React.ReactNode; id?: string }) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setVisible(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            io.disconnect();
+            break;
+          }
+        }
+      },
+      { rootMargin: "0px 0px -25% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <div ref={ref} id={id} className={`fade-blur-in${visible ? " is-visible" : ""}`}>
+      {children}
+    </div>
+  );
+};
 
 const Home = () => {
   return (
@@ -78,7 +101,7 @@ const Home = () => {
           )}
         </ClientOnly>
 
-        <FadeInSection id="adultes"><HomeAdultesSection /></FadeInSection>
+        <div id="adultes"><HomeAdultesSection /></div>
 
         <div id="recales"><HomeRecalesSection /></div>
 

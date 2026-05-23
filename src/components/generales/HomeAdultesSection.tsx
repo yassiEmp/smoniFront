@@ -4,6 +4,7 @@
 
 import { CSSProperties, ComponentType, MouseEvent } from "react";
 import { A_Horaires, A_Code, A_Discretion, A_Expat } from "./HomeAdultesIllustrations";
+import Reveal from "./Reveal";
 
 type Promise = {
   n: string;
@@ -207,12 +208,15 @@ const HomeAdultesSection = () => {
             marginBottom: 24,
           }}
         >
-          {PROMISES.map((c) => (
-            <QuadCard key={c.n} c={c} />
+          {PROMISES.map((c, i) => (
+            <Reveal key={c.n} delay={i * 90}>
+              <QuadCard c={c} />
+            </Reveal>
           ))}
         </div>
 
         {/* Full-width phone band */}
+        <Reveal delay={420}>
         <div
           style={{
             position: "relative",
@@ -318,6 +322,7 @@ const HomeAdultesSection = () => {
             07&nbsp;71&nbsp;26&nbsp;51&nbsp;19
           </a>
         </div>
+        </Reveal>
       </div>
     </section>
   );
