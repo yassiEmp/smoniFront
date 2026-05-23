@@ -1,0 +1,76 @@
+@container rec (max-width: 1180px) {
+  [data-rec="section"] { padding: 64px 24px 78px !important; }
+  [data-rec="header"]  { gap: 32px !important; margin-bottom: 32px !important; }
+  [data-rec="headline"] { font-size: 38px !important; }
+}
+@container rec (max-width: 960px) {
+  [data-rec="section"] { padding: 56px 20px 68px !important; }
+  [data-rec="header"]  { grid-template-columns: 1fr !important; gap: 16px !important; align-items: start !important; margin-bottom: 28px !important; }
+  [data-rec="headline"] { font-size: 34px !important; line-height: 1.05 !important; }
+  [data-rec="header-sub"] p { font-size: 14px !important; max-width: 560px !important; }
+  [data-rec="grid"]    { grid-template-columns: repeat(6, 1fr) !important; grid-auto-rows: auto !important; }
+  [data-rec="hero"]    { grid-column: 1 / 7 !important; grid-row: auto !important; }
+  [data-rec="stat"]    { grid-column: 1 / 4 !important; grid-row: auto !important; }
+  [data-rec="quote"]   { grid-column: 4 / 7 !important; grid-row: auto !important; }
+  [data-rec="step"]    { grid-column: span 2 !important; grid-row: auto !important; }
+  [data-rec="benefit"] { grid-column: span 6 !important; grid-row: auto !important; }
+  [data-rec="hero-body"]  { padding: 22px 24px 26px !important; }
+  [data-rec="hero-title"] { font-size: 24px !important; }
+}
+@container rec (max-width: 680px) {
+  [data-rec="section"]   { padding: 44px 16px 56px !important; }
+  [data-rec="headline"]  { font-size: 28px !important; }
+  [data-rec="header-sub"] p { font-size: 13.5px !important; }
+  [data-rec="grid"]      { grid-template-columns: 1fr !important; gap: 10px !important; }
+  [data-rec="hero"],
+  [data-rec="stat"],
+  [data-rec="quote"],
+  [data-rec="step"],
+  [data-rec="benefit"]   { grid-column: 1 / -1 !important; grid-row: auto !important; }
+  [data-rec="hero-body"]  { padding: 18px 18px 20px !important; }
+  [data-rec="hero-title"] { font-size: 20px !important; }
+  [data-rec="stat"]       { padding: 18px 18px !important; }
+  [data-rec="stat-num"]   { font-size: 58px !important; }
+  [data-rec="quote"]      { padding: 18px 18px !important; }
+  [data-rec="quote-text"] { font-size: 18px !important; }
+}
+@container rec (max-width: 460px) {
+  [data-rec="section"]   { padding: 36px 14px 48px !important; }
+  [data-rec="headline"]  { font-size: 24px !important; letter-spacing: -0.024em !important; }
+  [data-rec="hero-title"] { font-size: 18px !important; }
+  [data-rec="quote-text"] { font-size: 16px !important; }
+  [data-rec="stat-num"]   { font-size: 48px !important; }
+  [data-rec="benefit"]    { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; padding: 18px 18px 20px !important; }
+}
+@supports not (container-type: inline-size) {
+  @media (max-width: 1180px) { [data-rec="headline"] { font-size: 48px; } }
+  @media (max-width: 960px) {
+    [data-rec="header"] { grid-template-columns: 1fr !important; }
+    [data-rec="grid"]   { grid-template-columns: repeat(6, 1fr) !important; grid-auto-rows: auto !important; }
+    [data-rec="hero"]   { grid-column: 1 / 7 !important; grid-row: auto !important; }
+    [data-rec="stat"]   { grid-column: 1 / 4 !important; grid-row: auto !important; }
+    [data-rec="quote"]  { grid-column: 4 / 7 !important; grid-row: auto !important; }
+    [data-rec="step"]   { grid-column: span 2 !important; grid-row: auto !important; }
+    [data-rec="benefit"] { grid-column: span 6 !important; grid-row: auto !important; }
+  }
+  @media (max-width: 680px) {
+    [data-rec="grid"] { grid-template-columns: 1fr !important; }
+    [data-rec="grid"] > article { grid-column: 1 / -1 !important; }
+  }
+}
+
+[data-rec="step"],
+[data-rec="benefit"] {
+  content-visibility: auto;
+  contain-intrinsic-size: 320px 360px;
+}
+
+[data-rec="hero"]:hover,
+[data-rec="stat"]:hover,
+[data-rec="quote"]:hover,
+[data-rec="step"]:hover,
+[data-rec="benefit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 32px 60px -28px rgba(44, 40, 118, 0.28);
+  border-color: #dcd9f0;
+}

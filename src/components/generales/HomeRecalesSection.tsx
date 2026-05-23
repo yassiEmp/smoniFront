@@ -5,7 +5,7 @@
 // Row 4:   [BEN1 4×1]  [BEN2 4×1]      [BEN3 4×1]
 // Responsiveness uses container queries on the section (containerName: rec).
 
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
 import {
   R_Hero,
   R_Step1,
@@ -15,6 +15,7 @@ import {
   R_BenefitFast,
   R_BenefitFree,
 } from "./HomeRecalesIllustrations";
+import "./HomeRecalesSection.css";
 
 const C = {
   indigo: "#2c2876",
@@ -40,22 +41,6 @@ const baseCard: CSSProperties = {
   boxShadow:
     "0 1px 2px rgba(15, 23, 42, 0.04), 0 24px 48px -32px rgba(28, 25, 90, 0.18)",
   transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
-};
-
-const useHover = () => {
-  const [hover, setHover] = useState(false);
-  return {
-    onMouseEnter: () => setHover(true),
-    onMouseLeave: () => setHover(false),
-    hoverStyle: hover
-      ? {
-          transform: "translateY(-2px)",
-          boxShadow:
-            "0 1px 2px rgba(15, 23, 42, 0.04), 0 32px 60px -28px rgba(44, 40, 118, 0.28)",
-          borderColor: "#dcd9f0",
-        }
-      : {},
-  };
 };
 
 const Eyebrow = ({
@@ -129,13 +114,10 @@ const IndexBadge = ({
 );
 
 const HeroCard = () => {
-  const h = useHover();
   return (
     <article
       data-rec="hero"
-      style={{ ...baseCard, gridColumn: "1 / 8", gridRow: "1 / 3", ...h.hoverStyle }}
-      onMouseEnter={h.onMouseEnter}
-      onMouseLeave={h.onMouseLeave}
+      style={{ ...baseCard, gridColumn: "1 / 8", gridRow: "1 / 3" }}
     >
       <div
         data-rec="hero-art"
@@ -223,7 +205,6 @@ const HeroCard = () => {
 };
 
 const StatCard = () => {
-  const h = useHover();
   return (
     <article
       data-rec="stat"
@@ -236,10 +217,7 @@ const StatCard = () => {
         color: C.paper,
         padding: "22px 24px",
         justifyContent: "space-between",
-        ...h.hoverStyle,
       }}
-      onMouseEnter={h.onMouseEnter}
-      onMouseLeave={h.onMouseLeave}
     >
       <div
         aria-hidden="true"
@@ -347,7 +325,6 @@ const StatCard = () => {
 };
 
 const QuoteCard = () => {
-  const h = useHover();
   return (
     <article
       data-rec="quote"
@@ -358,10 +335,7 @@ const QuoteCard = () => {
         padding: "22px 24px",
         justifyContent: "space-between",
         background: "linear-gradient(180deg, #ffffff 0%, #f7f6fc 100%)",
-        ...h.hoverStyle,
       }}
-      onMouseEnter={h.onMouseEnter}
-      onMouseLeave={h.onMouseLeave}
     >
       <Eyebrow>Citation · réseau</Eyebrow>
 
@@ -442,13 +416,10 @@ type StepData = {
 };
 
 const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) => {
-  const h = useHover();
   return (
     <article
       data-rec="step"
-      style={{ ...baseCard, gridColumn, gridRow: "3 / 4", ...h.hoverStyle }}
-      onMouseEnter={h.onMouseEnter}
-      onMouseLeave={h.onMouseLeave}
+      style={{ ...baseCard, gridColumn, gridRow: "3 / 4" }}
     >
       <div
         style={{
@@ -579,7 +550,6 @@ type BenefitData = {
 };
 
 const BenefitCard = ({ n, gridColumn, Icon, title, body }: BenefitData) => {
-  const h = useHover();
   return (
     <article
       data-rec="benefit"
@@ -591,10 +561,7 @@ const BenefitCard = ({ n, gridColumn, Icon, title, body }: BenefitData) => {
         flexDirection: "row",
         alignItems: "flex-start",
         gap: 16,
-        ...h.hoverStyle,
       }}
-      onMouseEnter={h.onMouseEnter}
-      onMouseLeave={h.onMouseLeave}
     >
       <div style={{ flexShrink: 0, paddingTop: 4 }}>
         <Icon />
@@ -709,86 +676,19 @@ const BENEFITS: BenefitData[] = [
   },
 ];
 
-// Container-query CSS — `container-name: rec` is set on the section.
-// Reacts to the section's own width, so the layout adapts the same in
-// the live page as in the design canvas.
-const responsiveCSS = `
-@container rec (max-width: 1180px) {
-  [data-rec="section"] { padding: 64px 24px 78px !important; }
-  [data-rec="header"]  { gap: 32px !important; margin-bottom: 32px !important; }
-  [data-rec="headline"] { font-size: 38px !important; }
-}
-@container rec (max-width: 960px) {
-  [data-rec="section"] { padding: 56px 20px 68px !important; }
-  [data-rec="header"]  { grid-template-columns: 1fr !important; gap: 16px !important; align-items: start !important; margin-bottom: 28px !important; }
-  [data-rec="headline"] { font-size: 34px !important; line-height: 1.05 !important; }
-  [data-rec="header-sub"] p { font-size: 14px !important; max-width: 560px !important; }
-  [data-rec="grid"]    { grid-template-columns: repeat(6, 1fr) !important; grid-auto-rows: auto !important; }
-  [data-rec="hero"]    { grid-column: 1 / 7 !important; grid-row: auto !important; }
-  [data-rec="stat"]    { grid-column: 1 / 4 !important; grid-row: auto !important; }
-  [data-rec="quote"]   { grid-column: 4 / 7 !important; grid-row: auto !important; }
-  [data-rec="step"]    { grid-column: span 2 !important; grid-row: auto !important; }
-  [data-rec="benefit"] { grid-column: span 6 !important; grid-row: auto !important; }
-  [data-rec="hero-body"]  { padding: 22px 24px 26px !important; }
-  [data-rec="hero-title"] { font-size: 24px !important; }
-}
-@container rec (max-width: 680px) {
-  [data-rec="section"]   { padding: 44px 16px 56px !important; }
-  [data-rec="headline"]  { font-size: 28px !important; }
-  [data-rec="header-sub"] p { font-size: 13.5px !important; }
-  [data-rec="grid"]      { grid-template-columns: 1fr !important; gap: 10px !important; }
-  [data-rec="hero"],
-  [data-rec="stat"],
-  [data-rec="quote"],
-  [data-rec="step"],
-  [data-rec="benefit"]   { grid-column: 1 / -1 !important; grid-row: auto !important; }
-  [data-rec="hero-body"]  { padding: 18px 18px 20px !important; }
-  [data-rec="hero-title"] { font-size: 20px !important; }
-  [data-rec="stat"]       { padding: 18px 18px !important; }
-  [data-rec="stat-num"]   { font-size: 58px !important; }
-  [data-rec="quote"]      { padding: 18px 18px !important; }
-  [data-rec="quote-text"] { font-size: 18px !important; }
-}
-@container rec (max-width: 460px) {
-  [data-rec="section"]   { padding: 36px 14px 48px !important; }
-  [data-rec="headline"]  { font-size: 24px !important; letter-spacing: -0.024em !important; }
-  [data-rec="hero-title"] { font-size: 18px !important; }
-  [data-rec="quote-text"] { font-size: 16px !important; }
-  [data-rec="stat-num"]   { font-size: 48px !important; }
-  [data-rec="benefit"]    { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; padding: 18px 18px 20px !important; }
-}
-@supports not (container-type: inline-size) {
-  @media (max-width: 1180px) { [data-rec="headline"] { font-size: 48px; } }
-  @media (max-width: 960px) {
-    [data-rec="header"] { grid-template-columns: 1fr !important; }
-    [data-rec="grid"]   { grid-template-columns: repeat(6, 1fr) !important; grid-auto-rows: auto !important; }
-    [data-rec="hero"]   { grid-column: 1 / 7 !important; grid-row: auto !important; }
-    [data-rec="stat"]   { grid-column: 1 / 4 !important; grid-row: auto !important; }
-    [data-rec="quote"]  { grid-column: 4 / 7 !important; grid-row: auto !important; }
-    [data-rec="step"]   { grid-column: span 2 !important; grid-row: auto !important; }
-    [data-rec="benefit"] { grid-column: span 6 !important; grid-row: auto !important; }
-  }
-  @media (max-width: 680px) {
-    [data-rec="grid"] { grid-template-columns: 1fr !important; }
-    [data-rec="grid"] > article { grid-column: 1 / -1 !important; }
-  }
-}
-`;
-
 const HomeRecalesSection = () => (
   <section
     data-rec="section"
     aria-labelledby="recales-heading"
     style={{
       position: "relative",
-      padding: "72px 24px 88px",
+      padding: "56px 24px 68px",
       background: C.paper,
       overflow: "hidden",
       containerType: "inline-size",
       containerName: "rec",
     }}
   >
-    <style dangerouslySetInnerHTML={{ __html: responsiveCSS }} />
     {/* top hairline */}
     <div
       aria-hidden="true"
@@ -819,7 +719,7 @@ const HomeRecalesSection = () => (
       }}
     />
 
-    <div style={{ position: "relative", maxWidth: 960, margin: "0 auto" }}>
+    <div style={{ position: "relative", maxWidth: 760, margin: "0 auto" }}>
       <header
         data-rec="header"
         style={{

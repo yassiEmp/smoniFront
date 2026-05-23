@@ -5,6 +5,7 @@ import Header from "@components/generales/Header";
 import HomeHeroSection from "@components/generales/HomeHeroSection";
 import HomeCertificationSection from "@components/generales/HomeCertificationSection";
 import HomeStarSection from "@components/generales/HomeStarSection";
+import HomeRecalesSection from "@components/generales/HomeRecalesSection";
 // SEO-critical sections: rendered in SSG HTML (no ClientOnly wrapper).
 import HomeFaqSection from "@components/generales/HomeFaqSection";
 import HomeTarifSection from "@components/generales/HomeTarifSection";
@@ -27,7 +28,6 @@ const HomeStepSection = lazy(() => import("@components/generales/HomeStepSection
 const Testimonials = lazy(() => import("@components/generales/Testimonials"));
 const HomeNewStudentSection = lazy(() => import("@components/generales/HomeNewStudentSection"));
 const HomeLocationSection = lazy(() => import("@components/generales/HomeLocationSection"));
-const HomeRecalesSection = lazy(() => import("@components/generales/HomeRecalesSection"));
 
 // Performance-optimized Fade In wrapper
 const FadeInSection = ({ children, id }: { children: React.ReactNode; id?: string }) => (
@@ -81,12 +81,11 @@ const Home = () => {
               <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
                 <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
               </Suspense>
-              <Suspense fallback={<div className="min-h-[820px] w-full bg-slate-50/50" />}>
-                <FadeInSection id="recales"><HomeRecalesSection /></FadeInSection>
-              </Suspense>
             </>
           )}
         </ClientOnly>
+
+        <div id="recales"><HomeRecalesSection /></div>
 
         {/* SEO-critical: prerendered in SSG HTML (Tarif + FAQ surface organic queries). */}
         <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>

@@ -3,7 +3,7 @@
 // halftone ground, radial brand halo, soft diffuse shadow.
 // Hero = broken-spiral metaphor; Steps = Swiss type-led; Benefits = pictograms.
 
-import { memo } from "react";
+import { memo, useId } from "react";
 
 const INDIGO = "#2c2876";
 const INDIGO_DEEP = "#1e1b4b";
@@ -14,17 +14,42 @@ const PAPER_RULE = "#e6e3f5";
 const BG = "#f3f1ff";
 const BLUE = "#3b82f6";
 
-let _idCounter = 0;
-const makeIds = () => {
-  const n = ++_idCounter;
-  return {
-    bg: `r_bg_${n}`,
-    dots: `r_dots_${n}`,
-    diffuse: `r_df_${n}`,
-    softblur: `r_sb_${n}`,
-  };
-};
-type DefIds = ReturnType<typeof makeIds>;
+type DefIds = { bg: string; dots: string; diffuse: string; softblur: string };
+
+// Hoisted geometry for R_Hero — pure constants of literal numbers.
+const SP_CX = 248, SP_CY = 232, SP_R0 = 118;
+const SPIRAL_PATH = (() => {
+  const turns = 2.8, steps = 180;
+  let d = "";
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    const a = t * turns * Math.PI * 2 - Math.PI / 2;
+    const r = SP_R0 * (1 - t * 0.82);
+    const x = SP_CX + Math.cos(a) * r;
+    const y = SP_CY + Math.sin(a) * r;
+    d += (i === 0 ? "M " : "L ") + x.toFixed(1) + " " + y.toFixed(1) + " ";
+  }
+  return d;
+})();
+
+const A_X1 = 130, A_Y1 = 366;
+const A_X2 = 716, A_Y2 = 92;
+const aDx = A_X2 - A_X1, aDy = A_Y2 - A_Y1;
+const aLen = Math.hypot(aDx, aDy);
+const aUx = aDx / aLen, aUy = aDy / aLen;
+const aPx = -aUy, aPy = aUx;
+const aHead = 22;
+const aHeadW = 14;
+const aHX = A_X2 - aUx * aHead;
+const aHY = A_Y2 - aUy * aHead;
+const aLX = aHX + aPx * aHeadW;
+const aLY = aHY + aPy * aHeadW;
+const aRX = aHX - aPx * aHeadW;
+const aRY = aHY - aPy * aHeadW;
+const labelT = 0.52;
+const labelX = A_X1 + aDx * labelT;
+const labelY = A_Y1 + aDy * labelT;
+const labelDeg = (Math.atan2(aDy, aDx) * 180) / Math.PI;
 
 const Defs = ({ ids, haloX = 30, haloY = 50 }: { ids: DefIds; haloX?: number; haloY?: number }) => (
   <defs>
@@ -65,41 +90,8 @@ const Frame = ({ vb = "0 0 400 225", children }: { vb?: string; children: React.
 
 // ── HERO · La spirale qu'on coupe (16:9 — 800×450) ───────────────
 export const R_Hero = memo(() => {
-  const ids = makeIds();
-
-  const SP_CX = 248, SP_CY = 232, SP_R0 = 118;
-  const spiralPath = (() => {
-    const turns = 2.8, steps = 180;
-    let d = "";
-    for (let i = 0; i <= steps; i++) {
-      const t = i / steps;
-      const a = t * turns * Math.PI * 2 - Math.PI / 2;
-      const r = SP_R0 * (1 - t * 0.82);
-      const x = SP_CX + Math.cos(a) * r;
-      const y = SP_CY + Math.sin(a) * r;
-      d += (i === 0 ? "M " : "L ") + x.toFixed(1) + " " + y.toFixed(1) + " ";
-    }
-    return d;
-  })();
-
-  const A_X1 = 130, A_Y1 = 366;
-  const A_X2 = 716, A_Y2 = 92;
-  const aDx = A_X2 - A_X1, aDy = A_Y2 - A_Y1;
-  const aLen = Math.hypot(aDx, aDy);
-  const aUx = aDx / aLen, aUy = aDy / aLen;
-  const aPx = -aUy, aPy = aUx;
-  const aHead = 22;
-  const aHeadW = 14;
-  const aHX = A_X2 - aUx * aHead;
-  const aHY = A_Y2 - aUy * aHead;
-  const aLX = aHX + aPx * aHeadW;
-  const aLY = aHY + aPy * aHeadW;
-  const aRX = aHX - aPx * aHeadW;
-  const aRY = aHY - aPy * aHeadW;
-  const labelT = 0.52;
-  const labelX = A_X1 + aDx * labelT;
-  const labelY = A_Y1 + aDy * labelT;
-  const labelDeg = (Math.atan2(aDy, aDx) * 180) / Math.PI;
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
 
   return (
     <Frame vb="0 0 800 450">
@@ -131,12 +123,12 @@ export const R_Hero = memo(() => {
 
       {/* THE SPIRAL */}
       <g>
-        <path d={spiralPath} fill="none" stroke={INDIGO}
+        <path d={SPIRAL_PATH} fill="none" stroke={INDIGO}
           strokeOpacity="0.34" strokeWidth="18" strokeLinecap="round"
           filter={`url(#${ids.diffuse})`} transform="translate(0 6)" />
-        <path d={spiralPath} fill="none" stroke={PAPER}
+        <path d={SPIRAL_PATH} fill="none" stroke={PAPER}
           strokeWidth="12" strokeLinecap="round" />
-        <path d={spiralPath} fill="none" stroke={INDIGO}
+        <path d={SPIRAL_PATH} fill="none" stroke={INDIGO}
           strokeWidth="6" strokeLinecap="round" />
         <circle cx={SP_CX} cy={SP_CY} r="5" fill={INDIGO} />
 
@@ -226,7 +218,8 @@ export const R_Hero = memo(() => {
 
 // ── STEP 1 · Récupération de dossier ─────────────────────────────
 export const R_Step1 = memo(() => {
-  const ids = makeIds();
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
   return (
     <Frame>
       <Defs ids={ids} haloX={70} haloY={40} />
@@ -281,7 +274,8 @@ export const R_Step1 = memo(() => {
 
 // ── STEP 2 · Évaluation gratuite (1h) ────────────────────────────
 export const R_Step2 = memo(() => {
-  const ids = makeIds();
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
   return (
     <Frame>
       <Defs ids={ids} haloX={30} haloY={50} />
@@ -327,7 +321,8 @@ export const R_Step2 = memo(() => {
 
 // ── STEP 3 · 0 pack 13h imposé ───────────────────────────────────
 export const R_Step3 = memo(() => {
-  const ids = makeIds();
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
   return (
     <Frame>
       <Defs ids={ids} haloX={32} haloY={50} />
@@ -376,7 +371,8 @@ export const R_Step3 = memo(() => {
 
 // ── BENEFIT pictograms (56×56) ───────────────────────────────────
 export const R_BenefitPlan = memo(() => {
-  const ids = makeIds();
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
   return (
     <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <defs>
@@ -399,7 +395,8 @@ export const R_BenefitPlan = memo(() => {
 });
 
 export const R_BenefitFast = memo(() => {
-  const ids = makeIds();
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
   return (
     <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <defs>
@@ -421,7 +418,8 @@ export const R_BenefitFast = memo(() => {
 });
 
 export const R_BenefitFree = memo(() => {
-  const ids = makeIds();
+  const uid = useId();
+  const ids = { bg: `${uid}-bg`, dots: `${uid}-dots`, diffuse: `${uid}-df`, softblur: `${uid}-sb` };
   return (
     <svg viewBox="0 0 64 64" width="44" height="44" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
       <defs>
