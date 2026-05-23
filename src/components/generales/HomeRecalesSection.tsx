@@ -15,6 +15,14 @@ import {
   R_BenefitFast,
   R_BenefitFree,
 } from "./HomeRecalesIllustrations";
+
+const monoEyebrowSx: CSSProperties = {
+  fontFamily: "'Inter', sans-serif",
+  fontSize: 10,
+  fontWeight: 800,
+  letterSpacing: "0.22em",
+  textTransform: "uppercase",
+};
 import "./HomeRecalesSection.css";
 
 const C = {
@@ -52,64 +60,13 @@ const Eyebrow = ({
 }) => (
   <div
     style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: 8,
+      ...monoEyebrowSx,
       alignSelf: "flex-start",
-      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: "0.22em",
-      color: tone === "dark" ? "rgba(255,255,255,0.78)" : C.indigo,
-      textTransform: "uppercase",
-      background: tone === "dark" ? "rgba(255,255,255,0.08)" : C.bgTint,
-      border:
-        tone === "dark"
-          ? "1px solid rgba(255,255,255,0.15)"
-          : `1px solid ${C.rule}`,
-      padding: "5px 10px",
-      borderRadius: 999,
+      color: tone === "dark" ? "rgba(255,255,255,0.6)" : C.ind60,
       marginBottom: 14,
     }}
   >
-    <span
-      aria-hidden="true"
-      style={{
-        width: 6,
-        height: 6,
-        borderRadius: 999,
-        background: C.blue,
-        display: "inline-block",
-      }}
-    />
     {children}
-  </div>
-);
-
-const IndexBadge = ({
-  n,
-  of = "06",
-  tone = "light",
-}: {
-  n: string;
-  of?: string;
-  tone?: "light" | "dark";
-}) => (
-  <div
-    aria-hidden="true"
-    style={{
-      position: "absolute",
-      top: 14,
-      right: 18,
-      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: "0.22em",
-      color: tone === "dark" ? "rgba(255,255,255,0.55)" : "rgba(44,40,118,0.55)",
-      zIndex: 2,
-    }}
-  >
-    {n} / {of}
   </div>
 );
 
@@ -132,7 +89,6 @@ const HeroCard = () => {
         <div style={{ position: "absolute", inset: 0 }}>
           <R_Hero />
         </div>
-        <IndexBadge n="00" />
       </div>
       <div
         data-rec="hero-body"
@@ -142,7 +98,6 @@ const HeroCard = () => {
           background: "#fafafd",
         }}
       >
-        <Eyebrow>Vous avez déjà raté</Eyebrow>
         <h3
           data-rec="hero-title"
           style={{
@@ -157,18 +112,15 @@ const HeroCard = () => {
           }}
         >
           Ici, ça ne vous{" "}
-          <span
+          <em
             style={{
               fontStyle: "italic",
               fontWeight: 800,
-              background: "linear-gradient(135deg, #2c2876 0%, #3b82f6 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              color: C.indigo,
             }}
           >
             pénalisera pas
-          </span>
+          </em>
           .
         </h3>
         <div
@@ -243,8 +195,6 @@ const StatCard = () => {
           pointerEvents: "none",
         }}
       />
-      <IndexBadge n="79" of="100" tone="dark" />
-
       <Eyebrow tone="dark">La spirale du décrochage</Eyebrow>
 
       <div
@@ -307,16 +257,7 @@ const StatCard = () => {
           borderTop: "1px solid rgba(255,255,255,0.12)",
         }}
       >
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: "0.22em",
-            color: "rgba(255,255,255,0.55)",
-            textTransform: "uppercase",
-          }}
-        >
+        <span style={{ ...monoEyebrowSx, color: "rgba(255,255,255,0.55)" }}>
           Source · DGEC, abandon après 3 échecs
         </span>
       </div>
@@ -337,8 +278,6 @@ const QuoteCard = () => {
         background: "linear-gradient(180deg, #ffffff 0%, #f7f6fc 100%)",
       }}
     >
-      <Eyebrow>Citation · réseau</Eyebrow>
-
       <div
         aria-hidden="true"
         style={{
@@ -388,16 +327,7 @@ const QuoteCard = () => {
           style={{ width: 24, height: 2, background: C.indigo, opacity: 0.7 }}
           aria-hidden="true"
         />
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: "0.22em",
-            color: C.indigo,
-            textTransform: "uppercase",
-          }}
-        >
+        <span style={{ ...monoEyebrowSx, color: C.indigo }}>
           La spirale qu'on coupe
         </span>
       </div>
@@ -430,27 +360,6 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
         }}
       >
         <Art />
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            top: 14,
-            left: 18,
-            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: "0.22em",
-            color: C.indigo,
-            background: "rgba(255,255,255,0.78)",
-            backdropFilter: "blur(6px)",
-            padding: "4px 9px",
-            borderRadius: 999,
-            border: `1px solid ${C.ind20}`,
-          }}
-        >
-          ÉTAPE · {n}
-        </div>
-        <IndexBadge n={n} of="03" />
       </div>
       <div
         style={{
@@ -462,15 +371,13 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
       >
         <span
           style={{
-            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: "0.22em",
-            color: C.ind60,
-            textTransform: "uppercase",
+            ...monoEyebrowSx,
+            color: C.indigo,
           }}
         >
-          {label}
+          <span style={{ color: C.deep, fontWeight: 900 }}>{n}</span>
+          <span style={{ color: C.ind60, margin: "0 8px" }}>·</span>
+          {label.replace(/^\d+\s*·\s*/, "")}
         </span>
         <h3
           style={{
@@ -513,26 +420,12 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
         {chip && (
           <div
             style={{
+              ...monoEyebrowSx,
               alignSelf: "flex-start",
               marginTop: 14,
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-              fontSize: 10,
-              fontWeight: 700,
-              letterSpacing: "0.18em",
               color: C.indigo,
-              background: C.bgTint,
-              border: `1px solid ${C.rule}`,
-              padding: "6px 10px",
-              borderRadius: 999,
             }}
           >
-            <span
-              style={{ width: 6, height: 6, background: C.blue, borderRadius: 999 }}
-              aria-hidden="true"
-            />
             {chip}
           </div>
         )}
@@ -549,39 +442,31 @@ type BenefitData = {
   body: string;
 };
 
-const BenefitCard = ({ n, gridColumn, Icon, title, body }: BenefitData) => {
+const BenefitCard = ({ gridColumn, Icon, title, body }: BenefitData) => {
   return (
     <article
       data-rec="benefit"
       style={{
-        ...baseCard,
+        position: "relative",
         gridColumn,
         gridRow: "4 / 5",
-        padding: "20px 22px 22px",
+        padding: "20px 4px 4px",
+        display: "flex",
         flexDirection: "row",
         alignItems: "flex-start",
         gap: 16,
+        background: "transparent",
+        border: "none",
+        borderTop: `1px solid ${C.rule}`,
       }}
     >
       <div style={{ flexShrink: 0, paddingTop: 4 }}>
         <Icon />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <span
-          style={{
-            fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: "0.22em",
-            color: C.ind60,
-            textTransform: "uppercase",
-          }}
-        >
-          Avantage · {n}
-        </span>
         <h3
           style={{
-            margin: "6px 0 0",
+            margin: 0,
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
             fontSize: 14,
@@ -731,30 +616,6 @@ const HomeRecalesSection = () => (
         }}
       >
         <div>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 10,
-              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-              fontSize: 11,
-              fontWeight: 700,
-              letterSpacing: "0.28em",
-              color: C.indigo,
-              background: C.bgTint,
-              border: `1px solid ${C.rule}`,
-              borderRadius: 999,
-              padding: "8px 14px",
-              marginBottom: 24,
-              textTransform: "uppercase",
-            }}
-          >
-            <span
-              aria-hidden="true"
-              style={{ width: 6, height: 6, background: C.blue, borderRadius: 999 }}
-            />
-            Recalés ailleurs · protocole Smoni
-          </div>
           <h2
             id="recales-heading"
             data-rec="headline"
@@ -770,18 +631,9 @@ const HomeRecalesSection = () => (
             }}
           >
             Déjà raté ? On vous{" "}
-            <span
-              style={{
-                fontStyle: "italic",
-                fontWeight: 800,
-                background: "linear-gradient(135deg, #2c2876 0%, #3b82f6 100%)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <em style={{ fontStyle: "italic", fontWeight: 800, color: C.indigo }}>
               remet sur la route
-            </span>
+            </em>
             .
           </h2>
         </div>
