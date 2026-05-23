@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useId, useState } from "react";
 import { Phone } from "lucide-react";
+import Reveal from "./Reveal";
 
 const containerVariants = {
   hidden: {},
@@ -577,6 +578,7 @@ const HomeNewStudentSection = () => {
         {/* GRID */}
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-7 lg:gap-8 items-start">
           {/* LEFT — hero card */}
+          <Reveal delay={0}>
           <motion.article
             className="relative overflow-hidden bg-white"
             style={{
@@ -668,8 +670,10 @@ const HomeNewStudentSection = () => {
               </a>
             </div>
           </motion.article>
+          </Reveal>
 
           {/* RIGHT — documents list */}
+          <Reveal delay={120}>
           <motion.aside
             className="relative bg-white"
             style={{
@@ -795,6 +799,7 @@ const HomeNewStudentSection = () => {
               </span>
             </footer>
           </motion.aside>
+          </Reveal>
         </div>
       </motion.div>
     </section>

@@ -118,7 +118,7 @@ const Home = () => {
                 <div id="avis"><Testimonials /></div>
               </Suspense>
               <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
-                <FadeInSection id="inscription"><HomeNewStudentSection /></FadeInSection>
+                <div id="inscription"><HomeNewStudentSection /></div>
               </Suspense>
               <Suspense fallback={<div className="min-h-[600px] w-full bg-slate-50/50" />}>
                 <FadeInSection id="localisation"><HomeLocationSection /></FadeInSection>
