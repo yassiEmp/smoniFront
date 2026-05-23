@@ -98,13 +98,8 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-  },
+  hidden: {},
+  visible: {},
 };
 
 const HomeFeaturesSection = () => {
@@ -114,9 +109,6 @@ const HomeFeaturesSection = () => {
 
       <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
         {/* Section Header — mirrors engagements: small mobile-first type, text-balance, progressive spacing */}

@@ -844,20 +844,13 @@ const ArtReprise = ({ title }: { title: string }) => {
 
 // ── Motion variants ───────────────────────────────────────
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.06, delayChildren: 0 },
-  },
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06, delayChildren: 0 } },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4 },
-  },
+  hidden: {},
+  visible: {},
 };
 
 // ──────────────────────────────────────────────────────────
@@ -885,10 +878,6 @@ const HomeGroupeSection = () => {
       />
       <motion.div
         className="relative mx-auto max-w-[1280px]"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
       >
         {/* ─── Header ─── */}
         <motion.header

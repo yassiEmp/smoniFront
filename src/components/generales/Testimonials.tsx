@@ -208,9 +208,6 @@ const Testimonials = () => {
         {/* Section header */}
         <motion.header
           className="text-center max-w-[760px] mx-auto mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
           <span
@@ -295,9 +292,6 @@ const Testimonials = () => {
                 "0 28px 56px -32px rgba(15,23,42,0.22), 0 2px 6px -2px rgba(15,23,42,0.06)",
               gridTemplateColumns: "minmax(0, 1fr)",
             }}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="absolute top-7 left-9 opacity-[0.06] pointer-events-none">
@@ -427,9 +421,6 @@ const Testimonials = () => {
                   boxShadow: "0 10px 24px -16px rgba(15,23,42,0.10)",
                   minHeight: 280,
                 }}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
                 transition={{
                   duration: 0.5,
                   ease: [0.16, 1, 0.3, 1],

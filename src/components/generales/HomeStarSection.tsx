@@ -55,13 +55,8 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 28, scale: 0.97 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-  },
+  hidden: {},
+  visible: {},
 };
 
 const HomeStarSection = () => {
@@ -80,10 +75,6 @@ const HomeStarSection = () => {
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 xl:px-16">
         <motion.header
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-[720px] mb-14 lg:mb-18"
         >
           <h2
@@ -109,10 +100,6 @@ const HomeStarSection = () => {
 
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 min-[1240px]:grid-cols-4 gap-7 sm:gap-8 min-[1240px]:gap-7"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
         >
           {stats.map((s) => {
             const Illustration = s.Illustration;

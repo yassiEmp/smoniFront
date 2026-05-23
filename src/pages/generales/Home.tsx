@@ -23,7 +23,6 @@ const CookieConsent = lazy(() => import("react-cookie-consent"));
 // Lazy load non-critical sections below the fold
 const HomeGroupeSection = lazy(() => import("@components/generales/HomeGroupeSection"));
 const HomeFeaturesSection = lazy(() => import("@components/generales/HomeFeaturesSection"));
-const HomeUnicornSection = lazy(() => import("@components/generales/HomeUnicornSection"));
 const HomeStepSection = lazy(() => import("@components/generales/HomeStepSection"));
 const Testimonials = lazy(() => import("@components/generales/Testimonials"));
 const HomeNewStudentSection = lazy(() => import("@components/generales/HomeNewStudentSection"));
@@ -75,16 +74,13 @@ const Home = () => {
               <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
                 <FadeInSection id="features"><HomeFeaturesSection /></FadeInSection>
               </Suspense>
-              <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
-                <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
-              </Suspense>
             </>
           )}
         </ClientOnly>
 
-        <div id="recales"><HomeRecalesSection /></div>
-
         <FadeInSection id="adultes"><HomeAdultesSection /></FadeInSection>
+
+        <div id="recales"><HomeRecalesSection /></div>
 
         {/* SEO-critical: prerendered in SSG HTML (Tarif + FAQ surface organic queries). */}
         <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>

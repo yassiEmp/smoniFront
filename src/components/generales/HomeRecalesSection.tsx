@@ -74,7 +74,7 @@ const HeroCard = () => {
   return (
     <article
       data-rec="hero"
-      style={{ ...baseCard, gridColumn: "1 / 8", gridRow: "1 / 3" }}
+      style={{ ...baseCard, gridColumn: "1 / 8", gridRow: "1 / 3", background: "#fafafd", justifyContent: "space-between" }}
     >
       <div
         data-rec="hero-art"
@@ -84,6 +84,7 @@ const HeroCard = () => {
           aspectRatio: "16 / 9",
           flexShrink: 0,
           background: "#f3f1ff",
+          borderBottom: "1px solid #eef0f7",
         }}
       >
         <div style={{ position: "absolute", inset: 0 }}>
@@ -94,7 +95,6 @@ const HeroCard = () => {
         data-rec="hero-body"
         style={{
           padding: "24px 28px 28px",
-          borderTop: "1px solid #eef0f7",
           background: "#fafafd",
         }}
       >
@@ -349,7 +349,7 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
   return (
     <article
       data-rec="step"
-      style={{ ...baseCard, gridColumn, gridRow: "3 / 4" }}
+      style={{ ...baseCard, gridColumn, gridRow: "3 / 4", background: "#fafafd", justifyContent: "space-between" }}
     >
       <div
         style={{
@@ -357,6 +357,7 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
           width: "100%",
           aspectRatio: "16 / 9",
           flexShrink: 0,
+          borderBottom: "1px solid #eef0f7",
         }}
       >
         <Art />

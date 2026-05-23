@@ -110,9 +110,6 @@ const HomeCertificationSection = () => {
         {/* Quality Certification Banner */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 mb-16 md:mb-36 pt-10 md:pt-16 pb-10 md:pb-16 border-b border-slate-200/70">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
             className="text-center md:text-left max-w-md"
           >
             <h2 className="text-2xl md:text-3xl font-black text-[#2c2876] mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
@@ -124,9 +121,6 @@ const HomeCertificationSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
             className="relative group"
           >
             <div className="absolute -inset-4 bg-yellow-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -141,9 +135,6 @@ const HomeCertificationSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
             className="flex flex-col gap-4"
           >
             <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
@@ -159,10 +150,6 @@ const HomeCertificationSection = () => {
 
         {/* Section Heading */}
         <motion.header
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
         >
           <p className="inline-block text-[11px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.3em] text-[#2c2876]/90 mb-3 px-2">
@@ -186,13 +173,6 @@ const HomeCertificationSection = () => {
 
         {/* Engagements list — semantic <ol> w/ ItemList schema. 6-col on lg / 4-col on md so the orphan row (4 & 5) sits centered. */}
         <motion.ol
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-          }}
           className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5 list-none p-0"
           aria-label="Les 5 engagements écrits de Smoni"
         >
@@ -208,15 +188,6 @@ const HomeCertificationSection = () => {
             return (
               <motion.li
                 key={e.n}
-                variants={{
-                  hidden: { opacity: 0, y: 28, scale: 0.97 },
-                  show: {
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
-                  },
-                }}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
                 className={`${MOBILE_ORDER_CLASS[slotFor(i) - 1]} md:order-none ${placement} w-full max-w-md mx-auto md:max-w-none md:mx-0`}
@@ -281,10 +252,6 @@ const HomeCertificationSection = () => {
 
         {/* Conversion CTA — Cialdini commitment + Krug clarity: one primary, one secondary, action-first verbs. */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
         >
           <Link

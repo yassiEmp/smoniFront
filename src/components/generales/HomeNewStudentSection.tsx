@@ -3,26 +3,13 @@ import { useEffect, useId, useState } from "react";
 import { Phone } from "lucide-react";
 
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0,
-    },
-  },
+  hidden: {},
+  visible: {},
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
+  hidden: {},
+  visible: {},
 };
 
 type DocItem = {
@@ -546,10 +533,6 @@ const HomeNewStudentSection = () => {
       <motion.div
         className="relative z-10 mx-auto px-6 lg:px-12 xl:px-16"
         style={{ maxWidth: 1440 }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={containerVariants}
       >
         {/* HEADER */}
         <motion.header className="max-w-[760px] mb-14 lg:mb-[72px]" variants={itemVariants}>
