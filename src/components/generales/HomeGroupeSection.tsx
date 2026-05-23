@@ -957,32 +957,6 @@ const HomeGroupeSection = () => {
           className="mb-10 grid items-end gap-6 md:mb-12 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:gap-14"
         >
           <div>
-            <div
-              className="mb-5 inline-flex items-center gap-2"
-              style={{
-                fontFamily: "'JetBrains Mono', ui-monospace, monospace",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.28em",
-                color: FC.indigo,
-                background: FC.bgTint,
-                border: `1px solid ${FC.rule}`,
-                borderRadius: 999,
-                padding: "8px 14px",
-                textTransform: "uppercase",
-              }}
-            >
-              <span
-                aria-hidden="true"
-                style={{
-                  width: 6,
-                  height: 6,
-                  background: FC.blue,
-                  borderRadius: 999,
-                }}
-              />
-              06 formations · prix affichés
-            </div>
             <h2
               id="formations-heading"
               className="text-balance text-3xl sm:text-4xl md:text-5xl lg:text-[60px]"

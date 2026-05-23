@@ -156,7 +156,7 @@ export const IllustrationAgence = memo(function IllustrationAgence() {
         <text x="310" y="175" textAnchor="end" fill={INDIGO_60} fontFamily="JetBrains Mono, monospace" fontWeight="600" fontSize="7" letterSpacing="0.18em">N° 01 / 01</text>
       </g>
 
-      <g transform="translate(78 32)">
+      <g transform="translate(53 32)">
         <ellipse cx="38" cy="118" rx="22" ry="5" fill={INDIGO} opacity="0.32" filter={`url(#${ids.diffuse})`} />
         <path d="M 38 8 C 60 8 76 24 76 46 C 76 70 38 114 38 114 C 38 114 0 70 0 46 C 0 24 16 8 38 8 Z" fill={INDIGO} stroke={PAPER} strokeWidth="2.5" paintOrder="stroke" />
         <circle cx="38" cy="46" r="14" fill="none" stroke={PAPER} strokeOpacity="0.45" strokeWidth="1.2" />
@@ -164,7 +164,7 @@ export const IllustrationAgence = memo(function IllustrationAgence() {
         <text x="38" y="50" textAnchor="middle" fill={INDIGO} fontFamily="Outfit, sans-serif" fontWeight="900" fontSize="11">1</text>
       </g>
 
-      <Connector x1={116} y1={148} x2={142} y2={140} />
+      <Connector x1={91} y1={148} x2={142} y2={140} />
     </Frame>
   );
 });

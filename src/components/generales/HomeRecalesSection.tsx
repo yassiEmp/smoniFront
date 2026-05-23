@@ -567,7 +567,7 @@ const HomeRecalesSection = () => (
     aria-labelledby="recales-heading"
     style={{
       position: "relative",
-      padding: "56px 24px 68px",
+      padding: "56px clamp(24px, 5vw, 80px) 68px",
       background: C.paper,
       overflow: "hidden",
       containerType: "inline-size",
@@ -587,24 +587,8 @@ const HomeRecalesSection = () => (
           "linear-gradient(to right, transparent 0%, rgba(44,40,118,0.16) 35%, rgba(44,40,118,0.16) 65%, transparent 100%)",
       }}
     />
-    {/* atmospheric halo */}
-    <div
-      aria-hidden="true"
-      style={{
-        position: "absolute",
-        top: -120,
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: 1100,
-        height: 480,
-        pointerEvents: "none",
-        background:
-          "radial-gradient(ellipse 50% 60% at 50% 50%, rgba(44,40,118,0.07) 0%, rgba(59,130,246,0.04) 35%, rgba(255,255,255,0) 70%)",
-        filter: "blur(6px)",
-      }}
-    />
 
-    <div style={{ position: "relative", maxWidth: 760, margin: "0 auto" }}>
+<div style={{ position: "relative", maxWidth: 1280, margin: "0 auto" }}>
       <header
         data-rec="header"
         style={{

@@ -86,12 +86,6 @@ const HomeStarSection = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-[720px] mb-14 lg:mb-18"
         >
-          <span
-            className="inline-block text-[11px] font-bold tracking-[0.22em] text-[#2c2876] bg-white border border-[#cfceea] rounded-full px-3 py-1.5"
-            style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
-          >
-            SMONI · CHIFFRES CLÉS · 2026
-          </span>
           <h2
             className="mt-[18px] mb-[14px] font-black text-[#2c2876] leading-[0.98] tracking-[-0.035em] text-balance"
             style={{
