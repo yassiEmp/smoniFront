@@ -1,51 +1,53 @@
 import { motion } from "framer-motion";
 import {
-  Zap,
-  Target,
-  Smartphone,
-  Award,
   Clock,
-  ShieldCheck
+  Timer,
+  Users,
+  Target,
+  CalendarClock,
+  UserCheck
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
+// Distinct from "Notre différence" (contractual engagements below): this section is operational reality —
+// what we measure, what we track, what we offer day-to-day. No overlap with the 5 engagements written in the contract.
 const features = [
   {
-    icon: Target,
-    title: "Prix publics, contrat écrit",
-    description: "Tous nos tarifs sont sur la page Tarifs. Le contrat de formation détaille chaque centime. Aucun frais découvert en route.",
-    tag: "Transparence"
-  },
-  {
     icon: Clock,
-    title: "60 minutes de conduite par heure",
-    description: "Heure de début et de fin notées sur votre livret. Si on coupe court, vous récupérez le temps. Sans débat.",
-    tag: "Heures pleines"
+    title: "Réponse sous 24h ouvrées",
+    description: "Appel manqué, email, formulaire de contact — on revient toujours sous 24h en semaine. Pas de standard qui filtre, pas de devis qui se perd.",
+    tag: "Délai mesuré"
   },
   {
-    icon: ShieldCheck,
-    title: "Moniteurs qui ne crient pas",
-    description: "Charte signée par l'équipe. Changement gratuit si problème — pas besoin de justifier en détail. On vous croit.",
-    tag: "Respect"
+    icon: Timer,
+    title: "Livret horodaté à chaque cours",
+    description: "Heure de début et heure de fin notées et signées sur votre livret. Vous gardez la trace écrite. 100% des cours documentés, sans exception.",
+    tag: "Audit"
   },
   {
-    icon: Smartphone,
-    title: "Soir & week-end",
-    description: "Créneaux jusqu'à 20h, samedi toute la journée. Pour les adultes qui bossent en semaine.",
-    tag: "Disponibilité"
+    icon: Users,
+    title: "200+ dossiers depuis 2022",
+    description: "Petite équipe, croissance lente, pas d'avis Google achetés. Si vous voulez parler à un·e ancien·ne élève en direct, on vous met en relation.",
+    tag: "Volume honnête"
   },
   {
-    icon: Award,
-    title: "Reprise sans frais ni heures imposées",
-    description: "Évaluation gratuite (1h), plan personnalisé selon votre vrai niveau. Pas de pack 13h obligatoire.",
-    tag: "Recalés"
-  },
-  {
-    icon: Zap,
-    title: "Préparation mentale incluse",
-    description: "Examens blancs en conditions réelles, briefing pré-examen, débrief post. Pour transformer le stress en certitude.",
+    icon: Target,
+    title: "Examens blancs en conditions réelles",
+    description: "Itinéraires d'examen reconnus, inspecteur simulé, briefing pré-examen et débrief post. Pour transformer le stress en certitude le jour J.",
     tag: "Anti-stress"
+  },
+  {
+    icon: CalendarClock,
+    title: "Créneaux jusqu'à 20h + samedi entier",
+    description: "Pas besoin de poser une demi-journée pour conduire 1h. Réservation en ligne, annulation jusqu'à 24h avant sans frais.",
+    tag: "Adultes actifs"
+  },
+  {
+    icon: UserCheck,
+    title: "Un moniteur référent, pas une rotation",
+    description: "Le même moniteur vous suit du début à la fin — il connaît vos points faibles, votre progression, votre stress. Changement gratuit possible si le courant ne passe pas.",
+    tag: "Continuité"
   }
 ];
 
@@ -84,14 +86,14 @@ const HomeFeaturesSection = () => {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
           <motion.div className="max-w-2xl space-y-4" variants={itemVariants}>
             <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 px-4 py-1 rounded-full font-bold uppercase tracking-wider">
-              Ce que vous obtenez chez Smoni
+              Ce qu'on mesure, ce qu'on offre
             </Badge>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1e1b4b] leading-[1.1]">
-              6 promesses concrètes — pas des <span className="text-primary italic">slogans</span>.
+              6 preuves de <span className="text-primary italic">fonctionnement</span> — pas des slogans.
             </h2>
           </motion.div>
           <motion.p className="text-slate-700 text-lg md:text-xl max-w-md font-medium lg:mb-2" variants={itemVariants}>
-            Le secteur parle beaucoup de "qualité" et d'"excellence". Ça ne veut rien dire. Voici ce qu'on s'engage à faire — mesurable.
+            Le secteur parle beaucoup de « qualité ». Voici ce qu'on mesure, ce qu'on trace, ce qu'on propose au quotidien. Les engagements contractuels, eux, sont juste en dessous.
           </motion.p>
         </div>
 
@@ -126,26 +128,6 @@ const HomeFeaturesSection = () => {
           ))}
         </motion.div>
 
-        {/* Bottom Stat Bar for SEO */}
-        <motion.div
-          className="mt-20 p-8 rounded-[32px] bg-[#1e1b4b] text-white flex flex-wrap justify-around items-center gap-8 shadow-2xl"
-          variants={itemVariants}
-        >
-          <div className="text-center">
-            <h4 className="text-3xl font-black mb-1">&lt; 24h</h4>
-            <p className="text-white/80 text-sm font-bold uppercase tracking-widest">Réponse aux appels</p>
-          </div>
-          <div className="w-px h-12 bg-white/10 hidden md:block" />
-          <div className="text-center">
-            <h4 className="text-3xl font-black mb-1">7 jours</h4>
-            <p className="text-white/80 text-sm font-bold uppercase tracking-widest">Premier RDV</p>
-          </div>
-          <div className="w-px h-12 bg-white/10 hidden md:block" />
-          <div className="text-center">
-            <h4 className="text-3xl font-black mb-1">0</h4>
-            <p className="text-white/80 text-sm font-bold uppercase tracking-widest">Supplément non prévu</p>
-          </div>
-        </motion.div>
       </motion.div>
     </section>
   );
