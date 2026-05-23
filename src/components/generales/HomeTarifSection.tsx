@@ -1009,18 +1009,6 @@ const HomeTarifSection = () => {
           background: "linear-gradient(to right, transparent 0%, rgba(44,40,118,0.16) 35%, rgba(44,40,118,0.16) 65%, transparent 100%)",
         }}
       />
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          top: -160, left: "50%", transform: "translateX(-50%)",
-          width: 1200, height: 560,
-          pointerEvents: "none",
-          background: "radial-gradient(ellipse 50% 60% at 50% 50%, rgba(44,40,118,0.07) 0%, rgba(59,130,246,0.04) 35%, rgba(255,255,255,0) 70%)",
-          filter: "blur(6px)",
-        }}
-      />
-
       <div style={{ position: "relative", maxWidth: 1280, margin: "0 auto" }}>
         {/* Header */}
         <header className="tarifs-header">

@@ -930,20 +930,6 @@ const HomeGroupeSection = () => {
             "linear-gradient(to right, transparent 0%, rgba(44,40,118,0.16) 35%, rgba(44,40,118,0.16) 65%, transparent 100%)",
         }}
       />
-      {/* atmospheric halo */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 md:block"
-        style={{
-          top: -120,
-          width: 1100,
-          height: 480,
-          background:
-            "radial-gradient(ellipse 50% 60% at 50% 50%, rgba(44,40,118,0.07) 0%, rgba(59,130,246,0.04) 35%, rgba(255,255,255,0) 70%)",
-          filter: "blur(6px)",
-        }}
-      />
-
       <motion.div
         className="relative mx-auto max-w-[1280px]"
         initial="hidden"
