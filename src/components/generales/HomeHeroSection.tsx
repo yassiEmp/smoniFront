@@ -242,12 +242,12 @@ const HomeHeroSection = () => {
                 <ArrowRight className="ml-3 h-5 w-5 2xl:h-6 2xl:w-6 transition-transform group-hover:translate-x-2" />
               </Button>
               <Button
+                asChild
                 size="lg"
                 variant="outline"
-                onClick={() => handleNavigate("/contact")}
                 className="select-text bg-white border-2 border-slate-200 rounded-xl px-8 h-14 2xl:rounded-2xl 2xl:px-12 2xl:h-20 text-base 2xl:text-xl font-black text-[#2c2876] hover:bg-slate-50 transition-all hover:border-slate-300"
               >
-                Appeler — 07 71 26 51 19
+                <a href="tel:+33771265119">Appeler — 07 71 26 51 19</a>
               </Button>
             </motion.div>
 
