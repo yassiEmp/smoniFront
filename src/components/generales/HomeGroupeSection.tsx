@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import { ArrowRight } from "lucide-react";
+import Reveal from "./Reveal";
 
 // ──────────────────────────────────────────────────────────
 // Design tokens — Smoni "Nos formations" bento (Claude Design)
@@ -473,16 +474,6 @@ const ArtCode = ({ title }: { title: string }) => {
         <text x="200" y="146" fontSize="104">24/7</text>
       </g>
       <line
-        x1="208"
-        y1="160"
-        x2="232"
-        y2="78"
-        stroke={FC.blue}
-        strokeWidth="6"
-        strokeLinecap="round"
-      />
-
-      <line
         x1="120"
         y1="174"
         x2="280"
@@ -801,10 +792,10 @@ const ArtReprise = ({ title }: { title: string }) => {
         AU VOLANT
       </text>
 
-      <g transform="translate(282, 92) rotate(-12)">
-        <circle r="58" fill="none" stroke={FC.blue} strokeWidth="3" />
+      <g transform="translate(274, 108) rotate(-12)">
+        <circle r="68" fill="none" stroke={FC.blue} strokeWidth="3" />
         <circle
-          r="50"
+          r="59"
           fill="none"
           stroke={FC.blue}
           strokeWidth="1"
@@ -944,12 +935,13 @@ const HomeGroupeSection = () => {
           style={{ gridAutoRows: "minmax(0, auto)" }}
         >
           {/* HERO · Permis B — 8×2 */}
+          <Reveal delay={0} className="sm:col-span-6 lg:col-span-8 lg:row-span-2">
           <motion.article
             variants={itemVariants}
             onClick={() => handleNavigate("/conduite")}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
-            className="cursor-pointer sm:col-span-6 lg:col-span-8 lg:row-span-2"
+            className="cursor-pointer h-full"
             style={cardBase}
           >
             <div
@@ -1026,14 +1018,16 @@ const HomeGroupeSection = () => {
               <Cta>Voir le forfait</Cta>
             </div>
           </motion.article>
+          </Reveal>
 
           {/* STAT · B78 75% — dark indigo, 4×1 (row 1) */}
+          <Reveal delay={90} className="sm:col-span-3 lg:col-span-4">
           <motion.article
             variants={itemVariants}
             onClick={() => handleNavigate("/passerelle")}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
-            className="relative cursor-pointer sm:col-span-3 lg:col-span-4"
+            className="relative cursor-pointer h-full"
             style={{
               ...cardBase,
               background: FC.deep,
@@ -1142,14 +1136,16 @@ const HomeGroupeSection = () => {
               <Cta tone="dark">Voir B78</Cta>
             </div>
           </motion.article>
+          </Reveal>
 
           {/* CODE · 24/7 — 4×1 (row 2) */}
+          <Reveal delay={180} className="sm:col-span-3 lg:col-span-4">
           <motion.article
             variants={itemVariants}
             onClick={() => handleNavigate("/code-en-ligne")}
             onMouseEnter={onEnter}
             onMouseLeave={onLeave}
-            className="cursor-pointer sm:col-span-3 lg:col-span-4"
+            className="cursor-pointer h-full"
             style={cardBase}
             aria-label="Code de la route — Pass Rousseau"
           >
@@ -1208,8 +1204,10 @@ const HomeGroupeSection = () => {
               </div>
             </div>
           </motion.article>
+          </Reveal>
 
           {/* MOTO · 03 */}
+          <Reveal delay={270} className="sm:col-span-3 lg:col-span-4">
           <FormationCard
             n="03"
             badge="Sur demande"
@@ -1222,7 +1220,9 @@ const HomeGroupeSection = () => {
             Art={ArtMoto}
             onNavigate={handleNavigate}
           />
+          </Reveal>
           {/* STAGE · 05 */}
+          <Reveal delay={360} className="sm:col-span-3 lg:col-span-4">
           <FormationCard
             n="05"
             badge="Express"
@@ -1235,7 +1235,9 @@ const HomeGroupeSection = () => {
             Art={ArtStage}
             onNavigate={handleNavigate}
           />
+          </Reveal>
           {/* REPRISE · 06 */}
+          <Reveal delay={450} className="sm:col-span-3 lg:col-span-4">
           <FormationCard
             n="06"
             badge="Sans pénalité"
@@ -1248,6 +1250,7 @@ const HomeGroupeSection = () => {
             Art={ArtReprise}
             onNavigate={handleNavigate}
           />
+          </Reveal>
         </motion.div>
       </motion.div>
     </section>
@@ -1283,7 +1286,7 @@ const FormationCard = ({
     onClick={() => onNavigate(uri)}
     onMouseEnter={onEnter}
     onMouseLeave={onLeave}
-    className="cursor-pointer sm:col-span-3 lg:col-span-4"
+    className="cursor-pointer"
     style={cardBase}
     aria-label={ariaLabel}
   >
