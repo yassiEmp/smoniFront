@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   IllustrationDelai,
   IllustrationAudit,
@@ -11,68 +9,94 @@ import {
 } from "./MesureIllustrations";
 
 // Distinct from "Notre différence" (contractual engagements below): this section is operational reality —
-// what we measure, what we track, what we offer day-to-day. No overlap with the 5 engagements written in the contract.
+// what we measure, what we track, what we offer day-to-day.
+// Same scannable micro-hierarchy as the engagements section: KEYWORD (F-pattern landing) → title → body w/ one bolded promise.
+// `featured: true` triggers the Von Restorff visual anchor (1 card, distinct treatment) so the eye enters there.
 const features = [
   {
-    Illustration: IllustrationDelai,
+    n: "01",
+    keyword: "24h",
+    featured: true,
     title: "Réponse sous 24h ouvrées",
-    description: "Appel manqué, email, formulaire de contact — on revient toujours sous 24h en semaine. Pas de standard qui filtre, pas de devis qui se perd.",
-    tag: "Délai mesuré"
+    body: "Appel manqué, email, formulaire de contact — on revient toujours sous 24h en semaine. Pas de standard qui filtre, pas de devis qui se perd.",
+    emphasis: "on revient toujours sous 24h en semaine",
+    Illustration: IllustrationDelai,
   },
   {
-    Illustration: IllustrationAudit,
+    n: "02",
+    keyword: "Livret",
     title: "Livret horodaté à chaque cours",
-    description: "Heure de début et heure de fin notées et signées sur votre livret. Vous gardez la trace écrite. 100% des cours documentés, sans exception.",
-    tag: "Audit"
+    body: "Heure de début et heure de fin notées et signées sur votre livret. Vous gardez la trace écrite. 100% des cours documentés, sans exception.",
+    emphasis: "100% des cours documentés",
+    Illustration: IllustrationAudit,
   },
   {
-    Illustration: IllustrationVolume,
+    n: "03",
+    keyword: "200+",
     title: "200+ dossiers depuis 2022",
-    description: "Petite équipe, croissance lente, pas d'avis Google achetés. Si vous voulez parler à un·e ancien·ne élève en direct, on vous met en relation.",
-    tag: "Volume honnête"
+    body: "Petite équipe, croissance lente, pas d'avis Google achetés. Si vous voulez parler à un·e ancien·ne élève en direct, on vous met en relation.",
+    emphasis: "on vous met en relation",
+    Illustration: IllustrationVolume,
   },
   {
-    Illustration: IllustrationExamen,
+    n: "04",
+    keyword: "Examen",
     title: "Examens blancs en conditions réelles",
-    description: "Itinéraires d'examen reconnus, inspecteur simulé, briefing pré-examen et débrief post. Pour transformer le stress en certitude le jour J.",
-    tag: "Anti-stress"
+    body: "Itinéraires d'examen reconnus, inspecteur simulé, briefing pré-examen et débrief post. Pour transformer le stress en certitude le jour J.",
+    emphasis: "transformer le stress en certitude",
+    Illustration: IllustrationExamen,
   },
   {
-    Illustration: IllustrationCreneaux,
+    n: "05",
+    keyword: "20h + Sam",
     title: "Créneaux jusqu'à 20h + samedi entier",
-    description: "Pas besoin de poser une demi-journée pour conduire 1h. Réservation en ligne, annulation jusqu'à 24h avant sans frais.",
-    tag: "Adultes actifs"
+    body: "Pas besoin de poser une demi-journée pour conduire 1h. Réservation en ligne, annulation jusqu'à 24h avant sans frais.",
+    emphasis: "annulation jusqu'à 24h avant sans frais",
+    Illustration: IllustrationCreneaux,
   },
   {
-    Illustration: IllustrationMoniteur,
+    n: "06",
+    keyword: "Référent",
     title: "Un moniteur référent, pas une rotation",
-    description: "Le même moniteur vous suit du début à la fin — il connaît vos points faibles, votre progression, votre stress. Changement gratuit possible si le courant ne passe pas.",
-    tag: "Continuité"
-  }
+    body: "Le même moniteur vous suit du début à la fin — il connaît vos points faibles, votre progression, votre stress. Changement gratuit possible si le courant ne passe pas.",
+    emphasis: "Le même moniteur vous suit du début à la fin",
+    Illustration: IllustrationMoniteur,
+  },
 ];
 
+// Render body text with the emphasis fragment bolded so a single scannable promise pops inside the paragraph.
+const renderBody = (body: string, emphasis: string) => {
+  const idx = body.indexOf(emphasis);
+  if (idx === -1) return body;
+  return (
+    <>
+      {body.slice(0, idx)}
+      <strong className="font-extrabold text-[#2c2876]">{body.slice(idx, idx + emphasis.length)}</strong>
+      {body.slice(idx + emphasis.length)}
+    </>
+  );
+};
+
 const containerVariants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.06, delayChildren: 0 }
-  }
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+  },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.95, y: 20 },
+  hidden: { opacity: 0, y: 28, scale: 0.97 },
   visible: {
     opacity: 1,
-    scale: 1,
     y: 0,
-    transition: { duration: 0.4 }
-  }
+    scale: 1,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
 };
 
 const HomeFeaturesSection = () => {
   return (
     <section className="py-24 md:py-32 bg-white relative overflow-hidden">
-      {/* Decorative gradient blur */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <motion.div
@@ -85,10 +109,13 @@ const HomeFeaturesSection = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
           <motion.div className="max-w-2xl space-y-4" variants={itemVariants}>
-            <Badge variant="outline" className="text-primary border-primary/20 bg-primary/5 px-4 py-1 rounded-full font-bold uppercase tracking-wider">
+            <p
+              className="inline-block text-[11px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.3em] text-[#2c2876]/90 px-1"
+              style={{ fontFamily: "'Outfit', sans-serif" }}
+            >
               Ce qu'on mesure, ce qu'on offre
-            </Badge>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1e1b4b] leading-[1.1]">
+            </p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1e1b4b] leading-[1.1]" style={{ fontFamily: "'Outfit', sans-serif" }}>
               6 preuves de <span className="text-primary italic">fonctionnement</span> — pas des slogans.
             </h2>
           </motion.div>
@@ -98,42 +125,85 @@ const HomeFeaturesSection = () => {
         </div>
 
         {/* Features Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        <motion.ul
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0"
           variants={containerVariants}
         >
-          {features.map((feature, idx) => {
-            const Illustration = feature.Illustration;
+          {features.map((f) => {
+            const Illustration = f.Illustration;
             return (
-              <motion.div key={idx} variants={itemVariants}>
-                <Card className="group h-full border-slate-100 bg-slate-50/30 hover:bg-white hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 rounded-[24px] overflow-hidden p-0 flex flex-col gap-0">
+              <motion.li
+                key={f.n}
+                variants={itemVariants}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 280, damping: 22 }}
+                className="w-full max-w-md mx-auto md:max-w-none md:mx-0"
+              >
+                <article
+                  aria-labelledby={`mesure-${f.n}-title`}
+                  className={`group h-full rounded-2xl overflow-hidden flex flex-col transition-[box-shadow,border-color] duration-300 ${
+                    f.featured
+                      ? "bg-white shadow-md ring-2 ring-blue-500/25 hover:shadow-2xl hover:ring-blue-500/40"
+                      : "bg-white shadow-sm border border-slate-100 hover:shadow-xl hover:border-[#2c2876]/15"
+                  }`}
+                >
                   <div className="relative aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
-                    <div className="absolute inset-0 transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.03]">
+                    {/* Bringhurst hierarchy: drop non-featured opacity so the illustration reads as context, not content.
+                        Featured card stays full strength so it dominates the row. Hover lifts everything back to 100%. */}
+                    <div
+                      className={`absolute inset-0 transition-[transform,opacity] duration-500 ease-out motion-safe:group-hover:scale-[1.03] group-hover:opacity-100 ${
+                        f.featured ? "opacity-100" : "opacity-[0.78]"
+                      }`}
+                    >
                       <Illustration />
                     </div>
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-transparent to-slate-50/30 group-hover:to-white transition-colors duration-500" />
+                    {f.featured && (
+                      <span
+                        className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 inline-flex items-center gap-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-blue-600 text-white text-[9px] sm:text-[10px] font-black tracking-[0.12em] sm:tracking-[0.14em] shadow-sm"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        ★ LE PLUS RASSURANT
+                      </span>
+                    )}
+                    {/* Fade the SVG bottom into the card body — same trick as engagements: illustration blends, doesn't shout. */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-b from-transparent to-white" />
                   </div>
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-end mb-3">
-                      <Badge variant="secondary" className="bg-white text-slate-500 font-semibold border-slate-100 uppercase text-[10px] tracking-widest">
-                        {feature.tag}
-                      </Badge>
+                  <div className="p-5 sm:p-6 pt-4 sm:pt-5 flex-1 flex flex-col">
+                    {/* F-pattern landing: short blue keyword (left, hi-contrast) + counter (right). Eye reads keyword → title → bolded promise. */}
+                    <div className="flex items-baseline justify-between gap-2 mb-2.5 sm:mb-3">
+                      <span
+                        className="text-[11px] font-black uppercase tracking-[0.18em] sm:tracking-[0.22em] text-blue-600 truncate"
+                        style={{ fontFamily: "'Outfit', sans-serif" }}
+                      >
+                        {f.keyword}
+                      </span>
+                      <span
+                        className="text-[10px] font-bold tabular-nums text-slate-400 shrink-0"
+                        style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+                        aria-hidden="true"
+                      >
+                        N°{f.n} / 06
+                      </span>
                     </div>
-                    <CardTitle className="text-2xl font-bold text-[#1e1b4b]">
-                      {feature.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-slate-700 font-medium leading-relaxed">
-                      {feature.description}
+                    <h3
+                      id={`mesure-${f.n}-title`}
+                      className={`font-black text-[#2c2876] leading-snug mb-2.5 text-balance ${
+                        f.featured ? "text-[17px] sm:text-lg" : "text-[16px] sm:text-base"
+                      }`}
+                      style={{ fontFamily: "'Outfit', sans-serif" }}
+                    >
+                      <span className="sr-only">Preuve n°{f.n} — </span>
+                      {f.title}
+                    </h3>
+                    <p className="text-[15px] sm:text-sm text-slate-600 leading-relaxed">
+                      {renderBody(f.body, f.emphasis)}
                     </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  </div>
+                </article>
+              </motion.li>
             );
           })}
-        </motion.div>
-
+        </motion.ul>
       </motion.div>
     </section>
   );
