@@ -213,11 +213,11 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
         height: "100%",
       }}
     >
-      <div className="tarifs-art" style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
+      <div className="tarifs-art" style={{ position: "relative", width: "100%", aspectRatio: "24 / 9" }}>
         <PriceArt plan={plan} dark={dark} />
       </div>
 
-      <div style={{ position: "relative", padding: "20px 22px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
+      <div style={{ position: "relative", padding: "14px 16px 14px", display: "flex", flexDirection: "column", flex: 1 }}>
         {dark && (
           <div
             aria-label="Plan recommandé"
@@ -275,7 +275,7 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
           </div>
         )}
 
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 14 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 10 }}>
           <div
             style={{
               display: "inline-flex",
@@ -324,7 +324,7 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
             margin: 0,
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
-            fontSize: 22,
+            fontSize: 17,
             lineHeight: 1.15,
             letterSpacing: "-0.018em",
             color: titleC,
@@ -336,11 +336,11 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
         {plan.forWhom && (
           <p
             style={{
-              margin: "8px 0 0",
+              margin: "6px 0 0",
               fontFamily: "'Inter', sans-serif",
               fontWeight: 500,
-              fontSize: 13.5,
-              lineHeight: 1.45,
+              fontSize: 12.5,
+              lineHeight: 1.4,
               color: subC,
             }}
           >
@@ -350,22 +350,22 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
 
         <div
           aria-hidden="true"
-          style={{ width: 32, height: 2, background: ruleC, borderRadius: 1, marginTop: 16, marginBottom: 18, opacity: 0.85 }}
+          style={{ width: 24, height: 2, background: ruleC, borderRadius: 1, marginTop: 10, marginBottom: 10, opacity: 0.85 }}
         />
 
         {plan.features.length > 0 && (
-          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 9 }}>
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 5 }}>
             {plan.features.map((f, i) => (
               <li
                 key={i}
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "20px 1fr",
+                  gridTemplateColumns: "16px 1fr",
                   alignItems: "start",
-                  gap: 10,
+                  gap: 8,
                   fontFamily: "'Inter', sans-serif",
-                  fontSize: 14,
-                  lineHeight: 1.45,
+                  fontSize: 12.5,
+                  lineHeight: 1.35,
                   color: bodyC,
                   fontWeight: 500,
                 }}
@@ -376,9 +376,9 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
                     display: "inline-flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    width: 18,
-                    height: 18,
-                    borderRadius: 5,
+                    width: 14,
+                    height: 14,
+                    borderRadius: 4,
                     background: dark ? "rgba(59,130,246,0.2)" : "#eef4ff",
                     border: dark ? "1px solid rgba(59,130,246,0.36)" : "1px solid #d8e6ff",
                     marginTop: 1,
@@ -404,13 +404,13 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
         {plan.diffLine && (
           <div
             style={{
-              marginTop: 14,
-              padding: "10px 12px",
+              marginTop: 10,
+              padding: "8px 10px",
               borderRadius: 10,
               background: dark ? "rgba(255,255,255,0.05)" : "#fafafd",
               border: dark ? "1px solid rgba(255,255,255,0.08)" : "1px solid #eceaf6",
               fontFamily: "'Inter', sans-serif",
-              fontSize: 12.5,
+              fontSize: 12,
               fontWeight: 600,
               fontStyle: "italic",
               lineHeight: 1.4,
@@ -421,21 +421,21 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
           </div>
         )}
 
-        <div style={{ flex: 1, minHeight: 18 }} />
+        <div style={{ flex: 1, minHeight: 6 }} />
 
         <Link
           to="/learners/boutique"
           style={{
-            marginTop: 4,
+            marginTop: 10,
             width: "100%",
-            height: 44,
-            borderRadius: 14,
+            height: 38,
+            borderRadius: 12,
             background: ctaBg,
             color: ctaFg,
             border: dark ? "1px solid rgba(255,255,255,0.85)" : "1px solid " + INDIGO_DEEP,
             fontFamily: "'Outfit', sans-serif",
             fontWeight: 800,
-            fontSize: 15.5,
+            fontSize: 14.5,
             letterSpacing: "-0.005em",
             display: "inline-flex",
             alignItems: "center",
@@ -455,13 +455,13 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
         <Link
           to="/learners/boutique"
           style={{
-            marginTop: 10,
-            height: 28,
+            marginTop: 6,
+            height: 22,
             background: "transparent",
             color: linkC,
             fontFamily: "'Inter', sans-serif",
             fontWeight: 600,
-            fontSize: 13,
+            fontSize: 12.5,
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
@@ -1302,7 +1302,7 @@ const HomeTarifSection = () => {
           .tarifs-header { gap: 32px !important; }
           .tarifs-helper { gap: 18px !important; }
           .tarifs-trust { padding: 24px 32px !important; gap: 24px !important; }
-          .tarifs-art { aspect-ratio: 21 / 9 !important; }
+          .tarifs-art { aspect-ratio: 28 / 9 !important; }
         }
         @media (max-width: 1024px) {
           .tarifs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
