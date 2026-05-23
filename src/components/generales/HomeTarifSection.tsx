@@ -1,14 +1,756 @@
-import { useEffect, useState } from "react";
-import Btn3 from "./Button/Btn3";
-import Autres from "@components/boutiqueSite/ServiceNoCatégorie";
-import ServiceWithCategory from "@components/boutiqueSite/ServiceWithCategory";
-import Loader from "@/components/common/Loader";
+import { useEffect, useMemo, useState } from "react";
 import { fetchBoutiqueCategories, fetchBoutiqueServices } from "@/api/boutique/services";
 import { BoutiqueCategory, BoutiqueService } from "@/api/boutique/types";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { CreditCard } from "lucide-react";
+import Loader from "@/components/common/Loader";
+import { Link } from "react-router";
+
+// ──────────────────────────────────────────────────────────────
+// Smoni · Tarifs publics — design from Claude Design handoff (tarifs.html).
+// Backend-driven: formations = BoutiqueCategory[], plans = BoutiqueService[].
+// The DecisionHelper from the original mock is omitted because the profile→plan
+// mapping isn't exposed by the API yet; "recommended" is derived heuristically
+// from the active formation set (highest hours, then highest price).
+// ──────────────────────────────────────────────────────────────
+
+const INDIGO        = "#2c2876";
+const INDIGO_DEEP   = "#1e1b4b";
+const INDIGO_60     = "#7472b0";
+const INDIGO_20     = "#cfceea";
+const INDIGO_TINT   = "#f1f0fb";
+const INDIGO_BORDER = "#e6e3f5";
+const BLUE          = "#3b82f6";
+const BLUE_DEEP     = "#2563eb";
+const PAPER         = "#ffffff";
+const INK           = "#475569";
+
+const MONO = "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
+
+const ALL_INCLUDED = [
+  "Présentation à l'examen",
+  "Kilométrage illimité",
+  "Essence",
+  "Contrat écrit, prix au centime",
+  "Aucun supplément non prévu",
+];
+
+const RISK_REVERSAL = [
+  "Sans engagement de durée",
+  "Annulation gratuite sous 14 j",
+  "Présentation à l'examen incluse",
+];
+
+const TRUST_ROW = [
+  { v: "CPF",        l: "Mon Compte Formation" },
+  { v: "1 €/jour",   l: "Permis à 1 € (jeunes)" },
+  { v: "Région IDF", l: "Aide jusqu'à 1 300 €" },
+  { v: "3× / 4×",    l: "Paiement sans frais" },
+];
+
+// French thousand separator (narrow no-break space).
+const fmt = (n: number) =>
+  String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+
+const fmtPerHour = (n: number) =>
+  n.toFixed(2).replace(".", ",");
+
+// Pad a plan index to "01"/"02" style without depending on backend ids.
+const padIdx = (i: number) => String(i + 1).padStart(2, "0");
+
+// ──────────────────────────────────────────────────────────────
+// PriceArt — type-led illustration: the price IS the iconography.
+// ──────────────────────────────────────────────────────────────
+let _uid = 0;
+const uid = (p: string) => `${p}_${++_uid}`;
+
+interface PlanView {
+  id: number;
+  n: string;          // "01 / 06"
+  total: number;      // 6 (denominator)
+  tag: string;
+  name: string;
+  forWhom?: string;
+  price: number;
+  pricePerHour: string; // formatted
+  duration: string;     // "10 H"
+  validity?: string;
+  features: string[];
+  diffLine?: string;
+  isLowestPerHour?: boolean;
+}
+
+interface PriceArtProps {
+  plan: PlanView;
+  dark: boolean;
+}
+
+const PriceArt = ({ plan, dark }: PriceArtProps) => {
+  const ids = useMemo(
+    () => ({ bg: uid("bg"), dots: uid("dots"), diffuse: uid("df") }),
+    [],
+  );
+
+  const bgFill   = dark ? INDIGO_DEEP : `url(#${ids.bg})`;
+  const fg       = dark ? PAPER : INDIGO;
+  const fgSoft   = dark ? "rgba(255,255,255,0.55)" : INDIGO_60;
+  const fgMuted  = dark ? "rgba(255,255,255,0.16)" : INDIGO_20;
+  const shadowFill = dark ? "#0c0926" : INDIGO;
+  const shadowOp   = dark ? 0.55 : 0.32;
+
+  return (
+    <svg
+      viewBox="0 0 400 225"
+      width="100%"
+      height="100%"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ display: "block" }}
+      aria-hidden="true"
+    >
+      <defs>
+        {!dark && (
+          <radialGradient id={ids.bg} cx="32%" cy="55%" r="75%">
+            <stop offset="0%" stopColor="#e6e3ff" />
+            <stop offset="55%" stopColor="#f3f1ff" />
+            <stop offset="100%" stopColor="#f8fafc" />
+          </radialGradient>
+        )}
+        <pattern id={ids.dots} width="6" height="6" patternUnits="userSpaceOnUse">
+          <circle cx="3" cy="3" r="0.55" fill={dark ? "#ffffff" : INDIGO} fillOpacity={dark ? 0.08 : 0.06} />
+        </pattern>
+        <filter id={ids.diffuse} x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+      </defs>
+
+      <rect width="400" height="225" fill={bgFill} />
+      <rect width="400" height="225" fill={`url(#${ids.dots})`} />
+
+      <text x="200" y="56" textAnchor="middle" fill={fgSoft}
+        fontFamily="Outfit, sans-serif" fontWeight="700" fontSize="9"
+        letterSpacing="0.32em">À PARTIR DE · TTC</text>
+
+      {/* diffuse brand shadow */}
+      <text x="200" y="156" textAnchor="middle"
+        fill={shadowFill} opacity={shadowOp} filter={`url(#${ids.diffuse})`}
+        fontFamily="Outfit, sans-serif" fontWeight="900" letterSpacing="-0.04em">
+        <tspan fontSize="58" dy="-32">€</tspan>
+        <tspan fontSize="124" dy="32" dx="4">{fmt(plan.price)}</tspan>
+      </text>
+
+      <text x="200" y="152" textAnchor="middle"
+        fill={fg}
+        stroke={dark ? INDIGO_DEEP : PAPER}
+        strokeWidth={dark ? 2 : 3}
+        strokeLinejoin="round"
+        paintOrder="stroke"
+        fontFamily="Outfit, sans-serif" fontWeight="900" letterSpacing="-0.04em">
+        <tspan fontSize="58" dy="-32">€</tspan>
+        <tspan fontSize="124" dy="32" dx="4">{fmt(plan.price)}</tspan>
+      </text>
+
+      <line x1="40" y1="180" x2="360" y2="180" stroke={fgMuted} strokeWidth="1" />
+
+      <text x="40" y="200" fill={fgSoft}
+        fontFamily={MONO} fontWeight="700" fontSize="9"
+        letterSpacing="0.22em">{plan.n} / {String(plan.total).padStart(2, "0")}</text>
+
+      {!dark && (
+        <text x="200" y="201" textAnchor="middle" fill={fg}
+          fontFamily="Outfit, sans-serif" fontWeight="900" fontSize="14"
+          letterSpacing="-0.01em">{plan.duration}</text>
+      )}
+
+      {!dark && plan.validity && (
+        <text x="360" y="200" textAnchor="end" fill={fgSoft}
+          fontFamily={MONO} fontWeight="700" fontSize="9"
+          letterSpacing="0.22em">{plan.validity.toUpperCase()} DE VALIDITÉ</text>
+      )}
+
+      <rect x="197" y="184" width="6" height="2" rx="1" fill={BLUE} />
+    </svg>
+  );
+};
+
+// ──────────────────────────────────────────────────────────────
+// Plan card
+// ──────────────────────────────────────────────────────────────
+interface PlanCardProps {
+  plan: PlanView;
+  isRecommended: boolean;
+}
+
+const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
+  const dark = isRecommended;
+
+  const surface = dark ? INDIGO_DEEP : PAPER;
+  const border  = dark ? "#2a276b"   : "#eef0f7";
+  const titleC  = dark ? PAPER       : INDIGO_DEEP;
+  const subC    = dark ? "rgba(255,255,255,0.78)" : INK;
+  const tagBg   = dark ? "rgba(255,255,255,0.08)" : INDIGO_TINT;
+  const tagBd   = dark ? "rgba(255,255,255,0.16)" : INDIGO_BORDER;
+  const tagFg   = dark ? PAPER : INDIGO;
+  const ruleC   = dark ? "rgba(255,255,255,0.85)" : INDIGO;
+  const bodyC   = dark ? "rgba(255,255,255,0.78)" : INK;
+  const ctaBg   = dark ? PAPER : INDIGO_DEEP;
+  const ctaFg   = dark ? INDIGO_DEEP : PAPER;
+  const linkC   = dark ? "rgba(255,255,255,0.75)" : INDIGO_60;
+
+  const showBestValue = plan.isLowestPerHour && !isRecommended;
+
+  return (
+    <article
+      style={{
+        position: "relative",
+        background: surface,
+        border: `1px solid ${border}`,
+        borderRadius: 20,
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        boxShadow: dark
+          ? "0 1px 2px rgba(15, 23, 42, 0.06), 0 32px 70px -28px rgba(28, 25, 90, 0.5)"
+          : "0 1px 2px rgba(15, 23, 42, 0.04), 0 24px 48px -32px rgba(28, 25, 90, 0.18)",
+        transform: dark ? "translateY(-6px)" : "none",
+        transition: "transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease",
+        height: "100%",
+      }}
+    >
+      <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
+        <PriceArt plan={plan} dark={dark} />
+      </div>
+
+      <div style={{ position: "relative", padding: "26px 26px 26px", display: "flex", flexDirection: "column", flex: 1 }}>
+        {dark && (
+          <div
+            aria-label="Plan recommandé"
+            style={{
+              position: "absolute",
+              top: -16,
+              right: 20,
+              zIndex: 3,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "7px 12px 7px 10px",
+              background: BLUE,
+              color: PAPER,
+              fontFamily: MONO,
+              fontWeight: 700,
+              fontSize: 10,
+              letterSpacing: "0.22em",
+              borderRadius: 999,
+              textTransform: "uppercase",
+              boxShadow: "0 10px 24px -8px rgba(59,130,246,0.6), 0 0 0 4px " + INDIGO_DEEP,
+            }}
+          >
+            <span aria-hidden="true" style={{ width: 6, height: 6, background: PAPER, borderRadius: 999 }} />
+            Recommandé pour vous
+          </div>
+        )}
+
+        {showBestValue && (
+          <div
+            aria-label="Meilleur €/h"
+            style={{
+              position: "absolute",
+              top: -14,
+              right: 18,
+              zIndex: 3,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "6px 11px 6px 9px",
+              background: PAPER,
+              color: INDIGO_DEEP,
+              fontFamily: MONO,
+              fontWeight: 700,
+              fontSize: 10,
+              letterSpacing: "0.22em",
+              borderRadius: 999,
+              textTransform: "uppercase",
+              border: `1px solid ${INDIGO_BORDER}`,
+              boxShadow: "0 8px 20px -8px rgba(28,25,90,0.25)",
+            }}
+          >
+            <span aria-hidden="true" style={{ width: 6, height: 6, background: BLUE, borderRadius: 999 }} />
+            Meilleur €/h
+          </div>
+        )}
+
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8, marginBottom: 14 }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "baseline",
+              gap: 4,
+              padding: "5px 10px",
+              borderRadius: 999,
+              background: dark ? "rgba(59,130,246,0.18)" : "#eef4ff",
+              border: dark ? "1px solid rgba(59,130,246,0.32)" : "1px solid #d8e6ff",
+              color: dark ? "#bcd5ff" : BLUE_DEEP,
+              fontFamily: MONO,
+              fontSize: 11,
+              fontWeight: 700,
+              whiteSpace: "nowrap",
+            }}
+          >
+            <span style={{ fontSize: 13, fontFamily: "'Outfit', sans-serif", fontWeight: 800 }}>
+              {plan.pricePerHour}
+            </span>
+            <span style={{ opacity: 0.85, fontSize: 10, letterSpacing: "0.06em" }}>€/heure</span>
+          </div>
+
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              fontFamily: MONO,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.22em",
+              color: tagFg,
+              textTransform: "uppercase",
+              background: tagBg,
+              border: `1px solid ${tagBd}`,
+              padding: "5px 10px",
+              borderRadius: 999,
+            }}
+          >
+            {plan.tag}
+          </div>
+        </div>
+
+        <h3
+          style={{
+            margin: 0,
+            fontFamily: "'Outfit', sans-serif",
+            fontWeight: 800,
+            fontSize: 22,
+            lineHeight: 1.15,
+            letterSpacing: "-0.018em",
+            color: titleC,
+          }}
+        >
+          {plan.name}
+        </h3>
+
+        {plan.forWhom && (
+          <p
+            style={{
+              margin: "8px 0 0",
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 500,
+              fontSize: 13.5,
+              lineHeight: 1.45,
+              color: subC,
+            }}
+          >
+            {plan.forWhom}
+          </p>
+        )}
+
+        <div
+          aria-hidden="true"
+          style={{ width: 32, height: 2, background: ruleC, borderRadius: 1, marginTop: 16, marginBottom: 18, opacity: 0.85 }}
+        />
+
+        {plan.features.length > 0 && (
+          <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 9 }}>
+            {plan.features.map((f, i) => (
+              <li
+                key={i}
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "20px 1fr",
+                  alignItems: "start",
+                  gap: 10,
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 14,
+                  lineHeight: 1.45,
+                  color: bodyC,
+                  fontWeight: 500,
+                }}
+              >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 18,
+                    height: 18,
+                    borderRadius: 5,
+                    background: dark ? "rgba(59,130,246,0.2)" : "#eef4ff",
+                    border: dark ? "1px solid rgba(59,130,246,0.36)" : "1px solid #d8e6ff",
+                    marginTop: 1,
+                  }}
+                >
+                  <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+                    <path
+                      d="M1.5 5 L4 7.4 L8.5 2.5"
+                      fill="none"
+                      stroke={dark ? "#bcd5ff" : BLUE_DEEP}
+                      strokeWidth="1.9"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {plan.diffLine && (
+          <div
+            style={{
+              marginTop: 14,
+              padding: "10px 12px",
+              borderRadius: 10,
+              background: dark ? "rgba(255,255,255,0.05)" : "#fafafd",
+              border: dark ? "1px solid rgba(255,255,255,0.08)" : "1px solid #eceaf6",
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 12.5,
+              fontWeight: 600,
+              fontStyle: "italic",
+              lineHeight: 1.4,
+              color: dark ? "rgba(255,255,255,0.78)" : INDIGO_DEEP,
+            }}
+          >
+            {plan.diffLine}
+          </div>
+        )}
+
+        <div style={{ flex: 1, minHeight: 18 }} />
+
+        <Link
+          to="/learners/boutique"
+          style={{
+            marginTop: 4,
+            width: "100%",
+            height: 50,
+            borderRadius: 14,
+            background: ctaBg,
+            color: ctaFg,
+            border: dark ? "1px solid rgba(255,255,255,0.85)" : "1px solid " + INDIGO_DEEP,
+            fontFamily: "'Outfit', sans-serif",
+            fontWeight: 800,
+            fontSize: 15.5,
+            letterSpacing: "-0.005em",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 10,
+            textDecoration: "none",
+            boxShadow: dark ? "0 12px 28px -14px rgba(255,255,255,0.4)" : "0 12px 28px -14px rgba(28,25,90,0.5)",
+          }}
+        >
+          {dark ? "Réserver ce forfait" : "Choisir ce forfait"}
+          <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true">
+            <path d="M1 6 H14 M10 1 L15 6 L10 11"
+              fill="none" stroke={ctaFg} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </Link>
+
+        <Link
+          to="/learners/boutique"
+          style={{
+            marginTop: 10,
+            height: 28,
+            background: "transparent",
+            color: linkC,
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 600,
+            fontSize: 13,
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 4,
+            textDecoration: "underline",
+            textDecorationThickness: 1,
+            textUnderlineOffset: 3,
+          }}
+        >
+          Voir le détail complet
+        </Link>
+      </div>
+    </article>
+  );
+};
+
+// ──────────────────────────────────────────────────────────────
+// Static brand strips
+// ──────────────────────────────────────────────────────────────
+const RiskStrip = () => (
+  <div
+    style={{
+      margin: "0 0 28px",
+      padding: "14px 22px",
+      borderRadius: 14,
+      background: "#fcfcff",
+      border: `1px dashed ${INDIGO_BORDER}`,
+      display: "flex",
+      flexWrap: "wrap",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "8px 22px",
+    }}
+  >
+    {RISK_REVERSAL.map((t, i) => (
+      <span
+        key={t}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 9,
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 13,
+          fontWeight: 600,
+          color: INDIGO_DEEP,
+        }}
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M7 1 L12 3.5 V7 Q12 11 7 13 Q2 11 2 7 V3.5 Z"
+            fill={BLUE} fillOpacity="0.12" stroke={BLUE} strokeWidth="1.2" />
+          <path d="M4.5 7 L6.5 9 L9.5 5"
+            fill="none" stroke={BLUE_DEEP} strokeWidth="1.6"
+            strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        {t}
+        {i < RISK_REVERSAL.length - 1 && (
+          <span aria-hidden="true" style={{ width: 1, height: 16, background: INDIGO_20, marginLeft: 22 }} />
+        )}
+      </span>
+    ))}
+  </div>
+);
+
+const AllIncluded = () => (
+  <div
+    style={{
+      marginTop: 28,
+      padding: "20px 24px",
+      border: `1px solid ${INDIGO_BORDER}`,
+      borderRadius: 16,
+      background: "#fafafd",
+      display: "grid",
+      gridTemplateColumns: "auto minmax(0, 1fr)",
+      gap: 28,
+      alignItems: "center",
+    }}
+    className="tarifs-included"
+  >
+    <div
+      style={{
+        fontFamily: MONO,
+        fontSize: 10,
+        fontWeight: 700,
+        letterSpacing: "0.22em",
+        color: INDIGO,
+        textTransform: "uppercase",
+        whiteSpace: "nowrap",
+      }}
+    >
+      Tous les forfaits incluent
+    </div>
+    <ul
+      style={{
+        listStyle: "none",
+        padding: 0,
+        margin: 0,
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "10px 18px",
+      }}
+    >
+      {ALL_INCLUDED.map((f) => (
+        <li
+          key={f}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 13.5,
+            fontWeight: 600,
+            color: INDIGO_DEEP,
+          }}
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <circle cx="7" cy="7" r="6.5" fill="none" stroke={INDIGO_20} />
+            <path d="M3.5 7.2 L6 9.5 L10.5 4.5"
+              fill="none" stroke={BLUE_DEEP} strokeWidth="1.8"
+              strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          {f}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const TrustFooter = () => (
+  <div
+    style={{
+      marginTop: 28,
+      position: "relative",
+      padding: "32px 44px",
+      borderRadius: 24,
+      background: INDIGO_DEEP,
+      color: PAPER,
+      display: "grid",
+      gridTemplateColumns: "auto 1fr",
+      gap: 36,
+      alignItems: "center",
+      overflow: "hidden",
+      boxShadow: "0 24px 60px -28px rgba(28, 25, 90, 0.55)",
+    }}
+    className="tarifs-trust"
+  >
+    <div
+      aria-hidden="true"
+      style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1px) 0 0 / 6px 6px",
+        pointerEvents: "none",
+      }}
+    />
+    <div
+      aria-hidden="true"
+      style={{
+        position: "absolute",
+        left: "4%", top: "-50%",
+        width: 360, height: 360, borderRadius: "50%",
+        background: "radial-gradient(circle, rgba(90,78,184,0.4) 0%, rgba(28,25,90,0) 65%)",
+        filter: "blur(8px)",
+        pointerEvents: "none",
+      }}
+    />
+
+    <div style={{ position: "relative", maxWidth: 280 }}>
+      <div
+        style={{
+          fontFamily: MONO,
+          fontSize: 10,
+          fontWeight: 700,
+          letterSpacing: "0.22em",
+          color: "rgba(255,255,255,0.6)",
+          textTransform: "uppercase",
+          marginBottom: 10,
+        }}
+      >
+        03 · Financement
+      </div>
+      <div
+        style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontWeight: 900,
+          fontSize: 26,
+          lineHeight: 1.1,
+          letterSpacing: "-0.02em",
+        }}
+      >
+        Aucun ne paye plein pot. <span style={{ color: BLUE }}>4 manières</span> d'alléger.
+      </div>
+    </div>
+
+    <div
+      style={{
+        position: "relative",
+        display: "grid",
+        gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+        gap: 0,
+        alignItems: "stretch",
+      }}
+      className="tarifs-trust-row"
+    >
+      {TRUST_ROW.map((item, i) => (
+        <div
+          key={item.l}
+          style={{
+            padding: "0 22px",
+            borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.12)",
+            display: "flex", flexDirection: "column", justifyContent: "center", gap: 6,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 900,
+              fontSize: 22,
+              lineHeight: 1.1,
+              letterSpacing: "-0.015em",
+            }}
+          >
+            {item.v}
+          </div>
+          <div
+            style={{
+              fontFamily: MONO,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.18em",
+              color: "rgba(255,255,255,0.6)",
+              textTransform: "uppercase",
+            }}
+          >
+            {item.l}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ──────────────────────────────────────────────────────────────
+// Map a BoutiqueService into the view-model the cards expect.
+// ──────────────────────────────────────────────────────────────
+const toPlanView = (s: BoutiqueService, index: number, total: number): PlanView => {
+  const price = Number(s.price) || 0;
+  const time = Number(s.time) || 0;
+  const perHour = time > 0 ? price / time : price;
+  const features = (s.items || [])
+    .filter((it) => it.status)
+    .map((it) => it.label);
+  return {
+    id: s.id,
+    n: padIdx(index),
+    total,
+    tag: "Forfait",
+    name: s.title,
+    price,
+    pricePerHour: fmtPerHour(perHour),
+    duration: time > 0 ? `${time} H` : "—",
+    features,
+  };
+};
+
+const flagRecommended = (plans: PlanView[]): PlanView[] => {
+  if (plans.length === 0) return plans;
+  // recommended = max hours, tiebreak max price
+  let rec = 0;
+  for (let i = 1; i < plans.length; i++) {
+    const a = plans[i];
+    const b = plans[rec];
+    const aHours = parseInt(a.duration, 10) || 0;
+    const bHours = parseInt(b.duration, 10) || 0;
+    if (aHours > bHours || (aHours === bHours && a.price > b.price)) rec = i;
+  }
+  // best €/h = lowest pricePerHour
+  let cheap = 0;
+  for (let i = 1; i < plans.length; i++) {
+    if (parseFloat(plans[i].pricePerHour.replace(",", ".")) <
+        parseFloat(plans[cheap].pricePerHour.replace(",", "."))) {
+      cheap = i;
+    }
+  }
+  return plans.map((p, i) => ({
+    ...p,
+    isLowestPerHour: i === cheap && i !== rec,
+    // we expose the recommended flag via a separate state, but tag the plan too
+  })).map((p, i) => (i === rec ? { ...p, _recommended: true } as PlanView : p));
+};
 
 const HomeTarifSection = () => {
   const [categories, setCategories] = useState<BoutiqueCategory[]>([]);
@@ -16,7 +758,7 @@ const HomeTarifSection = () => {
   const [services, setServices] = useState<BoutiqueService[]>([]);
   const [loadingCategories, setLoadingCategories] = useState(true);
   const [loadingServices, setLoadingServices] = useState(false);
-  const [selectedType, setSelectedType] = useState<string>("automatic");
+  const [selectedType, setSelectedType] = useState<"automatic" | "manual">("automatic");
 
   useEffect(() => {
     setLoadingCategories(true);
@@ -29,9 +771,9 @@ const HomeTarifSection = () => {
       .finally(() => setLoadingCategories(false));
   }, []);
 
-  const currentLabel = (categories.find((cat) => cat.id === active)?.label || "").toLowerCase().trim();
-
-  // Only "Autres" and "CPF" are special (no type filter)
+  const currentLabel = (categories.find((c) => c.id === active)?.label || "")
+    .toLowerCase()
+    .trim();
   const isAutres = currentLabel.includes("autres") || currentLabel.includes("cpf");
 
   useEffect(() => {
@@ -45,124 +787,342 @@ const HomeTarifSection = () => {
       .then((res) => setServices(res.data))
       .catch(() => setServices([]))
       .finally(() => setLoadingServices(false));
-  }, [active, selectedType, categories, isAutres]);
+  }, [active, selectedType, isAutres]);
 
-  const renderContent = () => {
-    if (loadingServices) return <Loader />;
-    const currentCat = categories.find((cat) => cat.id === active);
-    const label = currentCat?.label.toLowerCase() || "";
-    if (label.includes("classique")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (label.includes("cs")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (label.includes("aac")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (label.includes("location")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (label.includes("passerelle")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (label.includes("post-permis")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (label.includes("professionnels")) return <ServiceWithCategory services={services} selectedType={selectedType} />;
-    if (isAutres) return <Autres />;
-    // Default: show services with category layout
-    return <ServiceWithCategory services={services} selectedType={selectedType} />;
-  };
+  const plans = useMemo(() => {
+    const base = services.map((s, i) => toPlanView(s, i, services.length));
+    return flagRecommended(base);
+  }, [services]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+  const recommendedId =
+    (plans.find((p: any) => p._recommended) || plans[0])?.id ?? null;
 
   return (
-    <motion.section
-      className="py-16 sm:py-20 md:py-28 px-4 sm:px-6 md:px-10 xl:px-32 bg-white"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      variants={containerVariants}
+    <section
+      aria-labelledby="tarifs-heading"
+      className="tarifs-section"
+      style={{
+        position: "relative",
+        padding: "96px 24px 120px",
+        background: "#ffffff",
+        overflow: "hidden",
+      }}
     >
-      {/* Section Header */}
-      <motion.div className="text-center mb-10 sm:mb-12 space-y-4" variants={itemVariants}>
-        <Badge
-          variant="secondary"
-          className="px-4 py-1.5 text-xs font-semibold tracking-wider uppercase bg-primary/10 text-primary border-primary/20 rounded-full"
-        >
-          <CreditCard className="w-3 h-3 mr-1.5" />
-          Tarifs publics
-        </Badge>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground">
-          Combien ça coûte. Tout. Au centime.
-        </h2>
-        <p className="text-slate-700 text-base sm:text-lg max-w-xl mx-auto">
-          On affiche tout parce qu'on en a marre du « on en parle quand vous venez ». CPF, Permis 1€/jour, aide Région IDF, paiement 3×/4× — tout est possible.
-        </p>
-      </motion.div>
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", top: 0, left: 0, right: 0, height: 1,
+          background: "linear-gradient(to right, transparent 0%, rgba(44,40,118,0.16) 35%, rgba(44,40,118,0.16) 65%, transparent 100%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: -160, left: "50%", transform: "translateX(-50%)",
+          width: 1200, height: 560,
+          pointerEvents: "none",
+          background: "radial-gradient(ellipse 50% 60% at 50% 50%, rgba(44,40,118,0.07) 0%, rgba(59,130,246,0.04) 35%, rgba(255,255,255,0) 70%)",
+          filter: "blur(6px)",
+        }}
+      />
 
-      {/* Category Tabs — wrapping chip strip with explicit affordance */}
-      <motion.div className="flex flex-col items-center gap-3" variants={itemVariants}>
-        {loadingCategories ? (
-          <Loader />
-        ) : (
-          <>
-            <p className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-              Choisissez votre formation
-            </p>
+      <div style={{ position: "relative", maxWidth: 1280, margin: "0 auto" }}>
+        {/* Header */}
+        <header className="tarifs-header">
+          <div>
             <div
-              role="tablist"
-              aria-label="Catégories de tarifs"
-              className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                fontFamily: MONO,
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.28em",
+                color: INDIGO,
+                background: INDIGO_TINT,
+                border: `1px solid ${INDIGO_BORDER}`,
+                borderRadius: 999,
+                padding: "8px 14px",
+                marginBottom: 24,
+                textTransform: "uppercase",
+              }}
             >
-              {categories.map((item) => (
-                <Btn3 key={item.id} item={item} active={active} setActive={setActive} />
-              ))}
+              <span aria-hidden="true" style={{ width: 6, height: 6, background: BLUE, borderRadius: 999 }} />
+              Tarifs publics
             </div>
-          </>
-        )}
-      </motion.div>
 
-      {/* Transmission type selector — hidden for CPF/Autres where it doesn't apply */}
-      {!loadingCategories && !isAutres && (
-        <motion.div
-          className="mt-6 flex flex-wrap items-center justify-center gap-3"
-          variants={itemVariants}
+            <h2
+              id="tarifs-heading"
+              style={{
+                margin: 0,
+                fontFamily: "'Outfit', sans-serif",
+                fontWeight: 900,
+                lineHeight: 1.04,
+                letterSpacing: "-0.028em",
+                color: INDIGO_DEEP,
+              }}
+              className="tarifs-title"
+            >
+              Combien ça coûte.{" "}
+              <span style={{ color: INDIGO }}>Tout.</span>{" "}
+              <span
+                style={{
+                  fontStyle: "italic",
+                  fontWeight: 800,
+                  background: `linear-gradient(135deg, ${INDIGO} 0%, ${BLUE} 100%)`,
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Au centime.
+              </span>
+            </h2>
+          </div>
+
+          <div style={{ paddingBottom: 10 }}>
+            <p
+              style={{
+                margin: 0,
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 18,
+                lineHeight: 1.55,
+                color: "#334155",
+                fontWeight: 500,
+                maxWidth: 460,
+              }}
+            >
+              On affiche tout parce qu'on en a marre du « <em style={{ color: INDIGO_DEEP, fontStyle: "normal", fontWeight: 600 }}>on en parle quand vous venez</em> ».
+              CPF, Permis 1 €/jour, aide Région IDF, paiement 3× / 4× —{" "}
+              <strong style={{ color: INDIGO_DEEP, fontWeight: 700 }}>tout est possible</strong>.
+            </p>
+          </div>
+        </header>
+
+        {/* Selectors */}
+        <div
+          className="tarifs-selectors"
+          style={{
+            position: "relative",
+            padding: "20px 24px",
+            background: INDIGO_TINT,
+            border: `1px solid ${INDIGO_BORDER}`,
+            borderRadius: 18,
+            marginBottom: 20,
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr) auto",
+            gap: 28,
+            alignItems: "center",
+          }}
         >
-          <Button
-            onClick={() => setSelectedType("automatic")}
-            variant={selectedType === "automatic" ? "default" : "outline"}
-            aria-pressed={selectedType === "automatic"}
-            className={`rounded-xl w-full sm:w-[180px] h-12 text-base font-semibold transition-all ${
-              selectedType === "automatic"
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                : "border-border text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Automatique
-          </Button>
-          <Button
-            onClick={() => setSelectedType("manual")}
-            variant={selectedType === "manual" ? "default" : "outline"}
-            aria-pressed={selectedType === "manual"}
-            className={`rounded-xl w-full sm:w-[180px] h-12 text-base font-semibold transition-all ${
-              selectedType === "manual"
-                ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                : "border-border text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Manuel
-          </Button>
-        </motion.div>
-      )}
+          <div style={{ display: "flex", flexDirection: "column", gap: 12, minWidth: 0 }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+                fontFamily: MONO,
+                fontSize: 10,
+                fontWeight: 700,
+                letterSpacing: "0.22em",
+                color: INDIGO,
+                textTransform: "uppercase",
+              }}
+            >
+              <span aria-hidden="true">01</span>
+              <span aria-hidden="true" style={{ width: 18, height: 1, background: INDIGO_20 }} />
+              Formation
+            </div>
+            {loadingCategories ? (
+              <Loader />
+            ) : (
+              <div role="tablist" aria-label="Formations" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                {categories.map((f) => {
+                  const isActive = f.id === active;
+                  return (
+                    <button
+                      key={f.id}
+                      role="tab"
+                      type="button"
+                      aria-selected={isActive}
+                      onClick={() => setActive(f.id)}
+                      style={{
+                        padding: "9px 14px",
+                        borderRadius: 999,
+                        border: `1px solid ${isActive ? INDIGO_DEEP : INDIGO_BORDER}`,
+                        background: isActive ? INDIGO_DEEP : PAPER,
+                        color: isActive ? PAPER : INDIGO_DEEP,
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: 13,
+                        fontWeight: isActive ? 700 : 600,
+                        cursor: "pointer",
+                        transition: "background 160ms ease, color 160ms ease, border-color 160ms ease",
+                      }}
+                    >
+                      {f.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
-      {/* Content — flows with the page, no inner scroll */}
-      <div className="mx-auto w-full max-w-6xl mt-10 sm:mt-12">{renderContent()}</div>
-    </motion.section>
+          {!isAutres && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 10,
+                  fontFamily: MONO,
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: "0.22em",
+                  color: INDIGO,
+                  textTransform: "uppercase",
+                }}
+              >
+                <span aria-hidden="true">02</span>
+                <span aria-hidden="true" style={{ width: 18, height: 1, background: INDIGO_20 }} />
+                Boîte
+              </div>
+              <div
+                role="radiogroup"
+                aria-label="Type de boîte de vitesses"
+                style={{
+                  display: "inline-flex",
+                  padding: 4,
+                  background: PAPER,
+                  border: `1px solid ${INDIGO_BORDER}`,
+                  borderRadius: 999,
+                }}
+              >
+                {([
+                  { id: "automatic", label: "Automatique" },
+                  { id: "manual",    label: "Manuel" },
+                ] as const).map((t) => {
+                  const isActive = t.id === selectedType;
+                  return (
+                    <button
+                      key={t.id}
+                      role="radio"
+                      type="button"
+                      aria-checked={isActive}
+                      onClick={() => setSelectedType(t.id)}
+                      style={{
+                        padding: "9px 22px",
+                        borderRadius: 999,
+                        border: "none",
+                        background: isActive ? INDIGO_DEEP : "transparent",
+                        color: isActive ? PAPER : INDIGO_DEEP,
+                        fontFamily: "'Inter', sans-serif",
+                        fontSize: 13.5,
+                        fontWeight: isActive ? 700 : 600,
+                        cursor: "pointer",
+                        transition: "background 160ms ease, color 160ms ease",
+                      }}
+                    >
+                      {t.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+
+        <RiskStrip />
+
+        {/* Cards grid */}
+        {loadingServices ? (
+          <Loader />
+        ) : plans.length === 0 ? (
+          <div
+            style={{
+              padding: "48px 24px",
+              textAlign: "center",
+              color: INK,
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 14,
+              border: `1px dashed ${INDIGO_BORDER}`,
+              borderRadius: 16,
+            }}
+          >
+            Aucun forfait disponible pour cette sélection.
+          </div>
+        ) : (
+          <ol
+            aria-label="Forfaits disponibles"
+            className="tarifs-grid"
+            style={{
+              listStyle: "none",
+              margin: 0,
+              padding: 0,
+              display: "grid",
+              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gap: 24,
+              alignItems: "stretch",
+            }}
+          >
+            {plans.map((plan) => (
+              <li key={plan.id} style={{ display: "flex" }}>
+                <div style={{ width: "100%" }}>
+                  <PlanCard plan={plan} isRecommended={plan.id === recommendedId} />
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        <AllIncluded />
+        <TrustFooter />
+
+        <p
+          style={{
+            marginTop: 22,
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 13,
+            lineHeight: 1.55,
+            color: INDIGO_60,
+            textAlign: "center",
+            maxWidth: 780,
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          Tarifs TTC. Frais d'inscription, présentation à l'examen et code en ligne inclus dans tous les forfaits.
+          Devis détaillé sous 24 h ouvrées sur demande — sans engagement.
+        </p>
+      </div>
+
+      {/* Responsive: collapse selectors / header / grid below desktop */}
+      <style>{`
+        .tarifs-title { font-size: 60px; }
+        .tarifs-header {
+          display: grid;
+          grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+          gap: 56px;
+          align-items: end;
+          margin-bottom: 48px;
+        }
+        @media (max-width: 1024px) {
+          .tarifs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+          .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 0 !important; }
+        }
+        @media (max-width: 768px) {
+          .tarifs-section { padding: 64px 16px 80px !important; }
+          .tarifs-title { font-size: 36px; }
+          .tarifs-header { grid-template-columns: 1fr !important; gap: 20px !important; margin-bottom: 28px !important; }
+          .tarifs-selectors { grid-template-columns: 1fr !important; gap: 18px !important; }
+          .tarifs-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .tarifs-included { grid-template-columns: 1fr !important; gap: 14px !important; }
+          .tarifs-trust { grid-template-columns: 1fr !important; padding: 24px !important; gap: 24px !important; }
+          .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+        }
+      `}</style>
+    </section>
   );
 };
 
