@@ -1,15 +1,14 @@
-import { useEffect, useMemo, useState } from "react";
-import { fetchBoutiqueCategories, fetchBoutiqueServices } from "@/api/boutique/services";
-import { BoutiqueCategory, BoutiqueService } from "@/api/boutique/types";
-import Loader from "@/components/common/Loader";
+import { useMemo, useState } from "react";
+import { PRICING, PROFILES, type StaticBoutiqueService } from "@/data/pricingData";
 import { Link } from "react-router";
 
 // ──────────────────────────────────────────────────────────────
 // Smoni · Tarifs publics — design from Claude Design handoff (tarifs.html).
-// Backend-driven: formations = BoutiqueCategory[], plans = BoutiqueService[].
-// The DecisionHelper from the original mock is omitted because the profile→plan
-// mapping isn't exposed by the API yet; "recommended" is derived heuristically
-// from the active formation set (highest hours, then highest price).
+// Data is statically embedded from src/data/pricingData.ts (SSG-friendly,
+// no runtime fetch). The DecisionHelper maps a user profile → recommended
+// plan via PROFILES[].matchTitle when the active category is Permis B
+// Classique. Other categories fall back to the heuristic (max hours,
+// tiebreak max price).
 // ──────────────────────────────────────────────────────────────
 
 const INDIGO        = "#2c2876";
@@ -48,7 +47,7 @@ const TRUST_ROW = [
 
 // French thousand separator (narrow no-break space).
 const fmt = (n: number) =>
-  String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
 const fmtPerHour = (n: number) =>
   n.toFixed(2).replace(".", ",");
@@ -704,12 +703,191 @@ const TrustFooter = () => (
 );
 
 // ──────────────────────────────────────────────────────────────
-// Map a BoutiqueService into the view-model the cards expect.
+// DecisionHelper — profile chips → recommended plan readout.
 // ──────────────────────────────────────────────────────────────
-const toPlanView = (s: BoutiqueService, index: number, total: number): PlanView => {
+interface DecisionHelperProps {
+  profile: string | null;
+  onPick: (id: string | null) => void;
+  matchedPlan: PlanView | null;
+  planCount: number;
+}
+
+const DecisionHelper = ({ profile, onPick, matchedPlan, planCount }: DecisionHelperProps) => {
+  const eyebrow =
+    planCount === 1
+      ? "Pas envie de comparer 1 forfait ?"
+      : `Pas envie de comparer ${planCount} forfaits ?`;
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        padding: "22px 28px 24px",
+        background: "linear-gradient(135deg, #1e1b4b 0%, #2c2876 100%)",
+        borderRadius: 20,
+        marginBottom: 20,
+        color: PAPER,
+        overflow: "hidden",
+      }}
+    >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute", inset: 0,
+          background: "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.07) 1px, transparent 1px) 0 0 / 6px 6px",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          right: "-10%", top: "-60%",
+          width: 480, height: 480, borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(59,130,246,0.32) 0%, rgba(28,25,90,0) 65%)",
+          filter: "blur(10px)",
+          pointerEvents: "none",
+        }}
+      />
+
+      <div
+        className="tarifs-helper"
+        style={{
+          position: "relative",
+          display: "grid",
+          gap: 28,
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              fontFamily: MONO,
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.28em",
+              color: "rgba(255,255,255,0.6)",
+              textTransform: "uppercase",
+              marginBottom: 14,
+            }}
+          >
+            <span aria-hidden="true" style={{ width: 6, height: 6, background: BLUE, borderRadius: 999 }} />
+            {eyebrow}
+          </div>
+          <div
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 900,
+              fontSize: 24,
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+              color: PAPER,
+              marginBottom: 16,
+              textWrap: "balance",
+            }}
+          >
+            Dites-nous qui vous êtes — on vous pointe le bon.
+          </div>
+          <div
+            role="radiogroup"
+            aria-label="Quel est votre profil"
+            style={{ display: "flex", flexWrap: "wrap", gap: 8 }}
+          >
+            {PROFILES.map((p) => {
+              const active = p.id === profile;
+              return (
+                <button
+                  key={p.id}
+                  role="radio"
+                  type="button"
+                  aria-checked={active}
+                  onClick={() => onPick(active ? null : p.id)}
+                  style={{
+                    padding: "10px 16px",
+                    borderRadius: 999,
+                    border: `1px solid ${active ? BLUE : "rgba(255,255,255,0.16)"}`,
+                    background: active ? BLUE : "rgba(255,255,255,0.06)",
+                    color: PAPER,
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: 13.5,
+                    fontWeight: active ? 700 : 600,
+                    letterSpacing: "-0.005em",
+                    cursor: "pointer",
+                    transition: "background 160ms ease, border-color 160ms ease",
+                  }}
+                >
+                  {p.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div
+          style={{
+            padding: "16px 20px",
+            borderRadius: 14,
+            background: "rgba(255,255,255,0.08)",
+            border: "1px solid rgba(255,255,255,0.16)",
+            minWidth: 240,
+            textAlign: "left",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: MONO,
+              fontSize: 9,
+              fontWeight: 700,
+              letterSpacing: "0.22em",
+              color: "rgba(255,255,255,0.55)",
+              textTransform: "uppercase",
+              marginBottom: 8,
+            }}
+          >
+            {profile && matchedPlan ? "Pour votre profil" : "En attente de votre profil"}
+          </div>
+          <div
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 900,
+              fontSize: 20,
+              lineHeight: 1.15,
+              color: PAPER,
+              marginBottom: profile && matchedPlan ? 4 : 0,
+              textWrap: "balance",
+            }}
+          >
+            {profile && matchedPlan ? matchedPlan.name : "—"}
+          </div>
+          {profile && matchedPlan && (
+            <div
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 12.5,
+                color: "rgba(255,255,255,0.7)",
+                fontWeight: 500,
+              }}
+            >
+              {matchedPlan.duration} · {fmt(matchedPlan.price)} € TTC · {matchedPlan.pricePerHour} €/h
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ──────────────────────────────────────────────────────────────
+// Map a static service into the view-model the cards expect.
+// `hour` is the user-facing duration ("10 H"); `time` is minutes/session.
+// ──────────────────────────────────────────────────────────────
+const toPlanView = (s: StaticBoutiqueService, index: number, total: number): PlanView => {
   const price = Number(s.price) || 0;
-  const time = Number(s.time) || 0;
-  const perHour = time > 0 ? price / time : price;
+  const hours = Number(s.hour) || 0;
+  const perHour = hours > 0 ? price / hours : price;
   const features = (s.items || [])
     .filter((it) => it.status)
     .map((it) => it.label);
@@ -721,81 +899,89 @@ const toPlanView = (s: BoutiqueService, index: number, total: number): PlanView 
     name: s.title,
     price,
     pricePerHour: fmtPerHour(perHour),
-    duration: time > 0 ? `${time} H` : "—",
+    duration: hours > 0 ? `${hours} H` : "—",
     features,
   };
 };
 
-const flagRecommended = (plans: PlanView[]): PlanView[] => {
-  if (plans.length === 0) return plans;
-  // recommended = max hours, tiebreak max price
-  let rec = 0;
-  for (let i = 1; i < plans.length; i++) {
-    const a = plans[i];
-    const b = plans[rec];
-    const aHours = parseInt(a.duration, 10) || 0;
-    const bHours = parseInt(b.duration, 10) || 0;
-    if (aHours > bHours || (aHours === bHours && a.price > b.price)) rec = i;
-  }
-  // best €/h = lowest pricePerHour
-  let cheap = 0;
-  for (let i = 1; i < plans.length; i++) {
-    if (parseFloat(plans[i].pricePerHour.replace(",", ".")) <
-        parseFloat(plans[cheap].pricePerHour.replace(",", "."))) {
-      cheap = i;
-    }
-  }
-  return plans.map((p, i) => ({
-    ...p,
-    isLowestPerHour: i === cheap && i !== rec,
-    // we expose the recommended flag via a separate state, but tag the plan too
-  })).map((p, i) => (i === rec ? { ...p, _recommended: true } as PlanView : p));
-};
-
 const HomeTarifSection = () => {
-  const [categories, setCategories] = useState<BoutiqueCategory[]>([]);
-  const [active, setActive] = useState<number | null>(null);
-  const [services, setServices] = useState<BoutiqueService[]>([]);
-  const [loadingCategories, setLoadingCategories] = useState(true);
-  const [loadingServices, setLoadingServices] = useState(false);
-  const [selectedType, setSelectedType] = useState<"automatic" | "manual">("automatic");
+  const categories = PRICING.categories;
+  const [activeFormation, setActiveFormation] = useState<number>(categories[0].id);
+  const [transmission, setTransmission] = useState<"automatic" | "manual">("automatic");
+  const [profile, setProfile] = useState<string | null>(null);
 
-  useEffect(() => {
-    setLoadingCategories(true);
-    fetchBoutiqueCategories()
-      .then((res) => {
-        setCategories(res.data);
-        setActive(res.data.length > 0 ? res.data[0].id : null);
-      })
-      .catch(() => setCategories([]))
-      .finally(() => setLoadingCategories(false));
-  }, []);
-
-  const currentLabel = (categories.find((c) => c.id === active)?.label || "")
+  const currentLabel = (categories.find((c) => c.id === activeFormation)?.label || "")
     .toLowerCase()
     .trim();
   const isAutres = currentLabel.includes("autres") || currentLabel.includes("cpf");
 
-  useEffect(() => {
-    if (active == null) {
-      setServices([]);
-      return;
-    }
-    const typeToUse = isAutres ? undefined : selectedType;
-    setLoadingServices(true);
-    fetchBoutiqueServices(active, typeToUse)
-      .then((res) => setServices(res.data))
-      .catch(() => setServices([]))
-      .finally(() => setLoadingServices(false));
-  }, [active, selectedType, isAutres]);
+  const services = useMemo<StaticBoutiqueService[]>(() => {
+    const bucket = PRICING.services[String(activeFormation)];
+    if (!bucket) return [];
+    if (bucket.any && bucket.any.length > 0) return bucket.any;
+    return bucket[transmission] ?? [];
+  }, [activeFormation, transmission]);
 
-  const plans = useMemo(() => {
+  const { plans, recommendedId, matchedPlan } = useMemo(() => {
     const base = services.map((s, i) => toPlanView(s, i, services.length));
-    return flagRecommended(base);
-  }, [services]);
 
-  const recommendedId =
-    (plans.find((p: any) => p._recommended) || plans[0])?.id ?? null;
+    if (base.length === 0) {
+      return { plans: base, recommendedId: null as number | null, matchedPlan: null as PlanView | null };
+    }
+
+    // Profile match — only attempts when active category has plans named per
+    // PROFILES.matchTitle (currently only category 1 / Permis B Classique).
+    let recIndex = -1;
+    if (profile) {
+      const match = PROFILES.find((p) => p.id === profile);
+      if (match) {
+        recIndex = base.findIndex((p) => p.name === match.matchTitle);
+      }
+    }
+
+    // Heuristic fallback: max hours, tiebreak max price.
+    if (recIndex < 0) {
+      recIndex = 0;
+      for (let i = 1; i < base.length; i++) {
+        const a = base[i];
+        const b = base[recIndex];
+        const aHours = parseInt(a.duration, 10) || 0;
+        const bHours = parseInt(b.duration, 10) || 0;
+        if (aHours > bHours || (aHours === bHours && a.price > b.price)) recIndex = i;
+      }
+    }
+
+    // Cheapest €/h (only shown when it's NOT the recommended one).
+    let cheap = 0;
+    for (let i = 1; i < base.length; i++) {
+      if (parseFloat(base[i].pricePerHour.replace(",", ".")) <
+          parseFloat(base[cheap].pricePerHour.replace(",", "."))) {
+        cheap = i;
+      }
+    }
+
+    const decorated = base.map((p, i) => ({
+      ...p,
+      isLowestPerHour: i === cheap && i !== recIndex,
+    }));
+
+    // matchedPlan: only surface when profile→title actually resolved (so
+    // categories without profile-mapped titles show "En attente …").
+    let matched: PlanView | null = null;
+    if (profile) {
+      const match = PROFILES.find((p) => p.id === profile);
+      if (match) {
+        const found = decorated.find((p) => p.name === match.matchTitle);
+        if (found) matched = found;
+      }
+    }
+
+    return {
+      plans: decorated,
+      recommendedId: decorated[recIndex]?.id ?? null,
+      matchedPlan: matched,
+    };
+  }, [services, profile]);
 
   return (
     <section
@@ -901,6 +1087,14 @@ const HomeTarifSection = () => {
           </div>
         </header>
 
+        {/* DecisionHelper — first interaction, sits above the selectors */}
+        <DecisionHelper
+          profile={profile}
+          onPick={setProfile}
+          matchedPlan={matchedPlan}
+          planCount={plans.length}
+        />
+
         {/* Selectors */}
         <div
           className="tarifs-selectors"
@@ -935,38 +1129,34 @@ const HomeTarifSection = () => {
               <span aria-hidden="true" style={{ width: 18, height: 1, background: INDIGO_20 }} />
               Formation
             </div>
-            {loadingCategories ? (
-              <Loader />
-            ) : (
-              <div role="tablist" aria-label="Formations" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {categories.map((f) => {
-                  const isActive = f.id === active;
-                  return (
-                    <button
-                      key={f.id}
-                      role="tab"
-                      type="button"
-                      aria-selected={isActive}
-                      onClick={() => setActive(f.id)}
-                      style={{
-                        padding: "9px 14px",
-                        borderRadius: 999,
-                        border: `1px solid ${isActive ? INDIGO_DEEP : INDIGO_BORDER}`,
-                        background: isActive ? INDIGO_DEEP : PAPER,
-                        color: isActive ? PAPER : INDIGO_DEEP,
-                        fontFamily: "'Inter', sans-serif",
-                        fontSize: 13,
-                        fontWeight: isActive ? 700 : 600,
-                        cursor: "pointer",
-                        transition: "background 160ms ease, color 160ms ease, border-color 160ms ease",
-                      }}
-                    >
-                      {f.label}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+            <div role="tablist" aria-label="Formations" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {categories.map((f) => {
+                const isActive = f.id === activeFormation;
+                return (
+                  <button
+                    key={f.id}
+                    role="tab"
+                    type="button"
+                    aria-selected={isActive}
+                    onClick={() => setActiveFormation(f.id)}
+                    style={{
+                      padding: "9px 14px",
+                      borderRadius: 999,
+                      border: `1px solid ${isActive ? INDIGO_DEEP : INDIGO_BORDER}`,
+                      background: isActive ? INDIGO_DEEP : PAPER,
+                      color: isActive ? PAPER : INDIGO_DEEP,
+                      fontFamily: "'Inter', sans-serif",
+                      fontSize: 13,
+                      fontWeight: isActive ? 700 : 600,
+                      cursor: "pointer",
+                      transition: "background 160ms ease, color 160ms ease, border-color 160ms ease",
+                    }}
+                  >
+                    {f.label}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
           {!isAutres && (
@@ -1003,14 +1193,14 @@ const HomeTarifSection = () => {
                   { id: "automatic", label: "Automatique" },
                   { id: "manual",    label: "Manuel" },
                 ] as const).map((t) => {
-                  const isActive = t.id === selectedType;
+                  const isActive = t.id === transmission;
                   return (
                     <button
                       key={t.id}
                       role="radio"
                       type="button"
                       aria-checked={isActive}
-                      onClick={() => setSelectedType(t.id)}
+                      onClick={() => setTransmission(t.id)}
                       style={{
                         padding: "9px 22px",
                         borderRadius: 999,
@@ -1036,9 +1226,7 @@ const HomeTarifSection = () => {
         <RiskStrip />
 
         {/* Cards grid */}
-        {loadingServices ? (
-          <Loader />
-        ) : plans.length === 0 ? (
+        {plans.length === 0 ? (
           <div
             style={{
               padding: "48px 24px",
@@ -1107,6 +1295,7 @@ const HomeTarifSection = () => {
           align-items: end;
           margin-bottom: 48px;
         }
+        .tarifs-helper { grid-template-columns: minmax(0, 1fr) auto; }
         @media (max-width: 1024px) {
           .tarifs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 0 !important; }
@@ -1115,6 +1304,7 @@ const HomeTarifSection = () => {
           .tarifs-section { padding: 64px 16px 80px !important; }
           .tarifs-title { font-size: 36px; }
           .tarifs-header { grid-template-columns: 1fr !important; gap: 20px !important; margin-bottom: 28px !important; }
+          .tarifs-helper { grid-template-columns: 1fr !important; gap: 18px !important; }
           .tarifs-selectors { grid-template-columns: 1fr !important; gap: 18px !important; }
           .tarifs-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .tarifs-included { grid-template-columns: 1fr !important; gap: 14px !important; }
