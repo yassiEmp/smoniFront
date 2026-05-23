@@ -5,6 +5,7 @@ import {
   NT_CardMetro,
 } from "./HomeLocationIllustrations";
 import "./HomeLocationSection.css";
+import Reveal from "./Reveal";
 
 // Smoni — "Nous trouver" — redesigned per nous-trouver.html handoff.
 // Left: 3 expandable location cards with 4:3 illustrated banners.
@@ -171,13 +172,14 @@ const HomeLocationSection = () => {
         <div className="nt-layout">
           <div>
             <div className="nt-cards">
-              {LOCATIONS.map((loc) => (
-                <LocationCard
-                  key={loc.id}
-                  loc={loc}
-                  active={activeId === loc.id}
-                  onClick={() => setActiveId(loc.id)}
-                />
+              {LOCATIONS.map((loc, i) => (
+                <Reveal key={loc.id} delay={i * 90}>
+                  <LocationCard
+                    loc={loc}
+                    active={activeId === loc.id}
+                    onClick={() => setActiveId(loc.id)}
+                  />
+                </Reveal>
               ))}
             </div>
 
