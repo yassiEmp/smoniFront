@@ -213,11 +213,11 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
         height: "100%",
       }}
     >
-      <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
+      <div className="tarifs-art" style={{ position: "relative", width: "100%", aspectRatio: "16 / 9" }}>
         <PriceArt plan={plan} dark={dark} />
       </div>
 
-      <div style={{ position: "relative", padding: "26px 26px 26px", display: "flex", flexDirection: "column", flex: 1 }}>
+      <div style={{ position: "relative", padding: "20px 22px 22px", display: "flex", flexDirection: "column", flex: 1 }}>
         {dark && (
           <div
             aria-label="Plan recommandé"
@@ -428,7 +428,7 @@ const PlanCard = ({ plan, isRecommended }: PlanCardProps) => {
           style={{
             marginTop: 4,
             width: "100%",
-            height: 50,
+            height: 44,
             borderRadius: 14,
             background: ctaBg,
             color: ctaFg,
@@ -1296,6 +1296,14 @@ const HomeTarifSection = () => {
           margin-bottom: 48px;
         }
         .tarifs-helper { grid-template-columns: minmax(0, 1fr) auto; }
+        @media (min-width: 769px) and (max-width: 1279px) {
+          .tarifs-section { padding: 72px 20px 96px !important; }
+          .tarifs-title { font-size: 48px !important; }
+          .tarifs-header { gap: 32px !important; }
+          .tarifs-helper { gap: 18px !important; }
+          .tarifs-trust { padding: 24px 32px !important; gap: 24px !important; }
+          .tarifs-art { aspect-ratio: 21 / 9 !important; }
+        }
         @media (max-width: 1024px) {
           .tarifs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 0 !important; }
