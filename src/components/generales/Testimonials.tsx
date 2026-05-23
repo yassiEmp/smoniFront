@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageSquare } from "lucide-react";
+import Reveal from "./Reveal";
 
 // "Avis · mot pour mot" — editorial press-style testimonials.
 // Design: T3 Editorial (testimonials.html · variant D, kept after AI design iteration).
@@ -284,6 +285,7 @@ const Testimonials = () => {
 
         <div className="max-w-[1120px] mx-auto">
           {/* Hero pull-quote */}
+          <Reveal delay={0}>
           <motion.article
             className="relative overflow-hidden bg-white grid items-center gap-8 md:gap-12 p-8 md:p-14 rounded-[28px]"
             style={{
@@ -409,12 +411,13 @@ const Testimonials = () => {
               </div>
             </div>
           </motion.article>
+          </Reveal>
 
           {/* 3-up support grid */}
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-[18px]">
             {supports.map((t, i) => (
+              <Reveal key={t.id} delay={120 + i * 90} className="h-full">
               <motion.article
-                key={t.id}
                 className="flex flex-col gap-3.5 bg-white p-6 md:p-[26px_24px_24px] rounded-[22px]"
                 style={{
                   border: "1px solid #e6e3f5",
@@ -480,6 +483,7 @@ const Testimonials = () => {
                   {t.short}
                 </p>
               </motion.article>
+              </Reveal>
             ))}
           </div>
 
