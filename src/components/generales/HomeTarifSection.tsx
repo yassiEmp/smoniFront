@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { PRICING, PROFILES, type StaticBoutiqueService } from "@/data/pricingData";
 import { Link } from "react-router";
+import Reveal from "./Reveal";
 
 // ──────────────────────────────────────────────────────────────
 // Smoni · Tarifs publics — design from Claude Design handoff (tarifs.html).
@@ -1418,11 +1419,11 @@ const HomeTarifSection = () => {
               alignItems: "stretch",
             }}
           >
-            {plans.map((plan) => (
+            {plans.map((plan, i) => (
               <li key={plan.id} style={{ display: "flex" }}>
-                <div style={{ width: "100%" }}>
+                <Reveal delay={i * 90} style={{ width: "100%" }}>
                   <PlanCard plan={plan} isRecommended={plan.id === recommendedId} />
-                </div>
+                </Reveal>
               </li>
             ))}
           </ol>

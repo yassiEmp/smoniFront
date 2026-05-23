@@ -106,7 +106,7 @@ const Home = () => {
         <div id="recales"><HomeRecalesSection /></div>
 
         {/* SEO-critical: prerendered in SSG HTML (Tarif + FAQ surface organic queries). */}
-        <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>
+        <div id="tarifs"><HomeTarifSection /></div>
 
         <ClientOnly>
           {() => (
