@@ -35,6 +35,10 @@ export default defineConfig(({ isSsrBuild }) => ({
     script: 'async',
     dirStyle: 'nested',
     formatting: 'minify',
+    // We run our own hand-rolled critical-CSS step in scripts/inline-critical-css.mjs
+    // after the SSG build (see package.json `build`). Disable the built-in beasties
+    // integration so it doesn't inline ~30 KB of "above-the-fold" CSS into every page.
+    beastiesOptions: false,
     includedRoutes(paths) {
       // Normalize each discovered path to a leading slash form, then filter
       // against the whitelist + dynamic blog slugs. Skip parametric paths

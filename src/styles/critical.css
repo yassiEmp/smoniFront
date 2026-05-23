@@ -1,0 +1,132 @@
+/*
+ * Critical CSS — inlined into <head> of every prerendered HTML page.
+ * Goal: prevent catastrophic FOUC for first paint of header + hero.
+ * Keep this file SMALL (target 3-6 KB raw). The full app-*.css bundle
+ * is loaded asynchronously and replaces this for full fidelity.
+ *
+ * Strategy: minimal reset + the few utility classes that drive the
+ * above-the-fold layout. No design tokens, no animations, no Tailwind
+ * plugins. We accept brief restyling on async stylesheet arrival.
+ */
+
+/* Reset (subset of Tailwind preflight) */
+*,::before,::after{box-sizing:border-box;border:0 solid #e5e7eb}
+html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:Inter,system-ui,-apple-system,sans-serif}
+body{margin:0;line-height:inherit;color:#0f172a;background:#fff}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;margin:0}
+p{margin:0}
+a{color:inherit;text-decoration:inherit}
+button{font-family:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0;background:transparent;border:0;cursor:pointer}
+img,svg,video,canvas{display:block;max-width:100%;height:auto}
+ul,ol{list-style:none;margin:0;padding:0}
+
+/* Layout primitives */
+.container{width:100%;margin:0 auto;padding-left:1rem;padding-right:1rem}
+@media(min-width:640px){.container{max-width:640px}}
+@media(min-width:768px){.container{max-width:768px}}
+@media(min-width:1024px){.container{max-width:1024px}}
+@media(min-width:1280px){.container{max-width:1280px}}
+@media(min-width:1536px){.container{max-width:1536px}}
+
+.relative{position:relative}
+.absolute{position:absolute}
+.fixed{position:fixed}
+.sticky{position:sticky}
+.inset-0{inset:0}
+.top-0{top:0}
+.left-0{left:0}
+.right-0{right:0}
+.z-10{z-index:10}
+.z-20{z-index:20}
+.z-30{z-index:30}
+.z-40{z-index:40}
+.z-50{z-index:50}
+
+.flex{display:flex}
+.inline-flex{display:inline-flex}
+.grid{display:grid}
+.hidden{display:none}
+.block{display:block}
+.inline-block{display:inline-block}
+.flex-col{flex-direction:column}
+.items-center{align-items:center}
+.items-start{align-items:flex-start}
+.justify-center{justify-content:center}
+.justify-between{justify-content:space-between}
+.justify-start{justify-content:flex-start}
+.gap-2{gap:.5rem}
+.gap-3{gap:.75rem}
+.gap-4{gap:1rem}
+.gap-6{gap:1.5rem}
+.gap-8{gap:2rem}
+
+.w-full{width:100%}
+.h-full{height:100%}
+.min-h-screen{min-height:100vh}
+.max-w-7xl{max-width:80rem}
+.max-w-6xl{max-width:72rem}
+.max-w-4xl{max-width:56rem}
+.max-w-2xl{max-width:42rem}
+.max-w-xl{max-width:36rem}
+.mx-auto{margin-left:auto;margin-right:auto}
+
+/* Spacing */
+.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}
+.px-2{padding-left:.5rem;padding-right:.5rem}
+.px-3{padding-left:.75rem;padding-right:.75rem}
+.px-4{padding-left:1rem;padding-right:1rem}
+.px-6{padding-left:1.5rem;padding-right:1.5rem}
+.px-8{padding-left:2rem;padding-right:2rem}
+.py-2{padding-top:.5rem;padding-bottom:.5rem}
+.py-3{padding-top:.75rem;padding-bottom:.75rem}
+.py-4{padding-top:1rem;padding-bottom:1rem}
+.py-6{padding-top:1.5rem;padding-bottom:1.5rem}
+.py-8{padding-top:2rem;padding-bottom:2rem}
+.py-12{padding-top:3rem;padding-bottom:3rem}
+.py-16{padding-top:4rem;padding-bottom:4rem}
+.py-20{padding-top:5rem;padding-bottom:5rem}
+.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}
+.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}
+
+/* Typography */
+.text-xs{font-size:.75rem;line-height:1rem}
+.text-sm{font-size:.875rem;line-height:1.25rem}
+.text-base{font-size:1rem;line-height:1.5rem}
+.text-lg{font-size:1.125rem;line-height:1.75rem}
+.text-xl{font-size:1.25rem;line-height:1.75rem}
+.text-2xl{font-size:1.5rem;line-height:2rem}
+.text-3xl{font-size:1.875rem;line-height:2.25rem}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.text-5xl{font-size:3rem;line-height:1}
+.text-6xl{font-size:3.75rem;line-height:1}
+.font-medium{font-weight:500}
+.font-semibold{font-weight:600}
+.font-bold{font-weight:700}
+.font-extrabold{font-weight:800}
+.font-black{font-weight:900}
+.leading-tight{line-height:1.25}
+.tracking-tight{letter-spacing:-.025em}
+.text-center{text-align:center}
+.text-left{text-align:left}
+
+/* Brand colors (indigo family used by header/hero) */
+.text-white{color:#fff}
+.text-black{color:#000}
+.bg-white{background:#fff}
+.bg-black{background:#000}
+.bg-transparent{background:transparent}
+
+/* Header structural */
+header{position:relative;width:100%;background:#fff;z-index:40}
+
+/* Hero structural fallback */
+section{display:block}
+
+/* Buttons (shadcn default + outline rough fallback) */
+[role="button"],button{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:500;border-radius:.5rem;padding:.5rem 1rem;transition:background-color .15s}
+
+/* Prevent overflow flicker */
+html,body{overflow-x:hidden}
+
+/* SVG defaults */
+svg{display:inline-block;vertical-align:middle}
