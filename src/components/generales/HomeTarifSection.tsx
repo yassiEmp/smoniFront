@@ -914,6 +914,7 @@ const HomeTarifSection = () => {
     .toLowerCase()
     .trim();
   const isAutres = currentLabel.includes("autres") || currentLabel.includes("cpf");
+  const isCpf = currentLabel === "cpf";
 
   const services = useMemo<StaticBoutiqueService[]>(() => {
     const bucket = PRICING.services[String(activeFormation)];
@@ -960,10 +961,17 @@ const HomeTarifSection = () => {
       }
     }
 
-    const decorated = base.map((p, i) => ({
+    const decoratedBase = base.map((p, i) => ({
       ...p,
       isLowestPerHour: i === cheap && i !== recIndex,
     }));
+
+    // When a profile is picked, surface the recommended plan first so the
+    // user immediately sees the match — visual order, not data order.
+    const decorated =
+      profile && recIndex > 0
+        ? [decoratedBase[recIndex], ...decoratedBase.filter((_, i) => i !== recIndex)]
+        : decoratedBase;
 
     // matchedPlan: only surface when profile→title actually resolved (so
     // categories without profile-mapped titles show "En attente …").
@@ -978,7 +986,7 @@ const HomeTarifSection = () => {
 
     return {
       plans: decorated,
-      recommendedId: decorated[recIndex]?.id ?? null,
+      recommendedId: decoratedBase[recIndex]?.id ?? null,
       matchedPlan: matched,
     };
   }, [services, profile]);
@@ -1017,28 +1025,6 @@ const HomeTarifSection = () => {
         {/* Header */}
         <header className="tarifs-header">
           <div>
-            <div
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                fontFamily: MONO,
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.28em",
-                color: INDIGO,
-                background: INDIGO_TINT,
-                border: `1px solid ${INDIGO_BORDER}`,
-                borderRadius: 999,
-                padding: "8px 14px",
-                marginBottom: 24,
-                textTransform: "uppercase",
-              }}
-            >
-              <span aria-hidden="true" style={{ width: 6, height: 6, background: BLUE, borderRadius: 999 }} />
-              Tarifs publics
-            </div>
-
             <h2
               id="tarifs-heading"
               style={{
@@ -1226,7 +1212,157 @@ const HomeTarifSection = () => {
         <RiskStrip />
 
         {/* Cards grid */}
-        {plans.length === 0 ? (
+        {plans.length === 0 && isCpf ? (
+          <div
+            role="region"
+            aria-label="Financement CPF"
+            style={{
+              padding: "32px 28px",
+              borderRadius: 16,
+              background: INDIGO_TINT,
+              border: `1px solid ${INDIGO_BORDER}`,
+              fontFamily: "'Inter', sans-serif",
+              color: INDIGO_DEEP,
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 1fr)",
+              gap: 28,
+              alignItems: "center",
+            }}
+            className="tarifs-cpf-card"
+          >
+            <div>
+              <div
+                style={{
+                  fontFamily: MONO,
+                  fontSize: 11,
+                  fontWeight: 800,
+                  letterSpacing: "0.22em",
+                  textTransform: "uppercase",
+                  color: INDIGO,
+                  marginBottom: 12,
+                }}
+              >
+                Financement CPF
+              </div>
+              <h3
+                style={{
+                  margin: 0,
+                  fontFamily: "'Outfit', sans-serif",
+                  fontWeight: 900,
+                  fontSize: 24,
+                  lineHeight: 1.15,
+                  letterSpacing: "-0.018em",
+                  color: INDIGO_DEEP,
+                }}
+              >
+                Payez votre permis avec Mon Compte Formation.
+              </h3>
+              <p
+                style={{
+                  margin: "12px 0 0",
+                  fontSize: 14.5,
+                  lineHeight: 1.6,
+                  color: INK,
+                }}
+              >
+                Smoni est <strong style={{ color: INDIGO_DEEP, fontWeight: 700 }}>agréée CPF</strong> pour la formation au permis B
+                (boîte manuelle et automatique). On monte votre dossier avec vous, on attend la validation de votre
+                compteur, et vous commencez les leçons — <strong style={{ color: INDIGO_DEEP, fontWeight: 700 }}>sans avance de frais</strong>.
+              </p>
+              <ul
+                style={{
+                  margin: "16px 0 0",
+                  padding: 0,
+                  listStyle: "none",
+                  display: "grid",
+                  gap: 8,
+                  fontSize: 13.5,
+                  color: INK,
+                }}
+              >
+                {[
+                  "Code en ligne + 20 h de conduite, intégralement éligibles CPF",
+                  "Dossier monté sous 48 h ouvrées",
+                  "Reste à charge possible en 3× ou 4× sans frais",
+                ].map((line) => (
+                  <li key={line} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        flexShrink: 0,
+                        marginTop: 6,
+                        width: 6,
+                        height: 6,
+                        borderRadius: 999,
+                        background: BLUE,
+                      }}
+                    />
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+              className="tarifs-cpf-actions"
+            >
+              <a
+                href="https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/results?q=%7B%22quoi%22%3A%22permis+b%22%7D"
+                target="_blank"
+                rel="noreferrer noopener"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: 44,
+                  padding: "0 18px",
+                  borderRadius: 12,
+                  background: INDIGO_DEEP,
+                  color: "#fff",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  textDecoration: "none",
+                  border: `1px solid ${INDIGO_DEEP}`,
+                }}
+              >
+                Vérifier mon solde CPF
+              </a>
+              <a
+                href="/contact?sujet=cpf"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  height: 44,
+                  padding: "0 18px",
+                  borderRadius: 12,
+                  background: "#fff",
+                  color: INDIGO_DEEP,
+                  fontWeight: 700,
+                  fontSize: 14,
+                  textDecoration: "none",
+                  border: `1px solid ${INDIGO_BORDER}`,
+                }}
+              >
+                Monter mon dossier avec Smoni
+              </a>
+              <p
+                style={{
+                  margin: "4px 2px 0",
+                  fontSize: 12,
+                  lineHeight: 1.45,
+                  color: INDIGO_60,
+                }}
+              >
+                Pas de CPF suffisant ? Contactez-nous, on cumule CPF + Permis 1 €/jour + aides Région.
+              </p>
+            </div>
+          </div>
+        ) : plans.length === 0 ? (
           <div
             style={{
               padding: "48px 24px",
@@ -1241,6 +1377,46 @@ const HomeTarifSection = () => {
             Aucun forfait disponible pour cette sélection.
           </div>
         ) : (
+          <>
+            {profile && recommendedId != null && (() => {
+              const reco = plans.find((p) => p.id === recommendedId);
+              if (!reco) return null;
+              return (
+                <div
+                  className="tarifs-reco-frame"
+                  role="note"
+                  style={{
+                    display: "none",
+                    margin: "0 0 14px",
+                    padding: "12px 16px",
+                    borderRadius: 12,
+                    background: INDIGO_TINT,
+                    border: `1px solid ${INDIGO_BORDER}`,
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: 13,
+                    lineHeight: 1.4,
+                    color: INDIGO_DEEP,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: MONO,
+                      fontSize: 10,
+                      fontWeight: 800,
+                      letterSpacing: "0.22em",
+                      textTransform: "uppercase",
+                      color: INDIGO,
+                      marginRight: 8,
+                    }}
+                  >
+                    Recommandé pour vous
+                  </span>
+                  <span style={{ fontWeight: 700 }}>
+                    {reco.duration} · {reco.pricePerHour}/h
+                  </span>
+                </div>
+              );
+            })()}
           <ol
             aria-label="Forfaits disponibles"
             className="tarifs-grid"
@@ -1262,6 +1438,7 @@ const HomeTarifSection = () => {
               </li>
             ))}
           </ol>
+          </>
         )}
 
         <AllIncluded />
@@ -1315,6 +1492,8 @@ const HomeTarifSection = () => {
           .tarifs-helper { grid-template-columns: 1fr !important; gap: 18px !important; }
           .tarifs-selectors { grid-template-columns: 1fr !important; gap: 18px !important; }
           .tarifs-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .tarifs-reco-frame { display: block !important; }
+          .tarifs-cpf-card { grid-template-columns: 1fr !important; gap: 22px !important; padding: 24px 20px !important; }
           .tarifs-included { grid-template-columns: 1fr !important; gap: 14px !important; }
           .tarifs-trust { grid-template-columns: 1fr !important; padding: 24px !important; gap: 24px !important; }
           .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
