@@ -207,7 +207,7 @@ const HomeHeroSection = () => {
               className="text-[11px] 2xl:text-[13px] font-bold uppercase tracking-[0.32em] text-[#2c2876]/80"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              62 rue de la Jarry • 4 min du RER A
+              Auto-école Vincennes (94300) • 4 min du RER A
             </motion.div>
 
             <div className="space-y-4 2xl:space-y-6">
