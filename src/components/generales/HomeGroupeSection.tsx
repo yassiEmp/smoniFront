@@ -50,33 +50,14 @@ const Badge = ({
 }) => (
   <span
     style={{
-      display: "inline-flex",
-      alignItems: "center",
-      gap: 8,
       fontFamily: "'JetBrains Mono', ui-monospace, monospace",
       fontSize: 10,
       fontWeight: 700,
       letterSpacing: "0.22em",
-      color: tone === "dark" ? "rgba(255,255,255,0.78)" : FC.indigo,
+      color: tone === "dark" ? "rgba(255,255,255,0.65)" : FC.indigo,
       textTransform: "uppercase",
-      background: tone === "dark" ? "rgba(255,255,255,0.08)" : FC.bgTint,
-      border:
-        tone === "dark"
-          ? "1px solid rgba(255,255,255,0.18)"
-          : `1px solid ${FC.rule}`,
-      padding: "5px 10px",
-      borderRadius: 999,
     }}
   >
-    <span
-      aria-hidden="true"
-      style={{
-        width: 6,
-        height: 6,
-        borderRadius: 999,
-        background: FC.blue,
-      }}
-    />
     {children}
   </span>
 );
@@ -988,9 +969,6 @@ const HomeGroupeSection = () => {
               style={{ aspectRatio: "16 / 9", background: FC.bgArt, flexShrink: 0 }}
             >
               <ArtHero title="Permis B (boîte manuelle) — permis B 94300" />
-              <div className="absolute left-4 top-4 z-10">
-                <Badge>Le plus demandé</Badge>
-              </div>
             </div>
             <div
               className="flex flex-col"
@@ -1105,7 +1083,6 @@ const HomeGroupeSection = () => {
                 pointerEvents: "none",
               }}
             />
-            <Badge tone="dark">Le plus efficace</Badge>
 
             <div
               style={{
@@ -1193,9 +1170,6 @@ const HomeGroupeSection = () => {
               style={{ aspectRatio: "16 / 9", background: FC.bgArt, flexShrink: 0 }}
             >
               <ArtCode title="Code de la route — Pass Rousseau" />
-              <div className="absolute left-4 top-4 z-10">
-                <Badge>Inclus</Badge>
-              </div>
             </div>
             <div
               className="flex flex-1 flex-col"
@@ -1330,9 +1304,6 @@ const FormationCard = ({
       style={{ aspectRatio: "16 / 9", background: FC.bgArt, flexShrink: 0 }}
     >
       <Art title={ariaLabel} />
-      <div className="absolute left-4 top-4 z-10">
-        <Badge>{badge}</Badge>
-      </div>
     </div>
     <div
       className="flex flex-1 flex-col"
