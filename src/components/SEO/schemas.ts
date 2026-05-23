@@ -25,16 +25,49 @@ export const drivingSchoolSchema = () => ({
   url: SITE_URL,
   logo: `${SITE_URL}/logo-smoni.png`,
   image: `${SITE_URL}/og-home.jpg`,
-  telephone: "+33 7 71 26 51 19",
+  telephone: "+33771265119",
   email: "contact@smoni.fr",
   address: ADDRESS,
   geo: GEO,
+  hasMap: "https://www.google.com/maps/place/Smoni+Auto-école+Vincennes/",
   areaServed: [
     { "@type": "City", name: "Vincennes" },
     { "@type": "City", name: "Paris" },
     { "@type": "AdministrativeArea", name: "Val-de-Marne" },
   ],
   priceRange: "€€",
+  currenciesAccepted: "EUR",
+  paymentAccepted: "Cash, Credit Card, CPF",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Formations permis",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Permis B (boîte manuelle)", url: `${SITE_URL}/conduite` },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Permis B78 (boîte automatique)", url: `${SITE_URL}/conduite` },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Code de la route en ligne", url: `${SITE_URL}/code-en-ligne` },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Passerelle BVA → BVM", url: `${SITE_URL}/passerelle` },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Permis accéléré", url: `${SITE_URL}/fabrication-permis` },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Accompagnement post-permis", url: `${SITE_URL}/post-permis` },
+      },
+    ],
+  },
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
