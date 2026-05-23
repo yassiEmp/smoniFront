@@ -96,30 +96,30 @@ const itemVariants = {
 
 const HomeFeaturesSection = () => {
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section className="py-16 sm:py-24 md:py-32 bg-white relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <motion.div
-        className="container mx-auto px-6 md:px-10 xl:px-32"
+        className="max-w-7xl mx-auto px-4 sm:px-6"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={containerVariants}
       >
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-20">
-          <motion.div className="max-w-2xl space-y-4" variants={itemVariants}>
+        {/* Section Header — mirrors engagements: small mobile-first type, text-balance, progressive spacing */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 lg:gap-8 mb-12 sm:mb-14 lg:mb-20">
+          <motion.div className="max-w-2xl space-y-3 sm:space-y-4" variants={itemVariants}>
             <p
               className="inline-block text-[11px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.3em] text-[#2c2876]/90 px-1"
               style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               Ce qu'on mesure, ce qu'on offre
             </p>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1e1b4b] leading-[1.1]" style={{ fontFamily: "'Outfit', sans-serif" }}>
+            <h2 className="text-[26px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-[#1e1b4b] leading-tight lg:leading-[1.1] text-balance" style={{ fontFamily: "'Outfit', sans-serif" }}>
               6 preuves de <span className="text-primary italic">fonctionnement</span> — pas des slogans.
             </h2>
           </motion.div>
-          <motion.p className="text-slate-700 text-lg md:text-xl max-w-md font-medium lg:mb-2" variants={itemVariants}>
+          <motion.p className="text-slate-700 text-[15px] sm:text-base md:text-lg lg:text-xl max-w-md font-medium lg:mb-2" variants={itemVariants}>
             Le secteur parle beaucoup de « qualité ». Voici ce qu'on mesure, ce qu'on trace, ce qu'on propose au quotidien. Les engagements contractuels, eux, sont juste en dessous.
           </motion.p>
         </div>
