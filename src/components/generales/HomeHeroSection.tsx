@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
+import { useId } from "react";
 import { useNavigate } from "react-router";
 
 const avatars = [
@@ -9,6 +10,14 @@ const avatars = [
   "/avatars/apprenant-3.jpg",
   "/avatars/apprenant-4.jpg",
 ];
+
+const INDIGO = "#2c2876";
+const INDIGO_DEEP = "#1e1b4b";
+const INDIGO_60 = "#7472b0";
+const INDIGO_20 = "#cfceea";
+const PAPER = "#ffffff";
+const PAPER_RULE = "#e6e3f5";
+const BLUE = "#3b82f6";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,8 +29,114 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
 };
 
+const ContractIllustration = () => {
+  const rid = useId().replace(/:/g, "");
+  const softId = `${rid}-soft`;
+  return (
+    <svg
+      viewBox="0 0 720 700"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full"
+      preserveAspectRatio="xMidYMid meet"
+      role="img"
+      aria-label="Contrat Smoni signé — le permis sans stress"
+    >
+      <defs>
+        <filter id={softId} x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="10" />
+        </filter>
+      </defs>
+
+      {/* back paper (slightly faded, behind) */}
+      <g transform="rotate(-6 280 380)">
+        <rect x="80" y="120" width="380" height="500" fill="#fff" stroke={PAPER_RULE} strokeWidth="1.5" />
+        <rect x="80" y="120" width="380" height="40" fill={INDIGO_20} opacity="0.4" />
+      </g>
+
+      {/* shadow behind primary doc */}
+      <g transform="rotate(4 380 360)" opacity="0.18">
+        <rect x="170" y="120" width="420" height="540" fill={INDIGO_DEEP} filter={`url(#${softId})`} />
+      </g>
+
+      {/* primary document */}
+      <g transform="rotate(4 380 360)">
+        <rect x="170" y="120" width="420" height="540" fill={PAPER} stroke={PAPER_RULE} strokeWidth="1.5" />
+        <rect x="170" y="120" width="420" height="56" fill={INDIGO} />
+        <circle cx="200" cy="148" r="8" fill={BLUE} />
+        <text x="220" y="153" fontFamily="JetBrains Mono, monospace" fontSize="10" fontWeight="700" fill="#fff" letterSpacing="1.5">
+          SMONI · CONTRAT 2024
+        </text>
+
+        <text x="200" y="220" fontFamily="Outfit, sans-serif" fontSize="14" fontWeight="800" fill={INDIGO_60} letterSpacing="1">
+          ARTICLE 1 — ENGAGEMENT
+        </text>
+
+        <text x="200" y="262" fontFamily="Outfit, sans-serif" fontSize="32" fontWeight="900" fill={INDIGO} letterSpacing="-0.02em">
+          Le permis
+        </text>
+        <text x="200" y="296" fontFamily="Outfit, sans-serif" fontSize="32" fontWeight="900" fontStyle="italic" fill={INDIGO} letterSpacing="-0.02em">
+          sans stress.
+        </text>
+
+        <rect x="196" y="320" width="320" height="22" fill={BLUE} opacity="0.1" />
+        <text x="200" y="336" fontFamily="JetBrains Mono, monospace" fontSize="11" fontWeight="700" fill={INDIGO} letterSpacing="1">
+          1 heure = 60 minutes au volant.
+        </text>
+        <line x1="200" y1="342" x2="402" y2="342" stroke={BLUE} strokeWidth="2" />
+
+        {[368, 386, 404, 422, 440].map((y, i) => (
+          <rect key={i} x="200" y={y} width={i === 4 ? 240 : 360} height="3" fill={PAPER_RULE} />
+        ))}
+
+        {["Prix tout-compris.", "Aucun cri.", "Recalés bienvenus."].map((t, i) => (
+          <g key={i} transform={`translate(200 ${480 + i * 28})`}>
+            <rect x="0" y="0" width="14" height="14" rx="2" fill="none" stroke={INDIGO} strokeWidth="1.5" />
+            <path d="M3 7 L7 11 L13 3" stroke={INDIGO} strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <text x="22" y="11" fontFamily="Outfit, sans-serif" fontSize="14" fontWeight="700" fill={INDIGO}>{t}</text>
+          </g>
+        ))}
+
+        <line x1="200" y1="600" x2="380" y2="600" stroke={INDIGO} strokeWidth="1.5" />
+        <text x="200" y="618" fontFamily="JetBrains Mono, monospace" fontSize="9" fontWeight="700" fill={INDIGO_60} letterSpacing="2">
+          SIGNÉ — A. BELLO, DIRECTEUR
+        </text>
+        <path d="M210 595 Q 230 575, 250 595 T 290 590 Q 310 580, 330 600" stroke={INDIGO_DEEP} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      </g>
+
+      {/* round stamp top-right */}
+      <g transform="translate(560 110) rotate(-12)">
+        <circle cx="0" cy="0" r="54" fill="none" stroke={BLUE} strokeWidth="2.5" />
+        <circle cx="0" cy="0" r="44" fill="none" stroke={BLUE} strokeWidth="1" />
+        <text x="0" y="-8" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="9" fill={BLUE} letterSpacing="2">CHARTE</text>
+        <text x="0" y="8" textAnchor="middle" fontFamily="Outfit, sans-serif" fontWeight="900" fontSize="16" fill={BLUE}>SIGNÉE</text>
+        <text x="0" y="22" textAnchor="middle" fontFamily="JetBrains Mono, monospace" fontWeight="700" fontSize="8" fill={BLUE} letterSpacing="2">2024</text>
+      </g>
+
+      {/* paperclip */}
+      <g transform="translate(180 90) rotate(20)">
+        <path
+          d="M0 0 L0 60 Q0 80, 20 80 Q40 80, 40 60 L40 14 Q40 0, 28 0 Q16 0, 16 14 L16 60"
+          fill="none"
+          stroke={INDIGO_60}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+      </g>
+
+      {/* mono caption */}
+      <g>
+        <line x1="40" y1="670" x2="80" y2="670" stroke={INDIGO_60} strokeWidth="1.5" />
+        <text x="92" y="674" fontFamily="JetBrains Mono, monospace" fontSize="11" fontWeight="700" fill={INDIGO_60} letterSpacing="3">
+          C · DOCUMENT · PROMESSE ÉCRITE
+        </text>
+      </g>
+    </svg>
+  );
+};
+
 const HomeHeroSection = () => {
   const navigate = useNavigate();
+  const dotsId = useId().replace(/:/g, "");
 
   const handleNavigate = (path: string) => {
     navigate(path);
@@ -29,57 +144,52 @@ const HomeHeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden bg-[#f8fafc] pt-24 pb-12 2xl:pt-40 select-none">
-      {/* Ambient brand radial wash */}
-      <div className="absolute inset-0 pointer-events-none -z-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              radial-gradient(at 0% 0%, rgba(44, 40, 118, 0.05) 0px, transparent 50%),
-              radial-gradient(at 100% 0%, rgba(44, 40, 118, 0.08) 0px, transparent 50%)
-            `
-          }}
-        />
+    <section className="relative h-[100svh] flex items-center overflow-hidden bg-[#f8fafc] pt-[44px] lg:pt-[52px] 2xl:pt-[70px] pb-6 select-none">
+      {/* Ambient brand radial wash + halftone dots */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{
+          background: `
+            radial-gradient(1100px 700px at 85% 30%, #e6e3ff 0%, rgba(243,241,255,0) 70%),
+            radial-gradient(900px 600px at 15% 90%, #f3f1ff 0%, rgba(248,250,252,0) 65%),
+            #f8fafc
+          `,
+        }}
+      >
+        <svg width="100%" height="100%" className="absolute inset-0" style={{ mixBlendMode: "multiply" }}>
+          <defs>
+            <pattern id={`${dotsId}-dots`} x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="1" cy="1" r="0.8" fill="rgba(44,40,118,0.06)" />
+            </pattern>
+            <linearGradient id={`${dotsId}-fade`} x1="0" y1="0" x2="1" y2="0.5">
+              <stop offset="0%" stopColor="#fff" stopOpacity="0" />
+              <stop offset="50%" stopColor="#fff" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#fff" stopOpacity="1" />
+            </linearGradient>
+            <mask id={`${dotsId}-mask`}>
+              <rect width="100%" height="100%" fill={`url(#${dotsId}-fade)`} />
+            </mask>
+          </defs>
+          <rect width="100%" height="100%" fill={`url(#${dotsId}-dots)`} mask={`url(#${dotsId}-mask)`} />
+        </svg>
       </div>
 
-      {/* Hero side visual — 3D car as ambient background, bleeds off the right edge.
-          Hidden on mobile (perf + readability), revealed from md+. */}
+      {/* Right-side illustration — tilted contract, fades into left content */}
       <div
         aria-hidden="true"
         className="hidden md:block absolute inset-y-0 right-0 w-[65%] lg:w-[60%] xl:w-[58%] pointer-events-none z-0"
       >
         <div
-          className="relative w-full h-full overflow-visible"
+          className="relative w-full h-full pt-10"
           style={{
             WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, #000 38%)",
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 14%, #000 32%)",
             maskImage:
-              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 18%, #000 38%)",
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 14%, #000 32%)",
           }}
         >
-          <picture>
-            <source
-              type="image/avif"
-              srcSet="/hero-car-800.avif 800w, /hero-car-1200.avif 1200w, /hero-car-1600.avif 1600w"
-              sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
-            />
-            <source
-              type="image/webp"
-              srcSet="/hero-car-800.webp 800w, /hero-car-1200.webp 1200w, /hero-car-1600.webp 1600w"
-              sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
-            />
-            <img
-              src="/hero-car-1200.png"
-              srcSet="/hero-car-800.png 800w, /hero-car-1200.png 1200w, /hero-car-1600.png 1600w"
-              sizes="(min-width: 1280px) 58vw, (min-width: 1024px) 60vw, 65vw"
-              alt="Peugeot 2008 — voiture d'auto-école Smoni à Vincennes"
-              loading="eager"
-              decoding="async"
-              fetchPriority="high"
-              className="absolute inset-0 w-full h-full object-contain object-right"
-            />
-          </picture>
+          <ContractIllustration />
         </div>
       </div>
 
@@ -91,22 +201,14 @@ const HomeHeroSection = () => {
         variants={containerVariants}
       >
         <div className="flex flex-col">
-          {/* Left content takes a constrained width so the car bg has room to breathe on the right */}
-          <div className="w-full md:max-w-[55%] lg:max-w-[52%] xl:max-w-[50%] space-y-6 2xl:space-y-10">
-            <div className="flex flex-col gap-3 2xl:gap-4">
-              <motion.div
-                variants={itemVariants}
-                className="inline-flex items-center w-fit px-4 py-1.5 2xl:px-6 2xl:py-2 bg-white/80 backdrop-blur-md rounded-full border border-[#2c2876]/10 shadow-sm"
-              >
-                <span className="text-[9px] 2xl:text-[10px] font-black uppercase tracking-[0.2em] text-[#2c2876]">Auto-école à Vincennes — depuis 2022</span>
-              </motion.div>
-              <motion.div
-                variants={itemVariants}
-                className="text-[9px] 2xl:text-[10px] font-black uppercase tracking-[0.4em] text-[#2c2876]/30 ml-4 2xl:ml-6"
-              >
-                62 rue de la Jarry • 4 min du RER A
-              </motion.div>
-            </div>
+          <div className="w-full md:max-w-[55%] lg:max-w-[52%] xl:max-w-[50%] space-y-5 2xl:space-y-8">
+            <motion.div
+              variants={itemVariants}
+              className="text-[11px] 2xl:text-[13px] font-bold uppercase tracking-[0.32em] text-[#2c2876]/80"
+              style={{ fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              62 rue de la Jarry • 4 min du RER A
+            </motion.div>
 
             <div className="space-y-4 2xl:space-y-6">
               <motion.h1
@@ -129,7 +231,7 @@ const HomeHeroSection = () => {
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-4 2xl:gap-6 2xl:pt-6"
+              className="flex flex-wrap gap-4 pt-2 2xl:gap-6 2xl:pt-4"
             >
               <Button
                 size="lg"
@@ -149,10 +251,9 @@ const HomeHeroSection = () => {
               </Button>
             </motion.div>
 
-            {/* Trust Bar (Google Badge Integration) */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-wrap items-center gap-10 pt-12 border-t border-slate-200/60"
+              className="flex flex-wrap items-center gap-8 pt-6 2xl:pt-8 border-t border-slate-200/60"
             >
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-4">
@@ -169,16 +270,15 @@ const HomeHeroSection = () => {
                 </div>
               </div>
 
-              {/* Glassmorphism Trust Badge */}
-              <div className="flex items-center gap-3 bg-white/50 backdrop-blur-sm px-6 py-3.5 rounded-2xl border border-white/50 shadow-sm transition-transform hover:scale-105">
-                <div className="flex text-yellow-500">
+              <div className="flex items-center gap-3 bg-white/70 backdrop-blur-sm px-5 py-3 rounded-2xl border border-white/70 shadow-sm transition-transform hover:scale-105">
+                <div className="flex gap-px text-yellow-500">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
                   ))}
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-black text-[#2c2876] text-lg leading-none">SIREN</span>
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">915 387 013 — déclarée</span>
+                  <span className="font-black text-[#2c2876] text-base leading-none" style={{ fontFamily: "'Outfit', sans-serif" }}>SIREN déclarée</span>
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1" style={{ fontFamily: "'JetBrains Mono', monospace" }}>915 387 013</span>
                 </div>
               </div>
             </motion.div>
