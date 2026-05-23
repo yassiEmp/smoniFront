@@ -27,6 +27,7 @@ const HomeStepSection = lazy(() => import("@components/generales/HomeStepSection
 const Testimonials = lazy(() => import("@components/generales/Testimonials"));
 const HomeNewStudentSection = lazy(() => import("@components/generales/HomeNewStudentSection"));
 const HomeLocationSection = lazy(() => import("@components/generales/HomeLocationSection"));
+const HomeRecalesSection = lazy(() => import("@components/generales/HomeRecalesSection"));
 
 // Performance-optimized Fade In wrapper
 const FadeInSection = ({ children, id }: { children: React.ReactNode; id?: string }) => (
@@ -79,6 +80,9 @@ const Home = () => {
               </Suspense>
               <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
                 <FadeInSection id="unicorn"><HomeUnicornSection /></FadeInSection>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[1100px] w-full bg-slate-50/50" />}>
+                <FadeInSection id="recales"><HomeRecalesSection /></FadeInSection>
               </Suspense>
             </>
           )}
