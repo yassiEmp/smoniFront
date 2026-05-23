@@ -1,4 +1,6 @@
-import { Helmet } from "react-helmet-async";
+// See PageHead.tsx — vite-react-ssg's <Head> is the SSR-aware wrapper that
+// injects into <head> instead of leaking into <body>.
+import { Head as Helmet } from "vite-react-ssg";
 
 interface JsonLdProps {
   data: object | object[];

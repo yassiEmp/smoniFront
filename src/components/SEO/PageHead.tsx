@@ -1,4 +1,8 @@
-import { Helmet } from "react-helmet-async";
+// vite-react-ssg's <Head> wraps react-helmet-async and — critically — plumbs
+// its HelmetProvider context into the SSR template so emitted tags land in
+// <head>. Using react-helmet-async's <Helmet> directly leaves the tags inside
+// the body's #root div in prerendered HTML.
+import { Head as Helmet } from "vite-react-ssg";
 
 const SITE_URL = "https://smoni.fr";
 const DEFAULT_OG_IMAGE = "/og-home.jpg";

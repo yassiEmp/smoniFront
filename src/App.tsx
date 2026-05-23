@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router";
 import type { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/lib/integration/react";
-import { HelmetProvider } from "react-helmet-async";
 import store, { persistor } from "./store/configureStore";
 import CustomToast from "@components/generales/CustomToast";
 
@@ -37,15 +36,18 @@ function App() {
     }
   }, [location]);
 
+  // No <HelmetProvider> wrapper here — vite-react-ssg owns the HelmetProvider
+  // around the route tree during SSR (via its own <Head> component) so that
+  // emitted tags are injected into <head> of the prerendered HTML. Wrapping
+  // again here would create a second, app-local context whose state never
+  // reaches the SSR template.
   return (
-    <HelmetProvider>
-      <Provider store={store}>
-        <MaybePersistGate>
-          <CustomToast />
-          <Outlet />
-        </MaybePersistGate>
-      </Provider>
-    </HelmetProvider>
+    <Provider store={store}>
+      <MaybePersistGate>
+        <CustomToast />
+        <Outlet />
+      </MaybePersistGate>
+    </Provider>
   );
 }
 
