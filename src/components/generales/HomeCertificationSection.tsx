@@ -57,6 +57,18 @@ const engagements = [
   },
 ];
 
+// Mobile-only reorder: in a single-column stack the featured card belongs near the eye's natural rest point
+// (middle of the list), not at the top. Pure CSS via Tailwind `order-*` — reset with md:order-none so the
+// multi-col grid restores DOM order. Class strings are static so the JIT picks them up.
+const MOBILE_ORDER_CLASS = ["order-1", "order-2", "order-3", "order-4", "order-5"] as const;
+const featuredIdx = engagements.findIndex((e) => e.featured);
+const middleSlot = Math.ceil(engagements.length / 2);
+const slotFor = (i: number) => {
+  if (i === featuredIdx) return middleSlot;
+  const rank = i < featuredIdx ? i + 1 : i;
+  return rank < middleSlot ? rank : rank + 1;
+};
+
 // Render body text with the emphasis fragment bolded so a single scannable promise pops inside the paragraph.
 const renderBody = (body: string, emphasis: string) => {
   const idx = body.indexOf(emphasis);
@@ -208,7 +220,7 @@ const HomeCertificationSection = () => {
                 }}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                className={`${placement} w-full max-w-md mx-auto md:max-w-none md:mx-0`}
+                className={`${MOBILE_ORDER_CLASS[slotFor(i) - 1]} md:order-none ${placement} w-full max-w-md mx-auto md:max-w-none md:mx-0`}
               >
                 <article
                   aria-labelledby={`engagement-${e.n}-title`}
