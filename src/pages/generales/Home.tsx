@@ -95,7 +95,7 @@ const Home = () => {
                 <div id="groupe"><HomeGroupeSection /></div>
               </Suspense>
               <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
-                <FadeInSection id="features"><HomeFeaturesSection /></FadeInSection>
+                <div id="features"><HomeFeaturesSection /></div>
               </Suspense>
             </>
           )}

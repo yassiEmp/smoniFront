@@ -7,6 +7,7 @@ import {
   IllustrationCreneaux,
   IllustrationMoniteur,
 } from "./MesureIllustrations";
+import Reveal from "./Reveal";
 
 // Distinct from "Notre différence" (contractual engagements below): this section is operational reality —
 // what we measure, what we track, what we offer day-to-day.
@@ -144,6 +145,7 @@ const HomeFeaturesSection = () => {
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
                 className={`${MOBILE_ORDER_CLASS[slotFor(i) - 1]} md:order-none w-full max-w-md mx-auto md:max-w-none md:mx-0`}
               >
+                <Reveal delay={i * 90} className="h-full">
                 <article
                   aria-labelledby={`mesure-${f.n}-title`}
                   className={`group h-full rounded-2xl overflow-hidden flex flex-col transition-[box-shadow,border-color] duration-300 ${
@@ -197,6 +199,7 @@ const HomeFeaturesSection = () => {
                     </p>
                   </div>
                 </article>
+                </Reveal>
               </motion.li>
             );
           })}
