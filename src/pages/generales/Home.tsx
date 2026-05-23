@@ -6,6 +6,7 @@ import HomeHeroSection from "@components/generales/HomeHeroSection";
 import HomeCertificationSection from "@components/generales/HomeCertificationSection";
 import HomeStarSection from "@components/generales/HomeStarSection";
 import HomeRecalesSection from "@components/generales/HomeRecalesSection";
+import HomeAdultesSection from "@components/generales/HomeAdultesSection";
 // SEO-critical sections: rendered in SSG HTML (no ClientOnly wrapper).
 import HomeFaqSection from "@components/generales/HomeFaqSection";
 import HomeTarifSection from "@components/generales/HomeTarifSection";
@@ -82,6 +83,8 @@ const Home = () => {
         </ClientOnly>
 
         <div id="recales"><HomeRecalesSection /></div>
+
+        <FadeInSection id="adultes"><HomeAdultesSection /></FadeInSection>
 
         {/* SEO-critical: prerendered in SSG HTML (Tarif + FAQ surface organic queries). */}
         <FadeInSection id="tarifs"><HomeTarifSection /></FadeInSection>
