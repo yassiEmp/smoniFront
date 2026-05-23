@@ -102,12 +102,39 @@ function sourceFilesForUrlPath(urlPath) {
   return [ROUTES_FILE.replace(REPO_ROOT + "\\", "").replace(/\\/g, "/")];
 }
 
+/** Extract blog slugs from src/data/blogPosts.ts (regex, no TS parse). */
+function discoverBlogSlugs() {
+  if (!existsSync(BLOG_DATA)) return [];
+  const src = readFileSync(BLOG_DATA, "utf8");
+  const slugs = [];
+  const re = /slug:\s*"([^"]+)"/g;
+  let m;
+  while ((m = re.exec(src)) !== null) slugs.push(m[1]);
+  return slugs;
+}
+
+/** Append any missing blog post URLs to the sitemap before </urlset>. */
+function ensureBlogUrls(xml) {
+  const slugs = discoverBlogSlugs();
+  const missing = slugs.filter((s) => !xml.includes(`/blog/${s}<`));
+  if (missing.length === 0) return xml;
+  const blocks = missing
+    .map(
+      (s) =>
+        `  <url>\n    <loc>https://smoni.fr/blog/${s}</loc>\n    <lastmod>1970-01-01</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.5</priority>\n  </url>`,
+    )
+    .join("\n");
+  console.log(`[sitemap] adding ${missing.length} missing blog URLs`);
+  return xml.replace("</urlset>", `${blocks}\n</urlset>`);
+}
+
 function main() {
   if (!existsSync(SITEMAP_PATH)) {
     console.error(`[sitemap] not found: ${SITEMAP_PATH}`);
     process.exit(1);
   }
   let xml = readFileSync(SITEMAP_PATH, "utf8");
+  xml = ensureBlogUrls(xml);
 
   // Iterate every <url> block and rewrite its <lastmod>.
   xml = xml.replace(
