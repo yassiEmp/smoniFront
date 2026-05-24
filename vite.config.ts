@@ -36,7 +36,7 @@ export default defineConfig(({ isSsrBuild }) => ({
     dirStyle: 'nested',
     formatting: 'minify',
     beastiesOptions: {
-      pruneSource: true,
+      pruneSource: false,
     },
     includedRoutes(paths) {
       // Normalize each discovered path to a leading slash form, then filter
