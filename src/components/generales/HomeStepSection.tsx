@@ -1,3 +1,4 @@
+import { useId } from "react";
 import type { CSSProperties, MouseEvent, ReactElement } from "react";
 import Reveal from "./Reveal";
 
@@ -24,9 +25,6 @@ const MONO = "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace";
 // ───────────────────────────────────────────────────────────────
 // Shared illustration primitives
 // ───────────────────────────────────────────────────────────────
-let _pUid = 0;
-const pUid = (p: string) => `${p}_pr${++_pUid}`;
-
 type IllusIds = { bg: string; dots: string; diffuse: string; softblur: string };
 
 const PDefs = ({ ids, haloX = 30 }: { ids: IllusIds; haloX?: number }) => (
@@ -75,7 +73,8 @@ const StepNumeral = ({ n }: { n: string }) => (
 // 01 · Call
 // ───────────────────────────────────────────────────────────────
 const P1_Call = () => {
-  const ids: IllusIds = { bg: pUid("bg"), dots: pUid("dots"), diffuse: pUid("df"), softblur: pUid("sb") };
+  const rid = useId();
+  const ids: IllusIds = { bg: `bg_pr${rid}`, dots: `dots_pr${rid}`, diffuse: `df_pr${rid}`, softblur: `sb_pr${rid}` };
   return (
     <PFrame>
       <PDefs ids={ids} haloX={28} />
@@ -148,7 +147,8 @@ const P1_Call = () => {
 // 02 · Devis 24h
 // ───────────────────────────────────────────────────────────────
 const P2_Devis = () => {
-  const ids: IllusIds = { bg: pUid("bg"), dots: pUid("dots"), diffuse: pUid("df"), softblur: pUid("sb") };
+  const rid = useId();
+  const ids: IllusIds = { bg: `bg_pr${rid}`, dots: `dots_pr${rid}`, diffuse: `df_pr${rid}`, softblur: `sb_pr${rid}` };
   return (
     <PFrame>
       <PDefs ids={ids} haloX={70} />
@@ -220,7 +220,8 @@ const P2_Devis = () => {
 // 03 · Inscription + 1ère leçon
 // ───────────────────────────────────────────────────────────────
 const P3_Inscription = () => {
-  const ids: IllusIds = { bg: pUid("bg"), dots: pUid("dots"), diffuse: pUid("df"), softblur: pUid("sb") };
+  const rid = useId();
+  const ids: IllusIds = { bg: `bg_pr${rid}`, dots: `dots_pr${rid}`, diffuse: `df_pr${rid}`, softblur: `sb_pr${rid}` };
   return (
     <PFrame>
       <PDefs ids={ids} haloX={32} />
@@ -321,7 +322,8 @@ const P3_Inscription = () => {
 // 04 · Code → conduite → examen
 // ───────────────────────────────────────────────────────────────
 const P4_Examen = () => {
-  const ids: IllusIds = { bg: pUid("bg"), dots: pUid("dots"), diffuse: pUid("df"), softblur: pUid("sb") };
+  const rid = useId();
+  const ids: IllusIds = { bg: `bg_pr${rid}`, dots: `dots_pr${rid}`, diffuse: `df_pr${rid}`, softblur: `sb_pr${rid}` };
   return (
     <PFrame>
       <PDefs ids={ids} haloX={68} />
