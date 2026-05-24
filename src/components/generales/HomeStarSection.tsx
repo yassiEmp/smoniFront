@@ -1,11 +1,13 @@
+import { Suspense, lazy } from "react";
+import { ClientOnly } from "vite-react-ssg";
 import { motion } from "framer-motion";
-import {
-  IllustrationCreation,
-  IllustrationAgence,
-  IllustrationOuverture,
-  IllustrationPermis,
-} from "./HomeStarIllustrations";
 import Reveal from "./Reveal";
+
+// Lazy-load decorative illustrations so they're excluded from SSG HTML.
+const IllustrationCreation = lazy(() => import("./HomeStarIllustrations").then(m => ({ default: m.IllustrationCreation })));
+const IllustrationAgence = lazy(() => import("./HomeStarIllustrations").then(m => ({ default: m.IllustrationAgence })));
+const IllustrationOuverture = lazy(() => import("./HomeStarIllustrations").then(m => ({ default: m.IllustrationOuverture })));
+const IllustrationPermis = lazy(() => import("./HomeStarIllustrations").then(m => ({ default: m.IllustrationPermis })));
 
 // "Une vraie agence, pas une vitrine" — 4 chiffres-clés cards.
 // Layout per the design (smoni home-star.html §6 in-context card):
@@ -113,7 +115,13 @@ const HomeStarSection = () => {
                 className="group relative bg-white rounded-[20px] border border-[#eef2f7] overflow-hidden shadow-[0_24px_50px_-28px_rgba(15,23,42,0.22),0_2px_6px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_36px_70px_-32px_rgba(15,23,42,0.32),0_4px_10px_-2px_rgba(15,23,42,0.08)] transition-shadow duration-500"
               >
                 <div className="relative w-full aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
-                  <Illustration />
+                  <ClientOnly>
+                    {() => (
+                      <Suspense fallback={<div className="absolute inset-0 bg-[#f3f1ff]" />}>
+                        <Illustration />
+                      </Suspense>
+                    )}
+                  </ClientOnly>
                 </div>
 
                 <div className="relative -mt-4 bg-white rounded-t-[20px] px-[26px] pt-[26px] pb-[28px] min-[1240px]:px-7 min-[1240px]:pt-7 min-[1240px]:pb-8">
