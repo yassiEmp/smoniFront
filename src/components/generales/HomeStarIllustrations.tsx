@@ -2,7 +2,7 @@
 // Same polished hybrid recipe as EngagementIllustrations / MesureIllustrations:
 // indigo subject + white paper document + ONE blue accent + dashed connector.
 
-import { memo } from "react";
+import { memo, useId } from "react";
 
 const BG = "#f3f1ff";
 const INDIGO = "#2c2876";
@@ -13,17 +13,16 @@ const BLUE = "#3b82f6";
 const INDIGO_60 = "#7472b0";
 const INDIGO_20 = "#cfceea";
 
-let _idCounter = 0;
-const makeIds = () => {
-  const n = ++_idCounter;
+const useDefIds = () => {
+  const id = useId();
   return {
-    bg: `hs_bg_${n}`,
-    dots: `hs_dots_${n}`,
-    diffuse: `hs_df_${n}`,
-    softblur: `hs_sb_${n}`,
+    bg: `hs_bg_${id}`,
+    dots: `hs_dots_${id}`,
+    diffuse: `hs_df_${id}`,
+    softblur: `hs_sb_${id}`,
   };
 };
-type DefIds = ReturnType<typeof makeIds>;
+type DefIds = ReturnType<typeof useDefIds>;
 
 const Defs = ({ ids, haloX = 30 }: { ids: DefIds; haloX?: number }) => (
   <defs>
@@ -79,7 +78,7 @@ const Frame = ({ children }: { children: React.ReactNode }) => (
 
 // 01 · CRÉATION — 2022
 export const IllustrationCreation = memo(function IllustrationCreation() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={30} />
@@ -129,7 +128,7 @@ export const IllustrationCreation = memo(function IllustrationCreation() {
 
 // 02 · AGENCE — 1
 export const IllustrationAgence = memo(function IllustrationAgence() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={28} />
@@ -171,7 +170,7 @@ export const IllustrationAgence = memo(function IllustrationAgence() {
 
 // 03 · OUVERTURE — 6/6
 export const IllustrationOuverture = memo(function IllustrationOuverture() {
-  const ids = makeIds();
+  const ids = useDefIds();
   const days = ["L", "M", "M", "J", "V", "S", "D"];
   const dayW = 32;
   const gap = 6;
@@ -257,7 +256,7 @@ export const IllustrationOuverture = memo(function IllustrationOuverture() {
 
 // 04 · PERMIS — 3
 export const IllustrationPermis = memo(function IllustrationPermis() {
-  const ids = makeIds();
+  const ids = useDefIds();
 
   const Card = ({
     rot,

@@ -3,7 +3,7 @@
 // document, linked by a dotted leader that points at the emphasized line.
 // Restricted palette: indigo (#2c2876) + white + a single blue accent.
 
-import { memo } from "react";
+import { memo, useId } from "react";
 
 const BG = "#f3f1ff";
 const INDIGO = "#2c2876";
@@ -14,19 +14,15 @@ const BLUE = "#3b82f6";
 const INDIGO_60 = "#7472b0";
 const INDIGO_20 = "#cfceea";
 
-// Module-level id counter — avoids the React useId hook cost. Each illustration
-// instance gets a stable, unique id at first render. Five cards × few defs each
-// means a handful of ids per mount.
-let _idCounter = 0;
-const makeIds = () => {
-  const n = ++_idCounter;
+const useDefIds = () => {
+  const id = useId();
   return {
-    bg: `eng_bg_${n}`,
-    dots: `eng_dots_${n}`,
-    diffuse: `eng_df_${n}`,
+    bg: `eng_bg_${id}`,
+    dots: `eng_dots_${id}`,
+    diffuse: `eng_df_${id}`,
   };
 };
-type DefIds = ReturnType<typeof makeIds>;
+type DefIds = ReturnType<typeof useDefIds>;
 
 // Filter region tightened from 200% → 140%. The blur barely spills past the
 // shape so paying for a full 4× area was waste. Cuts GPU filter work ~50%.
@@ -93,7 +89,7 @@ const Frame = ({ children }: { children: React.ReactNode }) => (
 
 // 01 · Prix tout-compris
 export const IllustrationPrix = memo(function IllustrationPrix() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={28} />
@@ -133,7 +129,7 @@ export const IllustrationPrix = memo(function IllustrationPrix() {
 
 // 02 · 60 minutes au volant
 export const Illustration60Min = memo(function Illustration60Min() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={72} />
@@ -205,7 +201,7 @@ export const Illustration60Min = memo(function Illustration60Min() {
 
 // 03 · Pas de cris
 export const IllustrationPasDeCris = memo(function IllustrationPasDeCris() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={28} />
@@ -238,7 +234,7 @@ export const IllustrationPasDeCris = memo(function IllustrationPasDeCris() {
 
 // 04 · Recalés bienvenus
 export const IllustrationRecales = memo(function IllustrationRecales() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={50} />
@@ -277,7 +273,7 @@ export const IllustrationRecales = memo(function IllustrationRecales() {
 
 // 05 · Garantie financière
 export const IllustrationGarantie = memo(function IllustrationGarantie() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={50} />

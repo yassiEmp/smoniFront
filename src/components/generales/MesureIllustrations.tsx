@@ -3,7 +3,7 @@
 // white paper document + ONE blue accent + dashed connector pointing at the
 // emphasized detail). One story per card, asymmetric composition.
 
-import { memo } from "react";
+import { memo, useId } from "react";
 
 const BG = "#f3f1ff";
 const INDIGO = "#2c2876";
@@ -14,17 +14,16 @@ const BLUE = "#3b82f6";
 const INDIGO_60 = "#7472b0";
 const INDIGO_20 = "#cfceea";
 
-let _idCounter = 0;
-const makeIds = () => {
-  const n = ++_idCounter;
+const useDefIds = () => {
+  const id = useId();
   return {
-    bg: `mes_bg_${n}`,
-    dots: `mes_dots_${n}`,
-    diffuse: `mes_df_${n}`,
-    softblur: `mes_sb_${n}`,
+    bg: `mes_bg_${id}`,
+    dots: `mes_dots_${id}`,
+    diffuse: `mes_df_${id}`,
+    softblur: `mes_sb_${id}`,
   };
 };
-type DefIds = ReturnType<typeof makeIds>;
+type DefIds = ReturnType<typeof useDefIds>;
 
 const Defs = ({ ids, haloX = 30 }: { ids: DefIds; haloX?: number }) => (
   <defs>
@@ -89,7 +88,7 @@ const Frame = ({ children }: { children: React.ReactNode }) => (
 
 // 01 · Délai mesuré — 24h ouvrées
 export const IllustrationDelai = memo(function IllustrationDelai() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={26} />
@@ -172,7 +171,7 @@ export const IllustrationDelai = memo(function IllustrationDelai() {
 
 // 02 · Audit — livret horodaté
 export const IllustrationAudit = memo(function IllustrationAudit() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={28} />
@@ -232,7 +231,7 @@ export const IllustrationAudit = memo(function IllustrationAudit() {
 
 // 03 · Volume honnête — 200+ dossiers
 export const IllustrationVolume = memo(function IllustrationVolume() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={70} />
@@ -281,7 +280,7 @@ export const IllustrationVolume = memo(function IllustrationVolume() {
 
 // 04 · Anti-stress — examens blancs
 export const IllustrationExamen = memo(function IllustrationExamen() {
-  const ids = makeIds();
+  const ids = useDefIds();
   return (
     <Frame>
       <Defs ids={ids} haloX={32} />
@@ -355,7 +354,7 @@ export const IllustrationExamen = memo(function IllustrationExamen() {
 
 // 05 · Adultes actifs — 20h + samedi entier
 export const IllustrationCreneaux = memo(function IllustrationCreneaux() {
-  const ids = makeIds();
+  const ids = useDefIds();
   const days = ["L", "M", "M", "J", "V", "S", "D"];
   const hours = ["10h", "14h", "17h", "20h"];
   const gridX = 184;
@@ -515,7 +514,7 @@ export const IllustrationCreneaux = memo(function IllustrationCreneaux() {
 
 // 06 · Continuité — moniteur référent
 export const IllustrationMoniteur = memo(function IllustrationMoniteur() {
-  const ids = makeIds();
+  const ids = useDefIds();
   const sig = "M 0 4 c 4 -6 8 6 12 -2 s 8 4 14 -2 s 8 4 14 0";
   return (
     <Frame>
