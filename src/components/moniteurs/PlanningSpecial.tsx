@@ -59,7 +59,7 @@ const PlanningSpecial = ({
           className="scrollbar-hide max-h-[55vh] overflow-y-auto pr-2"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
-          <style>{`
+          <style precedence="default">{`
             .scrollbar-hide::-webkit-scrollbar { display: none; }
           `}</style>
           <VehicleList

@@ -932,7 +932,7 @@ const HomeStepSection = () => {
         </Reveal>
       </div>
 
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style precedence="default" dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 1239px) {
           .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
           .process-stepper-wrap { display: none; }

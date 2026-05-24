@@ -766,7 +766,7 @@ const HomeFaqSection = () => {
         </div>
       </div>
 
-      <style>{`
+      <style precedence="default">{`
         .faq-grid {
           display: grid;
           grid-template-columns: minmax(340px, 420px) 1fr;

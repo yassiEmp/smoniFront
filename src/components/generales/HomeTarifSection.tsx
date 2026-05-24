@@ -1450,7 +1450,7 @@ const HomeTarifSection = () => {
       </div>
 
       {/* Responsive: collapse selectors / header / grid below desktop */}
-      <style>{`
+      <style precedence="default">{`
         .tarifs-title { font-size: 60px; }
         .tarifs-header {
           display: grid;

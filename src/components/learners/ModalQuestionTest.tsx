@@ -212,7 +212,7 @@ const isComplete = answeredRequiredCount === totalRequiredQuestions;
 
         {/* Contenu principal avec scroll caché */}
         <div className="modal-content flex-1 overflow-y-auto p-4 md:p-6" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-          <style>{`
+          <style precedence="default">{`
             .modal-content::-webkit-scrollbar {
               display: none;
             }

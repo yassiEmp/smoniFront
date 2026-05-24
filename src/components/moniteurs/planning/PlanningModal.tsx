@@ -26,7 +26,7 @@ export default function PlanningModal({ open, onClose, children, header, daysTab
         {daysTabs}
         <div className="overflow-y-auto max-h-[70vh] pr-2 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {/* Pour Chrome, Safari et Opera */}
-          <style>{`
+          <style precedence="default">{`
             .scrollbar-hide::-webkit-scrollbar { display: none; }
           `}</style>
           {scrollableContent}
