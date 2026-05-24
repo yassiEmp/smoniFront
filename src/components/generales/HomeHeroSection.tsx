@@ -195,9 +195,8 @@ const HomeHeroSection = () => {
 
       <motion.div
         className="w-full px-6 lg:px-16 xl:px-32 relative z-10"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
+        initial={false}
+        animate="visible"
         variants={containerVariants}
       >
         <div className="flex flex-col">
