@@ -15,6 +15,7 @@ import {
   R_BenefitFast,
   R_BenefitFree,
 } from "./HomeRecalesIllustrations";
+import Reveal from "./Reveal";
 
 const monoEyebrowSx: CSSProperties = {
   fontFamily: "'Inter', sans-serif",
@@ -600,7 +601,7 @@ const HomeRecalesSection = () => (
           marginBottom: 36,
         }}
       >
-        <div>
+        <Reveal>
           <h2
             id="recales-heading"
             data-rec="headline"
@@ -621,7 +622,8 @@ const HomeRecalesSection = () => (
             </em>
             .
           </h2>
-        </div>
+        </Reveal>
+        <Reveal delay={90}>
         <div data-rec="header-sub" style={{ paddingBottom: 10 }}>
           <p
             style={{
@@ -639,8 +641,10 @@ const HomeRecalesSection = () => (
             <strong style={{ color: C.deep, fontWeight: 700 }}>pas à zéro</strong>.
           </p>
         </div>
+        </Reveal>
       </header>
 
+      <Reveal delay={180}>
       <div
         aria-label="Protocole recalés Smoni"
         data-rec="grid"
@@ -661,6 +665,7 @@ const HomeRecalesSection = () => (
           <BenefitCard key={b.n} {...b} />
         ))}
       </div>
+      </Reveal>
     </div>
   </section>
 );
