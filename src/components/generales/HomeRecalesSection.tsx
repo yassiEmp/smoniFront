@@ -5,17 +5,18 @@
 // Row 4:   [BEN1 4×1]  [BEN2 4×1]      [BEN3 4×1]
 // Responsiveness uses container queries on the section (containerName: rec).
 
-import { CSSProperties } from "react";
-import {
-  R_Hero,
-  R_Step1,
-  R_Step2,
-  R_Step3,
-  R_BenefitPlan,
-  R_BenefitFast,
-  R_BenefitFree,
-} from "./HomeRecalesIllustrations";
+import { CSSProperties, Suspense, lazy } from "react";
+import { ClientOnly } from "vite-react-ssg";
 import Reveal from "./Reveal";
+
+// Lazy-load decorative illustrations so they're excluded from SSG HTML.
+const R_Hero = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_Hero })));
+const R_Step1 = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_Step1 })));
+const R_Step2 = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_Step2 })));
+const R_Step3 = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_Step3 })));
+const R_BenefitPlan = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_BenefitPlan })));
+const R_BenefitFast = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_BenefitFast })));
+const R_BenefitFree = lazy(() => import("./HomeRecalesIllustrations").then(m => ({ default: m.R_BenefitFree })));
 
 const monoEyebrowSx: CSSProperties = {
   fontFamily: "'Inter', sans-serif",
@@ -89,7 +90,13 @@ const HeroCard = () => {
         }}
       >
         <div style={{ position: "absolute", inset: 0 }}>
-          <R_Hero />
+          <ClientOnly>
+            {() => (
+              <Suspense fallback={<div style={{ position: "absolute", inset: 0, background: "#f3f1ff" }} />}>
+                <R_Hero />
+              </Suspense>
+            )}
+          </ClientOnly>
         </div>
       </div>
       <div
@@ -359,9 +366,16 @@ const StepCard = ({ n, gridColumn, label, title, body, chip, Art }: StepData) =>
           aspectRatio: "16 / 9",
           flexShrink: 0,
           borderBottom: "1px solid #eef0f7",
+          background: "#f3f1ff",
         }}
       >
-        <Art />
+        <ClientOnly>
+          {() => (
+            <Suspense fallback={<div style={{ position: "absolute", inset: 0, background: "#f3f1ff" }} />}>
+              <Art />
+            </Suspense>
+          )}
+        </ClientOnly>
       </div>
       <div
         style={{
@@ -463,7 +477,13 @@ const BenefitCard = ({ gridColumn, Icon, title, body }: BenefitData) => {
       }}
     >
       <div style={{ flexShrink: 0, paddingTop: 4 }}>
-        <Icon />
+        <ClientOnly>
+          {() => (
+            <Suspense fallback={<div style={{ width: 44, height: 44 }} />}>
+              <Icon />
+            </Suspense>
+          )}
+        </ClientOnly>
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <h3
