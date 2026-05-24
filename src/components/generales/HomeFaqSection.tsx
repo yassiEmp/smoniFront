@@ -493,6 +493,7 @@ const HomeFaqSection = () => {
             <Mono style={{ color: FQP.ind40 }}>Cliquez pour ouvrir</Mono>
           </div>
 
+          <Reveal>
           <ol style={{ listStyle: "none", margin: 0, padding: 0, position: "relative" }}>
             <div
               aria-hidden="true"
@@ -505,7 +506,7 @@ const HomeFaqSection = () => {
                 background: FQP.rule,
               }}
             />
-            {ROWS.map((entry, rowIdx) => {
+            {ROWS.map((entry) => {
               if (entry.kind === "divider") {
                 return (
                   <li
@@ -565,7 +566,6 @@ const HomeFaqSection = () => {
               const isOpen = !!open[item.n];
               return (
                 <li key={item.n} style={{ borderBottom: `1px solid ${FQP.rule}` }}>
-                <Reveal delay={rowIdx * 60}>
                   <button
                     type="button"
                     onClick={() => toggle(item.n)}
@@ -707,11 +707,11 @@ const HomeFaqSection = () => {
                       <Plus open={isOpen} color={isOpen ? FQP.blue : FQP.indigo} />
                     </div>
                   </button>
-                </Reveal>
                 </li>
               );
             })}
           </ol>
+          </Reveal>
 
           <div
             style={{
