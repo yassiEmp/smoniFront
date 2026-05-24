@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { PRICING, PROFILES, type StaticBoutiqueService } from "@/data/pricingData";
 import { Link } from "react-router";
 import Reveal from "./Reveal";
@@ -59,9 +59,6 @@ const padIdx = (i: number) => String(i + 1).padStart(2, "0");
 // ──────────────────────────────────────────────────────────────
 // PriceArt — type-led illustration: the price IS the iconography.
 // ──────────────────────────────────────────────────────────────
-let _uid = 0;
-const uid = (p: string) => `${p}_${++_uid}`;
-
 interface PlanView {
   id: number;
   n: string;          // "01 / 06"
@@ -84,9 +81,10 @@ interface PriceArtProps {
 }
 
 const PriceArt = ({ plan, dark }: PriceArtProps) => {
+  const rid = useId();
   const ids = useMemo(
-    () => ({ bg: uid("bg"), dots: uid("dots"), diffuse: uid("df") }),
-    [],
+    () => ({ bg: `bg_${rid}`, dots: `dots_${rid}`, diffuse: `df_${rid}` }),
+    [rid],
   );
 
   const bgFill   = dark ? INDIGO_DEEP : `url(#${ids.bg})`;
