@@ -35,6 +35,9 @@ export default defineConfig(({ isSsrBuild }) => ({
     script: 'async',
     dirStyle: 'nested',
     formatting: 'minify',
+    beastiesOptions: {
+      pruneSource: true,
+    },
     includedRoutes(paths) {
       // Normalize each discovered path to a leading slash form, then filter
       // against the whitelist + dynamic blog slugs. Skip parametric paths
