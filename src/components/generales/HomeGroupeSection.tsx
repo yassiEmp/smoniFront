@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import { ArrowRight } from "lucide-react";
@@ -141,9 +142,6 @@ const onLeave = (e: React.MouseEvent<HTMLElement>) => {
 // SVG illustrations — inlined from design package
 // Each function generates unique IDs to avoid SVG defs collisions.
 // ──────────────────────────────────────────────────────────
-let __uid = 0;
-const useId = (p: string) => `${p}_g${++__uid}`;
-
 type DefIds = { bg: string; dots: string; diffuse: string; softblur: string };
 
 const FDefs = ({
@@ -227,11 +225,12 @@ const FFrame = ({
 
 // HERO · Permis B — manual shifter "H" gate + 30h plate
 const ArtHero = ({ title }: { title: string }) => {
+  const rid = useId();
   const ids: DefIds = {
-    bg: useId("bg"),
-    dots: useId("dots"),
-    diffuse: useId("df"),
-    softblur: useId("sb"),
+    bg: `bg_g${rid}`,
+    dots: `dots_g${rid}`,
+    diffuse: `df_g${rid}`,
+    softblur: `sb_g${rid}`,
   };
   return (
     <FFrame vb="0 0 800 450" title={title}>
@@ -432,11 +431,12 @@ const ArtHero = ({ title }: { title: string }) => {
 
 // CODE · "24/7" type-led
 const ArtCode = ({ title }: { title: string }) => {
+  const rid = useId();
   const ids: DefIds = {
-    bg: useId("bg"),
-    dots: useId("dots"),
-    diffuse: useId("df"),
-    softblur: useId("sb"),
+    bg: `bg_g${rid}`,
+    dots: `dots_g${rid}`,
+    diffuse: `df_g${rid}`,
+    softblur: `sb_g${rid}`,
   };
   return (
     <FFrame title={title}>
@@ -499,11 +499,12 @@ const ArtCode = ({ title }: { title: string }) => {
 
 // MOTO · A2 with helmet
 const ArtMoto = ({ title }: { title: string }) => {
+  const rid = useId();
   const ids: DefIds = {
-    bg: useId("bg"),
-    dots: useId("dots"),
-    diffuse: useId("df"),
-    softblur: useId("sb"),
+    bg: `bg_g${rid}`,
+    dots: `dots_g${rid}`,
+    diffuse: `df_g${rid}`,
+    softblur: `sb_g${rid}`,
   };
   return (
     <FFrame title={title}>
@@ -592,11 +593,12 @@ const ArtMoto = ({ title }: { title: string }) => {
 
 // STAGE · 7 days
 const ArtStage = ({ title }: { title: string }) => {
+  const rid = useId();
   const ids: DefIds = {
-    bg: useId("bg"),
-    dots: useId("dots"),
-    diffuse: useId("df"),
-    softblur: useId("sb"),
+    bg: `bg_g${rid}`,
+    dots: `dots_g${rid}`,
+    diffuse: `df_g${rid}`,
+    softblur: `sb_g${rid}`,
   };
   return (
     <FFrame title={title}>
@@ -734,11 +736,12 @@ const ArtStage = ({ title }: { title: string }) => {
 
 // REPRISE · 1H + 0€ stamp
 const ArtReprise = ({ title }: { title: string }) => {
+  const rid = useId();
   const ids: DefIds = {
-    bg: useId("bg"),
-    dots: useId("dots"),
-    diffuse: useId("df"),
-    softblur: useId("sb"),
+    bg: `bg_g${rid}`,
+    dots: `dots_g${rid}`,
+    diffuse: `df_g${rid}`,
+    softblur: `sb_g${rid}`,
   };
   return (
     <FFrame title={title}>
