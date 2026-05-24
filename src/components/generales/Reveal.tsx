@@ -5,13 +5,15 @@ type Props = {
   delay?: number;
   className?: string;
   style?: CSSProperties;
+  immediate?: boolean;
 };
 
-export const Reveal = ({ children, delay = 0, className, style }: Props) => {
+export const Reveal = ({ children, delay = 0, className, style, immediate = false }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (immediate) return;
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
@@ -32,7 +34,15 @@ export const Reveal = ({ children, delay = 0, className, style }: Props) => {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [immediate]);
+
+  if (immediate) {
+    return (
+      <div ref={ref} className={className} style={style}>
+        {children}
+      </div>
+    );
+  }
 
   return (
     <div

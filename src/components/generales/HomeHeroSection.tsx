@@ -187,7 +187,7 @@ const HomeHeroSection = () => {
         <div className="flex flex-col">
           <div className="w-full md:max-w-[55%] lg:max-w-[52%] xl:max-w-[50%] space-y-5 2xl:space-y-8">
             <Reveal
-              delay={0}
+              immediate
               className="text-[11px] 2xl:text-[13px] font-bold uppercase tracking-[0.32em] text-[#2c2876]/80"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
@@ -195,7 +195,7 @@ const HomeHeroSection = () => {
             </Reveal>
 
             <div className="space-y-4 2xl:space-y-6">
-              <Reveal delay={80}>
+              <Reveal immediate>
                 <h1
                   className="text-6xl sm:text-7xl md:text-6xl lg:text-[64px] 2xl:text-[96px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.95] tracking-tighter"
                   style={{ fontFamily: "'Outfit', 'Outfit Fallback', sans-serif" }}
