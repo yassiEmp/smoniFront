@@ -2,9 +2,15 @@
 // 2×2 quad of equal-weight promise cards + full-width indigo phone band.
 // Locked Y-system palette and typography; SSG-rendered (no lazy/ClientOnly).
 
-import { CSSProperties, ComponentType, MouseEvent } from "react";
-import { A_Horaires, A_Code, A_Discretion, A_Expat } from "./HomeAdultesIllustrations";
+import { CSSProperties, ComponentType, MouseEvent, Suspense, lazy } from "react";
+import { ClientOnly } from "vite-react-ssg";
 import Reveal from "./Reveal";
+
+// Lazy-load decorative illustrations so they're excluded from SSG HTML.
+const A_Horaires = lazy(() => import("./HomeAdultesIllustrations").then(m => ({ default: m.A_Horaires })));
+const A_Code = lazy(() => import("./HomeAdultesIllustrations").then(m => ({ default: m.A_Code })));
+const A_Discretion = lazy(() => import("./HomeAdultesIllustrations").then(m => ({ default: m.A_Discretion })));
+const A_Expat = lazy(() => import("./HomeAdultesIllustrations").then(m => ({ default: m.A_Expat })));
 
 type Promise = {
   n: string;
@@ -101,8 +107,14 @@ const PhoneIcon = ({ size = 14 }: { size?: number }) => (
 
 const QuadCard = ({ c }: { c: Promise }) => (
   <article style={cardBase} onMouseEnter={onCardEnter} onMouseLeave={onCardLeave}>
-    <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", flexShrink: 0 }}>
-      <c.Art />
+    <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", flexShrink: 0, background: "#f3f1ff" }}>
+      <ClientOnly>
+        {() => (
+          <Suspense fallback={<div style={{ position: "absolute", inset: 0, background: "#f3f1ff" }} />}>
+            <c.Art />
+          </Suspense>
+        )}
+      </ClientOnly>
     </div>
     <div style={{ padding: "24px 26px 26px", display: "flex", flexDirection: "column", flex: 1 }}>
       <Eyebrow tag={c.tag} />
