@@ -187,7 +187,6 @@ const HomeHeroSection = () => {
         <div className="flex flex-col">
           <div className="w-full md:max-w-[55%] lg:max-w-[52%] xl:max-w-[50%] space-y-5 2xl:space-y-8">
             <Reveal
-              defaultVisible
               delay={0}
               className="text-[11px] 2xl:text-[13px] font-bold uppercase tracking-[0.32em] text-[#2c2876]/80"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -196,7 +195,7 @@ const HomeHeroSection = () => {
             </Reveal>
 
             <div className="space-y-4 2xl:space-y-6">
-              <Reveal defaultVisible delay={80}>
+              <Reveal delay={80}>
                 <h1
                   className="text-6xl sm:text-7xl md:text-6xl lg:text-[64px] 2xl:text-[96px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.95] tracking-tighter"
                   style={{ fontFamily: "'Outfit', 'Outfit Fallback', sans-serif" }}
@@ -206,7 +205,7 @@ const HomeHeroSection = () => {
                 </h1>
               </Reveal>
 
-              <Reveal defaultVisible delay={160}>
+              <Reveal delay={160}>
                 <p className="text-base lg:text-lg 2xl:text-2xl text-slate-500 max-w-lg leading-relaxed font-medium">
                   Permis B, boîte automatique et moto à Vincennes. Prix affichés, heures pleines, moniteurs qui respectent. <br />
                   <span className="text-[#2c2876] font-extrabold">— Recalés bienvenus, sans heures imposées.</span>
@@ -214,7 +213,7 @@ const HomeHeroSection = () => {
               </Reveal>
             </div>
 
-            <Reveal defaultVisible delay={240} className="flex flex-wrap gap-4 pt-2 2xl:gap-6 2xl:pt-4">
+            <Reveal delay={240} className="flex flex-wrap gap-4 pt-2 2xl:gap-6 2xl:pt-4">
               <Button
                 size="lg"
                 onClick={() => handleNavigate("/tarifs")}
@@ -234,7 +233,6 @@ const HomeHeroSection = () => {
             </Reveal>
 
             <Reveal
-              defaultVisible
               delay={320}
               className="flex flex-wrap items-center gap-8 pt-6 2xl:pt-8 border-t border-slate-200/60"
             >
