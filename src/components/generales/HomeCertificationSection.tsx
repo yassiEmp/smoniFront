@@ -10,6 +10,7 @@ import {
   IllustrationRecales,
   IllustrationGarantie,
 } from "./EngagementIllustrations";
+import Reveal from "./Reveal";
 
 // Each card carries a scannable micro-hierarchy: KEYWORD (F-pattern landing) → title → body w/ one bolded promise.
 // `featured: true` triggers the Von Restorff visual anchor (1 card, distinct treatment) so the eye enters there.
@@ -192,6 +193,7 @@ const HomeCertificationSection = () => {
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
                 className={`${MOBILE_ORDER_CLASS[slotFor(i) - 1]} md:order-none ${placement} w-full max-w-md mx-auto md:max-w-none md:mx-0`}
               >
+              <Reveal delay={i * 90} style={{ height: "100%" }}>
                 <article
                   aria-labelledby={`engagement-${e.n}-title`}
                   className={`group h-full rounded-2xl overflow-hidden flex flex-col transition-[box-shadow,border-color] duration-300 ${
@@ -245,6 +247,7 @@ const HomeCertificationSection = () => {
                     </p>
                   </div>
                 </article>
+              </Reveal>
               </motion.li>
             );
           })}

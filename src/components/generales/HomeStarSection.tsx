@@ -5,6 +5,7 @@ import {
   IllustrationOuverture,
   IllustrationPermis,
 } from "./HomeStarIllustrations";
+import Reveal from "./Reveal";
 
 // "Une vraie agence, pas une vitrine" — 4 chiffres-clés cards.
 // Layout per the design (smoni home-star.html §6 in-context card):
@@ -101,11 +102,11 @@ const HomeStarSection = () => {
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 min-[1240px]:grid-cols-4 gap-7 sm:gap-8 min-[1240px]:gap-7"
         >
-          {stats.map((s) => {
+          {stats.map((s, i) => {
             const Illustration = s.Illustration;
             return (
+              <Reveal key={s.n} delay={i * 90} style={{ height: "100%" }}>
               <motion.article
-                key={s.n}
                 variants={itemVariants}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 280, damping: 22 }}
@@ -142,6 +143,7 @@ const HomeStarSection = () => {
                   </p>
                 </div>
               </motion.article>
+              </Reveal>
             );
           })}
         </motion.div>
