@@ -1,0 +1,21 @@
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(340px, 420px) 1fr;
+  gap: 88px;
+  align-items: start;
+}
+.faq-aside {
+  position: sticky;
+  top: 72px;
+  align-self: start;
+}
+@media (max-width: 1023px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .faq-aside {
+    position: static;
+    top: auto;
+  }
+}

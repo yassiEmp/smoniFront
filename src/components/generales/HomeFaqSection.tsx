@@ -1,5 +1,6 @@
 import { useState, type CSSProperties, type ReactNode } from "react";
 import Reveal from "./Reveal";
+import "./HomeFaqSection.css";
 
 export const faqData = [
   {
@@ -766,29 +767,6 @@ const HomeFaqSection = () => {
         </div>
       </div>
 
-      <style precedence="default">{`
-        .faq-grid {
-          display: grid;
-          grid-template-columns: minmax(340px, 420px) 1fr;
-          gap: 88px;
-          align-items: start;
-        }
-        .faq-aside {
-          position: sticky;
-          top: 72px;
-          align-self: start;
-        }
-        @media (max-width: 1023px) {
-          .faq-grid {
-            grid-template-columns: 1fr;
-            gap: 48px;
-          }
-          .faq-aside {
-            position: static;
-            top: auto;
-          }
-        }
-      `}</style>
     </section>
   );
 };

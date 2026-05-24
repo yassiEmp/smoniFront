@@ -1,6 +1,7 @@
 import { useId } from "react";
 import type { CSSProperties, MouseEvent, ReactElement } from "react";
 import Reveal from "./Reveal";
+import "./HomeStepSection.css";
 
 // ──────────────────────────────────────────────────────────────
 // Smoni · "Comment ça se passe" — 4 étapes
@@ -932,19 +933,6 @@ const HomeStepSection = () => {
         </Reveal>
       </div>
 
-      <style precedence="default" dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 1239px) {
-          .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
-          .process-stepper-wrap { display: none; }
-        }
-        @media (max-width: 860px) {
-          .process-header { grid-template-columns: 1fr !important; gap: 24px !important; }
-          .process-cta { grid-template-columns: 1fr !important; }
-        }
-        @media (max-width: 640px) {
-          .process-grid { grid-template-columns: 1fr !important; }
-        }
-      `}} />
     </section>
   );
 };

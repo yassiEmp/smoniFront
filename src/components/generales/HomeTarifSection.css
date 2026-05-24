@@ -1,0 +1,34 @@
+.tarifs-title { font-size: 60px; }
+.tarifs-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 56px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.tarifs-helper { grid-template-columns: minmax(0, 1fr) auto; }
+@media (min-width: 769px) and (max-width: 1279px) {
+  .tarifs-section { padding: 72px 20px 96px !important; }
+  .tarifs-title { font-size: 48px !important; }
+  .tarifs-header { gap: 32px !important; }
+  .tarifs-helper { gap: 18px !important; }
+  .tarifs-trust { padding: 24px 32px !important; gap: 24px !important; }
+  .tarifs-art { aspect-ratio: 28 / 9 !important; }
+}
+@media (max-width: 1024px) {
+  .tarifs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 0 !important; }
+}
+@media (max-width: 768px) {
+  .tarifs-section { padding: 64px 16px 80px !important; }
+  .tarifs-title { font-size: 36px; }
+  .tarifs-header { grid-template-columns: 1fr !important; gap: 20px !important; margin-bottom: 28px !important; }
+  .tarifs-helper { grid-template-columns: 1fr !important; gap: 18px !important; }
+  .tarifs-selectors { grid-template-columns: 1fr !important; gap: 18px !important; }
+  .tarifs-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .tarifs-reco-frame { display: block !important; }
+  .tarifs-cpf-card { grid-template-columns: 1fr !important; gap: 22px !important; padding: 24px 20px !important; }
+  .tarifs-included { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .tarifs-trust { grid-template-columns: 1fr !important; padding: 24px !important; gap: 24px !important; }
+  .tarifs-trust-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
