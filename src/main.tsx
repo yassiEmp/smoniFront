@@ -18,6 +18,8 @@ import outfitLatin700 from "@fontsource/outfit/files/outfit-latin-700-normal.wof
 import outfitLatin900 from "@fontsource/outfit/files/outfit-latin-900-normal.woff2?url";
 
 import "./index.css";
+import "@components/generales/HomeStepSection.css";
+import "@components/generales/HomeLocationSection.css";
 
 const fontFaceCSS = `
 @font-face{font-family:'Inter';font-style:normal;font-display:swap;font-weight:400;src:url(${interLatin400}) format('woff2')}
