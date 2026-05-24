@@ -558,7 +558,7 @@ const Footer = () => {
           </strong>{" "}
           — SIREN 915 387 013 · 62 rue de la Jarry, 94300 Vincennes · Garantie
           financière conforme à l'art. L.213-2 du Code de la route. ©{" "}
-          {new Date().getFullYear()} Smoni Auto-École · Conduite éco-responsable
+          <span suppressHydrationWarning>{new Date().getFullYear()}</span> Smoni Auto-École · Conduite éco-responsable
           à Paris · Designed for elite drivers.
         </p>
       </div>
