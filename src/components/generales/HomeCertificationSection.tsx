@@ -1,16 +1,18 @@
+import { Suspense, lazy } from "react";
+import { ClientOnly } from "vite-react-ssg";
 import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import imgLabelQualite from "@assets/blog/details7/label-ecole-qualite.png?w=240;480&format=avif;webp;png&as=picture";
 import JsonLd from "@components/SEO/JsonLd";
-import {
-  IllustrationPrix,
-  Illustration60Min,
-  IllustrationPasDeCris,
-  IllustrationRecales,
-  IllustrationGarantie,
-} from "./EngagementIllustrations";
 import Reveal from "./Reveal";
+
+// Lazy-load decorative illustrations so they're excluded from SSG HTML.
+const IllustrationPrix = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPrix })));
+const Illustration60Min = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.Illustration60Min })));
+const IllustrationPasDeCris = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPasDeCris })));
+const IllustrationRecales = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationRecales })));
+const IllustrationGarantie = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationGarantie })));
 
 // Each card carries a scannable micro-hierarchy: KEYWORD (F-pattern landing) → title → body w/ one bolded promise.
 // `featured: true` triggers the Von Restorff visual anchor (1 card, distinct treatment) so the eye enters there.
@@ -211,7 +213,13 @@ const HomeCertificationSection = () => {
                         e.featured ? "opacity-100" : "opacity-[0.78]"
                       }`}
                     >
-                      <Illustration />
+                      <ClientOnly>
+                        {() => (
+                          <Suspense fallback={<div className="absolute inset-0 bg-[#f3f1ff]" />}>
+                            <Illustration />
+                          </Suspense>
+                        )}
+                      </ClientOnly>
                     </div>
                     {e.featured && (
                       <span
