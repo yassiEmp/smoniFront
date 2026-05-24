@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router";
 import Logo1 from "@assets/images/home/logo/1.png?w=240&format=webp";
 import { motion } from "framer-motion";
@@ -56,6 +56,9 @@ const Header = () => {
   const navigate = useNavigate();
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const { isAuthenticated, user } = useSelector((state: RootState) => state.authReducer);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const showAuthed = mounted && isAuthenticated;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -203,7 +206,7 @@ const Header = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 shrink-0">
-          {isAuthenticated ? (
+          {showAuthed ? (
             <NavLink to={getDashboardPath()} onClick={scrollToTop}>
               <Button variant="ghost" className="text-[11px] xl:text-[12px] 2xl:text-sm font-bold text-primary bg-primary/5 hover:bg-primary/10 px-3 2xl:px-4 h-8 2xl:h-9 rounded-full">
                 Tableau de bord
@@ -296,7 +299,7 @@ const Header = () => {
               </nav>
 
               <div className="p-7 space-y-4 border-t">
-                {isAuthenticated ? (
+                {showAuthed ? (
                   <SheetClose asChild>
                     <NavLink to={getDashboardPath()} onClick={scrollToTop} className="block">
                       <Button variant="outline" className="w-full rounded-xl h-14 text-lg text-primary border-primary bg-primary/5 font-black">
