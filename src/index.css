@@ -327,20 +327,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   --rv-y: 10px;
   --rv-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
-.fade-blur-in {
-  opacity: 0;
-  filter: blur(var(--rv-blur));
-  transform: translateY(var(--rv-y));
-  transition: opacity var(--rv-dur) var(--rv-ease),
-              filter var(--rv-dur) var(--rv-ease),
-              transform var(--rv-dur) var(--rv-ease);
-  will-change: opacity, filter, transform;
-}
-.fade-blur-in.is-visible {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-}
 @keyframes fade-blur-in {
   from {
     opacity: 0;
@@ -353,34 +339,12 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     transform: translateY(0);
   }
 }
-/* Above-fold variant: SSG ships with is-visible already set, so the JS transition
-   would no-op (no class flip). Drive the fade with a keyframe + fill-mode:both
-   so the hidden state shows pre-delay, and disable the transition to avoid any
-   double-animation if a class change races the keyframe. */
-.fade-blur-in[data-immediate="true"] {
-  opacity: 1;
-  filter: none;
-  transform: none;
-  transition: none;
-}
-.fade-blur-in[data-immediate="true"].is-visible {
-  opacity: 0;
-  filter: blur(var(--rv-blur));
-  transform: translateY(var(--rv-y));
+.fade-blur-in.is-visible {
   animation: fade-blur-in var(--rv-dur) var(--rv-ease) both;
-  transition: none;
+  will-change: opacity, filter, transform;
 }
 @media (prefers-reduced-motion: reduce) {
-  .fade-blur-in {
-    opacity: 1;
-    filter: none;
-    transform: none;
-    transition: none;
-  }
-  .fade-blur-in[data-immediate="true"].is-visible {
-    opacity: 1;
-    filter: none;
-    transform: none;
+  .fade-blur-in.is-visible {
     animation: none;
   }
 }
