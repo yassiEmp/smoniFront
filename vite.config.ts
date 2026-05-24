@@ -37,6 +37,11 @@ export default defineConfig(({ isSsrBuild }) => ({
     formatting: 'minify',
     beastiesOptions: {
       pruneSource: false,
+      // Don't auto-emit <link rel="preload"> for every @font-face URL Beasties
+      // inlines. We hand-pick which weights to preload in index.html (Outfit
+      // 900 = hero H1, Inter 400 = body); preloading every weight blocks the
+      // critical fetch budget for fonts the visitor may never see.
+      preloadFonts: false,
     },
     includedRoutes(paths) {
       // Normalize each discovered path to a leading slash form, then filter

@@ -1,0 +1,95 @@
+/* Self-hosted Inter + Outfit (FR-locale, latin subset, woff2-only).
+ * Shipped in the main CSS bundle so the @font-face declarations are parsed at
+ * first CSS parse — browser starts fetching woff2 files before JS executes.
+ *
+ * Metric-overridden fallback families ("Outfit Fallback", "Inter Fallback")
+ * align Arial's box to each webfont so the swap-in causes ~0 layout shift.
+ * Overrides computed via Malte Ubl's font-metric-overrides methodology
+ * (see https://github.com/seek-oss/capsize). Add the fallback family
+ * AFTER the webfont in any font-family stack: 'Outfit', 'Outfit Fallback', sans-serif.
+ */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/inter-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('/fonts/inter-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url('/fonts/inter-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/fonts/inter-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url('/fonts/inter-800.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url('/fonts/inter-900.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/fonts/outfit-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url('/fonts/outfit-900.woff2') format('woff2');
+}
+
+/* Metric-overridden fallback for Outfit. Arial is sourced via local() so no
+ * network fetch. size-adjust expands Arial's em-box to match Outfit, and
+ * ascent/descent/line-gap overrides align the baseline box. Values tuned for
+ * Outfit's metrics. */
+@font-face {
+  font-family: 'Outfit Fallback';
+  font-style: normal;
+  font-weight: 700 900;
+  src: local('Arial');
+  size-adjust: 99%;
+  ascent-override: 98%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+/* Metric-overridden fallback for Inter. */
+@font-face {
+  font-family: 'Inter Fallback';
+  font-style: normal;
+  font-weight: 400 900;
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}

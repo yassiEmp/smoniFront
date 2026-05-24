@@ -213,7 +213,7 @@ const HomeHeroSection = () => {
               <motion.h1
                 variants={itemVariants}
                 className="text-6xl sm:text-7xl md:text-6xl lg:text-[64px] 2xl:text-[96px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.95] tracking-tighter"
-                style={{ fontFamily: "'Outfit', sans-serif" }}
+                style={{ fontFamily: "'Outfit', 'Outfit Fallback', sans-serif" }}
               >
                 Le permis <br />
                 <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">sans stress.</span>

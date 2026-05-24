@@ -10,7 +10,11 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#2c2876" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Fonts self-hosted via @fontsource (see src/main.tsx). Google Fonts request removed. -->
+  <!-- Fonts self-hosted from /public/fonts (see src/styles/fonts.css). Preload the
+       above-the-fold weights so they're in flight before the CSS bundle is parsed:
+       Outfit 900 = hero H1, Inter 400 = body copy. -->
+  <link rel="preload" href="/fonts/outfit-900.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Per-route SEO tags (page title, page description, canonical, OpenGraph, Twitter Card) are emitted by PageHead via vite-react-ssg Head for every prerendered route. Only sitewide-stable tags are kept here, because react-helmet-async cannot dedupe against static tags already present in this template. SPA-fallback routes (non-prerendered) get their per-route tags on client hydration. -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
