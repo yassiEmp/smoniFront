@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router";
 import Logo1 from "@assets/images/home/logo/1.png?w=240&format=webp";
-import { motion } from "framer-motion";
-import { Menu, Car, BookOpen, Monitor, Shield, ArrowRightLeft, GraduationCap, RefreshCw, ClipboardCheck, ChevronDown, Heart } from "lucide-react";
+import { Menu, Car, BookOpen, Monitor, Shield, ArrowRightLeft, GraduationCap, RefreshCw, ClipboardCheck, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
@@ -106,11 +105,10 @@ const Header = () => {
           <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2c2876]/80 mb-6">{gridTitle}</div>
           <ul className="grid grid-cols-2 gap-4">
             {items.map((item, idx) => (
-              <motion.li
+              <li
                 key={item.to}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05, duration: 0.4 }}
+                className="animate-fade-in-up"
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <NavigationMenuLink asChild>
                   <NavLink
@@ -129,7 +127,7 @@ const Header = () => {
                     </div>
                   </NavLink>
                 </NavigationMenuLink>
-              </motion.li>
+              </li>
             ))}
           </ul>
         </div>
@@ -180,11 +178,7 @@ const Header = () => {
                         <span className="flex items-center gap-1.5">
                           {link.label}
                           {isActive && (
-                            <motion.span
-                              layoutId="activeNav"
-                              className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full"
-                              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            />
+                            <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-primary rounded-full" />
                           )}
                         </span>
                       )}
@@ -192,11 +186,7 @@ const Header = () => {
                   )}
 
                   {hoveredLink === link.to && (
-                    <motion.div
-                      layoutId="hoverNav"
-                      className="absolute inset-0 z-0 rounded-lg bg-slate-100"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
+                    <div className="absolute inset-0 z-0 rounded-lg bg-slate-100" />
                   )}
                 </NavigationMenuItem>
               ))}
@@ -248,11 +238,10 @@ const Header = () => {
 
               <nav className="flex flex-col gap-2 p-7 flex-grow overflow-y-auto">
                 {navLinks.map((link, i) => (
-                  <motion.div
+                  <div
                     key={link.to}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
+                    className="animate-fade-in-up"
+                    style={{ animationDelay: `${i * 100}ms` }}
                   >
                     {link.hasDropdown ? (
                       <Accordion type="single" collapsible className="w-full">
@@ -294,7 +283,7 @@ const Header = () => {
                         </NavLink>
                       </SheetClose>
                     )}
-                  </motion.div>
+                  </div>
                 ))}
               </nav>
 

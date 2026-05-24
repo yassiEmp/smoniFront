@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import { ClientOnly } from "vite-react-ssg";
-import { motion } from "framer-motion";
 import Reveal from "./Reveal";
 
 // Lazy-load decorative illustrations so they're excluded from SSG HTML.
@@ -50,20 +49,7 @@ const stats = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
-  },
-};
-
-const itemVariants = {
-  hidden: {},
-  visible: {},
-};
-
 const HomeStarSection = () => {
-  const total = stats.length;
   return (
     <section className="relative py-24 lg:py-32 bg-[#f8fafc] overflow-hidden">
       {/* Atmospheric halos behind the grid */}
@@ -77,9 +63,7 @@ const HomeStarSection = () => {
       />
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-12 xl:px-16">
-        <motion.header
-          className="max-w-[720px] mb-14 lg:mb-18"
-        >
+        <header className="max-w-[720px] mb-14 lg:mb-18">
           <h2
             className="mt-[18px] mb-[14px] font-black text-[#2c2876] leading-[0.98] tracking-[-0.035em] text-balance"
             style={{
@@ -94,25 +78,20 @@ const HomeStarSection = () => {
             Quatre choses qu'on peut vérifier sur place, au 62&nbsp;rue de la Jarry.
             Pas de chiffres gonflés, pas de réseau inventé.
           </p>
-        </motion.header>
+        </header>
 
         {/* Hidden SEO heading kept from previous version. */}
         <h2 className="sr-only">
           Smoni Auto-École Vincennes (94300) en quelques chiffres — Permis B, boîte automatique et moto
         </h2>
 
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 min-[1240px]:grid-cols-4 gap-7 sm:gap-8 min-[1240px]:gap-7"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 min-[1240px]:grid-cols-4 gap-7 sm:gap-8 min-[1240px]:gap-7">
           {stats.map((s, i) => {
             const Illustration = s.Illustration;
             return (
               <Reveal key={s.n} delay={i * 90} style={{ height: "100%" }}>
-              <motion.article
-                variants={itemVariants}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                className="group relative bg-white rounded-[20px] border border-[#eef2f7] overflow-hidden shadow-[0_24px_50px_-28px_rgba(15,23,42,0.22),0_2px_6px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_36px_70px_-32px_rgba(15,23,42,0.32),0_4px_10px_-2px_rgba(15,23,42,0.08)] transition-shadow duration-500"
+              <article
+                className="group relative bg-white rounded-[20px] border border-[#eef2f7] overflow-hidden shadow-[0_24px_50px_-28px_rgba(15,23,42,0.22),0_2px_6px_-2px_rgba(15,23,42,0.06)] hover:shadow-[0_36px_70px_-32px_rgba(15,23,42,0.32),0_4px_10px_-2px_rgba(15,23,42,0.08)] hover:-translate-y-1 transition-[box-shadow,transform] duration-500"
               >
                 <div className="relative w-full aspect-[16/9] bg-[#f3f1ff] overflow-hidden">
                   <ClientOnly>
@@ -150,11 +129,11 @@ const HomeStarSection = () => {
                     {s.description}
                   </p>
                 </div>
-              </motion.article>
+              </article>
               </Reveal>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

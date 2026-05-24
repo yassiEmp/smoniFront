@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import { ClientOnly } from "vite-react-ssg";
-import { motion } from "framer-motion";
 import { Link } from "react-router";
 import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import imgLabelQualite from "@assets/blog/details7/label-ecole-qualite.png?w=240;480&format=avif;webp;png&as=picture";
@@ -112,20 +111,16 @@ const HomeCertificationSection = () => {
 
         {/* Quality Certification Banner */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 mb-16 md:mb-36 pt-10 md:pt-16 pb-10 md:pb-16 border-b border-slate-200/70">
-          <motion.div
-            className="text-center md:text-left max-w-md"
-          >
+          <div className="text-center md:text-left max-w-md">
             <h2 className="text-2xl md:text-3xl font-black text-[#2c2876] mb-4" style={{ fontFamily: "'Outfit', sans-serif" }}>
               Établissement Certifié Qualité
             </h2>
             <p className="text-slate-500 font-medium leading-relaxed">
               SMONI est fier d'être détenteur du label <span className="text-blue-600 font-bold">"Qualité des formations au sein des écoles de conduite"</span> délivré par le Ministère de l'Intérieur.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="relative group"
-          >
+          <div className="relative group">
             <div className="absolute -inset-4 bg-yellow-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <ResponsivePicture
               picture={imgLabelQualite}
@@ -135,11 +130,9 @@ const HomeCertificationSection = () => {
               decoding="async"
               className="w-40 md:w-56 h-auto relative z-10 drop-shadow-xl hover:rotate-3 transition-transform duration-500"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="flex flex-col gap-4"
-          >
+          <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
               <div className="w-2 h-2 rounded-full bg-emerald-500" />
               <span className="text-sm font-bold text-[#2c2876]">Formation Post-Permis Agréée</span>
@@ -148,13 +141,11 @@ const HomeCertificationSection = () => {
               <div className="w-2 h-2 rounded-full bg-blue-500" />
               <span className="text-sm font-bold text-[#2c2876]">Intervenants Spécialisés ANTS</span>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Section Heading */}
-        <motion.header
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
-        >
+        <header className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           <p className="inline-block text-[11px] sm:text-[10px] font-black uppercase tracking-[0.18em] sm:tracking-[0.3em] text-[#2c2876]/90 mb-3 px-2">
             Notre différence — Auto-école Smoni Vincennes
           </p>
@@ -172,10 +163,10 @@ const HomeCertificationSection = () => {
             Moniteur qui crie, heures « obligatoires » la veille de l'examen, factures qui doublent — on connaît
             les histoires. On a écrit une charte pour que ça ne se passe pas ici. Elle est signée avec votre contrat.
           </p>
-        </motion.header>
+        </header>
 
         {/* Engagements list — semantic <ol> w/ ItemList schema. 6-col on lg / 4-col on md so the orphan row (4 & 5) sits centered. */}
-        <motion.ol
+        <ol
           className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-5 list-none p-0"
           aria-label="Les 5 engagements écrits de Smoni"
         >
@@ -189,11 +180,9 @@ const HomeCertificationSection = () => {
                   ? "md:col-span-2 md:col-start-2 lg:col-span-2 lg:col-start-4"
                   : "md:col-span-2 lg:col-span-2";
             return (
-              <motion.li
+              <li
                 key={e.n}
-                whileHover={{ y: -4 }}
-                transition={{ type: "spring", stiffness: 280, damping: 22 }}
-                className={`${MOBILE_ORDER_CLASS[slotFor(i) - 1]} md:order-none ${placement} w-full max-w-md mx-auto md:max-w-none md:mx-0`}
+                className={`${MOBILE_ORDER_CLASS[slotFor(i) - 1]} md:order-none ${placement} w-full max-w-md mx-auto md:max-w-none md:mx-0 hover:-translate-y-1 transition-transform duration-300`}
               >
               <Reveal delay={i * 90} style={{ height: "100%" }}>
                 <article
@@ -256,15 +245,13 @@ const HomeCertificationSection = () => {
                   </div>
                 </article>
               </Reveal>
-              </motion.li>
+              </li>
             );
           })}
-        </motion.ol>
+        </ol>
 
         {/* Conversion CTA — Cialdini commitment + Krug clarity: one primary, one secondary, action-first verbs. */}
-        <motion.div
-          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-        >
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Link
             to="/tarifs"
             className="inline-flex items-center justify-center min-h-[48px] px-6 py-3 rounded-full bg-[#2c2876] text-white font-bold text-sm sm:text-[15px] shadow-sm hover:bg-[#1e1b4b] hover:shadow-md transition-all w-full sm:w-auto"
@@ -279,7 +266,7 @@ const HomeCertificationSection = () => {
           >
             Prendre rendez-vous gratuit
           </Link>
-        </motion.div>
+        </div>
 
         <p className="text-center text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-10 px-2">
           Auto-école déclarée • SAS Arike Bello • SIREN 915 387 013 • Agrément préfectoral sur demande
