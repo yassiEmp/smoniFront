@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 import { useId } from "react";
 import { useNavigate } from "react-router";
+import { Reveal } from "./Reveal";
 
 const avatars = [
   "/avatars/apprenant-1.jpg",
@@ -18,16 +18,6 @@ const INDIGO_20 = "#cfceea";
 const PAPER = "#ffffff";
 const PAPER_RULE = "#e6e3f5";
 const BLUE = "#3b82f6";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0 } },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
-};
 
 const ContractIllustration = () => {
   const rid = useId().replace(/:/g, "");
@@ -193,45 +183,37 @@ const HomeHeroSection = () => {
         </div>
       </div>
 
-      <motion.div
-        className="w-full px-6 lg:px-16 xl:px-32 relative z-10"
-        initial={false}
-        animate="visible"
-        variants={containerVariants}
-      >
+      <div className="w-full px-6 lg:px-16 xl:px-32 relative z-10">
         <div className="flex flex-col">
           <div className="w-full md:max-w-[55%] lg:max-w-[52%] xl:max-w-[50%] space-y-5 2xl:space-y-8">
-            <motion.div
-              variants={itemVariants}
+            <Reveal
+              delay={0}
               className="text-[11px] 2xl:text-[13px] font-bold uppercase tracking-[0.32em] text-[#2c2876]/80"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
               Auto-école Vincennes (94300) • 4 min du RER A
-            </motion.div>
+            </Reveal>
 
             <div className="space-y-4 2xl:space-y-6">
-              <motion.h1
-                variants={itemVariants}
-                className="text-6xl sm:text-7xl md:text-6xl lg:text-[64px] 2xl:text-[96px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.95] tracking-tighter"
-                style={{ fontFamily: "'Outfit', 'Outfit Fallback', sans-serif" }}
-              >
-                Le permis <br />
-                <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">sans stress.</span>
-              </motion.h1>
+              <Reveal delay={80}>
+                <h1
+                  className="text-6xl sm:text-7xl md:text-6xl lg:text-[64px] 2xl:text-[96px] font-[900] text-[#2c2876] leading-[1.05] lg:leading-[1] 2xl:leading-[0.95] tracking-tighter"
+                  style={{ fontFamily: "'Outfit', 'Outfit Fallback', sans-serif" }}
+                >
+                  Le permis <br />
+                  <span className="bg-gradient-to-r from-[#2c2876] via-[#2c2876] to-blue-500 bg-clip-text text-transparent italic">sans stress.</span>
+                </h1>
+              </Reveal>
 
-              <motion.p
-                variants={itemVariants}
-                className="text-base lg:text-lg 2xl:text-2xl text-slate-500 max-w-lg leading-relaxed font-medium"
-              >
-                Permis B, boîte automatique et moto à Vincennes. Prix affichés, heures pleines, moniteurs qui respectent. <br />
-                <span className="text-[#2c2876] font-extrabold">— Recalés bienvenus, sans heures imposées.</span>
-              </motion.p>
+              <Reveal delay={160}>
+                <p className="text-base lg:text-lg 2xl:text-2xl text-slate-500 max-w-lg leading-relaxed font-medium">
+                  Permis B, boîte automatique et moto à Vincennes. Prix affichés, heures pleines, moniteurs qui respectent. <br />
+                  <span className="text-[#2c2876] font-extrabold">— Recalés bienvenus, sans heures imposées.</span>
+                </p>
+              </Reveal>
             </div>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-4 pt-2 2xl:gap-6 2xl:pt-4"
-            >
+            <Reveal delay={240} className="flex flex-wrap gap-4 pt-2 2xl:gap-6 2xl:pt-4">
               <Button
                 size="lg"
                 onClick={() => handleNavigate("/tarifs")}
@@ -248,10 +230,10 @@ const HomeHeroSection = () => {
               >
                 <a href="tel:+33771265119">Appeler — 07 71 26 51 19</a>
               </Button>
-            </motion.div>
+            </Reveal>
 
-            <motion.div
-              variants={itemVariants}
+            <Reveal
+              delay={320}
               className="flex flex-wrap items-center gap-8 pt-6 2xl:pt-8 border-t border-slate-200/60"
             >
               <div className="flex items-center gap-4">
@@ -280,10 +262,10 @@ const HomeHeroSection = () => {
                   <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1" style={{ fontFamily: "'JetBrains Mono', monospace" }}>915 387 013</span>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
