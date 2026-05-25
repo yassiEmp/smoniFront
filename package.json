@@ -7,7 +7,7 @@
     "dev": "vite",
     "postinstall": "node scripts/patch-rrd-server.mjs",
     "prebuild": "node scripts/generate-sitemap.mjs",
-    "build": "node scripts/patch-rrd-server.mjs && vite-react-ssg build",
+    "build": "node scripts/patch-rrd-server.mjs && vite-react-ssg build && node scripts/inline-hero-font.mjs",
     "build:spa": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
