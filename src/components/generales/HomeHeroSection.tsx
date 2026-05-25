@@ -240,7 +240,7 @@ const HomeHeroSection = () => {
                 <div className="flex -space-x-4">
                   {avatars.map((url, i) => (
                     <div key={i} className="w-12 h-12 rounded-full border-4 border-[#f8fafc] bg-slate-200 overflow-hidden shadow-lg">
-                      <img src={url} alt="" aria-hidden="true" width="48" height="48" decoding="async" className="w-full h-full object-cover" />
+                      <img src={url} alt="" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async" fetchPriority="low" className="w-full h-full object-cover" />
                     </div>
                   ))}
                   <div className="w-12 h-12 rounded-full border-4 border-[#f8fafc] bg-[#2c2876] flex items-center justify-center text-[10px] font-black text-white shadow-lg">+1.5k</div>
