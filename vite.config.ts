@@ -48,6 +48,11 @@ export default defineConfig(({ isSsrBuild }) => ({
       // 900 = hero H1, Inter 400 = body); preloading every weight blocks the
       // critical fetch budget for fonts the visitor may never see.
       preloadFonts: false,
+      // Defer the non-critical stylesheet: swap <link rel=stylesheet> to a
+      // media="print" link + onload handler that flips media back to "all".
+      // This stops the external app-*.css from blocking FCP — the critical
+      // subset is already inlined as <style> in <head>.
+      preload: 'media',
     },
     includedRoutes(paths) {
       // Normalize each discovered path to a leading slash form, then filter
