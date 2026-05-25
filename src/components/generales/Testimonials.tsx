@@ -126,7 +126,10 @@ const PhotoChip = ({ src, alt, size = 48 }: { src: string; alt: string; size?: n
     <img
       src={src}
       alt={alt}
+      width={size}
+      height={size}
       loading="lazy"
+      decoding="async"
       className="w-full h-full object-cover block"
     />
   </span>
