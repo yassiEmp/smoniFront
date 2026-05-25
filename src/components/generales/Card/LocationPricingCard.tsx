@@ -1,6 +1,6 @@
 import { Check, X, ArrowRight, Zap } from "lucide-react";
 import { BoutiqueService } from "@/api/boutique/types";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";

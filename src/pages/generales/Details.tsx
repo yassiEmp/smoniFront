@@ -1,7 +1,7 @@
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import HomeNewStudentSection from "@components/generales/HomeNewStudentSection";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring } from "motion/react";
 import { Car, CheckCircle2, FileText, CalendarCheck, MousePointerClick, Check, ArrowLeft, Shield, MapPin, Clock, KeyRound, Users, Fuel, Gauge, AlertTriangle, Phone, ChevronDown, Cog, Eye, ThumbsUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";

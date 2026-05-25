@@ -1,12 +1,12 @@
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import HomeNewStudentSection from "@components/generales/HomeNewStudentSection";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring } from "motion/react";
 import { GraduationCap, Shield, MousePointerClick, Check, ArrowLeft, Clock, History, FileText, AlertTriangle, TrendingDown, Heart, Eye, Users, Scale, Brain, Timer, Award, Milestone, MessageCircle, ChevronRight, Siren, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { ZoomIn, X } from "lucide-react";
 import PageHead from "@components/SEO/PageHead";
 import JsonLd from "@components/SEO/JsonLd";

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "motion/react";
 import { Car, Shield, BookOpen, Heart, ArrowRight, Zap, Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import Header from '@components/generales/Header';

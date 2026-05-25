@@ -1,7 +1,7 @@
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import HomeNewStudentSection from "@components/generales/HomeNewStudentSection";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring } from "motion/react";
 import { BookOpen, CheckCircle2, FileText, MousePointerClick, Check, GraduationCap, MapPin, Car, Clock, Users, Award, Target, Shield, Star, Zap, Calendar, TrendingUp, ThumbsUp, UserCheck, Trophy, Gauge, Route, Navigation, Sparkles, BadgeCheck, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

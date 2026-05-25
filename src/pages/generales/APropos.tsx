@@ -2,7 +2,7 @@ import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import HomeNewStudentSection from "@components/generales/HomeNewStudentSection";
 import { Award, BookOpen, Clock, HeartHandshake, Leaf, ShieldCheck, Target, Users, MapPin, Navigation, CarFront, Euro, BatteryCharging, CheckCircle2, MessageSquare, ChevronDown } from "lucide-react";
-import { motion, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useSpring, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import PageHead from "@components/SEO/PageHead";
 

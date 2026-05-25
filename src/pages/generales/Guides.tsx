@@ -2,7 +2,7 @@ import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import { Link } from "react-router";
 import { CgChevronRight } from "react-icons/cg";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { BookOpen, Car, FileText, CheckCircle, ArrowRight } from "lucide-react";
 
 const guidesData = [

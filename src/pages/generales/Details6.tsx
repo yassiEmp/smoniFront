@@ -1,7 +1,7 @@
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
 import HomeNewStudentSection from "@components/generales/HomeNewStudentSection";
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring } from "motion/react";
 import { Shield, FileText, MousePointerClick, Check, ArrowLeft, MapPin, Clock, Car, AlertTriangle, ChevronDown, CalendarCheck, Route, Phone, ThumbsUp, Zap, Eye, Target, UserCheck, CircleCheck, Lightbulb, Navigation, Gauge, HeartPulse, Star, Timer, Ban, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router";

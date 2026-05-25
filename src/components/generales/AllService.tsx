@@ -1,4 +1,4 @@
-import { motion, useSpring } from "framer-motion";
+import { motion, useSpring } from "motion/react";
 import { Car, BookOpen, Monitor, Shield, ArrowRightLeft, RefreshCw, ClipboardCheck, ArrowRight, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
