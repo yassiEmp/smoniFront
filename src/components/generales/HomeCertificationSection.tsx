@@ -1,22 +1,23 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
 import { ClientOnly } from "vite-react-ssg";
 import { Link } from "react-router";
 import JsonLd from "@components/SEO/JsonLd";
 import Reveal from "./Reveal";
+import { lazyWithRetry } from "@utils/lazyWithRetry";
 
 // Hoisted behind lazy() to keep its 6 image asset variants out of the home
 // route's static module graph (vite-react-ssg's renderPreloadLinks would
 // otherwise emit <link rel=preload as=image> for every one ≈181 KB).
 // Suspense (no ClientOnly) lets SSR render the fallback inline; client
 // hydrates without an extra boundary — avoids the TBT cost we saw in R4.
-const HomeCertificationLabel = lazy(() => import("./HomeCertificationLabel"));
+const HomeCertificationLabel = lazyWithRetry(() => import("./HomeCertificationLabel"));
 
 // Lazy-load decorative illustrations so they're excluded from SSG HTML.
-const IllustrationPrix = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPrix })));
-const Illustration60Min = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.Illustration60Min })));
-const IllustrationPasDeCris = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPasDeCris })));
-const IllustrationRecales = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationRecales })));
-const IllustrationGarantie = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationGarantie })));
+const IllustrationPrix = lazyWithRetry(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPrix })));
+const Illustration60Min = lazyWithRetry(() => import("./EngagementIllustrations").then(m => ({ default: m.Illustration60Min })));
+const IllustrationPasDeCris = lazyWithRetry(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPasDeCris })));
+const IllustrationRecales = lazyWithRetry(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationRecales })));
+const IllustrationGarantie = lazyWithRetry(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationGarantie })));
 
 // Each card carries a scannable micro-hierarchy: KEYWORD (F-pattern landing) → title → body w/ one bolded promise.
 // `featured: true` triggers the Von Restorff visual anchor (1 card, distinct treatment) so the eye enters there.

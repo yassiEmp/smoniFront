@@ -1,4 +1,5 @@
-import { Suspense, lazy } from "react";
+import { Suspense } from "react";
+import { lazyWithRetry } from "@utils/lazyWithRetry";
 import { ClientOnly } from "vite-react-ssg";
 import Footer from "@components/generales/Footer";
 import Header from "@components/generales/Header";
@@ -17,15 +18,15 @@ import { faqData } from "@components/generales/HomeFaqSection";
 
 // react-cookie-consent is a CJS module that doesn't interop cleanly through
 // Vite's SSR externalization. Load it client-only via dynamic import.
-const CookieConsent = lazy(() => import("react-cookie-consent"));
+const CookieConsent = lazyWithRetry(() => import("react-cookie-consent"));
 
 // Lazy load non-critical sections below the fold
-const HomeGroupeSection = lazy(() => import("@components/generales/HomeGroupeSection"));
-const HomeFeaturesSection = lazy(() => import("@components/generales/HomeFeaturesSection"));
-const HomeStepSection = lazy(() => import("@components/generales/HomeStepSection"));
-const Testimonials = lazy(() => import("@components/generales/Testimonials"));
-const HomeNewStudentSection = lazy(() => import("@components/generales/HomeNewStudentSection"));
-const HomeLocationSection = lazy(() => import("@components/generales/HomeLocationSection"));
+const HomeGroupeSection = lazyWithRetry(() => import("@components/generales/HomeGroupeSection"));
+const HomeFeaturesSection = lazyWithRetry(() => import("@components/generales/HomeFeaturesSection"));
+const HomeStepSection = lazyWithRetry(() => import("@components/generales/HomeStepSection"));
+const Testimonials = lazyWithRetry(() => import("@components/generales/Testimonials"));
+const HomeNewStudentSection = lazyWithRetry(() => import("@components/generales/HomeNewStudentSection"));
+const HomeLocationSection = lazyWithRetry(() => import("@components/generales/HomeLocationSection"));
 
 const Home = () => {
   return (
