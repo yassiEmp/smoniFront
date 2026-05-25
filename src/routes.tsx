@@ -25,11 +25,13 @@ import { blogPosts } from "./data/blogPosts";
 // Eager imports = pages that do NOT pull heavy vendor chunks (framer-motion,
 // @mui/material) into the main app bundle. Keeping these eager preserves the
 // synchronous-hydration behavior the original comment above protects.
+// Only Home stays eager — it's the route most likely to be SSG-hydrated at
+// initial load and was the original repro for the hydration duplication bug.
+// Other prerendered routes (Maintenance, EquipeArike, BlogIndex, BlogArticle)
+// hydrate from their own URL and don't need to ship in the home bundle's
+// static graph — keeping them eager dragged ~200KB of lucide icons + page
+// content into app-*.js for visitors who never leave /.
 import Home from "@pages/generales/Home";
-import Maintenance from "@pages/generales/Maintenance";
-import EquipeArike from "@pages/generales/EquipeArike";
-import BlogIndex from "@pages/generales/BlogIndex";
-import BlogArticle from "@pages/generales/BlogArticle";
 
 // Helper: wrap default-export pages so vite-react-ssg's lazy() gets { Component }.
 const lazyDefault =
@@ -57,7 +59,7 @@ export const routes: RouteRecord[] = [
       // be added at the nginx layer (see top of file).
       { path: "privacypolicy", element: <Navigate to="/politique-confidentialite" replace /> },
       { path: "cgu", lazy: lazyDefault(() => import("@pages/generales/Condition")), entry: "src/pages/generales/Condition.tsx" },
-      { path: "maintenance", Component: Maintenance, entry: "src/pages/generales/Maintenance.tsx" },
+      { path: "maintenance", lazy: lazyDefault(() => import("@pages/generales/Maintenance")), entry: "src/pages/generales/Maintenance.tsx" },
 
       // Marketing "Details" pages (prerendered)
       { path: "location", lazy: lazyDefault(() => import("@pages/generales/Details")), entry: "src/pages/generales/Details.tsx" },
@@ -70,13 +72,13 @@ export const routes: RouteRecord[] = [
       { path: "post-permis", lazy: lazyDefault(() => import("@pages/generales/Details7")), entry: "src/pages/generales/Details7.tsx" },
 
       // E-E-A-T author page (prerendered for SEO)
-      { path: "equipe/arike", Component: EquipeArike, entry: "src/pages/generales/EquipeArike.tsx" },
+      { path: "equipe/arike", lazy: lazyDefault(() => import("@pages/generales/EquipeArike")), entry: "src/pages/generales/EquipeArike.tsx" },
 
       // Blog (prerendered: index + every article)
-      { path: "blog", Component: BlogIndex, entry: "src/pages/generales/BlogIndex.tsx" },
+      { path: "blog", lazy: lazyDefault(() => import("@pages/generales/BlogIndex")), entry: "src/pages/generales/BlogIndex.tsx" },
       {
         path: "blog/:slug",
-        Component: BlogArticle,
+        lazy: lazyDefault(() => import("@pages/generales/BlogArticle")),
         entry: "src/pages/generales/BlogArticle.tsx",
         getStaticPaths: () => blogPosts.map((p) => `blog/${p.slug}`),
       },
