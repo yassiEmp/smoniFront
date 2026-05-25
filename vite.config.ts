@@ -107,6 +107,14 @@ export default defineConfig(({ isSsrBuild }) => ({
                 '@radix-ui/react-slot',
               ],
               'vendor-redux': ['@reduxjs/toolkit', 'react-redux', 'redux-persist'],
+              // motion is used by every Home subsection and the Details/blog
+              // pages — isolating it keeps the shared chunk cacheable across
+              // routes instead of being duplicated into each lazy chunk.
+              'vendor-motion': ['motion'],
+              // leaflet + react-leaflet are only used by HomeLocationSection
+              // (lazy). Keeping them in a dedicated chunk avoids the SSR shim
+              // bleeding into anything the entry pulls.
+              'vendor-leaflet': ['leaflet', 'react-leaflet'],
             },
           },
     },

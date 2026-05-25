@@ -6,8 +6,6 @@ import Header from "@components/generales/Header";
 import HomeHeroSection from "@components/generales/HomeHeroSection";
 import HomeCertificationSection from "@components/generales/HomeCertificationSection";
 import HomeStarSection from "@components/generales/HomeStarSection";
-import HomeRecalesSection from "@components/generales/HomeRecalesSection";
-import HomeAdultesSection from "@components/generales/HomeAdultesSection";
 // SEO-critical sections: rendered in SSG HTML (no ClientOnly wrapper).
 import HomeFaqSection from "@components/generales/HomeFaqSection";
 import HomeTarifSection from "@components/generales/HomeTarifSection";
@@ -27,6 +25,8 @@ const HomeStepSection = lazyWithRetry(() => import("@components/generales/HomeSt
 const Testimonials = lazyWithRetry(() => import("@components/generales/Testimonials"));
 const HomeNewStudentSection = lazyWithRetry(() => import("@components/generales/HomeNewStudentSection"));
 const HomeLocationSection = lazyWithRetry(() => import("@components/generales/HomeLocationSection"));
+const HomeAdultesSection = lazyWithRetry(() => import("@components/generales/HomeAdultesSection"));
+const HomeRecalesSection = lazyWithRetry(() => import("@components/generales/HomeRecalesSection"));
 
 const Home = () => {
   return (
@@ -65,9 +65,18 @@ const Home = () => {
           )}
         </ClientOnly>
 
-        <div id="adultes"><HomeAdultesSection /></div>
-
-        <div id="recales"><HomeRecalesSection /></div>
+        <ClientOnly>
+          {() => (
+            <>
+              <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
+                <div id="adultes"><HomeAdultesSection /></div>
+              </Suspense>
+              <Suspense fallback={<div className="min-h-[700px] w-full bg-slate-50/50" />}>
+                <div id="recales"><HomeRecalesSection /></div>
+              </Suspense>
+            </>
+          )}
+        </ClientOnly>
 
         {/* SEO-critical: prerendered in SSG HTML (Tarif + FAQ surface organic queries). */}
         <div id="tarifs"><HomeTarifSection /></div>
