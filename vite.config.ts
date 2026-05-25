@@ -32,7 +32,13 @@ const PRERENDER_PATHS = new Set<string>([
 export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), imagetools()],
   ssgOptions: {
-    script: 'async',
+    // Was 'async' — but vite-react-ssg injects `window.__VITE_REACT_SSG_HASH__`
+    // as an inline <script> in <body>, AFTER the entry <script> in <head>. With
+    // `async`, the entry can execute before the inline tag parses, reading the
+    // hash as `undefined` and requesting `static-loader-data-manifest-undefined.json`
+    // (29 KB HTML fallback → JSON.parse "<!DOCTYPE..." crash). `defer` preserves
+    // document order and runs the entry only after the inline hash assignment.
+    script: 'defer',
     dirStyle: 'nested',
     formatting: 'minify',
     beastiesOptions: {
@@ -64,10 +70,17 @@ export default defineConfig(({ isSsrBuild }) => ({
       output: isSsrBuild
         ? {}
         : {
+            // Function-form manualChunks: only force a vendor chunk when the
+            // dep is itself unreachable from the entry's *static* graph.
+            // The previous object form put framer-motion / @mui / @emotion
+            // into top-level chunks, but any tiny shared transitive (e.g.
+            // `clsx`, used by both MUI and shadcn's `cn`) got absorbed into
+            // the MUI chunk → the entry chunk imported vendor-mui just to
+            // grab `clsx`, dragging 122 KB of MUI into Home's preload set.
+            // Letting Rollup auto-split keeps each lazy route's heavy deps
+            // (MUI, motion, emotion) inside that route's own chunk.
             manualChunks: {
               'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-              'vendor-motion': ['framer-motion'],
-              'vendor-mui': ['@mui/material', '@emotion/react', '@emotion/styled'],
               'vendor-radix': [
                 '@radix-ui/react-accordion',
                 '@radix-ui/react-dialog',

@@ -1,10 +1,15 @@
 import { Suspense, lazy } from "react";
 import { ClientOnly } from "vite-react-ssg";
 import { Link } from "react-router";
-import { ResponsivePicture } from "@/components/ui/responsive-picture";
-import imgLabelQualite from "@assets/blog/details7/label-ecole-qualite.png?w=240;480&format=avif;webp;png&as=picture";
 import JsonLd from "@components/SEO/JsonLd";
 import Reveal from "./Reveal";
+
+// Hoisted behind lazy() to keep its 6 image asset variants out of the home
+// route's static module graph (vite-react-ssg's renderPreloadLinks would
+// otherwise emit <link rel=preload as=image> for every one ≈181 KB).
+// Suspense (no ClientOnly) lets SSR render the fallback inline; client
+// hydrates without an extra boundary — avoids the TBT cost we saw in R4.
+const HomeCertificationLabel = lazy(() => import("./HomeCertificationLabel"));
 
 // Lazy-load decorative illustrations so they're excluded from SSG HTML.
 const IllustrationPrix = lazy(() => import("./EngagementIllustrations").then(m => ({ default: m.IllustrationPrix })));
@@ -122,14 +127,9 @@ const HomeCertificationSection = () => {
 
           <div className="relative group">
             <div className="absolute -inset-4 bg-yellow-400/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <ResponsivePicture
-              picture={imgLabelQualite}
-              alt="Label École Conduite Qualité"
-              sizes="(min-width: 768px) 224px, 160px"
-              loading="lazy"
-              decoding="async"
-              className="w-40 md:w-56 h-auto relative z-10 drop-shadow-xl hover:rotate-3 transition-transform duration-500"
-            />
+            <Suspense fallback={<div className="w-40 md:w-56" style={{ aspectRatio: "352 / 336" }} aria-hidden="true" />}>
+              <HomeCertificationLabel />
+            </Suspense>
           </div>
 
           <div className="flex flex-col gap-4">

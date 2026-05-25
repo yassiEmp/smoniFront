@@ -6,12 +6,16 @@ import { Badge } from "@/components/ui/badge";
 import { ResponsivePicture } from "@/components/ui/responsive-picture";
 import { Link } from "react-router";
 import { useState, useEffect } from "react";
-import imgLocation from "@assets/services/location.png?w=400;800&format=avif;webp;png&as=picture";
-import imgConduite from "@assets/services/conduite.png?w=400;800&format=avif;webp;png&as=picture";
-import imgCode from "@assets/services/code.png?w=400;800&format=avif;webp;png&as=picture";
-import imgAccompagnement from "@assets/services/accompagnement.png?w=400;800&format=avif;webp;png&as=picture";
-import imgPasserelle from "@assets/services/passerelle.png?w=400;800&format=avif;webp;png&as=picture";
-import imgPostPermis from "@assets/services/post-permis.png?w=400;800&format=avif;webp;png&as=picture";
+// Source files are 640x640 JPEGs (renamed .png). Cap widths at source to avoid
+// upscaling. Card displays at ~400px max (see sizes attr below) — 320/640 covers
+// 1x/2x DPR. Emit AVIF (q55) + WebP (q75) + JPEG fallback (q78); skip PNG to
+// avoid the multi-MB lossless fallbacks vite-imagetools generates by default.
+import imgLocation from "@assets/services/location.png?w=320;640&format=avif;webp;jpg&quality=avif=55;webp=75;jpg=78&as=picture";
+import imgConduite from "@assets/services/conduite.png?w=320;640&format=avif;webp;jpg&quality=avif=55;webp=75;jpg=78&as=picture";
+import imgCode from "@assets/services/code.png?w=320;640&format=avif;webp;jpg&quality=avif=55;webp=75;jpg=78&as=picture";
+import imgAccompagnement from "@assets/services/accompagnement.png?w=320;640&format=avif;webp;jpg&quality=avif=55;webp=75;jpg=78&as=picture";
+import imgPasserelle from "@assets/services/passerelle.png?w=320;640&format=avif;webp;jpg&quality=avif=55;webp=75;jpg=78&as=picture";
+import imgPostPermis from "@assets/services/post-permis.png?w=320;640&format=avif;webp;jpg&quality=avif=55;webp=75;jpg=78&as=picture";
 
 const services = [
   {
