@@ -22,23 +22,11 @@ import { blogPosts } from "./data/blogPosts";
 //   "Cannot read properties of undefined (reading '0')"
 // Fix: ship these as eager Component imports so hydration is synchronous.
 // Non-prerendered (SPA-only) and role-gated routes stay lazy below.
+// Eager imports = pages that do NOT pull heavy vendor chunks (framer-motion,
+// @mui/material) into the main app bundle. Keeping these eager preserves the
+// synchronous-hydration behavior the original comment above protects.
 import Home from "@pages/generales/Home";
-import APropos from "@pages/generales/APropos";
-import Service from "@pages/generales/Service";
-import Tarif from "@pages/generales/Tarif";
-import Contact from "@pages/generales/Contact";
-import Ressources from "@pages/generales/Ressources";
-import Politique from "@pages/generales/Politique";
-import Condition from "@pages/generales/Condition";
 import Maintenance from "@pages/generales/Maintenance";
-import Details from "@pages/generales/Details";
-import Details1 from "@pages/generales/Details1";
-import Details2 from "@pages/generales/Details2";
-import Details3 from "@pages/generales/Details3";
-import Details4 from "@pages/generales/Details4";
-import Details5 from "@pages/generales/Details5";
-import Details6 from "@pages/generales/Details6";
-import Details7 from "@pages/generales/Details7";
 import EquipeArike from "@pages/generales/EquipeArike";
 import BlogIndex from "@pages/generales/BlogIndex";
 import BlogArticle from "@pages/generales/BlogArticle";
@@ -59,27 +47,27 @@ export const routes: RouteRecord[] = [
     children: [
       // ── Public pages (prerendered) ──────────────────────────────────────
       { index: true, Component: Home, entry: "src/pages/generales/Home.tsx" },
-      { path: "a-propos", Component: APropos, entry: "src/pages/generales/APropos.tsx" },
-      { path: "services", Component: Service, entry: "src/pages/generales/Service.tsx" },
-      { path: "tarifs", Component: Tarif, entry: "src/pages/generales/Tarif.tsx" },
-      { path: "contact", Component: Contact, entry: "src/pages/generales/Contact.tsx" },
-      { path: "ressources", Component: Ressources, entry: "src/pages/generales/Ressources.tsx" },
-      { path: "politique-confidentialite", Component: Politique, entry: "src/pages/generales/Politique.tsx" },
+      { path: "a-propos", lazy: lazyDefault(() => import("@pages/generales/APropos")), entry: "src/pages/generales/APropos.tsx" },
+      { path: "services", lazy: lazyDefault(() => import("@pages/generales/Service")), entry: "src/pages/generales/Service.tsx" },
+      { path: "tarifs", lazy: lazyDefault(() => import("@pages/generales/Tarif")), entry: "src/pages/generales/Tarif.tsx" },
+      { path: "contact", lazy: lazyDefault(() => import("@pages/generales/Contact")), entry: "src/pages/generales/Contact.tsx" },
+      { path: "ressources", lazy: lazyDefault(() => import("@pages/generales/Ressources")), entry: "src/pages/generales/Ressources.tsx" },
+      { path: "politique-confidentialite", lazy: lazyDefault(() => import("@pages/generales/Politique")), entry: "src/pages/generales/Politique.tsx" },
       // Client-side redirect for the legacy English slug. Server-side 301 should
       // be added at the nginx layer (see top of file).
       { path: "privacypolicy", element: <Navigate to="/politique-confidentialite" replace /> },
-      { path: "cgu", Component: Condition, entry: "src/pages/generales/Condition.tsx" },
+      { path: "cgu", lazy: lazyDefault(() => import("@pages/generales/Condition")), entry: "src/pages/generales/Condition.tsx" },
       { path: "maintenance", Component: Maintenance, entry: "src/pages/generales/Maintenance.tsx" },
 
       // Marketing "Details" pages (prerendered)
-      { path: "location", Component: Details, entry: "src/pages/generales/Details.tsx" },
-      { path: "conduite", Component: Details1, entry: "src/pages/generales/Details1.tsx" },
-      { path: "actualisation", Component: Details2, entry: "src/pages/generales/Details2.tsx" },
-      { path: "fabrication-permis", Component: Details3, entry: "src/pages/generales/Details3.tsx" },
-      { path: "passerelle", Component: Details4, entry: "src/pages/generales/Details4.tsx" },
-      { path: "code-en-ligne", Component: Details5, entry: "src/pages/generales/Details5.tsx" },
-      { path: "accompagnement", Component: Details6, entry: "src/pages/generales/Details6.tsx" },
-      { path: "post-permis", Component: Details7, entry: "src/pages/generales/Details7.tsx" },
+      { path: "location", lazy: lazyDefault(() => import("@pages/generales/Details")), entry: "src/pages/generales/Details.tsx" },
+      { path: "conduite", lazy: lazyDefault(() => import("@pages/generales/Details1")), entry: "src/pages/generales/Details1.tsx" },
+      { path: "actualisation", lazy: lazyDefault(() => import("@pages/generales/Details2")), entry: "src/pages/generales/Details2.tsx" },
+      { path: "fabrication-permis", lazy: lazyDefault(() => import("@pages/generales/Details3")), entry: "src/pages/generales/Details3.tsx" },
+      { path: "passerelle", lazy: lazyDefault(() => import("@pages/generales/Details4")), entry: "src/pages/generales/Details4.tsx" },
+      { path: "code-en-ligne", lazy: lazyDefault(() => import("@pages/generales/Details5")), entry: "src/pages/generales/Details5.tsx" },
+      { path: "accompagnement", lazy: lazyDefault(() => import("@pages/generales/Details6")), entry: "src/pages/generales/Details6.tsx" },
+      { path: "post-permis", lazy: lazyDefault(() => import("@pages/generales/Details7")), entry: "src/pages/generales/Details7.tsx" },
 
       // E-E-A-T author page (prerendered for SEO)
       { path: "equipe/arike", Component: EquipeArike, entry: "src/pages/generales/EquipeArike.tsx" },
