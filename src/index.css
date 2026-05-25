@@ -34,11 +34,6 @@ html {
   color: #342563;
 }
 
-.bg_ccm {
-  background-image: url("./assets/images/home/ccm.webp");
-  background-size: cover;
-}
-
 body {
   scrollbar-width: thin;
   scrollbar-color: #6C61F6 #E0E0E0;
@@ -59,23 +54,6 @@ body {
 
 .pentagone {
   clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-}
-
-.home_star_bg {
-  position: relative;
-  background-image: url("./assets/images/home/ai_car.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.home_star_bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.697);
 }
 
 /* Embla */
@@ -347,6 +325,17 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     filter: none;
     transform: none;
     transition: none;
+  }
+}
+@media (max-width: 768px) {
+  .fade-blur-in {
+    filter: none;
+    will-change: opacity, transform;
+    transition: opacity var(--rv-dur) var(--rv-ease),
+                transform var(--rv-dur) var(--rv-ease);
+  }
+  .fade-blur-in.is-visible {
+    filter: none;
   }
 }
 

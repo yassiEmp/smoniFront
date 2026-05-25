@@ -136,11 +136,11 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-b border-border/40 bg-white/80 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 transition-colors duration-300">
+    <header className="fixed top-0 left-0 z-50 w-full border-b border-border/40 bg-white/95 md:bg-white/80 md:backdrop-blur-xl md:supports-[backdrop-filter]:bg-white/60 transition-colors duration-300">
       <div className="flex items-center justify-between px-4 py-1.5 2xl:px-14 2xl:py-2.5">
         {/* Logo */}
         <NavLink to="/" className="shrink-0" onClick={scrollToTop}>
-          <img src={Logo1} alt="SMONI Logo" className="h-7 lg:h-9 2xl:h-11 w-auto transition-transform hover:scale-105" />
+          <img src={Logo1} alt="SMONI Logo" width="240" height="88" decoding="async" className="h-7 lg:h-9 2xl:h-11 w-auto transition-transform hover:scale-105" />
         </NavLink>
 
         {/* Desktop Nav */}
@@ -231,7 +231,7 @@ const Header = () => {
             <div className="flex flex-col h-full">
               <div className="flex items-center justify-between p-7">
                 <NavLink to="/" className="shrink-0">
-                  <img src={Logo1} alt="SMONI Logo" className="h-10 w-auto" />
+                  <img src={Logo1} alt="SMONI Logo" width="240" height="88" loading="lazy" decoding="async" className="h-10 w-auto" />
                 </NavLink>
               </div>
               <Separator className="opacity-50" />

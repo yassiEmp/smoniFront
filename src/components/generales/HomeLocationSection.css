@@ -33,6 +33,12 @@
 }
 .nt-bg-halo--a { top: -160px; right: 8%; width: 720px; height: 720px; background: rgba(44, 40, 118, 0.06); }
 .nt-bg-halo--b { bottom: -120px; left: 6%; width: 560px; height: 560px; background: rgba(59, 130, 246, 0.05); }
+@media (max-width: 768px) {
+  .nt-bg-halo {
+    filter: none;
+    opacity: 0.3;
+  }
+}
 
 .nt-container {
   position: relative;
