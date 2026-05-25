@@ -140,7 +140,10 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 py-1.5 2xl:px-14 2xl:py-2.5">
         {/* Logo */}
         <NavLink to="/" className="shrink-0" onClick={scrollToTop}>
-          <img src={Logo1} alt="SMONI Logo" width="240" height="88" decoding="async" className="h-7 lg:h-9 2xl:h-11 w-auto transition-transform hover:scale-105" />
+          {/* loading="lazy" suppresses React 19's float preload (which lacks
+              crossorigin and would duplicate vite-react-ssg's head preload).
+              Head preload warms the cache, so the lazy img hits it instantly. */}
+          <img src={Logo1} alt="SMONI Logo" width="240" height="88" loading="lazy" decoding="async" fetchPriority="high" className="h-7 lg:h-9 2xl:h-11 w-auto transition-transform hover:scale-105" />
         </NavLink>
 
         {/* Desktop Nav */}
