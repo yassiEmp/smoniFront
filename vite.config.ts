@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import react from '@vitejs/plugin-react'
 import { imagetools } from 'vite-imagetools'
+import { compression } from 'vite-plugin-compression2'
 
 // Whitelist of routes that should be statically prerendered. Everything else
 // will be served via the SPA fallback at runtime. Dynamic blog/:slug paths are
@@ -30,7 +31,15 @@ const PRERENDER_PATHS = new Set<string>([
 
 // https://vite.dev/config/
 export default defineConfig(({ isSsrBuild }) => ({
-  plugins: [react(), imagetools()],
+  plugins: [
+    react(),
+    imagetools(),
+    // Emit pre-compressed .br + .gz siblings for text assets so Vercel
+    // (and the local preview server) can serve them without per-request
+    // compression. Brotli beats gzip by ~15-25% on JS/CSS/HTML.
+    compression({ algorithm: 'brotliCompress', exclude: [/\.(br|gz)$/, /\.(jpe?g|png|webp|avif|woff2?)$/] }),
+    compression({ algorithm: 'gzip',           exclude: [/\.(br|gz)$/, /\.(jpe?g|png|webp|avif|woff2?)$/] }),
+  ],
   ssgOptions: {
     // Was 'async' — but vite-react-ssg injects `window.__VITE_REACT_SSG_HASH__`
     // as an inline <script> in <body>, AFTER the entry <script> in <head>. With
@@ -42,7 +51,11 @@ export default defineConfig(({ isSsrBuild }) => ({
     dirStyle: 'nested',
     formatting: 'minify',
     beastiesOptions: {
-      pruneSource: false,
+      // Strip rules from the external CSS that have already been inlined as
+      // critical CSS. Before: dist/index.html embedded ~55 KB of critical
+      // CSS *and* shipped the full 207 KB app-*.css containing all those
+      // same rules, so the deferred-load CSS download was pure duplication.
+      pruneSource: true,
       // Don't auto-emit <link rel="preload"> for every @font-face URL Beasties
       // inlines. We hand-pick which weights to preload in index.html (Outfit
       // 900 = hero H1, Inter 400 = body); preloading every weight blocks the

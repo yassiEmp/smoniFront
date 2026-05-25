@@ -17,7 +17,12 @@ const DIST = 'dist';
 const MARKER = '<!-- inline-hero-font -->';
 
 const b64 = readFileSync(FONT_PATH).toString('base64');
-const tag = `${MARKER}<style>@font-face{font-family:'Outfit';font-style:normal;font-display:swap;font-weight:900;src:url('data:font/woff2;base64,${b64}') format('woff2');}</style>`;
+// font-display: optional — bytes are already in the HTML response (base64),
+// so the font is available before first paint without needing a separate
+// network round-trip. `optional` skips the FOUT/swap repaint that `swap`
+// would force if for any reason the font isn't ready in time, and the
+// metric-overridden 'Outfit Fallback' (in fonts.css) keeps layout stable.
+const tag = `${MARKER}<style>@font-face{font-family:'Outfit';font-style:normal;font-display:optional;font-weight:900;src:url('data:font/woff2;base64,${b64}') format('woff2');}</style>`;
 
 function walk(dir) {
   for (const name of readdirSync(dir)) {

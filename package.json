@@ -7,7 +7,7 @@
     "dev": "vite",
     "postinstall": "node scripts/patch-rrd-server.mjs",
     "prebuild": "node scripts/generate-sitemap.mjs",
-    "build": "node scripts/patch-rrd-server.mjs && vite-react-ssg build && node scripts/inline-hero-font.mjs",
+    "build": "node scripts/patch-rrd-server.mjs && vite-react-ssg build && node scripts/inline-hero-font.mjs && node scripts/preload-client-chunk.mjs",
     "build:spa": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -114,6 +114,7 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vite-imagetools": "^7.1.1",
+    "vite-plugin-compression2": "^2.5.3",
     "vite-react-ssg": "0.9.1-beta.1",
     "vitest": "^4.1.4",
     "wawoff2": "^2.0.1"
